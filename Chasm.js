@@ -1,9 +1,10 @@
 // Animation Initialization
-let storage_canvas_w = 40;
-let storage_canvas_y = 40;
+let storage_canvas_w = 64;
+let storage_canvas_y = 64;
 
-var earth_storage_canvas;
-let earth_stored = 0;
+let earth_storage_canvas;
+let earth_stored = 0;			// number of atoms
+let earth_density = 16;			// atoms per brick
 
 // Resource Initialization
 var earth = new chasm_resource_small("earth");
@@ -27,7 +28,7 @@ function animation_tick() {
 }
 
 function game_tick(scalar) {
-	earth.gain(200 * scalar);
+	earth.gain(10 * scalar);
 }
 
 function draw_resources() {
@@ -35,11 +36,11 @@ function draw_resources() {
 }
 
 function draw_earth_storage() {
-	for (; earth_stored < earth.current; earth_stored++) {
+	for (; earth_stored < Math.floor(earth.current / earth_density); earth_stored++) {
 		earth_storage_canvas.fillStyle = "#" + (Math.floor(Math.random() * 0xffffff)).toString(16);
 		earth_storage_canvas.fillRect(
-			(storage_canvas_w - 1) - (earth_stored % storage_canvas_w),
-			(storage_canvas_y - 1) - Math.floor((earth_stored / storage_canvas_y)),
-			1, 1);
+			storage_canvas_w - (((earth_stored + 1) % Math.floor(storage_canvas_w / earth_density)) * Math.floor(storage_canvas_w / earth_density)),
+			storage_canvas_y - ((Math.floor(earth_stored / Math.floor(storage_canvas_w / earth_density)) + 1) * Math.floor(storage_canvas_w / earth_density)),
+			earth_density, earth_density);
 	}
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Chasm</title>
+	<meta charset = "utf-8">
+
+	<!--Library sources-->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
+
+	<!--Remote lib_chasm source-->
+	<!--
+	<script type = "text/javascript" src = "https://github.com/Blooperly/lib_chasm/blob/main/source/lib_chasm.js"></script>
+	<script type = "text/javascript" src = "https://github.com/Blooperly/lib_chasm/blob/main/source/lib_chasm_timing.js"></script>
+	<script type = "text/javascript" src = "https://github.com/Blooperly/lib_chasm/blob/main/source/lib_chasm_math.js"></script>
+	-->
+
+	<!--Local lib_chasm source (for parallel development)-->
+	<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm.js"></script>
+	<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_timing.js"></script>
+	<!--<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_math.js"></script>-->
+
+	<!--Game script source-->
+	<script type = "text/javascript" src = "./Chasm.js"></script>
+	<link rel = "stylesheet" href = "./Chasm.css"></script>
+</head>
+
+<body onload = "game_init();">
+
+	<div id = "resource_box">
+		<canvas id = "earth_storage" width = "40" height = "40" style = "border: 1px solid black;"></canvas>
+		<p id = "resource_earth">Earth <span id = "resource_earth_amount"></span></p>
+	</span>
+
+</body>
+</html>

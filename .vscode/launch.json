@@ -5,7 +5,7 @@
 			"type": "pwa-chrome",
 			"request": "launch",
 			"name": "Chasm",
-			"file": "${fileWorkspaceFolder}/index.html"
+			"file": "${workspaceFolder}/index.html"
 		}
 	]
 }

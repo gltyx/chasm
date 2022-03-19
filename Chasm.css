@@ -1,1 +1,15 @@
 p {margin: 0px; padding: 0px;}
+
+#game_box {
+	width: 800px;
+}
+
+#resource_box {
+	width: 100px;
+	float: left;
+}
+
+#chasm_box {
+	width: 400px;
+	float: left;
+}

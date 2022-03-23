@@ -22,9 +22,12 @@ let storage_canvas_h = 64;
 
 let earth_storage_canvas;
 let earth_stored = 0;					// number of full BRICKS stored in canvas
-let earth_density = Math.pow(2, 4);		// density^2 = number of BRICKS per BLOCK
+let earth_density = Math.pow(2, 3);		// density^2 = number of BRICKS per BLOCK
 
 // Resource Initialization
+var particles = new chasm_resource("Void Particles");
+particles.option_unlocked = true;
+
 var earth = new chasm_resource_small("earth");
 earth.option_unlocked = true;
 earth.option_cap = true;
@@ -46,6 +49,10 @@ function animation_tick() {
 }
 
 function draw_resources() {
+	// Update currency
+	$("#currency_particles_amount").html(particles.current.toFixed(0));
+
+	// Update resources
 	$("#resource_earth_amount").html(Math.floor(earth.current));
 }
 

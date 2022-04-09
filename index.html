@@ -21,6 +21,7 @@
 	<!--<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_math.js"></script>-->
 
 	<!--Game script source-->
+	<script type = "text/javascript" src = "./Chasm_Storage.js"></script>
 	<script type = "text/javascript" src = "./Chasm.js"></script>
 	<link rel = "stylesheet" href = "./Chasm.css"></script>
 </head>
@@ -33,9 +34,9 @@
 		</div>
 
 		<div id = "resource_box">
-			<canvas id = "earth_storage" width = "64" height = "64" style = "border: 1px solid black;"></canvas>
+			<canvas id = "earth_storage" width = "66" height = "66"></canvas>
 			<p id = "resource_earth">Earth <span id = "resource_earth_amount"></span></p>
-			<button onclick="drop_earth()">Drop block</button>
+			<button onclick="drop_storage(earth, earth_storage)">Drop block</button>
 		</div>
 
 		<div id = "chasm_box">

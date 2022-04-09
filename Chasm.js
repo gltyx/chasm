@@ -1,28 +1,7 @@
-// Animation Initialization
-// Storage canvas w/h must be in the set {2^x}
-let storage_canvas_w = 64;
-let storage_canvas_h = 64;
-
-// Essay: The Chasm
-// The Chasm is a paranormal hole in the Earth that no one has ever been able
-// to map or explain. There have been reports of strange phenomenon around the
-// chasm. You have decided there is only one way to deal with this gap in reality,
-// you must fill it up. The Chasm has a hidden value, HUNGER, representing the
-// amount of matter it can consume before filling up completely. This HUNGER is
-// represented in BRICKS of earth. By dropping in BLOCKS of matter, composed of
-// BRICKS, the Chasm's HUNGER can be sated. The walls of the Chasm are not perfectly
-// vertical, and progress towards satiation can be tracked as the Chasm narrows,
-// BLOCKS of matter piling up at its edges.
-//
-// As you feed the Chasm, it will reward you with VOID PARTICLES. PARTICLES are a
-// currency which can be used to upgrade your matter harvesting operation. 
-
-// Essay: Matter
-// A BLOCK of matter is composed of [density^2] BRICKS.
-
-let earth_storage_canvas;
-let earth_stored = 0;					// number of full BRICKS stored in canvas
-let earth_density = Math.pow(2, 3);		// density^2 = number of BRICKS per BLOCK
+// Storage Initialization
+var earth_storage = new resource_storage("earth_storage");
+earth_storage.brick_w = 8;
+earth_storage.brick_h = 8;
 
 // Resource Initialization
 var particles = new chasm_resource("Void Particles");
@@ -31,11 +10,15 @@ particles.option_unlocked = true;
 var earth = new chasm_resource_small("earth");
 earth.option_unlocked = true;
 earth.option_cap = true;
-earth.setCap(earth_density * earth_density);
+earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
 
+// Game Initialization
 function game_init() {
 	// Animation Initialization
-	earth_storage_canvas = $("#earth_storage")[0].getContext("2d");
+	earth_storage.canvas = $("#earth_storage")[0].getContext("2d");
+	console.log("earth_storage bricks per row: " + (earth_storage.canvas_w / earth_storage.brick_w));
+	console.log("earth_storage bricks per col: " + (earth_storage.canvas_h / earth_storage.brick_h));
+	storage_init(earth_storage);
 	animation_tick();
 
 	// Timing Initialization
@@ -45,7 +28,7 @@ function game_init() {
 
 function animation_tick() {
 	draw_resources();
-	draw_earth_storage();
+	draw_storage(earth, earth_storage);
 }
 
 function draw_resources() {
@@ -56,36 +39,7 @@ function draw_resources() {
 	$("#resource_earth_amount").html(Math.floor(earth.current));
 }
 
-function draw_earth_storage() {
-	let brick_size_w = storage_canvas_w / earth_density;
-	let brick_size_h = storage_canvas_h / earth_density;
-	for (; earth_stored < Math.floor(earth.current); earth_stored++) {
-		earth_storage_canvas.fillStyle = "#" + (Math.floor(Math.random() * 0xffffff)).toString(16);
-		earth_storage_canvas.fillRect(
-			(storage_canvas_w) - (brick_size_w * ((earth_stored % earth_density) + 1)),
-			(storage_canvas_h) - (brick_size_h * (Math.floor(earth_stored / earth_density) + 1)),
-			brick_size_w,
-			brick_size_h);
-	}
-}
-
-function drop_earth() {
-	if (earth.spend(earth_stored)) {
-		earth_stored = 0;
-		clear_earth_storage();
-	}
-}
-
-function clear_earth_storage() {
-	earth_storage_canvas.fillStyle = "#FFFFFF";
-	earth_storage_canvas.fillRect(
-		0,
-		0,
-		storage_canvas_w,
-		storage_canvas_h);
-}
-
 function game_tick(scalar) {
-	// To do: change 0.3 to calculated earth/sec rate
-	earth.gain(5 * scalar);
+	// To do: change to calculated earth/sec rate
+	earth.gain(1 * scalar);
 }

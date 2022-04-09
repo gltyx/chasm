@@ -41,13 +41,12 @@ function draw_storage(resource, storage) {
 	for (; storage.bricks_stored < Math.floor(resource.current); storage.bricks_stored++) {
 		// Calculate brick location
 		let bricks_per_w = storage.canvas_w / storage.brick_w;
-		let bricks_per_h = storage.canvas_h / storage.brick_h;
 
 		let draw_x = storage.canvas_w - (storage.brick_w * ((storage.bricks_stored % bricks_per_w) + 1));
 		let draw_y = storage.canvas_h - (storage.brick_h * (Math.floor(storage.bricks_stored / bricks_per_w) + 1));
 
 		// Choose brick color (currently random, need base off storage color range eventually)
-		storage.canvas.fillStyle = "#" + (Math.floor(Math.random() * 0xffffff)).toString(16);
+		storage.canvas.fillStyle = colorRange(60, 100, 40, 90, 5, 80);
 
 		// Draw brick
 		storage.canvas.fillRect(
@@ -57,7 +56,7 @@ function draw_storage(resource, storage) {
 			storage.brick_h);
 
 		// Debugging: Log brick drawn
-		console.log(storage.name + ": Drawing brick #" + (storage.bricks_stored + 1) + " at " + draw_x + "x " + draw_y + "y (" + storage.brick_w + "w, " + storage.brick_h + "h)");
+		console.log(storage.name + ": Drawing brick #" + (storage.bricks_stored + 1) + " at " + draw_x + "x " + draw_y + "y (" + storage.brick_w + "w, " + storage.brick_h + "h) " + storage.canvas.fillStyle);
 	}
 }
 

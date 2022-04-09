@@ -43,7 +43,7 @@ function draw_storage(resource, storage) {
 		let bricks_per_w = storage.canvas_w / storage.brick_w;
 		let bricks_per_h = storage.canvas_h / storage.brick_h;
 
-		let draw_x = storage.canvas_w - (storage.brick_w * ((storage.bricks_stored % bricks_per_h) + 1));
+		let draw_x = storage.canvas_w - (storage.brick_w * ((storage.bricks_stored % bricks_per_w) + 1));
 		let draw_y = storage.canvas_h - (storage.brick_h * (Math.floor(storage.bricks_stored / bricks_per_w) + 1));
 
 		// Choose brick color (currently random, need base off storage color range eventually)

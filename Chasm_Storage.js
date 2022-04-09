@@ -5,7 +5,8 @@ var STORAGE_CANVAS_BORDER_OFFSET = 1;
 var STORAGE_CANVAS_W_DEFAULT = 64;
 var STORAGE_CANVAS_H_DEFAULT = 64;
 
-var STORAGE_FLAGS_ = 1 << 0;
+var STORAGE_FLAGS_EARTH = 1 << 0;
+var STORAGE_FLAGS_WATER = 1 << 1;
 
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {
@@ -45,8 +46,18 @@ function draw_storage(resource, storage) {
 		let draw_x = storage.canvas_w - (storage.brick_w * ((storage.bricks_stored % bricks_per_w) + 1));
 		let draw_y = storage.canvas_h - (storage.brick_h * (Math.floor(storage.bricks_stored / bricks_per_w) + 1));
 
-		// Choose brick color (currently random, need base off storage color range eventually)
-		storage.canvas.fillStyle = colorRange(60, 100, 40, 90, 5, 80);
+		// Choose brick color
+		if (storage.storage_flags & STORAGE_FLAGS_EARTH) {
+			storage.canvas.fillStyle = colorRange_MkII(color_MkII_earth);
+		}
+		else if (storage.storage_flags & STORAGE_FLAGS_WATER) {
+			let color_copy = Object.assign({}, color_MkII_water);
+			color_copy.darkness_low = ((draw_y / storage.canvas_h) * (color_MkII_water.darkness_high - color_MkII_water.darkness_low)) + color_MkII_water.darkness_low;
+			color_copy.darkness_high = color_copy.darkness_low;
+			storage.canvas.fillStyle = colorRange_MkII(color_copy);
+
+			console.log("Water y = " + draw_y + "; color_copy = {" + color_copy.hue_low + ", " + color_copy.hue_high + ", " + color_copy.darkness_low + ", " + color_copy.darkness_high + ", " + color_copy.saturation_low + ", " + color_copy.saturation_high + "}");
+		}
 
 		// Draw brick
 		storage.canvas.fillRect(

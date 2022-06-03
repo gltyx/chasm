@@ -56,7 +56,7 @@ function draw_storage(resource, storage) {
 			color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
 			storage.canvas.fillStyle = colorRange_MkII(color_MkII_water_temp);
 
-			console.log("Water y = " + draw_y + "; color_MkII_water_temp = {" + color_MkII_water_temp.hue_low + ", " + color_MkII_water_temp.hue_high + ", " + color_MkII_water_temp.darkness_low + ", " + color_MkII_water_temp.darkness_high + ", " + color_MkII_water_temp.saturation_low + ", " + color_MkII_water_temp.saturation_high + "}");
+			//console.log("Water y = " + draw_y + "; color_MkII_water_temp = {" + color_MkII_water_temp.hue_low + ", " + color_MkII_water_temp.hue_high + ", " + color_MkII_water_temp.darkness_low + ", " + color_MkII_water_temp.darkness_high + ", " + color_MkII_water_temp.saturation_low + ", " + color_MkII_water_temp.saturation_high + "}");
 		}
 
 		// Draw brick
@@ -67,7 +67,7 @@ function draw_storage(resource, storage) {
 			storage.brick_h);
 
 		// Debugging: Log brick drawn
-		console.log(storage.name + ": Drawing brick #" + (storage.bricks_stored + 1) + " at " + draw_x + "x " + draw_y + "y (" + storage.brick_w + "w, " + storage.brick_h + "h) " + storage.canvas.fillStyle);
+		//console.log(storage.name + ": Drawing brick #" + (storage.bricks_stored + 1) + " at " + draw_x + "x " + draw_y + "y (" + storage.brick_w + "w, " + storage.brick_h + "h) " + storage.canvas.fillStyle);
 	}
 }
 

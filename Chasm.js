@@ -57,3 +57,12 @@ function game_tick(scalar) {
 	earth.gain(2 * scalar);
 	water.gain(4 * scalar);
 }
+
+// Materialize UI
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+
+$(document).ready(function(){
+    $('.tabs').tabs();
+  });

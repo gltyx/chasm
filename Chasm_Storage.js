@@ -51,12 +51,12 @@ function draw_storage(resource, storage) {
 			storage.canvas.fillStyle = colorRange_MkII(color_MkII_earth);
 		}
 		else if (storage.storage_flags & STORAGE_FLAGS_WATER) {
-			let color_copy = Object.assign({}, color_MkII_water);
-			color_copy.darkness_low = ((draw_y / storage.canvas_h) * (color_MkII_water.darkness_high - color_MkII_water.darkness_low)) + color_MkII_water.darkness_low;
-			color_copy.darkness_high = color_copy.darkness_low;
-			storage.canvas.fillStyle = colorRange_MkII(color_copy);
+			color_MkII_water_temp = color_MkII_water;
+			color_MkII_water_temp.darkness_low = (((storage.canvas_h - draw_y) / storage.canvas_h) * (color_MkII_water.darkness_high - color_MkII_water.darkness_low)) + color_MkII_water.darkness_low;
+			color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
+			storage.canvas.fillStyle = colorRange_MkII(color_MkII_water_temp);
 
-			console.log("Water y = " + draw_y + "; color_copy = {" + color_copy.hue_low + ", " + color_copy.hue_high + ", " + color_copy.darkness_low + ", " + color_copy.darkness_high + ", " + color_copy.saturation_low + ", " + color_copy.saturation_high + "}");
+			console.log("Water y = " + draw_y + "; color_MkII_water_temp = {" + color_MkII_water_temp.hue_low + ", " + color_MkII_water_temp.hue_high + ", " + color_MkII_water_temp.darkness_low + ", " + color_MkII_water_temp.darkness_high + ", " + color_MkII_water_temp.saturation_low + ", " + color_MkII_water_temp.saturation_high + "}");
 		}
 
 		// Draw brick

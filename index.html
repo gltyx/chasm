@@ -5,8 +5,16 @@
 	<meta charset = "utf-8">
 
 	<!--Library sources-->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
+		<!--jQuery-->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+		<!--bignumber.js-->
+		<script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
+
+		<!--Materialize-->
+    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 	<!--Remote lib_chasm source-->
 	<!--
@@ -29,6 +37,37 @@
 
 <body onload = "game_init();">
 
+	<nav class="nav-extended">
+		<div class="nav-wrapper blue-grey darken-2">
+			<p class="brand-logo"><i class="material-icons">call_to_action</i>Chasm</p>
+			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="sass.html">Sass</a></li>
+				<li><a href="badges.html">Components</a></li>
+				<li><a href="collapsible.html">JavaScript</a></li>
+			</ul>
+		</div>
+		<div class="nav-content blue-grey darken-1">
+		  	<ul class="tabs tabs-transparent">
+				<li class="tab"><a href="#test1">Test 1</a></li>
+				<li class="tab"><a class="active" href="#test2">Test 2</a></li>
+				<li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+				<li class="tab"><a href="#test4">Test 4</a></li>
+		  	</ul>
+		</div>
+	</nav>
+	
+	<ul class="sidenav" id="mobile-demo">
+		<li><a href="sass.html">Sass</a></li>
+		<li><a href="badges.html">Components</a></li>
+		<li><a href="collapsible.html">JavaScript</a></li>
+	</ul>
+	
+	<div id="test1" class="col s12">Test 1</div>
+	<div id="test2" class="col s12">Test 2</div>
+	<div id="test3" class="col s12">Test 3</div>
+	<div id="test4" class="col s12">Test 4</div>
+
 	<div id = "game_box">
 		<div id = "currency_box">
 			<p id = "currency_particles">Void Particles: <span id = "currency_particles_amount"></span></p>
@@ -37,11 +76,11 @@
 		<div id = "resource_box">
 			<canvas id = "earth_storage" width = "66" height = "66"></canvas>
 			<p id = "resource_earth">Earth <span id = "resource_earth_amount"></span></p>
-			<button onclick="drop_storage(earth, earth_storage)">Drop block</button>
+			<a class="waves-effect waves-light btn" onclick="drop_storage(earth, earth_storage)">Drop block</a>
 			
 			<canvas id = "water_storage" width = "66" height = "66"></canvas>
 			<p id = "resource_water">Water <span id = "resource_water_amount"></span></p>
-			<button onclick="drop_storage(water, water_storage)">Drop block</button>
+			<a class="waves-effect waves-light btn" onclick="drop_storage(water, water_storage)">Drop block</a>
 		</div>
 
 		<div id = "chasm_box">

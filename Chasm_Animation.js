@@ -18,6 +18,7 @@ class color_MkII {
 
 var color_MkII_earth = new color_MkII(0.08, 0.12, 0.11, 0.28, 0.30, 0.47);
 var color_MkII_water = new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
+var color_MkII_water_temp = new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
 
 function colorRange(r1, r2, g1, g2, b1, b2) {
 	let r = Math.floor((Math.random() * (r2 - r1)) + r1);
@@ -64,7 +65,6 @@ function colorRange_MkII(color) {
 	else if (b > 255) b = 255;
 
 	var out = ("#" + ((r << 16) + (g << 8) + (b)).toString(16))
-	//console.log("colorRange_MkII() Color Generated: " + out);
-	console.log("colorRange_MkII() Color Generated: " + r + "r " + g + "g " + b + "b");
+	//console.log("colorRange_MkII() Color Generated: " + r + "r " + g + "g " + b + "b");
 	return out;
 }

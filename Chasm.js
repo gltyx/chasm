@@ -54,6 +54,6 @@ function draw_resources() {
 
 function game_tick(scalar) {
 	// To do: change to calculated earth/sec rate
-	//earth.gain(2 * scalar);
+	earth.gain(2 * scalar);
 	water.gain(4 * scalar);
 }

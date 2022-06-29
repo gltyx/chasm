@@ -1,4 +1,7 @@
-p {margin: 0px; padding: 0px;}
+p {
+	margin: 0px;
+	padding: 0px;
+}
 
 .noble {
 	-webkit-user-select: none;

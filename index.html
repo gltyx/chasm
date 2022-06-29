@@ -75,16 +75,16 @@
 			<div id = "tab_chasm">
 				<div id = "resource_box" class = "col s12 m4" class = "testoutline">
 					<canvas id = "earth_storage" width = "66" height = "66"></canvas>
-					<p id = "resource_earth">Earth <span id = "resource_earth_amount"></span></p>
-					<a class="waves-effect waves-light btn" onclick="drop_storage(earth, earth_storage)">Drop block</a>
+					<p id = "resource_earth">Earth: <span id = "resource_earth_amount"></span></p>
+					<a class="waves-effect waves-light btn" onclick="gather(earth)">Gather</a>
+					<a class="waves-effect waves-light btn" onclick="earth_storage.drop()">Drop block</a>
 					
 					<canvas id = "water_storage" width = "66" height = "66"></canvas>
-					<p id = "resource_water">Water <span id = "resource_water_amount"></span></p>
-					<a class="waves-effect waves-light btn" onclick="drop_storage(water, water_storage)">Drop block</a>
+					<p id = "resource_water">Water: <span id = "resource_water_amount"></span></p>
+					<a class="waves-effect waves-light btn" onclick="water_storage.drop()">Drop block</a>
 				</div>
 
-				<div id = "chasm_box" class = "col s12 m4" class = "testoutline">
-					<canvas id = "chasm_canvas" width = "256" height = "768" style = "border: 1px solid black;"></canvas>
+				<div id = "log_box" class = "col s12 m4" class = "testoutline">
 				</div>
 			</div>
 

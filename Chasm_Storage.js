@@ -10,7 +10,8 @@ var STORAGE_FLAGS_WATER = 1 << 1;
 
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {
-	name = "";
+	name = "";										// Storage name (for debugging)
+	resource;										// Chasm resource associated with storage
 	
 	canvas;											// Canvas handle for animation
 	canvas_w = STORAGE_CANVAS_W_DEFAULT;			// Canvas width
@@ -22,9 +23,53 @@ class resource_storage {
 	brick_h = 1;									// Number of y pixels in a brick
 
 	bricks_stored = 0;								// Number of bricks currently stored
+	bitmap;											// Storage bitmap
 
-	constructor(name) {
+	constructor(name, resource) {
 		this.name = name;
+		this.resource = resource;
+		this.bitmap = new storage_bitmap(this.canvas_w, this.canvas_h);
+		this.bitmap.clear();
+	}
+
+	drop() {
+		if (this.resource.spend(this.bricks_stored)) {
+			this.bricks_stored = 0;
+			this.clear();
+		}
+	}
+
+	clear() {
+		this.canvas.fillStyle = "#FFFFFF";
+		this.canvas.fillRect(
+			storage.canvas_border,
+			storage.canvas_border,
+			storage.canvas_w,
+			storage.canvas_h);
+	}
+}
+
+// Storage Bitmap Class - Records contents of a resource storage
+class storage_bitmap {
+	x;
+	y;
+	bits;
+
+	constructor(x, y) {
+		this.x = x;
+		this.y = y;
+		this.bits = new Array(x);
+		for (var i = 0; i < x; i++) {
+			this.bits[x] = new Array(y);
+		}
+	}
+
+	clear() {
+		for (var i = 0; i < this.x; i++) {
+			for (var j = 0; j < this.y; j++) {
+				this.bits[i][j] = 0;
+			}
+		}
 	}
 }
 
@@ -35,7 +80,7 @@ function storage_init(storage) {
 		0,
 		storage.canvas_w + (2 * storage.canvas_border),
 		storage.canvas_h + (2 * storage.canvas_border));
-	clear_storage(storage);
+	storage.clear();
 }
 
 function draw_storage(resource, storage) {
@@ -69,20 +114,4 @@ function draw_storage(resource, storage) {
 		// Debugging: Log brick drawn
 		//console.log(storage.name + ": Drawing brick #" + (storage.bricks_stored + 1) + " at " + draw_x + "x " + draw_y + "y (" + storage.brick_w + "w, " + storage.brick_h + "h) " + storage.canvas.fillStyle);
 	}
-}
-
-function drop_storage(resource, storage) {
-	if (resource.spend(storage.bricks_stored)) {
-		storage.bricks_stored = 0;
-		clear_storage(storage);
-	}
-}
-
-function clear_storage(storage) {
-	storage.canvas.fillStyle = "#FFFFFF";
-	storage.canvas.fillRect(
-		storage.canvas_border,
-		storage.canvas_border,
-		storage.canvas_w,
-		storage.canvas_h);
 }

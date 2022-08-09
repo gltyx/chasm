@@ -42,10 +42,10 @@ class resource_storage {
 	clear() {
 		this.canvas.fillStyle = "#FFFFFF";
 		this.canvas.fillRect(
-			storage.canvas_border,
-			storage.canvas_border,
-			storage.canvas_w,
-			storage.canvas_h);
+			this.canvas_border,
+			this.canvas_border,
+			this.canvas_w,
+			this.canvas_h);
 	}
 }
 
@@ -53,20 +53,20 @@ class resource_storage {
 class storage_bitmap {
 	x;
 	y;
-	bits;
+	bits = [];
 
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;
-		this.bits = new Array(x);
-		for (var i = 0; i < x; i++) {
-			this.bits[x] = new Array(y);
+		for (let i = 0; i < x; i++) {
+			this.bits[i] = [];
 		}
+		this.clear();
 	}
 
 	clear() {
-		for (var i = 0; i < this.x; i++) {
-			for (var j = 0; j < this.y; j++) {
+		for (let i = 0; i < this.x; i++) {
+			for (let j = 0; j < this.y; j++) {
 				this.bits[i][j] = 0;
 			}
 		}

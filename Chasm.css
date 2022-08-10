@@ -31,3 +31,10 @@ canvas {
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
 }
+
+/* Materialize container override */
+.container {
+	margin: 0 auto;
+	max-width: 1280px;
+	width: 90%;
+}

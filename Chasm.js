@@ -25,6 +25,9 @@ water.setCap((water_storage.canvas_w * water_storage.canvas_h) / (water_storage.
 
 // Game Initialization
 function game_init() {
+	// Page Initialization
+	$("#lib_chasm_version").html(lib_chasm_version());
+
 	// Animation Initialization
 	earth_storage.canvas = $("#earth_storage")[0].getContext("2d");
 	water_storage.canvas = $("#water_storage")[0].getContext("2d");
@@ -39,8 +42,8 @@ function game_init() {
 
 function animation_tick() {
 	draw_resources();
-	draw_storage(earth, earth_storage);
-	draw_storage(water, water_storage);
+	draw_storage(earth_storage);
+	draw_storage(water_storage);
 }
 
 function draw_resources() {
@@ -55,21 +58,39 @@ function draw_resources() {
 function game_tick(scalar) {
 	// To do: change to calculated earth/sec rate
 	//earth.gain(2 * scalar);
-	water.gain(4 * scalar);
+	//water.gain(4 * scalar);
 }
 
 // Button handling
 function gather(resource) {
-	if (resource == earth) {
-		earth.gain(1);
+	switch (resource) {
+		case earth:
+			resource.gain(1);
+			break;
+		case water:
+			resource.gain(1);
+			break;
+		default:
+	}
+}
+
+function drop(storage) {
+	switch (storage) {
+		case earth_storage:
+			storage.drop();
+			break;
+		case water_storage:
+			storage.drop();
+			break;
+		default:
 	}
 }
 
 // Materialize UI
 $(document).ready(function(){
     $('.sidenav').sidenav();
-  });
+});
 
 $(document).ready(function(){
     $('.tabs').tabs();
-  });
+});

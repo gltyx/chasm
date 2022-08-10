@@ -8,6 +8,9 @@ var STORAGE_CANVAS_H_DEFAULT = 64;
 var STORAGE_FLAGS_EARTH = 1 << 0;
 var STORAGE_FLAGS_WATER = 1 << 1;
 
+var BIT_TYPE_NONE  = 0;
+var BIT_TYPE_EARTH = 1 << 0;
+
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {
 	name = "";										// Storage name (for debugging)
@@ -17,23 +20,25 @@ class resource_storage {
 	canvas_w = STORAGE_CANVAS_W_DEFAULT;			// Canvas width
 	canvas_h = STORAGE_CANVAS_H_DEFAULT;			// Canvas height
 	canvas_border = STORAGE_CANVAS_BORDER_OFFSET;	// Border offset
+	image_data;										// Canvas image data
+	bitmap;											// Storage bitmap
 
 	storage_flags = 0;								// Flags for different storage types (STORAGE_FLAGS_*)
 	brick_w = 1;									// Number of x pixels in a brick
 	brick_h = 1;									// Number of y pixels in a brick
 
 	bricks_stored = 0;								// Number of bricks currently stored
-	bitmap;											// Storage bitmap
 
 	constructor(name, resource) {
 		this.name = name;
 		this.resource = resource;
+		this.image_data = new ImageData(this.canvas_w, this.canvas_h);
 		this.bitmap = new storage_bitmap(this.canvas_w, this.canvas_h);
 		this.bitmap.clear();
 	}
 
 	drop() {
-		if (this.resource.spend(this.bricks_stored)) {
+		if (this.resource.spend(this.resource.cap)) {
 			this.bricks_stored = 0;
 			this.clear();
 		}
@@ -67,9 +72,18 @@ class storage_bitmap {
 	clear() {
 		for (let i = 0; i < this.x; i++) {
 			for (let j = 0; j < this.y; j++) {
-				this.bits[i][j] = 0;
+				this.bits[i][j] = new bitmap_bit(BIT_TYPE_NONE);
 			}
 		}
+	}
+}
+
+// Bitmap Bit Class - Information saved to an individual bit of the bitmap (keep this as small as possible to conserve resources)
+class bitmap_bit {
+	type;
+
+	constructor(type) {
+		this.type = type;
 	}
 }
 
@@ -83,8 +97,8 @@ function storage_init(storage) {
 	storage.clear();
 }
 
-function draw_storage(resource, storage) {
-	for (; storage.bricks_stored < Math.floor(resource.current); storage.bricks_stored++) {
+function draw_storage(storage) {
+	for (; storage.bricks_stored < Math.floor(storage.resource.current); storage.bricks_stored++) {
 		// Calculate brick location
 		let bricks_per_w = storage.canvas_w / storage.brick_w;
 

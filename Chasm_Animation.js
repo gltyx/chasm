@@ -63,8 +63,7 @@ function colorRange_MkII(color) {
 	else if (g > 255) g = 255;
 	if (b < 0) b = 0;
 	else if (b > 255) b = 255;
-
-	var out = ("#" + ((r << 16) + (g << 8) + (b)).toString(16))
+	
 	//console.log("colorRange_MkII() Color Generated: " + r + "r " + g + "g " + b + "b");
-	return out;
+	return {r, g, b};
 }

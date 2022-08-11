@@ -29,10 +29,8 @@ function game_init() {
 	$("#lib_chasm_version").html(lib_chasm_version());
 
 	// Animation Initialization
-	earth_storage.canvas = $("#earth_storage")[0].getContext("2d");
-	water_storage.canvas = $("#water_storage")[0].getContext("2d");
-	storage_init(earth_storage);
-	storage_init(water_storage);
+	earth_storage.init($("#earth_storage")[0].getContext("2d"));
+	water_storage.init($("#water_storage")[0].getContext("2d"));
 	animation_tick();
 
 	// Timing Initialization
@@ -42,8 +40,8 @@ function game_init() {
 
 function animation_tick() {
 	draw_resources();
-	draw_storage(earth_storage);
-	draw_storage(water_storage);
+	earth_storage.draw();
+	water_storage.draw();
 }
 
 function draw_resources() {

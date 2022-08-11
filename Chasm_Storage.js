@@ -10,6 +10,7 @@ var STORAGE_FLAGS_WATER = 1 << 1;
 
 var BIT_TYPE_NONE  = 0;
 var BIT_TYPE_EARTH = 1 << 0;
+var BIT_TYPE_EARTH = 1 << 1;
 
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {
@@ -32,25 +33,56 @@ class resource_storage {
 	constructor(name, resource) {
 		this.name = name;
 		this.resource = resource;
-		this.image_data = new ImageData(this.canvas_w, this.canvas_h);
 		this.bitmap = new storage_bitmap(this.canvas_w, this.canvas_h);
-		this.bitmap.clear();
+	}
+
+	init(canvas) {
+		this.canvas = canvas;
+		this.image_data = this.canvas.createImageData(this.canvas_w, this.canvas_h);
+		this.canvas.fillStyle = "#000000";
+		this.canvas.fillRect( 0, 0, this.canvas_w + (2 * this.canvas_border), this.canvas_h + (2 * this.canvas_border));
 	}
 
 	drop() {
 		if (this.resource.spend(this.resource.cap)) {
 			this.bricks_stored = 0;
-			this.clear();
+			this.bitmap.clear();
+			this.draw();
 		}
 	}
 
-	clear() {
-		this.canvas.fillStyle = "#FFFFFF";
-		this.canvas.fillRect(
-			this.canvas_border,
-			this.canvas_border,
-			this.canvas_w,
-			this.canvas_h);
+	update_bitmap() {
+		for (; this.bricks_stored < Math.floor(this.resource.current); this.bricks_stored++) {
+			// Calculate brick location
+			let bricks_per_w = this.canvas_w / this.brick_w;
+	
+			let draw_x = this.canvas_w - (this.brick_w * ((this.bricks_stored % bricks_per_w) + 1));
+			let draw_y = this.canvas_h - (this.brick_h * (Math.floor(this.bricks_stored / bricks_per_w) + 1));
+
+			let color;
+	
+			// Choose brick color
+			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
+				color = colorRange_MkII(color_MkII_earth);
+
+			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
+				color_MkII_water_temp = color_MkII_water;
+				color_MkII_water_temp.darkness_low = 0.6 * ((this.canvas_h - draw_y) / this.canvas_h) + 0.2;
+				color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
+				color = colorRange_MkII(color_MkII_water_temp);
+			}
+	
+			// Draw brick
+			this.bitmap.fillRect(draw_x, draw_y, this.brick_w, this.brick_h, color);
+		}
+	}
+
+	draw() {
+		this.update_bitmap();
+		for (let i = 0; i < this.image_data.data.length; i++) {
+			this.image_data.data[i] = this.bitmap.bitcolors[i];
+		}
+		this.canvas.putImageData(this.image_data, this.canvas_border, this.canvas_border);
 	}
 }
 
@@ -59,20 +91,35 @@ class storage_bitmap {
 	x;
 	y;
 	bits = [];
+	bitcolors;
 
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;
-		for (let i = 0; i < x; i++) {
-			this.bits[i] = [];
+		for (let i = 0; i < this.x * this.y; i++) {
+			this.bits[i] = new bitmap_bit(BIT_TYPE_NONE);
 		}
+		this.bitcolors = new Uint8ClampedArray(4 * this.x * this.y);
 		this.clear();
 	}
 
 	clear() {
-		for (let i = 0; i < this.x; i++) {
-			for (let j = 0; j < this.y; j++) {
-				this.bits[i][j] = new bitmap_bit(BIT_TYPE_NONE);
+		for (let i = 0; i < this.x * this.y; i++) {
+			this.bits[i].clear();
+			this.bitcolors[(i * 4) + 0] = 0xff; // r
+			this.bitcolors[(i * 4) + 1] = 0xff; // g
+			this.bitcolors[(i * 4) + 2] = 0xff; // b
+			this.bitcolors[(i * 4) + 3] = 0xff; // a
+		}
+	}
+
+	fillRect(x, y, w, h, color) {
+		for (let i = x + (this.x * y); i < (x + w) + (this.x * (y + h)); i += this.x) {
+			for (let j = 0; j < w; j++) {
+				this.bitcolors[((i + j) * 4) + 0] = color.r; // r
+				this.bitcolors[((i + j) * 4) + 1] = color.g; // g
+				this.bitcolors[((i + j) * 4) + 2] = color.b; // b
+				this.bitcolors[((i + j) * 4) + 3] = 0xff;	 // a
 			}
 		}
 	}
@@ -85,47 +132,8 @@ class bitmap_bit {
 	constructor(type) {
 		this.type = type;
 	}
-}
 
-function storage_init(storage) {
-	storage.canvas.fillStyle = "#000000";
-	storage.canvas.fillRect(
-		0,
-		0,
-		storage.canvas_w + (2 * storage.canvas_border),
-		storage.canvas_h + (2 * storage.canvas_border));
-	storage.clear();
-}
-
-function draw_storage(storage) {
-	for (; storage.bricks_stored < Math.floor(storage.resource.current); storage.bricks_stored++) {
-		// Calculate brick location
-		let bricks_per_w = storage.canvas_w / storage.brick_w;
-
-		let draw_x = storage.canvas_w - (storage.brick_w * ((storage.bricks_stored % bricks_per_w) + 1));
-		let draw_y = storage.canvas_h - (storage.brick_h * (Math.floor(storage.bricks_stored / bricks_per_w) + 1));
-
-		// Choose brick color
-		if (storage.storage_flags & STORAGE_FLAGS_EARTH) {
-			storage.canvas.fillStyle = colorRange_MkII(color_MkII_earth);
-		}
-		else if (storage.storage_flags & STORAGE_FLAGS_WATER) {
-			color_MkII_water_temp = color_MkII_water;
-			color_MkII_water_temp.darkness_low = (((storage.canvas_h - draw_y) / storage.canvas_h) * (color_MkII_water.darkness_high - color_MkII_water.darkness_low)) + color_MkII_water.darkness_low;
-			color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
-			storage.canvas.fillStyle = colorRange_MkII(color_MkII_water_temp);
-
-			//console.log("Water y = " + draw_y + "; color_MkII_water_temp = {" + color_MkII_water_temp.hue_low + ", " + color_MkII_water_temp.hue_high + ", " + color_MkII_water_temp.darkness_low + ", " + color_MkII_water_temp.darkness_high + ", " + color_MkII_water_temp.saturation_low + ", " + color_MkII_water_temp.saturation_high + "}");
-		}
-
-		// Draw brick
-		storage.canvas.fillRect(
-			draw_x + storage.canvas_border,
-			draw_y + storage.canvas_border,
-			storage.brick_w,
-			storage.brick_h);
-
-		// Debugging: Log brick drawn
-		//console.log(storage.name + ": Drawing brick #" + (storage.bricks_stored + 1) + " at " + draw_x + "x " + draw_y + "y (" + storage.brick_w + "w, " + storage.brick_h + "h) " + storage.canvas.fillStyle);
+	clear() {
+		this.type = BIT_TYPE_NONE;
 	}
 }

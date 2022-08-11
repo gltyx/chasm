@@ -48,6 +48,9 @@ class resource_storage {
 			this.bricks_stored = 0;
 			this.bitmap.clear();
 			this.draw();
+			return true;
+		} else {
+			return false;
 		}
 	}
 

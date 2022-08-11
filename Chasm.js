@@ -13,8 +13,8 @@ water.option_cap = true;
 // Storage Initialization
 var earth_storage = new resource_storage("earth_storage", earth);
 earth_storage.storage_flags |= STORAGE_FLAGS_EARTH;
-earth_storage.brick_w = 16;
-earth_storage.brick_h = 16;
+earth_storage.brick_w = 32;
+earth_storage.brick_h = 32;
 earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
 
 var water_storage = new resource_storage("water_storage", water);
@@ -22,6 +22,12 @@ water_storage.storage_flags |= STORAGE_FLAGS_WATER;
 water_storage.brick_w = 64;
 water_storage.brick_h = 1;
 water.setCap((water_storage.canvas_w * water_storage.canvas_h) / (water_storage.brick_w * water_storage.brick_h));
+
+// Transient globals (not saved across sessions)
+var earth_gather_progress = 0;
+var earth_drop_progress = 0;
+var water_gather_progress = 0;
+var water_drop_progress = 0;
 
 // Game Initialization
 function game_init() {
@@ -38,23 +44,64 @@ function game_init() {
 	chasm_timing_init(animation_tick);
 }
 
+// Colors
+var color_disabled = "blue-grey lighten-3";
+var color_earth = "brown lighten-1";
+var color_water = "blue lighten-2"
+
 function animation_tick() {
 	draw_resources();
 
 	// Earth
 	earth_storage.draw();
-	if (earth.current == earth.cap) $("#earth_drop").removeClass("disabled");
-	else $("#earth_drop").addClass("disabled")
+	if (earth.current == earth.cap) {
+		// Disable gather
+		$("#earth_gather").addClass("disabled");
+		$("#earth_gather_progress").removeClass(color_earth).addClass(color_disabled);
+
+		// Enable drop
+		$("#earth_drop").removeClass("disabled");
+		$("#earth_drop_progress").removeClass(color_disabled).addClass(color_earth);
+	} else {
+		// Enable gather
+		$("#earth_gather").removeClass("disabled");
+		$("#earth_gather_progress").removeClass(color_disabled).addClass(color_earth);
+
+		// Disable drop
+		$("#earth_drop").addClass("disabled");
+		$("#earth_drop_progress").removeClass(color_earth).addClass(color_disabled);
+	}
+
+	$("#earth_gather_progress").width(earth_gather_progress + "%");
+	$("#earth_drop_progress").width(earth_drop_progress + "%");
 
 	// Water
 	water_storage.draw();
-	if (earth.current == earth.cap) $("#water_drop").removeClass("disabled");
-	else $("#water_drop").addClass("disabled")
+	if (water.current == water.cap) {
+		// Disable gather
+		$("#water_gather").addClass("disabled");
+		$("#water_gather_progress").removeClass(color_water).addClass(color_disabled);
+
+		// Enable drop
+		$("#water_drop").removeClass("disabled");
+		$("#water_drop_progress").removeClass(color_disabled).addClass(color_water);
+	} else {
+		// Enable gather
+		$("#water_gather").removeClass("disabled");
+		$("#water_gather_progress").removeClass(color_disabled).addClass(color_water);
+
+		// Disable drop
+		$("#water_drop").addClass("disabled");
+		$("#water_drop_progress").removeClass(color_water).addClass(color_disabled);
+	}
+
+	$("#water_gather_progress").width(Math.floor(water_gather_progress) + "%");
+	$("#water_drop_progress").width(Math.floor(water_drop_progress) + "%");
 }
 
 function draw_resources() {
 	// Update currency
-	$("#currency_particles_amount").html(particles.current.toFixed(0));
+	$("#currency_particles_amount").html(particles.current.toFixed(2));
 
 	// Update resources
 	$("#resource_earth_amount").html(Math.floor(earth.current));
@@ -65,6 +112,37 @@ function game_tick(scalar) {
 	// To do: change to calculated earth/sec rate
 	//earth.gain(2 * scalar);
 	//water.gain(4 * scalar);
+	earth_gather_progress += (50 * scalar);
+	if (earth_gather_progress > 100) {
+		if (earth.current == earth.cap) {
+			earth_gather_progress = 100;
+		} else {
+			earth_gather_progress = 0;
+			gather(earth)
+		}
+	}
+
+	earth_drop_progress += (10 * scalar);
+	if (earth_drop_progress > 100) {
+		if (earth.current == earth.cap) {
+			earth_drop_progress = 0;
+			drop(earth_storage)
+		} else {
+			earth_drop_progress = 100;
+		}
+	}
+
+	water_gather_progress += (5 * scalar);
+	if (water_gather_progress > 100) {
+		water_gather_progress = 0;
+		gather(water)
+	}
+
+	water_drop_progress += (0.8 * scalar);
+	if (water_gather_progress > 100) {
+		water_gather_progress = 0;
+		drop(water_storage);
+	}
 }
 
 // Button handling
@@ -83,10 +161,17 @@ function gather(resource) {
 function drop(storage) {
 	switch (storage) {
 		case earth_storage:
-			storage.drop();
+			if(storage.drop()) {
+				// Base gain
+				let out = storage.resource.cap * 0.01;
+
+				particles.gain(out);
+			}
 			break;
 		case water_storage:
-			storage.drop();
+			if (storage.drop()) {
+				particles.gain(0.5);
+			}
 			break;
 		default:
 	}

@@ -40,8 +40,16 @@ function game_init() {
 
 function animation_tick() {
 	draw_resources();
+
+	// Earth
 	earth_storage.draw();
+	if (earth.current == earth.cap) $("#earth_drop").removeClass("disabled");
+	else $("#earth_drop").addClass("disabled")
+
+	// Water
 	water_storage.draw();
+	if (earth.current == earth.cap) $("#water_drop").removeClass("disabled");
+	else $("#water_drop").addClass("disabled")
 }
 
 function draw_resources() {

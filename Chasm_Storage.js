@@ -45,13 +45,18 @@ class resource_storage {
 
 	drop() {
 		if (this.resource.spend(this.resource.cap)) {
-			this.bricks_stored = 0;
-			this.bitmap.clear();
-			this.draw();
+			this.clear();
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	clear() {
+		this.resource.set(0);
+		this.bricks_stored = 0;
+		this.bitmap.clear();
+		this.draw();
 	}
 
 	update_bitmap() {

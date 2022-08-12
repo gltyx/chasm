@@ -19,6 +19,7 @@ canvas {
 .container {
 	margin: 0 auto;
 	max-width: 1280px;
+	min-width: 1280px;
 	width: 90%;
 }
 
@@ -43,5 +44,21 @@ canvas {
 }
 
 .resource_menu {
-	padding: 5px 0px 5px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.resource_title {
+	font-family: Tahoma, sans-serif;
+	font-weight: bold;
+}
+
+.flex {
+	display: -webkit-flex;
+	display: flex;
+}
+
+.vertcenter {
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
 }

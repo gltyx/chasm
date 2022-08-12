@@ -23,6 +23,13 @@ water_storage.brick_w = 64;
 water_storage.brick_h = 1;
 water.setCap((water_storage.canvas_w * water_storage.canvas_h) / (water_storage.brick_w * water_storage.brick_h));
 
+// Upgrades
+var upgrade_steel_toed_boots = false;
+var upgrade_ant_farm = false;
+var upgrade_catapult = false;
+var upgrade_rain_barrels = false;
+var upgrade_sprinkler = false;
+
 // Transient globals (not saved across sessions)
 var earth_gather_progress = 0;
 var earth_drop_progress = 0;
@@ -112,7 +119,10 @@ function game_tick(scalar) {
 	// To do: change to calculated earth/sec rate
 	//earth.gain(2 * scalar);
 	//water.gain(4 * scalar);
-	earth_gather_progress += (50 * scalar);
+	
+	if (upgrade_ant_farm) {
+		earth_gather_progress += (50 * scalar);
+	}
 	if (earth_gather_progress > 100) {
 		if (earth.current == earth.cap) {
 			earth_gather_progress = 100;
@@ -122,7 +132,9 @@ function game_tick(scalar) {
 		}
 	}
 
-	earth_drop_progress += (10 * scalar);
+	if (upgrade_catapult) {
+		earth_drop_progress += (10 * scalar);
+	}
 	if (earth_drop_progress > 100) {
 		if (earth.current == earth.cap) {
 			earth_drop_progress = 0;
@@ -132,13 +144,17 @@ function game_tick(scalar) {
 		}
 	}
 
-	water_gather_progress += (5 * scalar);
+	if (upgrade_rain_barrels) {
+		water_gather_progress += (5 * scalar);
+	}
 	if (water_gather_progress > 100) {
 		water_gather_progress = 0;
 		gather(water)
 	}
 
-	water_drop_progress += (0.8 * scalar);
+	if (upgrade_sprinkler) {
+		water_drop_progress += (0.8 * scalar);
+	}
 	if (water_gather_progress > 100) {
 		water_gather_progress = 0;
 		drop(water_storage);
@@ -173,6 +189,53 @@ function drop(storage) {
 				particles.gain(0.5);
 			}
 			break;
+		default:
+	}
+}
+
+function buy_upgrade(upgrade) {
+	switch (upgrade) {
+		case upgrade_steel_toed_boots:
+			if (upgrade_steel_toed_boots == false) {
+				$("#upgrade_steel_toed_boots").addClass("disabled");
+				upgrade_steel_toed_boots = true;
+
+				earth_storage.brick_h = earth_storage.brick_h / 2;
+				earth_storage.brick_w = earth_storage.brick_w / 2;
+				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
+
+				earth_storage.clear();
+			}
+			break;
+
+		case upgrade_ant_farm:
+			if (upgrade_ant_farm == false) {
+				$("#upgrade_ant_farm").addClass("disabled");
+				upgrade_ant_farm = true;
+			}
+			break;
+		
+		case upgrade_catapult:
+			if (upgrade_catapult == false) {
+				$("#upgrade_catapult").addClass("disabled");
+				upgrade_catapult = true;
+			}
+			break;
+			
+		case upgrade_rain_barrels:
+			if (upgrade_rain_barrels == false) {
+				$("#upgrade_rain_barrels").addClass("disabled");
+				upgrade_rain_barrels = true;
+			}
+			break;
+			
+		case upgrade_sprinkler:
+			if (upgrade_sprinkler == false) {
+				$("#upgrade_sprinkler").addClass("disabled");
+				upgrade_sprinkler = true;
+			}
+			break;
+
 		default:
 	}
 }

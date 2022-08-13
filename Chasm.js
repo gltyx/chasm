@@ -30,6 +30,10 @@ var upgrade_catapult = false;
 var upgrade_rain_barrels = false;
 var upgrade_sprinkler = false;
 
+// Achievements
+var achievement_babys_first_block = false;
+var achievement_reality_sprang_a_leak = false;
+
 // Transient globals (not saved across sessions)
 var earth_gather_progress = 0;
 var earth_drop_progress = 0;
@@ -48,6 +52,7 @@ function game_init() {
 
 	// Timing Initialization
 	chasm_timing_add_process_to_scheduler(game_tick, 80, 0);
+	chasm_timing_add_process_to_scheduler(achievement_tick, 700, 0);
 	chasm_timing_init(animation_tick);
 }
 
@@ -161,6 +166,13 @@ function game_tick(scalar) {
 	}
 }
 
+function achievement_tick() {
+	if (achievement_reality_sprang_a_leak == false && particles.alltime >= 1) {
+		achievement_reality_sprang_a_leak = true;
+		$("#achievement_reality_sprang_a_leak").html("true");
+	}
+}
+
 // Button handling
 function gather(resource) {
 	switch (resource) {
@@ -195,7 +207,7 @@ function drop(storage) {
 
 function buy_upgrade(upgrade) {
 	switch (upgrade) {
-		case upgrade_steel_toed_boots:
+		case "upgrade_steel_toed_boots":
 			if (upgrade_steel_toed_boots == false) {
 				$("#upgrade_steel_toed_boots").addClass("disabled");
 				upgrade_steel_toed_boots = true;
@@ -208,28 +220,28 @@ function buy_upgrade(upgrade) {
 			}
 			break;
 
-		case upgrade_ant_farm:
+		case "upgrade_ant_farm":
 			if (upgrade_ant_farm == false) {
 				$("#upgrade_ant_farm").addClass("disabled");
 				upgrade_ant_farm = true;
 			}
 			break;
 		
-		case upgrade_catapult:
+		case "upgrade_catapult":
 			if (upgrade_catapult == false) {
 				$("#upgrade_catapult").addClass("disabled");
 				upgrade_catapult = true;
 			}
 			break;
 			
-		case upgrade_rain_barrels:
+		case "upgrade_rain_barrels":
 			if (upgrade_rain_barrels == false) {
 				$("#upgrade_rain_barrels").addClass("disabled");
 				upgrade_rain_barrels = true;
 			}
 			break;
 			
-		case upgrade_sprinkler:
+		case "upgrade_sprinkler":
 			if (upgrade_sprinkler == false) {
 				$("#upgrade_sprinkler").addClass("disabled");
 				upgrade_sprinkler = true;
@@ -242,9 +254,5 @@ function buy_upgrade(upgrade) {
 
 // Materialize UI
 $(document).ready(function(){
-    $('.sidenav').sidenav();
-});
-
-$(document).ready(function(){
-    $('.tabs').tabs();
+	M.AutoInit();
 });

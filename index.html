@@ -49,21 +49,25 @@
 		</div>
 		<div class="nav-content blue-grey darken-1 hide-on-med-and-down">
 		  	<ul class="tabs tabs-transparent">
-				<li class="tab noble"><a class="active" href="#tab_chasm" draggable="false">Chasm</a></li>
-				<li class="tab noble"><a href="#tab_upgrades" draggable="false">Upgrades</a></li>
+				<li class="tab noble"><a class="active" href="#resource_box" draggable="false">Chasm</a></li>
+				<li class="tab noble"><a href="#upgrades_box" draggable="false">Upgrades</a></li>
+				<li class="tab noble"><a href="#achievements_box" draggable="false">Achievements</a></li>
 		  	</ul>
 		</div>
 	</nav>
 	
 	<!--Sidebar navigation-->
 	<ul class="sidenav" id="mobile-demo">
-		<li class="tab noble"><a class="active" href="#tab_chasm" draggable="false">Chasm</a></li>
-		<li class="tab noble"><a href="#tab_upgrades" draggable="false">Upgrades</a></li>
+		<li class="tab noble"><a class="active" href="#resource_box" draggable="false">Chasm</a></li>
+		<li class="tab noble"><a href="#upgrades_box" draggable="false">Upgrades</a></li>
+		<li class="tab noble"><a href="#achievements_box" draggable="false">Achievements</a></li>
 	</ul>
 
 	<!--Game-->
 	<div id = "game_box" class = "container">
 		<div class = "row" style = "padding-top: 16px">
+
+			<!--Currency Box-->
 			<div id = "currency_box" class = "col s12 m3 noble">
 				<div class = "card blue-grey darken-1">
 					<div class = "card-content white-text">
@@ -75,60 +79,67 @@
 				</div>
 			</div>
 
-			<div id = "tab_chasm">
-				<div id = "resource_box" class = "col s12 m6 noble">
-					<div class = "resource_menu flex">
-						<canvas id = "earth_storage" width = "66" height = "66"></canvas>
-						<div>
-							<p class = "resource_title">Earth</p>
-							<p>Stored: <span id = "resource_earth_amount"></span></p>
-						</div>
-						<div style = "width: 88px;">
-							<div id = "earth_gather_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "earth_gather_progress" class="determinate" style="width: 0%"></div>
-							</div>
-							<a id = "earth_gather" class="waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick="gather(earth)">Gather</a>
-						</div>
-						<div style = "width: 71px;">
-							<div id = "earth_drop_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "earth_drop_progress" class="determinate" style="width: 0%"></div>
-							</div>
-							<a id = "earth_drop" class="waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick="drop(earth_storage)">Drop</a>
-						</div>
+			<!--Resource Box-->
+			<div id = "resource_box" class = "col s12 m6 noble">
+				<!--Earth-->
+				<div class = "resource_menu flex">
+					<canvas id = "earth_storage" width = "66" height = "66"></canvas>
+					<div>
+						<p class = "resource_title">Earth</p>
+						<p>Stored: <span id = "resource_earth_amount"></span></p>
 					</div>
-					
-					<div class = "resource_menu flex">
-						<canvas id = "water_storage" width = "66" height = "66"></canvas>
-						<div>
-							<p class = "resource_title">Water</p>
-							<p>Stored: <span id = "resource_water_amount"></span></p>
+					<div style = "width: 88px;">
+						<div id = "earth_gather_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
+							<div id = "earth_gather_progress" class="determinate" style="width: 0%"></div>
 						</div>
-						<div style = "width: 88px;">
-							<div id = "water_gather_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "water_gather_progress" class="determinate" style="width: 0%"></div>
-							</div>
-							<a id = "water_gather" class="waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick="gather(water)">Gather</a>
+						<a id = "earth_gather" class="waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick="gather(earth)">Gather</a>
+					</div>
+					<div style = "width: 71px;">
+						<div id = "earth_drop_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
+							<div id = "earth_drop_progress" class="determinate" style="width: 0%"></div>
 						</div>
-						<div style = "width: 71px;">
-							<div id = "water_drop_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "water_drop_progress" class="determinate" style="width: 0%"></div>
-							</div>
-							<a id = "water_drop" class="waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick="drop(water_storage)">Drop</a>
+						<a id = "earth_drop" class="waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick="drop(earth_storage)">Drop</a>
+					</div>
+				</div>
+				
+				<!--Water-->
+				<div class = "resource_menu flex">
+					<canvas id = "water_storage" width = "66" height = "66"></canvas>
+					<div>
+						<p class = "resource_title">Water</p>
+						<p>Stored: <span id = "resource_water_amount"></span></p>
+					</div>
+					<div style = "width: 88px;">
+						<div id = "water_gather_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
+							<div id = "water_gather_progress" class="determinate" style="width: 0%"></div>
 						</div>
+						<a id = "water_gather" class="waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick="gather(water)">Gather</a>
+					</div>
+					<div style = "width: 71px;">
+						<div id = "water_drop_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
+							<div id = "water_drop_progress" class="determinate" style="width: 0%"></div>
+						</div>
+						<a id = "water_drop" class="waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick="drop(water_storage)">Drop</a>
 					</div>
 				</div>
 			</div>
 
-			<div id = "tab_upgrades">
-				<div id = "upgrades_box" class = "col s12 m6 noble flex">
-					<a id = "upgrade_steel_toed_boots" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade(upgrade_steel_toed_boots)">Steel-toed Boots</a>
-					<a id = "upgrade_ant_farm" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade(upgrade_ant_farm)">Ant farm</a>
-					<a id = "upgrade_catapult" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade(upgrade_catapult)">Catapult</a>
-					<a id = "upgrade_rain_barrels" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade(upgrade_rain_barrels)">Rain barrels</a>
-					<a id = "upgrade_sprinkler" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade(upgrade_sprinkler)">Sprinkler</a>
-				</div>
+			<!--Upgrades Box-->
+			<div id = "upgrades_box" class = "col s12 m6 noble flex">
+				<a id = "upgrade_steel_toed_boots" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_steel_toed_boots')">Steel-toed Boots</a>
+				<a id = "upgrade_ant_farm" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_ant_farm')">Ant farm</a>
+				<a id = "upgrade_catapult" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_catapult')">Catapult</a>
+				<a id = "upgrade_rain_barrels" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade('upgrade_rain_barrels')">Rain barrels</a>
+				<a id = "upgrade_sprinkler" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade('upgrade_sprinkler')">Sprinkler</a>
 			</div>
 
+			<!--Achievements Box-->
+			<div id = "achievements_box" class = "col s12 m6 noble flex">
+				<p>Baby's First Block: <span id = "achievement_babys_first_block">false</span></p>
+				<p>Reality Sprang a Leak: <span id = "achievement_reality_sprang_a_leak">false</span></p>
+			</div>
+
+			<!--Log Box-->
 			<div id = "log_box" class = "col s12 m3 noble">
 			</div>
 		</div>

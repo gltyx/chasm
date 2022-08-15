@@ -196,11 +196,13 @@ function drop(storage) {
 				particles.gain(out);
 			}
 			break;
+
 		case water_storage:
 			if (storage.drop()) {
 				particles.gain(0.5);
 			}
 			break;
+			
 		default:
 	}
 }

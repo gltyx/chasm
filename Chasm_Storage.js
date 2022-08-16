@@ -9,8 +9,8 @@ var STORAGE_FLAGS_EARTH = 1 << 0;
 var STORAGE_FLAGS_WATER = 1 << 1;
 
 var BIT_TYPE_NONE  = 0;
-var BIT_TYPE_EARTH = 1 << 0;
-var BIT_TYPE_EARTH = 1 << 1;
+var BIT_TYPE_EARTH = 1;
+var BIT_TYPE_WATER = 2;
 
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {
@@ -45,7 +45,6 @@ class resource_storage {
 
 	drop() {
 		if (this.resource.spend(this.resource.cap)) {
-			this.clear();
 			return true;
 		} else {
 			return false;
@@ -68,6 +67,14 @@ class resource_storage {
 			let draw_y = this.canvas_h - (this.brick_h * (Math.floor(this.bricks_stored / bricks_per_w) + 1));
 
 			let color;
+
+			// Choose brick type
+			let type;
+			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
+				type = BIT_TYPE_EARTH;
+			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
+				type = BIT_TYPE_WATER;
+			}
 	
 			// Choose brick color
 			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
@@ -82,6 +89,13 @@ class resource_storage {
 	
 			// Draw brick
 			this.bitmap.fillRect(draw_x, draw_y, this.brick_w, this.brick_h, color);
+
+			// Save brick to bitmap
+			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
+				this.bitmap.fillRectBits(draw_x, draw_y, 1, 1, type);
+			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
+				this.bitmap.fillRectBits(draw_x, draw_y, this.brick_w, this.brick_h, type);
+			}
 		}
 	}
 
@@ -122,7 +136,7 @@ class storage_bitmap {
 	}
 
 	fillRect(x, y, w, h, color) {
-		for (let i = x + (this.x * y); i < (x + w) + (this.x * (y + h)); i += this.x) {
+		for (let i = x + (this.x * y); i < (x + w) + (this.x * (y + (h - 1))); i += this.x) {
 			for (let j = 0; j < w; j++) {
 				this.bitcolors[((i + j) * 4) + 0] = color.r; // r
 				this.bitcolors[((i + j) * 4) + 1] = color.g; // g
@@ -130,6 +144,24 @@ class storage_bitmap {
 				this.bitcolors[((i + j) * 4) + 3] = 0xff;	 // a
 			}
 		}
+	}
+
+	fillRectBits(x, y, w, h, type) {
+		for (let i = x + (this.x * y); i < (x + w) + (this.x * (y + (h - 1))); i += this.x) {
+			for (let j = 0; j < w; j++) {
+				this.bits[i + j].type = type;
+			}
+		}
+	}
+
+	count(type) {
+		let count = 0;
+		for (let i = 0; i < this.x * this.y; i++) {
+			if (this.bits[i].type == type) {
+				count++;
+			}
+		}
+		return count;
 	}
 }
 

@@ -121,10 +121,8 @@ function draw_resources() {
 }
 
 function game_tick(scalar) {
-	// To do: change to calculated earth/sec rate
-	//earth.gain(2 * scalar);
-	//water.gain(4 * scalar);
 	
+	// Earth Gather
 	if (upgrade_ant_farm) {
 		earth_gather_progress += (50 * scalar);
 	}
@@ -137,6 +135,7 @@ function game_tick(scalar) {
 		}
 	}
 
+	// Earth Drop
 	if (upgrade_catapult) {
 		earth_drop_progress += (10 * scalar);
 	}
@@ -149,6 +148,7 @@ function game_tick(scalar) {
 		}
 	}
 
+	// Water Gather
 	if (upgrade_rain_barrels) {
 		water_gather_progress += (5 * scalar);
 	}
@@ -157,6 +157,7 @@ function game_tick(scalar) {
 		gather(water)
 	}
 
+	// Water Drop
 	if (upgrade_sprinkler) {
 		water_drop_progress += (0.8 * scalar);
 	}
@@ -188,18 +189,23 @@ function gather(resource) {
 
 function drop(storage) {
 	switch (storage) {
-		case earth_storage:
-			if(storage.drop()) {
+		case "earth_storage":
+			if(earth_storage.drop()) {
 				// Base gain
-				let out = storage.resource.cap * 0.01;
+				let particles_out = earth_storage.bitmap.count(BIT_TYPE_EARTH) * 0.01;
 
-				particles.gain(out);
+				particles.gain(particles_out);
+				earth_storage.clear();
 			}
 			break;
 
-		case water_storage:
-			if (storage.drop()) {
-				particles.gain(0.5);
+		case "water_storage":
+			if (water_storage.drop()) {
+				// Base gain
+				let particles_out = water_storage.bitmap.count(BIT_TYPE_WATER) * 0.01;
+
+				particles.gain(particles_out);
+				water_storage.clear();
 			}
 			break;
 			
@@ -236,6 +242,15 @@ function buy_upgrade(upgrade) {
 			}
 			break;
 			
+		case "upgrade_water_storage":
+			if (upgrade_water_storage == false) {
+				upgrade_water_storage = true;
+				$("#upgrade_water_storage").addClass("disabled");
+
+				$("#resource_water").css("display", "flex");
+			}
+			break;
+			
 		case "upgrade_rain_barrels":
 			if (upgrade_rain_barrels == false) {
 				$("#upgrade_rain_barrels").addClass("disabled");
@@ -257,4 +272,5 @@ function buy_upgrade(upgrade) {
 // Materialize UI
 $(document).ready(function(){
 	M.AutoInit();
+    $('.tabs-vertical').tabs();
 });

@@ -15,12 +15,33 @@ canvas {
 	image-rendering: crisp-edges;
 }
 
-/* Materialize container override */
+/* Materialize override */
 .container {
 	margin: 0 auto;
 	max-width: 1280px;
 	min-width: 1280px;
 	width: 90%;
+}
+
+.tabs-vertical .tabs {
+	height: auto;
+	-ms-flex-direction: column;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	display: -webkit-flex;
+	display: flex;
+  }
+
+.tabs-vertical .tab {
+width: 100%;
+}
+
+.tabs-vertical .tab .active {
+  -moz-transition: border-color .5s ease;
+  -o-transition: border-color .5s ease;
+  -webkit-transition: border-color .5s ease;
+  transition: border-color .5s ease;
+  border-right: 3px solid #424242;
 }
 
 /* Chasm classes */
@@ -62,3 +83,5 @@ canvas {
 	display: flex;
 	align-items: center;
 }
+
+/* Chasm id's */

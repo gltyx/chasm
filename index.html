@@ -16,24 +16,23 @@
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-	<!--Remote lib_chasm source-->
-	<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm.js"></script>
-	<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_timing.js"></script>
-	<!--
-	<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_math.js"></script>
-	-->
+		<!--Remote lib_chasm source-->
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm.js"></script>
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_timing.js"></script>
+		<!--<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_math.js"></script>-->
+		
 
-	<!--Local lib_chasm source (for parallel development)-->
-	<!--
-	<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm.js"></script>
-	<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_timing.js"></script>
-	<!--<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_math.js"></script>-->
+		<!--Local lib_chasm source (for parallel development)-->
+		<!--
+		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm.js"></script>
+		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_timing.js"></script>
+		<!--<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_math.js"></script>-->
 
-	<!--Game script source-->
-	<script type = "text/javascript" src = "./Chasm_Animation.js"></script>
-	<script type = "text/javascript" src = "./Chasm_Storage.js"></script>
-	<script type = "text/javascript" src = "./Chasm.js"></script>
-	<link rel = "stylesheet" href = "./Chasm.css"></script>
+		<!--Game script source-->
+		<script type = "text/javascript" src = "./Chasm_Animation.js"></script>
+		<script type = "text/javascript" src = "./Chasm_Storage.js"></script>
+		<script type = "text/javascript" src = "./Chasm.js"></script>
+		<link rel = "stylesheet" href = "./Chasm.css"></script>
 </head>
 
 <body onload = "game_init();">
@@ -58,9 +57,11 @@
 	
 	<!--Sidebar navigation-->
 	<ul class="sidenav" id="mobile-demo">
-		<li class="tab noble"><a class="active" href="#resource_box" draggable="false">Chasm</a></li>
-		<li class="tab noble"><a href="#upgrades_box" draggable="false">Upgrades</a></li>
-		<li class="tab noble"><a href="#achievements_box" draggable="false">Achievements</a></li>
+		<ul class="tabs-vertical">
+			<li class="tab noble"><a class="active" href="#resource_box" draggable="false">Chasm</a></li>
+			<li class="tab noble"><a href="#upgrades_box" draggable="false">Upgrades</a></li>
+			<li class="tab noble"><a href="#achievements_box" draggable="false">Achievements</a></li>
+		</ul>
 	</ul>
 
 	<!--Game-->
@@ -98,12 +99,12 @@
 						<div id = "earth_drop_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
 							<div id = "earth_drop_progress" class="determinate" style="width: 0%"></div>
 						</div>
-						<a id = "earth_drop" class="waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick="drop(earth_storage)">Drop</a>
+						<a id = "earth_drop" class="waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick="drop('earth_storage')">Drop</a>
 					</div>
 				</div>
 				
 				<!--Water-->
-				<div class = "resource_menu flex">
+				<div id = "resource_water" class = "resource_menu flex" style = "display: none;">
 					<canvas id = "water_storage" width = "66" height = "66"></canvas>
 					<div>
 						<p class = "resource_title">Water</p>
@@ -119,7 +120,7 @@
 						<div id = "water_drop_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
 							<div id = "water_drop_progress" class="determinate" style="width: 0%"></div>
 						</div>
-						<a id = "water_drop" class="waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick="drop(water_storage)">Drop</a>
+						<a id = "water_drop" class="waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick="drop('water_storage')">Drop</a>
 					</div>
 				</div>
 			</div>
@@ -129,6 +130,7 @@
 				<a id = "upgrade_steel_toed_boots" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_steel_toed_boots')">Steel-toed Boots</a>
 				<a id = "upgrade_ant_farm" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_ant_farm')">Ant farm</a>
 				<a id = "upgrade_catapult" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_catapult')">Catapult</a>
+				<a id = "upgrade_water_storage" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade('upgrade_water_storage')">Water Storage</a>
 				<a id = "upgrade_rain_barrels" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade('upgrade_rain_barrels')">Rain barrels</a>
 				<a id = "upgrade_sprinkler" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade('upgrade_sprinkler')">Sprinkler</a>
 			</div>

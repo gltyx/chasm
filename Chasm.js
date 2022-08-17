@@ -2,6 +2,15 @@
 var particles = new chasm_resource("Void Particles");
 particles.option_unlocked = true;
 
+var strands = new chasm_resource("Gravity Strands");
+strands.option_unlocked = true;
+
+var spirit = new chasm_resource("Spirit Sand");
+spirit.option_unlocked = true;
+
+var soul = new chasm_resource("Soul Splinters");
+soul.option_unlocked = true;
+
 var earth = new chasm_resource_small("earth");
 earth.option_unlocked = true;
 earth.option_cap = true;
@@ -52,7 +61,7 @@ function game_init() {
 
 	// Timing Initialization
 	chasm_timing_add_process_to_scheduler(game_tick, 80, 0);
-	chasm_timing_add_process_to_scheduler(achievement_tick, 700, 0);
+	chasm_timing_add_process_to_scheduler(achievement_tick, 700, chasm_process_flag_disable_multitick);
 	chasm_timing_init(animation_tick);
 }
 
@@ -114,6 +123,9 @@ function animation_tick() {
 function draw_resources() {
 	// Update currency
 	$("#currency_particles_amount").html(particles.current.toFixed(2));
+	$("#currency_strands_amount").html(strands.current.toFixed(2));
+	$("#currency_spirit_amount").html(spirit.current.toFixed(2));
+	$("#currency_soul_amount").html(soul.current.toFixed(2));
 
 	// Update resources
 	$("#resource_earth_amount").html(Math.floor(earth.current));

@@ -38,52 +38,111 @@
 <body onload = "game_init();">
 
 	<!--Navbar-->
-	<nav class="nav-extended">
-		<div class="nav-wrapper blue-grey darken-2">
-			<p class="brand-logo noble" style = "margin-left: 10px;">Chasm<i class="material-icons">call_to_action</i></p>
-			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li class = "noble"><a href="https://github.com/Blooperly/lib_chasm" target=”_blank” style="vertical-align: middle;" draggable="false"><img src="images/GitHub-Mark-32px.png" style = "vertical-align: middle;"><span style = "margin-left: 8px; margin-top: 8px;">lib_chasm <span id = "lib_chasm_version" style = "color: lightSlateGray">x.x.x</span></span></a></li>
+	<nav class = "nav-extended noble">
+		<!--Upper Navbar-->
+		<div class = "nav-wrapper blue-grey darken-2">
+			
+			<!--Title-->
+			<div id = "chasm_title">
+				<p class = "brand-logo">Chasm<i class = "material-icons ">call_to_action</i></p>
+			</div>
+
+			<!--Sidenav Button-->
+			<a href = "#" data-target = "chasm_sidenav" class = "sidenav-trigger"><i class = "material-icons">menu</i></a>
+
+			<!--lib_chasm link-->
+			<ul class = "right hide-on-med-and-down vertcenter">
+				<li><a href = "https://github.com/Blooperly/lib_chasm" target = ”_blank” style = "vertical-align: middle;" draggable = "false"><img src = "images/GitHub-Mark-32px.png" style = "vertical-align: middle;"><span style = "margin-left: 8px; margin-top: 8px;">lib_chasm <span id = "lib_chasm_version" style = "color: lightSlateGray">x.x.x</span></span></a></li>
 			</ul>
 		</div>
-		<div class="nav-content blue-grey darken-1 hide-on-med-and-down">
-		  	<ul class="tabs tabs-transparent">
-				<li class="tab noble"><a class="active" href="#resource_box" draggable="false">Chasm</a></li>
-				<li class="tab noble"><a href="#upgrades_box" draggable="false">Upgrades</a></li>
-				<li class="tab noble"><a href="#achievements_box" draggable="false">Achievements</a></li>
+
+		<!--Lower Navbar-->
+		<div class = "nav-content blue-grey darken-1 hide-on-med-and-down">
+		  	<ul class = "tabs tabs-transparent">
+				<li class = "tab"><a class = "active" href = "#resource_box" draggable = "false">Chasm</a></li>
+				<li class = "tab"><a href = "#upgrades_box" draggable = "false">Upgrades</a></li>
+				<li class = "tab"><a href = "#achievements_box" draggable = "false">Achievements</a></li>
+				<li class = "tab"><a href = "#debug_box" draggable = "false">Debug</a></li>
 		  	</ul>
 		</div>
 	</nav>
 	
-	<!--Sidebar navigation-->
-	<ul class="sidenav" id="mobile-demo">
-		<ul class="tabs-vertical">
-			<li class="tab noble"><a class="active" href="#resource_box" draggable="false">Chasm</a></li>
-			<li class="tab noble"><a href="#upgrades_box" draggable="false">Upgrades</a></li>
-			<li class="tab noble"><a href="#achievements_box" draggable="false">Achievements</a></li>
+	<!--Sidenav-->
+	<ul id = "chasm_sidenav" class = "sidenav noble">
+		<ul class = "tabs-vertical">
+			<li class = "tab"><a class = "active" href = "#resource_box" draggable = "false">Chasm</a></li>
+			<li class = "tab"><a href = "#upgrades_box" draggable = "false">Upgrades</a></li>
+			<li class = "tab"><a href = "#achievements_box" draggable = "false">Achievements</a></li>
+			<li class = "tab"><a href = "#debug_box" draggable = "false">Debug</a></li>
 		</ul>
 	</ul>
 
 	<!--Game-->
-	<div id = "game_box" class = "container noble" draggable="false">
-		<div class = "row" style = "padding-top: 16px">
+	<div id = "game_box" class = "container noble">
+		<div class = "row">
 
 			<!--Currency Box-->
-			<div id = "currency_box" class = "col s12 m3 noble">
+			<div id = "currency_box" class = "col s12 m3">
 				<div class = "card blue-grey darken-1">
-					<div class = "card-content white-text">
-						<div class = "vertcenter">
-							<i class="material-icons purple-text text-lighten-4" style = "font-size: 22px; vertical-align: middle; margin-right: 3px;">blur_circular</i>
-							<p id = "currency_particles"> Void Particles: <span id = "currency_particles_amount"></span></p>
+					<div class = "card-content white-text" style = "display: flex;">
+
+						<!--Currency Icons & Names-->
+						<div style = "display: block;">
+							<!--Void Particles-->
+							<div class = "currency_particles currency_line vertcenter">
+								<i class="material-icons purple-text text-lighten-3 currency_icon">blur_circular</i>
+								<p> Void Particles:</p>
+							</div>
+	
+							<!--Gravity Strands-->
+							<div class = "currency_strands currency_line vertcenter">
+								<i class="material-icons amber-text text-lighten-1 currency_icon">gesture</i>
+								<p> Gravity Strands:</p>
+							</div>
+	
+							<!--Spirit Sand-->
+							<div class = "currency_spirit currency_line vertcenter">
+								<i class="material-icons green-text text-lighten-2 currency_icon">flare</i>
+								<p> Spirit Sand:</p>
+							</div>
+	
+							<!--Soul Splinters-->
+							<div class = "currency_soul currency_line vertcenter">
+								<i class="material-icons red-text text-lighten-2 currency_icon">whatshot</i>
+								<p> Soul Splinters:</p>
+							</div>
+						</div>
+
+						<!--Currency Values-->
+						<div style = "display: block;">
+							<!--Void Particles-->
+							<div class = "currency_particles currency_line currency_amount vertcenter">
+								<p><span id = "currency_particles_amount"></span></p>
+							</div>
+
+							<!--Gravity Strands-->
+							<div class = "currency_strands currency_line currency_amount vertcenter">
+								<p><span id = "currency_strands_amount"></span></p>
+							</div>
+
+							<!--Spirit Sand-->
+							<div class = "currency_spirit currency_line currency_amount vertcenter">
+								<p><span id = "currency_spirit_amount"></span></p>
+							</div>
+
+							<!--Soul Splinters-->
+							<div class = "currency_soul currency_line currency_amount vertcenter">
+								<p><span id = "currency_soul_amount"></span></p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<!--Resource Box-->
-			<div id = "resource_box" class = "col s12 m6 noble">
+			<div id = "resource_box" class = "col s12 m6">
 				<!--Earth-->
-				<div class = "resource_menu flex">
+				<div class = "flex">
 					<canvas id = "earth_storage" width = "66" height = "66"></canvas>
 					<div>
 						<p class = "resource_title">Earth</p>
@@ -104,7 +163,7 @@
 				</div>
 				
 				<!--Water-->
-				<div id = "resource_water" class = "resource_menu flex" style = "display: none;">
+				<div id = "resource_water" class = "flex" style = "display: none;">
 					<canvas id = "water_storage" width = "66" height = "66"></canvas>
 					<div>
 						<p class = "resource_title">Water</p>
@@ -126,7 +185,7 @@
 			</div>
 
 			<!--Upgrades Box-->
-			<div id = "upgrades_box" class = "col s12 m6 noble flex">
+			<div id = "upgrades_box" class = "col s12 m6 flex">
 				<a id = "upgrade_steel_toed_boots" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_steel_toed_boots')">Steel-toed Boots</a>
 				<a id = "upgrade_ant_farm" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_ant_farm')">Ant farm</a>
 				<a id = "upgrade_catapult" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_catapult')">Catapult</a>
@@ -136,13 +195,18 @@
 			</div>
 
 			<!--Achievements Box-->
-			<div id = "achievements_box" class = "col s12 m6 noble flex">
+			<div id = "achievements_box" class = "col s12 m6 flex">
 				<p>Baby's First Block: <span id = "achievement_babys_first_block">false</span></p>
 				<p>Reality Sprang a Leak: <span id = "achievement_reality_sprang_a_leak">false</span></p>
 			</div>
 
+			<!--Debug Box-->
+			<div id = "debug_box" class = "col s12 m6 flex">
+				<p>debug</p>
+			</div>
+
 			<!--Log Box-->
-			<div id = "log_box" class = "col s12 m3 noble">
+			<div id = "log_box" class = "col s12 m3">
 			</div>
 		</div>
 	</div>

@@ -23,6 +23,11 @@ canvas {
 	width: 90%;
 }
 
+.row {
+	margin: 0px;
+	padding: 0px;
+}
+
 .tabs-vertical .tabs {
 	height: auto;
 	-ms-flex-direction: column;
@@ -33,7 +38,7 @@ canvas {
   }
 
 .tabs-vertical .tab {
-width: 100%;
+	width: 100%;
 }
 
 .tabs-vertical .tab .active {
@@ -44,13 +49,23 @@ width: 100%;
   border-right: 3px solid #424242;
 }
 
-/* Chasm classes */
-
-.testoutline {
-	border: 1px solid black;
+.card {
+	margin: 0px;
+	padding: 0px;
 }
 
-.noble {
+.card-content {
+	margin: 0px;
+	padding: 0px;
+}
+
+.card .card-content {
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Chasm classes */
+.noble { /* Prevents highlighting/dragging */
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
@@ -64,8 +79,8 @@ width: 100%;
 	user-drag: none;
 }
 
-.resource_menu {
-	padding: 0px 0px 0px 0px;
+.testoutline { /*Simple border for checking boundaries*/
+	border: 1px solid black;
 }
 
 .resource_title {
@@ -84,4 +99,49 @@ width: 100%;
 	align-items: center;
 }
 
+.currency_line {
+	margin-bottom: 3px;
+}
+
+.currency_icon {
+	font-size: 22px;
+	margin-right: 3px;
+}
+
+.currency_amount {
+	padding-left: 3px;
+}
+
 /* Chasm id's */
+#chasm_title {
+	padding-left: 34px;
+}
+
+#game_box {
+	padding-top: 12px;
+}
+
+#currency_box {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 10px 0px 0px;
+}
+
+#resource_box {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#upgrades_box {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#achievements_box {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#log_box {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}

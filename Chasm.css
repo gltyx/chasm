@@ -121,27 +121,38 @@ canvas {
 	padding-top: 12px;
 }
 
-#currency_box {
+#left_col {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 10px 0px 0px;
 }
 
-#resource_box {
+#inspector_box {
+	margin: 0px 0px 10px 0px;
+	padding: 10px 10px 10px 12px;
+
+	height: 130px;
+}
+
+#inspector_title {
+	font-weight: bold;
+}
+
+#inspector_text {
+}
+
+#inspector_text {
+}
+
+#currency_box {
+	padding: 10px 10px 10px 12px;
+}
+
+#mid_col {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 }
 
-#upgrades_box {
+#right_col {
 	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
-}
-
-#achievements_box {
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
-}
-
-#log_box {
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 10px;
 }

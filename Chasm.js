@@ -49,6 +49,22 @@ var earth_drop_progress = 0;
 var water_gather_progress = 0;
 var water_drop_progress = 0;
 
+// Game Save data
+// Need a way to handle save data version change
+class saveData {
+	saveCount;
+	other_stuff;
+	morethings;
+
+	constructor() {
+		this.saveCount = 1;
+		this.other_stuff = 0;
+		this.morethings = 3;
+	}
+}
+
+var chasm;
+
 // Game Initialization
 function game_init() {
 	// Page Initialization
@@ -65,7 +81,18 @@ function game_init() {
 	chasm_timing_init(animation_tick);
 	
 	// Register Events
-	register_events();
+	register_inspector_events();
+
+	// Load Saved Game
+	chasm = JSON.parse(localStorage.getItem("chasm"));
+	if (!chasm) {
+		// New Game
+		chasm = new saveData();
+	} else {
+		// Load Game
+		chasm.saveCount++;
+	}
+	localStorage.setItem("chasm", JSON.stringify(chasm));
 }
 
 // Materialize Colors
@@ -281,70 +308,6 @@ function buy_upgrade(upgrade) {
 			break;
 
 		default:
-	}
-}
-
-// Event handling
-function register_events() {
-	// Inspector Events
-	$("#upgrade_steel_toed_boots").mouseenter(function(){showInspector(iid.steel_toed_boots);});
-	$("#upgrade_ant_farm").mouseenter(function(){showInspector(iid.ant_farm);});
-	$("#upgrade_catapult").mouseenter(function(){showInspector(iid.catapult);});
-	$("#upgrade_water_storage").mouseenter(function(){showInspector(iid.water_storage);});
-	$("#upgrade_rain_barrels").mouseenter(function(){showInspector(iid.rain_barrels);});
-	$("#upgrade_sprinkler").mouseenter(function(){showInspector(iid.sprinkler);});
-}
-
-class inspectorId {
-	// Inspector ID's
-	none 				= 0x0000;		// 0x0000 Clear inspector
-	steel_toed_boots 	= 0xa101;		// 0xa1xx Start upgrade section
-	ant_farm			= 0xa102;
-	catapult			= 0xa103;
-	water_storage		= 0xa104;
-	rain_barrels		= 0xa105;
-	sprinkler			= 0xa106;
-}
-
-var iid = new inspectorId();
-
-function showInspector(id) {
-	switch(id) {
-		case iid.steel_toed_boots:
-			$("#inspector_title").html("Steel-toed Boots");
-			$("#inspector_text").html("You can fit a lot more dirt into your storage with a few well-placed stomps");
-			$("#inspector_subtext").html("2x Earth density");
-			break;
-		case iid.ant_farm:
-			$("#inspector_title").html("Ant farm");
-			$("#inspector_text").html("These little guys can help you move mountains of earth... Very, very slowly");
-			$("#inspector_subtext").html("Auto-gather Earth");
-			break;
-		case iid.catapult:
-			$("#inspector_title").html("Catapult");
-			$("#inspector_text").html("Flinging dirt into the Chasm is a lot more fun than dumping it in by hand");
-			$("#inspector_subtext").html("Auto-drop Earth");
-			break;
-		case iid.water_storage:
-			$("#inspector_title").html("Water storage");
-			$("#inspector_text").html("Dumping water into the Chasm might speed things up, but you'll have to build some water tanks first");
-			$("#inspector_subtext").html("Unlock Water");
-			break;
-		case iid.rain_barrels:
-			$("#inspector_title").html("Rain barrels");
-			$("#inspector_text").html("Your back hurts from carrying so much water. Let the water cycle do some of the work");
-			$("#inspector_subtext").html("Auto-gather Water");
-			break;
-		case iid.sprinkler:
-			$("#inspector_title").html("Sprinkler");
-			$("#inspector_text").html("Attach a sprinkler system to your water tank to spray directly into the Chasm");
-			$("#inspector_subtext").html("Auto-drop Water");
-			break;
-		case iid.none:
-		default:
-			$("#inspector_title").html("");
-			$("#inspector_text").html("");
-			$("#inspector_subtext").html("");
 	}
 }
 

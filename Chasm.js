@@ -32,13 +32,6 @@ water_storage.brick_w = 64;
 water_storage.brick_h = 1;
 water.setCap((water_storage.canvas_w * water_storage.canvas_h) / (water_storage.brick_w * water_storage.brick_h));
 
-// Upgrades
-var upgrade_steel_toed_boots = false;
-var upgrade_ant_farm = false;
-var upgrade_catapult = false;
-var upgrade_rain_barrels = false;
-var upgrade_sprinkler = false;
-
 // Achievements
 var achievement_babys_first_block = false;
 var achievement_reality_sprang_a_leak = false;
@@ -75,13 +68,16 @@ function game_init() {
 	water_storage.init($("#water_storage")[0].getContext("2d"));
 	animation_tick();
 
+	// Upgrade Initialization
+	initUpgrades();
+
 	// Timing Initialization
 	chasm_timing_add_process_to_scheduler(game_tick, 80, 0);
 	chasm_timing_add_process_to_scheduler(achievement_tick, 700, chasm_process_flag_disable_multitick);
 	chasm_timing_init(animation_tick);
 	
 	// Register Events
-	register_inspector_events();
+	registerInspectorEvents();
 
 	// Load Saved Game
 	chasm = JSON.parse(localStorage.getItem("chasm"));
@@ -251,62 +247,6 @@ function drop(storage) {
 			}
 			break;
 			
-		default:
-	}
-}
-
-function buy_upgrade(upgrade) {
-	switch (upgrade) {
-		case "upgrade_steel_toed_boots":
-			if (upgrade_steel_toed_boots == false) {
-				$("#upgrade_steel_toed_boots").addClass("disabled");
-				upgrade_steel_toed_boots = true;
-
-				earth_storage.brick_h = earth_storage.brick_h / 2;
-				earth_storage.brick_w = earth_storage.brick_w / 2;
-				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-
-				earth_storage.clear();
-			}
-			break;
-
-		case "upgrade_ant_farm":
-			if (upgrade_ant_farm == false) {
-				$("#upgrade_ant_farm").addClass("disabled");
-				upgrade_ant_farm = true;
-			}
-			break;
-		
-		case "upgrade_catapult":
-			if (upgrade_catapult == false) {
-				$("#upgrade_catapult").addClass("disabled");
-				upgrade_catapult = true;
-			}
-			break;
-			
-		case "upgrade_water_storage":
-			if (upgrade_water_storage == false) {
-				upgrade_water_storage = true;
-				$("#upgrade_water_storage").addClass("disabled");
-
-				$("#resource_water").css("display", "flex");
-			}
-			break;
-			
-		case "upgrade_rain_barrels":
-			if (upgrade_rain_barrels == false) {
-				$("#upgrade_rain_barrels").addClass("disabled");
-				upgrade_rain_barrels = true;
-			}
-			break;
-			
-		case "upgrade_sprinkler":
-			if (upgrade_sprinkler == false) {
-				$("#upgrade_sprinkler").addClass("disabled");
-				upgrade_sprinkler = true;
-			}
-			break;
-
 		default:
 	}
 }

@@ -29,6 +29,7 @@
 		<!--<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_math.js"></script>-->
 
 		<!--Game script source-->
+		<script type = "text/javascript" src = "./Chasm_Achievements.js"></script>
 		<script type = "text/javascript" src = "./Chasm_Debug.js"></script>
 		<script type = "text/javascript" src = "./Chasm_Upgrades.js"></script>
 		<script type = "text/javascript" src = "./Chasm_Inspector.js"></script>
@@ -81,7 +82,7 @@
 	</ul>
 
 	<!--Game-->
-	<div id = "game_box" class = "container noble">
+	<div id = "game_box" class = "container noble" style = "display: none">
 		<div class = "row">
 
 			<!--Left Column-->
@@ -147,57 +148,68 @@
 			<div id = "mid_col" class = "col s12 m6">
 				<!--Resource Box-->
 				<div id = "resource_box">
+
 					<!--Earth-->
 					<div class = "flex">
+						<!--Storage-->
 						<canvas id = "earth_storage" width = "66" height = "66"></canvas>
 						<div>
 							<p class = "resource_title">Earth</p>
 							<p>Stored: <span id = "resource_earth_amount"></span></p>
 						</div>
+
+						<!--Gather-->
 						<div style = "width: 88px;">
-							<div id = "earth_gather_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "earth_gather_progress" class="determinate" style="width: 0%"></div>
+							<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+								<div id = "earth_gather_progress" class = "determinate" style = "width: 0%"></div>
 							</div>
-							<a id = "earth_gather" class="waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick="gather(earth)">Gather</a>
+							<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
 						</div>
+
+						<!--Drop-->
 						<div style = "width: 71px;">
-							<div id = "earth_drop_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "earth_drop_progress" class="determinate" style="width: 0%"></div>
+							<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+								<div id = "earth_drop_progress" class = "determinate" style = "width: 0%"></div>
 							</div>
-							<a id = "earth_drop" class="waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick="drop('earth_storage')">Drop</a>
+							<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick = "drop('earth_storage')">Drop</a>
 						</div>
 					</div>
 					
 					<!--Water-->
 					<div id = "resource_water" class = "flex" style = "display: none;">
+						<!--Storage-->
 						<canvas id = "water_storage" width = "66" height = "66"></canvas>
 						<div>
 							<p class = "resource_title">Water</p>
 							<p>Stored: <span id = "resource_water_amount"></span></p>
 						</div>
+
+						<!--Gather-->
 						<div style = "width: 88px;">
-							<div id = "water_gather_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "water_gather_progress" class="determinate" style="width: 0%"></div>
+							<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+								<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
 							</div>
-							<a id = "water_gather" class="waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick="gather(water)">Gather</a>
+							<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
 						</div>
+
+						<!--Drop-->
 						<div style = "width: 71px;">
-							<div id = "water_drop_progress_bkg" class="progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "water_drop_progress" class="determinate" style="width: 0%"></div>
+							<div id = "water_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+								<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
 							</div>
-							<a id = "water_drop" class="waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick="drop('water_storage')">Drop</a>
+							<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
 						</div>
 					</div>
 				</div>
 	
 				<!--Upgrades Box-->
 				<div id = "upgrades_box">
-					<a id = "upgrade_steel_toed_boots" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_steel_toed_boots')">Steel-toed Boots</a>
-					<a id = "upgrade_ant_farm" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_ant_farm')">Ant farm</a>
-					<a id = "upgrade_catapult" class="waves-effect waves-light btn brown darken-3" onclick="buy_upgrade('upgrade_catapult')">Catapult</a>
-					<a id = "upgrade_water_storage" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade('upgrade_water_storage')">Water storage</a>
-					<a id = "upgrade_rain_barrels" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade('upgrade_rain_barrels')">Rain barrels</a>
-					<a id = "upgrade_sprinkler" class="waves-effect waves-light btn blue lighten-2" onclick="buy_upgrade('upgrade_sprinkler')">Sprinkler</a>
+					<a id = "upgrade_steel_toed_boots" 	class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_steel_toed_boots')"	>Steel-toed Boots</a>
+					<a id = "upgrade_ant_farm" 			class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_ant_farm')"			>Ant farm</a>
+					<a id = "upgrade_catapult" 			class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_catapult')"			>Catapult</a>
+					<a id = "upgrade_water_storage" 	class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_water_storage')"		>Water storage</a>
+					<a id = "upgrade_rain_barrels" 		class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_rain_barrels')"		>Rain barrels</a>
+					<a id = "upgrade_sprinkler" 		class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_sprinkler')"			>Sprinkler</a>
 				</div>
 	
 				<!--Achievements Box-->
@@ -208,7 +220,8 @@
 	
 				<!--Debug Box-->
 				<div id = "debug_box">
-					<a id = "upgrade_steel_toed_boots" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_free_upgrades();">Free Upgrades</a>
+					<a id = "debug_free_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_free_upgrades();">Free Upgrades</a>
+					<a id = "debug_reprice_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text disabled" onclick = "debug_reprice_upgrades();">Re-price Upgrades</a>
 				</div>
 			</div>
 
@@ -225,7 +238,7 @@
 				</div>
 
 				<!--Log Box-->
-				<div id = "log_box">
+				<div id = "log_box" class = "testoutline">
 				</div>
 			</div>
 		</div>

@@ -25,6 +25,8 @@ function registerInspectorEvents() {
 	$("#upgrade_sprinkler")			.mouseenter(function(){showInspector(iid.sprinkler);});
 }
 
+var current_inspector_id;
+
 function showInspector(id) {
 	switch(id) {
 		case iid.steel_toed_boots:
@@ -70,4 +72,6 @@ function showInspector(id) {
 			$("#inspector_cost")	.html("");
 			$("#inspector_subtext")	.html("");
 	}
+
+	current_inspector_id = id;
 }

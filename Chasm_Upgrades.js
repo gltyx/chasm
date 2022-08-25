@@ -71,8 +71,26 @@ class _CHASM_UPGRADE {
 	unlocked = false;
 	cost = new cost_map(0, 0, 0, 0);
 
-	constructor(particles, strands, spirit, soul) {
-		this.cost = new cost_map(particles, strands, spirit, soul);
+	constructor(aparticles, strands, spirit, soul) {
+		this.cost = new cost_map(aparticles, strands, spirit, soul);
+	}
+
+	buy() {
+		if (particles.current.gte(this.cost.particles) &&
+			strands.current.gte(this.cost.strands) &&
+			soul.current.gte(this.cost.soul) &&
+			spirit.current.gte(this.cost.spirit)) {
+			
+			particles.current.minus(this.cost.particles);
+			strands.current.minus(this.cost.strands);
+			soul.current.minus(this.cost.soul);
+			spirit.current.minus(this.cost.spirit);
+
+			return true;
+		} else {
+			return false;
+		}
+			
 	}
 
 	unlock() {
@@ -163,7 +181,7 @@ function lock_all_upgrades() {
 function buy_upgrade(upgrade) {
 	switch (upgrade) {
 		case "upgrade_steel_toed_boots":
-			if (chasm_upgrades[uid.steel_toed_boots].unlocked == false) {
+			if (chasm_upgrades[uid.steel_toed_boots].unlocked == false && chasm_upgrades[uid.steel_toed_boots].buy()) {
 				chasm_upgrades[uid.steel_toed_boots].unlock();
 				$("#upgrade_steel_toed_boots").addClass("disabled");
 
@@ -176,21 +194,21 @@ function buy_upgrade(upgrade) {
 			break;
 
 		case "upgrade_ant_farm":
-			if (chasm_upgrades[uid.ant_farm].unlocked == false) {
+			if (chasm_upgrades[uid.ant_farm].unlocked == false && chasm_upgrades[uid.ant_farm].buy()) {
 				chasm_upgrades[uid.ant_farm].unlock();
 				$("#upgrade_ant_farm").addClass("disabled");
 			}
 			break;
 		
 		case "upgrade_catapult":
-			if (chasm_upgrades[uid.catapult].unlocked == false) {
+			if (chasm_upgrades[uid.catapult].unlocked == false && chasm_upgrades[uid.catapult].buy()) {
 				chasm_upgrades[uid.catapult].unlock();
 				$("#upgrade_catapult").addClass("disabled");
 			}
 			break;
 			
 		case "upgrade_water_storage":
-			if (chasm_upgrades[uid.water_storage].unlocked == false) {
+			if (chasm_upgrades[uid.water_storage].unlocked == false && chasm_upgrades[uid.water_storage].buy()) {
 				chasm_upgrades[uid.water_storage].unlock();
 				$("#upgrade_water_storage").addClass("disabled");
 
@@ -199,14 +217,14 @@ function buy_upgrade(upgrade) {
 			break;
 			
 		case "upgrade_rain_barrels":
-			if (chasm_upgrades[uid.rain_barrels].unlocked == false) {
+			if (chasm_upgrades[uid.rain_barrels].unlocked == false && chasm_upgrades[uid.rain_barrels].buy()) {
 				chasm_upgrades[uid.rain_barrels].unlock();
 				$("#upgrade_rain_barrels").addClass("disabled");
 			}
 			break;
 			
 		case "upgrade_sprinkler":
-			if (chasm_upgrades[uid.sprinkler].unlocked == false) {
+			if (chasm_upgrades[uid.sprinkler].unlocked == false && chasm_upgrades[uid.sprinkler].buy()) {
 				chasm_upgrades[uid.sprinkler].unlock();
 				$("#upgrade_sprinkler").addClass("disabled");
 			}

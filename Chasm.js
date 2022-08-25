@@ -32,10 +32,6 @@ water_storage.brick_w = 64;
 water_storage.brick_h = 1;
 water.setCap((water_storage.canvas_w * water_storage.canvas_h) / (water_storage.brick_w * water_storage.brick_h));
 
-// Achievements
-var achievement_babys_first_block = false;
-var achievement_reality_sprang_a_leak = false;
-
 // Transient globals (not saved across sessions)
 var earth_gather_progress = 0;
 var earth_drop_progress = 0;
@@ -89,6 +85,9 @@ function game_init() {
 		chasm.saveCount++;
 	}
 	localStorage.setItem("chasm", JSON.stringify(chasm));
+
+	// Loading finished, reveal the game
+	$("#game_box").css("display", "block")
 }
 
 // Materialize Colors
@@ -161,7 +160,7 @@ function draw_resources() {
 function game_tick(scalar) {
 	
 	// Earth Gather
-	if (upgrade_ant_farm) {
+	if (chasm_upgrades[uid.ant_farm].unlocked) {
 		earth_gather_progress += (50 * scalar);
 	}
 	if (earth_gather_progress > 100) {
@@ -174,7 +173,7 @@ function game_tick(scalar) {
 	}
 
 	// Earth Drop
-	if (upgrade_catapult) {
+	if (chasm_upgrades[uid.catapult].unlocked) {
 		earth_drop_progress += (10 * scalar);
 	}
 	if (earth_drop_progress > 100) {
@@ -187,7 +186,7 @@ function game_tick(scalar) {
 	}
 
 	// Water Gather
-	if (upgrade_rain_barrels) {
+	if (chasm_upgrades[uid.rain_barrels].unlocked) {
 		water_gather_progress += (5 * scalar);
 	}
 	if (water_gather_progress > 100) {
@@ -196,19 +195,12 @@ function game_tick(scalar) {
 	}
 
 	// Water Drop
-	if (upgrade_sprinkler) {
+	if (chasm_upgrades[uid.sprinkler].unlocked) {
 		water_drop_progress += (0.8 * scalar);
 	}
 	if (water_gather_progress > 100) {
 		water_gather_progress = 0;
 		drop(water_storage);
-	}
-}
-
-function achievement_tick() {
-	if (achievement_reality_sprang_a_leak == false && particles.alltime >= 1) {
-		achievement_reality_sprang_a_leak = true;
-		$("#achievement_reality_sprang_a_leak").html("true");
 	}
 }
 

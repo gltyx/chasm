@@ -96,25 +96,21 @@
 							<!--Void Particles-->
 							<div class = "currency_particles currency_line vertcenter">
 								<i class = "material-icons purple-text text-lighten-3 currency_icon">blur_circular</i>
-								<p> Void Particles:</p>
 							</div>
 	
 							<!--Gravity Strands-->
 							<div class = "currency_strands currency_line vertcenter">
 								<i class = "material-icons amber-text text-lighten-1 currency_icon">gesture</i>
-								<p> Gravity Strands:</p>
 							</div>
 	
 							<!--Spirit Sand-->
 							<div class = "currency_spirit currency_line vertcenter">
 								<i class = "material-icons green-text text-lighten-2 currency_icon">flare</i>
-								<p> Spirit Sand:</p>
 							</div>
 	
 							<!--Soul Splinters-->
 							<div class = "currency_soul currency_line vertcenter">
 								<i class = "material-icons red-text text-lighten-2 currency_icon">whatshot</i>
-								<p> Soul Splinters:</p>
 							</div>
 						</div>
 
@@ -204,12 +200,16 @@
 	
 				<!--Upgrades Box-->
 				<div id = "upgrades_box">
-					<a id = "upgrade_steel_toed_boots" 	class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_steel_toed_boots')"	>Steel-toed Boots</a>
-					<a id = "upgrade_ant_farm" 			class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_ant_farm')"			>Ant farm</a>
-					<a id = "upgrade_catapult" 			class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_catapult')"			>Catapult</a>
-					<a id = "upgrade_water_storage" 	class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_water_storage')"		>Water storage</a>
-					<a id = "upgrade_rain_barrels" 		class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_rain_barrels')"		>Rain barrels</a>
-					<a id = "upgrade_sprinkler" 		class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_sprinkler')"			>Sprinkler</a>
+					<div class = "flex">
+						<div id = "select_upgrade_steel_toed_boots"><a id = "upgrade_steel_toed_boots" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_steel_toed_boots')">Steel-toed Boots</a></div>
+						<div id = "select_upgrade_ant_farm"><a id = "upgrade_ant_farm" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_ant_farm')">Ant farm</a></div>
+						<div id = "select_upgrade_catapult"><a id = "upgrade_catapult" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_catapult')">Catapult</a></div>
+					</div>
+					<div class = "flex">
+						<div id = "select_upgrade_water_storage"><a id = "upgrade_water_storage" class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_water_storage')">Water storage</a></div>
+						<div id = "select_upgrade_rain_barrels"><a id = "upgrade_rain_barrels" class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_rain_barrels')">Rain barrels</a></div>
+						<div id = "select_upgrade_sprinkler"><a id = "upgrade_sprinkler" class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_sprinkler')">Sprinkler</a></div>
+					</div>
 				</div>
 	
 				<!--Achievements Box-->
@@ -231,8 +231,8 @@
 				<div id = "inspector_box" class = "card blue-grey lighten-4">
 					<div class = "card-content">
 						<div id = "inspector_title" class = "black-text"></div>
-						<div id = "inspector_text" class = "grey-text text-darken-3"></div>
 						<div id = "inspector_cost" class = "grey-text text-darken-3 vertcenter"></div>
+						<div id = "inspector_text" class = "grey-text text-darken-3"></div>
 						<div id = "inspector_subtext" class = "grey-text text-darken-3"></div>
 					</div>
 				</div>

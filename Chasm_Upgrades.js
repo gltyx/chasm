@@ -39,28 +39,42 @@ class cost_map {
 	stringify() {
 		let out = "";
 
-		let cost_prewrapper 	= "<p>";
-		let cost_postwrapper 	= "</p>";
-		
-		let symbol_particle 	= "<i class = 'material-icons purple-text text-lighten-3 currency_icon'>blur_circular</i>";
-		let symbol_strands 		= "<i class = 'material-icons amber-text text-lighten-1 currency_icon'>gesture</i>";
-		let symbol_spirit 		= "<i class = 'material-icons green-text text-lighten-2 currency_icon'>flare</i>";
-		let symbol_soul	 		= "<i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>";
+		let cost_prewrapper 				= "<p style = 'margin-left: 6px;'>";
+		let cost_postwrapper 				= "</p>";
+
+		let cost_unaffordable_prewrapper 	= "<span style = 'color: red;'>";
+		let cost_unaffordable_postwrapper 	= "<span style = 'color: red;'>";
 
 		if (this.particles > 0) {
-			out += cost_prewrapper + this.particles + cost_postwrapper + symbol_particle;
+			out 												+= cost_prewrapper;
+			if (particles.current.lt(this.particles)) out 		+= cost_unaffordable_prewrapper;
+			out 												+= this.particles;
+			if (particles.current.lt(this.particles)) out 		+= cost_unaffordable_postwrapper;
+			out 												+= cost_postwrapper + inspector_symbol_particles;
 		}
 
 		if (this.strands > 0) {
-			out += cost_prewrapper + this.strands + cost_postwrapper + symbol_strands;
+			out 												+= cost_prewrapper;
+			if (strands.current.lt(this.strands)) out 			+= cost_unaffordable_prewrapper;
+			out 												+= this.strands;
+			if (strands.current.lt(this.strands)) out 			+= cost_unaffordable_postwrapper;
+			out 												+= cost_postwrapper + inspector_symbol_strands;
 		}
 
 		if (this.spirit > 0) {
-			out += cost_prewrapper + this.spirit + cost_postwrapper + symbol_spirit;
+			out 												+= cost_prewrapper;
+			if (spirit.current.lt(this.spirit)) out 			+= cost_unaffordable_prewrapper;
+			out 												+= this.spirit;
+			if (spirit.current.lt(this.spirit)) out 			+= cost_unaffordable_postwrapper;
+			out 												+= cost_postwrapper + inspector_symbol_spirit;
 		}
 
 		if (this.soul > 0) {
-			out += cost_prewrapper + this.soul + cost_postwrapper + symbol_soul;
+			out 												+= cost_prewrapper;
+			if (soul.current.lt(this.soul)) out 				+= cost_unaffordable_prewrapper;
+			out 												+= this.soul;
+			if (soul.current.lt(this.soul)) out 				+= cost_unaffordable_postwrapper;
+			out 												+= cost_postwrapper + inspector_symbol_soul;
 		}
 
 		return out;
@@ -81,10 +95,10 @@ class _CHASM_UPGRADE {
 			soul.current.gte(this.cost.soul) &&
 			spirit.current.gte(this.cost.spirit)) {
 			
-			particles.current.minus(this.cost.particles);
-			strands.current.minus(this.cost.strands);
-			soul.current.minus(this.cost.soul);
-			spirit.current.minus(this.cost.spirit);
+			particles.spend(this.cost.particles);
+			strands.spend(this.cost.strands);
+			soul.spend(this.cost.soul);
+			spirit.spend(this.cost.spirit);
 
 			return true;
 		} else {
@@ -109,7 +123,7 @@ function initUpgrades() {
 		switch(i) {
 			case uid.steel_toed_boots:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
-					1,		// Particles
+					0.4,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -118,7 +132,7 @@ function initUpgrades() {
 
 			case uid.ant_farm:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
-					5,		// Particles
+					0.8,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -127,7 +141,7 @@ function initUpgrades() {
 
 			case uid.catapult:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
-					8,		// Particles
+					1.5,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -154,7 +168,7 @@ function initUpgrades() {
 
 			case uid.sprinkler:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
-					200,	// Particles
+					1,		// Particles
 					1,		// Strands
 					1,		// Spirit
 					1,		// Soul
@@ -212,7 +226,7 @@ function buy_upgrade(upgrade) {
 				chasm_upgrades[uid.water_storage].unlock();
 				$("#upgrade_water_storage").addClass("disabled");
 
-				$("#resource_water").css("display", "flex");
+				$("#water_box").css("display", "flex");
 			}
 			break;
 			

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html style = "height: 100%">>
 
 <head>
 	<title>Chasm</title>
@@ -82,7 +82,7 @@
 	</ul>
 
 	<!--Game-->
-	<div id = "game_box" class = "container noble" style = "display: none">
+	<div id = "game_box" class = "container noble hidden">
 		<div class = "row">
 
 			<!--Left Column-->
@@ -91,7 +91,7 @@
 				<div id = "currency_box" class = "card blue-grey darken-1">
 					<div class = "card-content white-text" style = "display: flex;">
 
-						<!--Currency Icons & Names-->
+						<!--Currency Icons-->
 						<div style = "display: block;">
 							<!--Void Particles-->
 							<div class = "currency_particles currency_line vertcenter">
@@ -146,7 +146,7 @@
 				<div id = "resource_box">
 
 					<!--Earth-->
-					<div class = "flex">
+					<div id = "earth_box" class = "flex card blue-grey lighten-4">
 						<!--Storage-->
 						<canvas id = "earth_storage" width = "66" height = "66"></canvas>
 						<div>
@@ -172,7 +172,7 @@
 					</div>
 					
 					<!--Water-->
-					<div id = "resource_water" class = "flex" style = "display: none;">
+					<div id = "water_box" class = "flex card blue-grey lighten-4 hidden">
 						<!--Storage-->
 						<canvas id = "water_storage" width = "66" height = "66"></canvas>
 						<div>
@@ -199,7 +199,7 @@
 				</div>
 	
 				<!--Upgrades Box-->
-				<div id = "upgrades_box">
+				<div id = "upgrades_box" class = "card blue-grey lighten-4">
 					<div class = "flex">
 						<div id = "select_upgrade_steel_toed_boots"><a id = "upgrade_steel_toed_boots" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_steel_toed_boots')">Steel-toed Boots</a></div>
 						<div id = "select_upgrade_ant_farm"><a id = "upgrade_ant_farm" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_ant_farm')">Ant farm</a></div>
@@ -213,13 +213,13 @@
 				</div>
 	
 				<!--Achievements Box-->
-				<div id = "achievements_box">
+				<div id = "achievements_box" class = "card blue-grey lighten-4">
 					<p>Baby's First Block: <span id = "achievement_babys_first_block">false</span></p>
 					<p>Reality Sprang a Leak: <span id = "achievement_reality_sprang_a_leak">false</span></p>
 				</div>
 	
 				<!--Debug Box-->
-				<div id = "debug_box">
+				<div id = "debug_box" class = "card blue-grey lighten-4">
 					<a id = "debug_free_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_free_upgrades();">Free Upgrades</a>
 					<a id = "debug_reprice_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text disabled" onclick = "debug_reprice_upgrades();">Re-price Upgrades</a>
 				</div>
@@ -230,15 +230,16 @@
 				<!--Inspector Box-->
 				<div id = "inspector_box" class = "card blue-grey lighten-4">
 					<div class = "card-content">
-						<div id = "inspector_title" class = "black-text"></div>
+						<div id = "inspector_title" class = "black-text vertcenter"></div>
 						<div id = "inspector_cost" class = "grey-text text-darken-3 vertcenter"></div>
 						<div id = "inspector_text" class = "grey-text text-darken-3"></div>
+						<hr  id = "inspector_divider" class = "hidden">
 						<div id = "inspector_subtext" class = "grey-text text-darken-3"></div>
 					</div>
 				</div>
 
 				<!--Log Box-->
-				<div id = "log_box" class = "testoutline">
+				<div id = "log_box" class = "card blue-grey darken-1">
 				</div>
 			</div>
 		</div>

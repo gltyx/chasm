@@ -6,6 +6,7 @@ p {
 
 body {
 	overflow-y: hidden;
+	height: 100%;
 }
 
 canvas {
@@ -83,6 +84,10 @@ canvas {
 	border: 1px solid black;
 }
 
+.hidden {
+	display: none;
+}
+
 .resource_title {
 	font-family: Tahoma, sans-serif;
 	font-weight: bold;
@@ -119,35 +124,12 @@ canvas {
 
 #game_box {
 	padding-top: 12px;
+	height: 100%;
 }
 
 #left_col {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 10px 0px 0px;
-}
-
-#inspector_box {
-	margin: 0px 0px 10px 0px;
-	padding: 10px 10px 10px 12px;
-
-	height: 130px;
-}
-
-#inspector_title {
-	font-weight: bold;
-}
-
-#inspector_text {
-	font-size: 12px;
-}
-
-#inspector_cost {
-	padding-left: 16px;
-	font-size: 12px;
-}
-
-#inspector_subtext {
-	font-size: 12px;
 }
 
 #currency_box {
@@ -159,7 +141,48 @@ canvas {
 	padding: 0px 0px 0px 0px;
 }
 
+#earth_box {
+	padding: 5px 5px 5px 5px;
+	margin-bottom: 5px;
+}
+
+#water_box {
+	padding: 5px 5px 5px 5px;
+	margin-bottom: 5px;
+}
+
 #right_col {
-	margin: 0px 0px 0px 0px;
-	padding: 0px 0px 0px 10px;
+	margin: 0px 0px 12px 0px;
+	padding: 0px 0px 12px 10px;
+
+	height: 100%;
+}
+
+#inspector_box {
+	margin: 0px 0px 8px 0px;
+	padding: 10px 10px 10px 12px;
+
+	height: 160px;
+}
+
+#inspector_title {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#inspector_text {
+	font-size: 14px;
+}
+
+#inspector_cost {
+	padding-left: 12px;
+	font-size: 14px;
+}
+
+#inspector_subtext {
+	font-size: 14px;
+}
+
+#log_box {
+	height: calc(100% - 300px);
 }

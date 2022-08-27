@@ -97,6 +97,7 @@ var color_water = "blue lighten-2"
 
 function animation_tick() {
 	draw_resources();
+	showInspector(current_inspector_id);
 
 	// Earth
 	earth_storage.draw();
@@ -168,7 +169,7 @@ function game_tick(scalar) {
 			earth_gather_progress = 100;
 		} else {
 			earth_gather_progress = 0;
-			gather(earth)
+			gather(earth);
 		}
 	}
 
@@ -179,7 +180,7 @@ function game_tick(scalar) {
 	if (earth_drop_progress > 100) {
 		if (earth.current == earth.cap) {
 			earth_drop_progress = 0;
-			drop(earth_storage)
+			drop("earth_storage");
 		} else {
 			earth_drop_progress = 100;
 		}
@@ -191,7 +192,7 @@ function game_tick(scalar) {
 	}
 	if (water_gather_progress > 100) {
 		water_gather_progress = 0;
-		gather(water)
+		gather(water);
 	}
 
 	// Water Drop
@@ -200,7 +201,7 @@ function game_tick(scalar) {
 	}
 	if (water_gather_progress > 100) {
 		water_gather_progress = 0;
-		drop(water_storage);
+		drop("water_storage");
 	}
 }
 

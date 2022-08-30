@@ -168,7 +168,7 @@ function draw_resources() {
 function game_tick(scalar) {
 	
 	// Earth Gather
-	if (chasm_upgrades[uid.ant_farm].unlocked) {
+	if (chasm_upgrades[uid.upgrade_ant_farm].unlocked) {
 		earth_gather_progress += (50 * scalar);
 	}
 	if (earth_gather_progress > 100) {
@@ -181,7 +181,7 @@ function game_tick(scalar) {
 	}
 
 	// Earth Drop
-	if (chasm_upgrades[uid.catapult].unlocked) {
+	if (chasm_upgrades[uid.upgrade_catapult].unlocked) {
 		earth_drop_progress += (10 * scalar);
 	}
 	if (earth_drop_progress > 100) {
@@ -194,7 +194,7 @@ function game_tick(scalar) {
 	}
 
 	// Water Gather
-	if (chasm_upgrades[uid.rain_barrels].unlocked) {
+	if (chasm_upgrades[uid.upgrade_rain_barrels].unlocked) {
 		water_gather_progress += (5 * scalar);
 	}
 	if (water_gather_progress > 100) {
@@ -203,7 +203,7 @@ function game_tick(scalar) {
 	}
 
 	// Water Drop
-	if (chasm_upgrades[uid.sprinkler].unlocked) {
+	if (chasm_upgrades[uid.upgrade_sprinkler].unlocked) {
 		water_drop_progress += (0.8 * scalar);
 	}
 	if (water_gather_progress > 100) {

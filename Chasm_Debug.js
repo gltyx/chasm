@@ -43,3 +43,15 @@ function debug_unlock_upgrades() {
 
 	return "It's not cheating if you made the game.";
 }
+
+function debug_unlock_achievements() {
+	$("#debug_unlock_achievements").addClass("disabled");
+
+	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
+		chasm_achievements[i] = true;
+	}
+	
+	load_achivements();
+
+	return "A sense of pride and acomplisment washes over you.";
+}

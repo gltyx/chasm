@@ -88,6 +88,13 @@ canvas {
 	display: none;
 }
 
+.pixelart {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
 .resource_title {
 	font-family: Tahoma, sans-serif;
 	font-weight: bold;

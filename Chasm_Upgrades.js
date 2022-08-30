@@ -10,17 +10,17 @@
 
 
 class _UPGRADE_ID {
-	upgrade_first		= 0x0000;
+	upgrade_first				= 0x0000;
 
 	// Upgrade list
-	steel_toed_boots 	= 0x0000;
-	ant_farm			= 0x0001;
-	catapult			= 0x0002;
-	water_storage		= 0x0003;
-	rain_barrels		= 0x0004;
-	sprinkler			= 0x0005;
+	upgrade_steel_toed_boots 	= 0x0000;
+	upgrade_ant_farm			= 0x0001;
+	upgrade_catapult			= 0x0002;
+	upgrade_water_storage		= 0x0003;
+	upgrade_rain_barrels		= 0x0004;
+	upgrade_sprinkler			= 0x0005;
 
-	upgrade_count		= 0x0006;
+	upgrade_count				= 0x0006;
 } var uid = new _UPGRADE_ID();
 
 class cost_map {
@@ -121,7 +121,7 @@ var chasm_upgrades = new Array(uid.upgrade_count);
 function initUpgrades() {
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
 		switch(i) {
-			case uid.steel_toed_boots:
+			case uid.upgrade_steel_toed_boots:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					0.4,	// Particles
 					0,		// Strands
@@ -130,7 +130,7 @@ function initUpgrades() {
 				);
 				break;
 
-			case uid.ant_farm:
+			case uid.upgrade_ant_farm:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					0.8,	// Particles
 					0,		// Strands
@@ -139,7 +139,7 @@ function initUpgrades() {
 				);
 				break;
 
-			case uid.catapult:
+			case uid.upgrade_catapult:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					1.5,	// Particles
 					0,		// Strands
@@ -148,7 +148,7 @@ function initUpgrades() {
 				);
 				break;
 
-			case uid.water_storage:
+			case uid.upgrade_water_storage:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					20,		// Particles
 					0,		// Strands
@@ -157,7 +157,7 @@ function initUpgrades() {
 				);
 				break;
 
-			case uid.rain_barrels:
+			case uid.upgrade_rain_barrels:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					100,	// Particles
 					0,		// Strands
@@ -166,7 +166,7 @@ function initUpgrades() {
 				);
 				break;
 
-			case uid.sprinkler:
+			case uid.upgrade_sprinkler:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					1,		// Particles
 					1,		// Strands
@@ -195,8 +195,8 @@ function lock_all_upgrades() {
 function buy_upgrade(upgrade) {
 	switch (upgrade) {
 		case "upgrade_steel_toed_boots":
-			if (chasm_upgrades[uid.steel_toed_boots].unlocked == false && chasm_upgrades[uid.steel_toed_boots].buy()) {
-				chasm_upgrades[uid.steel_toed_boots].unlock();
+			if (chasm_upgrades[uid.upgrade_steel_toed_boots].unlocked == false && chasm_upgrades[uid.upgrade_steel_toed_boots].buy()) {
+				chasm_upgrades[uid.upgrade_steel_toed_boots].unlock();
 				$("#upgrade_steel_toed_boots").addClass("disabled");
 
 				earth_storage.brick_h = earth_storage.brick_h / 2;
@@ -208,22 +208,22 @@ function buy_upgrade(upgrade) {
 			break;
 
 		case "upgrade_ant_farm":
-			if (chasm_upgrades[uid.ant_farm].unlocked == false && chasm_upgrades[uid.ant_farm].buy()) {
-				chasm_upgrades[uid.ant_farm].unlock();
+			if (chasm_upgrades[uid.upgrade_ant_farm].unlocked == false && chasm_upgrades[uid.upgrade_ant_farm].buy()) {
+				chasm_upgrades[uid.upgrade_ant_farm].unlock();
 				$("#upgrade_ant_farm").addClass("disabled");
 			}
 			break;
 		
 		case "upgrade_catapult":
-			if (chasm_upgrades[uid.catapult].unlocked == false && chasm_upgrades[uid.catapult].buy()) {
-				chasm_upgrades[uid.catapult].unlock();
+			if (chasm_upgrades[uid.upgrade_catapult].unlocked == false && chasm_upgrades[uid.upgrade_catapult].buy()) {
+				chasm_upgrades[uid.upgrade_catapult].unlock();
 				$("#upgrade_catapult").addClass("disabled");
 			}
 			break;
 			
 		case "upgrade_water_storage":
-			if (chasm_upgrades[uid.water_storage].unlocked == false && chasm_upgrades[uid.water_storage].buy()) {
-				chasm_upgrades[uid.water_storage].unlock();
+			if (chasm_upgrades[uid.upgrade_water_storage].unlocked == false && chasm_upgrades[uid.upgrade_water_storage].buy()) {
+				chasm_upgrades[uid.upgrade_water_storage].unlock();
 				$("#upgrade_water_storage").addClass("disabled");
 
 				$("#water_box").css("display", "flex");
@@ -231,15 +231,15 @@ function buy_upgrade(upgrade) {
 			break;
 			
 		case "upgrade_rain_barrels":
-			if (chasm_upgrades[uid.rain_barrels].unlocked == false && chasm_upgrades[uid.rain_barrels].buy()) {
-				chasm_upgrades[uid.rain_barrels].unlock();
+			if (chasm_upgrades[uid.upgrade_rain_barrels].unlocked == false && chasm_upgrades[uid.upgrade_rain_barrels].buy()) {
+				chasm_upgrades[uid.upgrade_rain_barrels].unlock();
 				$("#upgrade_rain_barrels").addClass("disabled");
 			}
 			break;
 			
 		case "upgrade_sprinkler":
-			if (chasm_upgrades[uid.sprinkler].unlocked == false && chasm_upgrades[uid.sprinkler].buy()) {
-				chasm_upgrades[uid.sprinkler].unlock();
+			if (chasm_upgrades[uid.upgrade_sprinkler].unlocked == false && chasm_upgrades[uid.upgrade_sprinkler].buy()) {
+				chasm_upgrades[uid.upgrade_sprinkler].unlock();
 				$("#upgrade_sprinkler").addClass("disabled");
 			}
 			break;

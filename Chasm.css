@@ -98,6 +98,10 @@ canvas {
 	display: flex;
 }
 
+.unflex {
+	display: block;
+}
+
 .vertcenter {
 	display: -webkit-flex;
 	display: flex;
@@ -184,5 +188,5 @@ canvas {
 }
 
 #log_box {
-	height: calc(100% - 300px);
+	height: calc(100% - 280px);
 }

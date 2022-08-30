@@ -8,14 +8,37 @@ var STORAGE_CANVAS_H_DEFAULT = 64;
 var STORAGE_FLAGS_EARTH = 1 << 0;
 var STORAGE_FLAGS_WATER = 1 << 1;
 
-var BIT_TYPE_NONE  = 0;
-var BIT_TYPE_EARTH = 1;
-var BIT_TYPE_WATER = 2;
+class _ELEMENT_ID {
+	element_first		= 0x0000;
+
+	// Element list
+	element_none 		= 0x0000;
+	element_earth 		= 0x0001;
+	element_water 		= 0x0002;
+	element_coal		= 0x0003;
+	element_copper		= 0x0004;
+	element_iron		= 0x0005;
+	element_fish		= 0x0006;
+
+	element_count		= 0x0007;
+} var eid = new _ELEMENT_ID();
+
+class _CURRENCY_ID {
+	currency_first		= 0x0000;
+
+	// Currency list
+	currency_particles 	= 0x0000;
+	currency_strands 	= 0x0001;
+	currency_spirit 	= 0x0002;
+	currency_soul	 	= 0x0003;
+
+	currency_count		= 0x0004;
+} var cid = new _CURRENCY_ID();
 
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {
 	name = "";										// Storage name (for debugging)
-	resource;										// Chasm resource associated with storage
+	resource;										// chasm_resource_small associated with storage
 	
 	canvas;											// Canvas handle for animation
 	canvas_w = STORAGE_CANVAS_W_DEFAULT;			// Canvas width
@@ -71,9 +94,9 @@ class resource_storage {
 			// Choose brick type
 			let type;
 			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
-				type = BIT_TYPE_EARTH;
+				type = eid.element_earth;
 			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
-				type = BIT_TYPE_WATER;
+				type = eid.element_water;
 			}
 	
 			// Choose brick color
@@ -119,7 +142,7 @@ class storage_bitmap {
 		this.x = x;
 		this.y = y;
 		for (let i = 0; i < this.x * this.y; i++) {
-			this.bits[i] = new bitmap_bit(BIT_TYPE_NONE);
+			this.bits[i] = new bitmap_bit(eid.element_none);
 		}
 		this.bitcolors = new Uint8ClampedArray(4 * this.x * this.y);
 		this.clear();
@@ -154,14 +177,93 @@ class storage_bitmap {
 		}
 	}
 
-	count(type) {
-		let count = 0;
+	element_count() { // Returns count of all elements
+		let element_count = new Array(eid.element_count);
+		for (let i = 0; i < element_count.length; i++) {
+			element_count[i] = 0;
+		}
+
 		for (let i = 0; i < this.x * this.y; i++) {
-			if (this.bits[i].type == type) {
-				count++;
+			element_count[this.bits[i].type]++;
+		}
+		return element_count;
+	}
+
+	value(element_count) {
+
+		let currency_count = new Array(cid.currency_count);
+		for (let i = 0; i < currency_count.length; i++) {
+			currency_count[i] = 0;
+		}
+
+		for (let i = 0; i < element_count.length; i++) {
+			switch (i) {
+				case eid.element_earth:
+					currency_count[cid.currency_particles] += element_count[eid.element_earth] * 0.01;
+					break;
+				case eid.element_water:
+					currency_count[cid.currency_particles] += element_count[eid.element_water] * 0.01;
+					break;
+				case eid.element_none:
+				default:
 			}
 		}
-		return count;
+
+		return currency_count;
+	}
+
+	stringifyElements(element_count) {
+		let out = "Stored: ";
+
+		let value_prewrapper 				= "<p style = 'margin-left: 6px;'>";
+		let value_postwrapper 				= "</p>";
+
+		if (element_count[eid.element_earth] > 0) {
+			out 							+= value_prewrapper;
+			out 							+= element_count[eid.element_earth];
+			out 							+= "earth" + value_postwrapper;
+		}
+
+		if (element_count[eid.element_water] > 0) {
+			out 							+= value_prewrapper;
+			out 							+= element_count[eid.element_water];
+			out 							+= "water" + value_postwrapper;
+		}
+
+		return out;
+	}
+
+	stringifyValue(currency_count) {
+		let out = "Value: ";
+
+		let value_prewrapper 				= "<p style = 'margin-left: 6px;'>";
+		let value_postwrapper 				= "</p>";
+
+		if (currency_count[cid.currency_particles] > 0) {
+			out 							+= value_prewrapper;
+			out 							+= currency_count[cid.currency_particles];
+			out 							+= value_postwrapper + inspector_symbol_particles;
+		}
+
+		if (currency_count[cid.currency_strands] > 0) {
+			out 							+= value_prewrapper;
+			out 							+= currency_count[cid.currency_strands];
+			out 							+= value_postwrapper + inspector_symbol_strands;
+		}
+
+		if (currency_count[cid.currency_spirit] > 0) {
+			out 							+= value_prewrapper;
+			out 							+= currency_count[cid.currency_spirit];
+			out 							+= value_postwrapper + inspector_symbol_spirit;
+		}
+
+		if (currency_count[cid.currency_soul] > 0) {
+			out 							+= value_prewrapper;
+			out 							+= currency_count[cid.currency_soul];
+			out 							+= value_postwrapper + inspector_symbol_soul;
+		}
+
+		return out;
 	}
 }
 
@@ -174,6 +276,26 @@ class bitmap_bit {
 	}
 
 	clear() {
-		this.type = BIT_TYPE_NONE;
+		this.type = eid.element_none;
+	}
+}
+
+function currency_gain(currency_map) {
+	for(let i = 0; i < currency_map.length; i++) {
+		switch (i) {
+			case cid.currency_particles:
+				particles.gain(currency_map[cid.currency_particles]);
+				break;
+			case cid.currency_strands:
+				strands.gain(currency_map[cid.currency_strands]);
+				break;
+			case cid.currency_spirit:
+				spirit.gain(currency_map[cid.currency_spirit]);
+				break;
+			case cid.currency_soul:
+				soul.gain(currency_map[cid.currency_soul]);
+				break;
+			default:
+		}
 	}
 }

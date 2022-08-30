@@ -154,8 +154,15 @@ function draw_resources() {
 	$("#currency_soul_amount").html(soul.current.toFixed(2));
 
 	// Update resources
-	$("#resource_earth_amount").html(Math.floor(earth.current));
-	$("#resource_water_amount").html(Math.floor(water.current));
+	let earth_element_count = earth_storage.bitmap.element_count();
+	let earth_currency_count = earth_storage.bitmap.value(earth_element_count);
+	$("#element_earth_amount").html(earth_storage.bitmap.stringifyElements(earth_element_count));
+	$("#value_earth_amount").html(earth_storage.bitmap.stringifyValue(earth_currency_count));
+
+	let water_element_count = water_storage.bitmap.element_count();
+	let water_currency_count = water_storage.bitmap.value(water_element_count);
+	$("#element_water_amount").html(water_storage.bitmap.stringifyElements(water_element_count));
+	$("#value_water_amount").html(water_storage.bitmap.stringifyValue(water_currency_count));
 }
 
 function game_tick(scalar) {
@@ -222,20 +229,14 @@ function drop(storage) {
 	switch (storage) {
 		case "earth_storage":
 			if(earth_storage.drop()) {
-				// Base gain
-				let particles_out = earth_storage.bitmap.count(BIT_TYPE_EARTH) * 0.01;
-
-				particles.gain(particles_out);
+				currency_gain(earth_storage.bitmap.value(earth_storage.bitmap.element_count()));
 				earth_storage.clear();
 			}
 			break;
 
 		case "water_storage":
 			if (water_storage.drop()) {
-				// Base gain
-				let particles_out = water_storage.bitmap.count(BIT_TYPE_WATER) * 0.01;
-
-				particles.gain(particles_out);
+				currency_gain(water_storage.bitmap.value(water_storage.bitmap.element_count()));
 				water_storage.clear();
 			}
 			break;

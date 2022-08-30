@@ -1,4 +1,4 @@
-<!DOCTYPE html style = "height: 100%">>
+<!DOCTYPE html style = "height: 100%">
 
 <head>
 	<title>Chasm</title>
@@ -64,7 +64,7 @@
 		<div class = "nav-content blue-grey darken-1 hide-on-med-and-down">
 		  	<ul class = "tabs tabs-transparent">
 				<li class = "tab"><a class = "active" href = "#resource_box" draggable = "false">Chasm</a></li>
-				<li class = "tab"><a href = "#upgrades_box" draggable = "false">Upgrades</a></li>
+				<li class = "tab"><a href = "#upgrades_box" draggable = "false">Research</a></li>
 				<li class = "tab"><a href = "#achievements_box" draggable = "false">Achievements</a></li>
 				<li class = "tab"><a href = "#debug_box" draggable = "false">Debug</a></li>
 		  	</ul>
@@ -75,14 +75,14 @@
 	<ul id = "chasm_sidenav" class = "sidenav noble">
 		<ul class = "tabs-vertical">
 			<li class = "tab"><a class = "active" href = "#resource_box" draggable = "false">Chasm</a></li>
-			<li class = "tab"><a href = "#upgrades_box" draggable = "false">Upgrades</a></li>
+			<li class = "tab"><a href = "#upgrades_box" draggable = "false">Research</a></li>
 			<li class = "tab"><a href = "#achievements_box" draggable = "false">Achievements</a></li>
 			<li class = "tab"><a href = "#debug_box" draggable = "false">Debug</a></li>
 		</ul>
 	</ul>
 
 	<!--Game-->
-	<div id = "game_box" class = "container noble hidden">
+	<div id = "game_box" class = "container noble" style = "display: none;">
 		<div class = "row">
 
 			<!--Left Column-->
@@ -146,38 +146,51 @@
 				<div id = "resource_box">
 
 					<!--Earth-->
-					<div id = "earth_box" class = "flex card blue-grey lighten-4">
+					<div id = "earth_box" class = "card blue-grey lighten-4">
 						<!--Storage-->
-						<canvas id = "earth_storage" width = "66" height = "66"></canvas>
-						<div>
-							<p class = "resource_title">Earth</p>
-							<p>Stored: <span id = "resource_earth_amount"></span></p>
+						<div class = "flex">
+							<div style = "height: 66px; width: 66px;">
+								<canvas id = "earth_storage" width = "66" height = "66"></canvas>
+							</div>
+
+							<div class = "unflex">
+								<p class = "resource_title">Earth</p>
+								<div id = "element_earth_amount" class = "vertcenter"></div>
+								<div id = "value_earth_amount" class = "vertcenter"></div>
+								
+							</div>
 						</div>
 
-						<!--Gather-->
-						<div style = "width: 88px;">
-							<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "earth_gather_progress" class = "determinate" style = "width: 0%"></div>
+						<div class = "flex">
+							<!--Gather-->
+							<div style = "width: 88px;">
+								<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+									<div id = "earth_gather_progress" class = "determinate" style = "width: 0%"></div>
+								</div>
+								<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
 							</div>
-							<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
-						</div>
 
-						<!--Drop-->
-						<div style = "width: 71px;">
-							<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "earth_drop_progress" class = "determinate" style = "width: 0%"></div>
+							<!--Drop-->
+							<div style = "width: 71px;">
+								<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+									<div id = "earth_drop_progress" class = "determinate" style = "width: 0%"></div>
+								</div>
+								<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick = "drop('earth_storage')">Drop</a>
 							</div>
-							<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick = "drop('earth_storage')">Drop</a>
 						</div>
 					</div>
 					
 					<!--Water-->
-					<div id = "water_box" class = "flex card blue-grey lighten-4 hidden">
+					<div id = "water_box" class = "flex card blue-grey lighten-4" style = "display: none;">
 						<!--Storage-->
 						<canvas id = "water_storage" width = "66" height = "66"></canvas>
-						<div>
-							<p class = "resource_title">Water</p>
-							<p>Stored: <span id = "resource_water_amount"></span></p>
+						<div class = "unflex">
+							<div>
+								<p class = "resource_title">Water</p>
+							</div>
+
+							<div id = "element_water_amount" class = "flex"></div>
+							<div id = "value_water_amount" class = "flex"></div>
 						</div>
 
 						<!--Gather-->

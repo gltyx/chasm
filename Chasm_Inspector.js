@@ -7,41 +7,46 @@
 	// 3. Add panel generation to inspector function	[showInspector]
 
 class _INSPECTOR_ID {
-	none 									= 0x0000;	// 0x0000 Clear inspector
+	none 										= 0x0000;	// 0x0000 Clear inspector
 
-	particles								= 0xa001;	// 0xa0xx Start currency section
-	strands									= 0xa002;
-	spirit									= 0xa003;
-	soul									= 0xa004;
+	particles									= 0xa001;	// 0xa0xx Start currency section
+	strands										= 0xa002;
+	spirit										= 0xa003;
+	soul										= 0xa004;
 
-	upgrade_steel_toed_boots 				= 0xa101;	// 0xa1xx Start upgrade section
-	upgrade_ant_farm						= 0xa102;
-	upgrade_catapult						= 0xa103;
-	upgrade_water_storage					= 0xa104;
-	upgrade_rain_barrels					= 0xa105;
-	upgrade_sprinkler						= 0xa106;
+	upgrade_steel_toed_boots 					= 0xa101;	// 0xa1xx Start upgrade section
+	upgrade_ant_farm							= 0xa102;
+	upgrade_catapult							= 0xa103;
+	upgrade_water_storage						= 0xa104;
+	upgrade_rain_barrels						= 0xa105;
+	upgrade_sprinkler							= 0xa106;
 
-	achievement_unknown			 			= 0xd100;	// 0xd1xx Start achievement section
-	achievement_babys_first_block 			= 0xd101;
-	achievement_reality_sprang_a_leak 		= 0xd102;
+	achievement_unknown			 				= 0xd100;	// 0xd1xx Start achievement section
+	achievement_babys_first_block 				= 0xd101;
+	achievement_reality_sprang_a_leak 			= 0xd102;
+	achievement_nothing_to_worry_about			= 0xd103;
+	achievement_minor_case_of_wormhole			= 0xd104;
 } var iid = new _INSPECTOR_ID();
 
 function registerInspectorEvents() {
-	$(".currency_particles")				.mouseenter(function(){showInspector(iid.particles);});
-	$(".currency_strands")					.mouseenter(function(){showInspector(iid.strands);});
-	$(".currency_spirit")					.mouseenter(function(){showInspector(iid.spirit);});
-	$(".currency_soul")						.mouseenter(function(){showInspector(iid.soul);});
+	$(".currency_particles")					.mouseenter(function(){showInspector(iid.particles);});
+	$(".currency_strands")						.mouseenter(function(){showInspector(iid.strands);});
+	$(".currency_spirit")						.mouseenter(function(){showInspector(iid.spirit);});
+	$(".currency_soul")							.mouseenter(function(){showInspector(iid.soul);});
 
-	$("#select_upgrade_steel_toed_boots")	.mouseenter(function(){showInspector(iid.upgrade_steel_toed_boots);});
-	$("#select_upgrade_ant_farm")			.mouseenter(function(){showInspector(iid.upgrade_ant_farm);});
-	$("#select_upgrade_catapult")			.mouseenter(function(){showInspector(iid.upgrade_catapult);});
-	$("#select_upgrade_water_storage")		.mouseenter(function(){showInspector(iid.upgrade_water_storage);});
-	$("#select_upgrade_rain_barrels")		.mouseenter(function(){showInspector(iid.upgrade_rain_barrels);});
-	$("#select_upgrade_sprinkler")			.mouseenter(function(){showInspector(iid.upgrade_sprinkler);});
+	$("#select_upgrade_steel_toed_boots")		.mouseenter(function(){showInspector(iid.upgrade_steel_toed_boots);});
+	$("#select_upgrade_ant_farm")				.mouseenter(function(){showInspector(iid.upgrade_ant_farm);});
+	$("#select_upgrade_catapult")				.mouseenter(function(){showInspector(iid.upgrade_catapult);});
+	$("#select_upgrade_water_storage")			.mouseenter(function(){showInspector(iid.upgrade_water_storage);});
+	$("#select_upgrade_rain_barrels")			.mouseenter(function(){showInspector(iid.upgrade_rain_barrels);});
+	$("#select_upgrade_sprinkler")				.mouseenter(function(){showInspector(iid.upgrade_sprinkler);});
 
-	$("#achievement_babys_first_block")		.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
-	$("#achievement_reality_sprang_a_leak")	.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});
+	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
+	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});
+	$("#achievement_nothing_to_worry_about")	.mouseenter(function(){showInspector(iid.achievement_nothing_to_worry_about);});
+	$("#achievement_minor_case_of_wormhole")	.mouseenter(function(){showInspector(iid.achievement_minor_case_of_wormhole);});
 }
+
 
 var current_inspector_id = iid.none; // Saved id of current inspector panel. Used to redraw inspector.
 
@@ -135,7 +140,7 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.achievement_babys_first_block:
-			if (chasm_achievements[aid.achievement_babys_first_block]) {
+			if (chasm_achievements[aid.achievement_babys_first_block].unlocked) {
 				$("#inspector_title")	.html("Baby's First Block");
 				$("#inspector_cost")	.html("");
 				$("#inspector_text")	.html("You still remember dropping your first block into the Chasm... Things were simpler back then.");
@@ -146,14 +151,48 @@ function showInspector(id) {
 			}
 			break;
 		case iid.achievement_reality_sprang_a_leak:
-			if (chasm_achievements[aid.achievement_reality_sprang_a_leak]) {
+			if (chasm_achievements[aid.achievement_reality_sprang_a_leak].unlocked) {
 				$("#inspector_title")	.html("<img src = 'images/a_reality_sprang.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Reality Sprang a Leak");
 				$("#inspector_cost")	.html("");
 				$("#inspector_text")	.html("Dropping things into the Chasm seems to release clouds of nothing. I'm pretty sure the universe isn't supposed to do that.");
 				$("#inspector_divider")	.css("display", "none");
 				$("#inspector_subtext")	.html("");
 			} else {
-				showInspector(iid.achievement_unknown);
+				$("#inspector_title")	.html("<img src = 'images/a_reality_sprang.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Reality Sprang a Leak");
+				$("#inspector_cost")	.html("");
+				$("#inspector_text")	.html("Collect 1 total void particle");
+				$("#inspector_divider")	.css("display", "none");
+				$("#inspector_subtext")	.html("");
+			}
+			break;
+		case iid.achievement_nothing_to_worry_about:
+			if (chasm_achievements[aid.achievement_nothing_to_worry_about].unlocked) {
+				$("#inspector_title")	.html("<img src = 'images/a_nothing_to_worry_about.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Nothing to Worry About");
+				$("#inspector_cost")	.html("");
+				$("#inspector_text")	.html("How much nothing can there be, anyway?");
+				$("#inspector_divider")	.css("display", "none");
+				$("#inspector_subtext")	.html("");
+			} else {
+				$("#inspector_title")	.html("<img src = 'images/a_nothing_to_worry_about.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Nothing to Worry About");
+				$("#inspector_cost")	.html("");
+				$("#inspector_text")	.html("Collect 100 total void particles");
+				$("#inspector_divider")	.css("display", "none");
+				$("#inspector_subtext")	.html("");
+			}
+			break;
+		case iid.achievement_minor_case_of_wormhole:
+			if (chasm_achievements[aid.achievement_minor_case_of_wormhole].unlocked) {
+				$("#inspector_title")	.html("<img src = 'images/a_minor_case_of_wormhole.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>A Minor Case of Wormhole");
+				$("#inspector_cost")	.html("");
+				$("#inspector_text")	.html("Worms? In my hole??");
+				$("#inspector_divider")	.css("display", "none");
+				$("#inspector_subtext")	.html("");
+			} else {
+				$("#inspector_title")	.html("<img src = 'images/a_minor_case_of_wormhole.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>A Minor Case of Wormhole");
+				$("#inspector_cost")	.html("");
+				$("#inspector_text")	.html("Collect 10,000 total void particles");
+				$("#inspector_divider")	.css("display", "none");
+				$("#inspector_subtext")	.html("");
 			}
 			break;
 

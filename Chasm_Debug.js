@@ -48,7 +48,7 @@ function debug_unlock_achievements() {
 	$("#debug_unlock_achievements").addClass("disabled");
 
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
-		chasm_achievements[i] = true;
+		chasm_achievements[i].unlocked = true;
 	}
 	
 	load_achivements();

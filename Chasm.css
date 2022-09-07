@@ -128,6 +128,11 @@ canvas {
 	padding-left: 3px;
 }
 
+.locked_tile {
+	filter: grayscale(100%);
+	cursor: pointer;
+}
+
 /* Chasm id's */
 #chasm_title {
 	padding-left: 34px;

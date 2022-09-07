@@ -67,6 +67,9 @@ function game_init() {
 	// Upgrade Initialization
 	initUpgrades();
 
+	// Achievement Initialization
+	init_achievements();
+
 	// Timing Initialization
 	chasm_timing_add_process_to_scheduler(game_tick, 80, 0);
 	chasm_timing_add_process_to_scheduler(achievement_tick, 700, chasm_process_flag_disable_multitick);

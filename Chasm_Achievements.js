@@ -22,8 +22,6 @@ class _ACHIEVEMENT_ID {
 	achievement_count							= 0x0005;
 } var aid = new _ACHIEVEMENT_ID();
 
-var chasm_achievements = new Array(aid.achievement_count);
-
 class _ACHIEVEMENT {
 	id;
 	unlocked = false;
@@ -41,6 +39,8 @@ class _ACHIEVEMENT {
 		this.dom_id.mouseleave(function(){resetAchievementTile(id);});
 	}
 }
+
+var chasm_achievements = new Array(aid.achievement_count);
 
 function init_achievements() {
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
@@ -91,18 +91,12 @@ function achievement_tick() {
 		}
 	}
 
-	// Minor Case of Wormhole (10,000 particles)
+	// Eye Feel Extremely Unwell (1,000,000 particles)
 	if (!chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlocked) {
 		if (particles.alltime.gte(1000000)) {
 			chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlocked = true;
 			resetAchievementTile(aid.achievement_eye_feel_extremely_unwell);
 		}
-	}
-}
-
-function load_achivements() {
-	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
-		resetAchievementTile(i);
 	}
 }
 
@@ -115,5 +109,11 @@ function resetAchievementTile(id) {
 		chasm_achievements[id].dom_id.css("filter", "grayscale(0%)");
 	} else {
 		chasm_achievements[id].dom_id.css("filter", "grayscale(100%)");
+	}
+}
+
+function load_achivements() {
+	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
+		resetAchievementTile(i);
 	}
 }

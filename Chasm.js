@@ -53,6 +53,7 @@ class saveData {
 }
 
 var chasm;
+var chasm_log;
 
 // Game Initialization
 function game_init() {
@@ -63,6 +64,9 @@ function game_init() {
 	earth_storage.init($("#earth_storage")[0].getContext("2d"));
 	water_storage.init($("#water_storage")[0].getContext("2d"));
 	animation_tick();
+
+	// Log Initialization
+	chasm_log = new lib_chasm_log("log_box", 20, 0);
 
 	// Upgrade Initialization
 	initUpgrades();
@@ -220,6 +224,7 @@ function gather(resource) {
 	switch (resource) {
 		case earth:
 			resource.gain(1);
+			chasm_log.write("+1");
 			break;
 		case water:
 			resource.gain(1);
@@ -234,6 +239,12 @@ function drop(storage) {
 			if(earth_storage.drop()) {
 				currency_gain(earth_storage.bitmap.value(earth_storage.bitmap.element_count()));
 				earth_storage.clear();
+
+				if (chasm_achievements[aid.achievement_babys_first_block].unlocked == false) {
+					chasm_achievements[aid.achievement_babys_first_block].unlocked = true;
+					resetAchievementTile(aid.achievement_babys_first_block);
+					chasm_log.write("You got achievement_babys_first_block");
+				}
 			}
 			break;
 

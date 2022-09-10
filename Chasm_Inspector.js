@@ -26,6 +26,7 @@ class _INSPECTOR_ID {
 	achievement_reality_sprang_a_leak 			= 0xd102;
 	achievement_nothing_to_worry_about			= 0xd103;
 	achievement_minor_case_of_wormhole			= 0xd104;
+	achievement_eye_feel_extremely_unwell		= 0xd105;
 } var iid = new _INSPECTOR_ID();
 
 function registerInspectorEvents() {
@@ -45,6 +46,7 @@ function registerInspectorEvents() {
 	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});
 	$("#achievement_nothing_to_worry_about")	.mouseenter(function(){showInspector(iid.achievement_nothing_to_worry_about);});
 	$("#achievement_minor_case_of_wormhole")	.mouseenter(function(){showInspector(iid.achievement_minor_case_of_wormhole);});
+	$("#achievement_eye_feel_extremely_unwell")	.mouseenter(function(){showInspector(iid.achievement_eye_feel_extremely_unwell);});
 }
 
 
@@ -141,13 +143,17 @@ function showInspector(id) {
 			break;
 		case iid.achievement_babys_first_block:
 			if (chasm_achievements[aid.achievement_babys_first_block].unlocked) {
-				$("#inspector_title")	.html("Baby's First Block");
+				$("#inspector_title")	.html("<img src = 'images/a_babys_first_block.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Baby's First Block");
 				$("#inspector_cost")	.html("");
 				$("#inspector_text")	.html("You still remember dropping your first block into the Chasm... Things were simpler back then.");
 				$("#inspector_divider")	.css("display", "none");
 				$("#inspector_subtext")	.html("");
 			} else {
-				showInspector(iid.achievement_unknown);
+				$("#inspector_title")	.html("<img src = 'images/a_babys_first_block.png' class = 'pixelart locked_tile' width = '25' height = '25' style = 'margin-right: 6px;'>Baby's First Block");
+				$("#inspector_cost")	.html("");
+				$("#inspector_text")	.html("Drop 1 block of earth into the Chasm");
+				$("#inspector_divider")	.css("display", "none");
+				$("#inspector_subtext")	.html("");
 			}
 			break;
 		case iid.achievement_reality_sprang_a_leak:
@@ -158,7 +164,7 @@ function showInspector(id) {
 				$("#inspector_divider")	.css("display", "none");
 				$("#inspector_subtext")	.html("");
 			} else {
-				$("#inspector_title")	.html("<img src = 'images/a_reality_sprang.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Reality Sprang a Leak");
+				$("#inspector_title")	.html("<img src = 'images/a_reality_sprang.png' class = 'pixelart locked_tile' width = '25' height = '25' style = 'margin-right: 6px;'>Reality Sprang a Leak");
 				$("#inspector_cost")	.html("");
 				$("#inspector_text")	.html("Collect 1 total void particle");
 				$("#inspector_divider")	.css("display", "none");
@@ -173,7 +179,7 @@ function showInspector(id) {
 				$("#inspector_divider")	.css("display", "none");
 				$("#inspector_subtext")	.html("");
 			} else {
-				$("#inspector_title")	.html("<img src = 'images/a_nothing_to_worry_about.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Nothing to Worry About");
+				$("#inspector_title")	.html("<img src = 'images/a_nothing_to_worry_about.png' class = 'pixelart locked_tile' width = '25' height = '25' style = 'margin-right: 6px;'>Nothing to Worry About");
 				$("#inspector_cost")	.html("");
 				$("#inspector_text")	.html("Collect 100 total void particles");
 				$("#inspector_divider")	.css("display", "none");
@@ -188,9 +194,24 @@ function showInspector(id) {
 				$("#inspector_divider")	.css("display", "none");
 				$("#inspector_subtext")	.html("");
 			} else {
-				$("#inspector_title")	.html("<img src = 'images/a_minor_case_of_wormhole.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>A Minor Case of Wormhole");
+				$("#inspector_title")	.html("<img src = 'images/a_minor_case_of_wormhole.png' class = 'pixelart locked_tile' width = '25' height = '25' style = 'margin-right: 6px;'>A Minor Case of Wormhole");
 				$("#inspector_cost")	.html("");
 				$("#inspector_text")	.html("Collect 10,000 total void particles");
+				$("#inspector_divider")	.css("display", "none");
+				$("#inspector_subtext")	.html("");
+			}
+			break;
+		case iid.achievement_eye_feel_extremely_unwell:
+			if (chasm_achievements[aid.achievement_minor_case_of_wormhole].unlocked) {
+				$("#inspector_title")	.html("<img src = 'images/a_eye_feel_extremely_unwell.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Eye Feel Extremely Unwell");
+				$("#inspector_cost")	.html("");
+				$("#inspector_text")	.html("If you gaze long enough into the abyss... The abyss will sprout creepy eyes and wink at you.");
+				$("#inspector_divider")	.css("display", "none");
+				$("#inspector_subtext")	.html("");
+			} else {
+				$("#inspector_title")	.html("<img src = 'images/a_eye_feel_extremely_unwell.png' class = 'pixelart locked_tile' width = '25' height = '25' style = 'margin-right: 6px;'>Eye Feel Extremely Unwell");
+				$("#inspector_cost")	.html("");
+				$("#inspector_text")	.html("Collect 1,000,000 total void particles");
 				$("#inspector_divider")	.css("display", "none");
 				$("#inspector_subtext")	.html("");
 			}

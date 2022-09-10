@@ -46,7 +46,7 @@ function init_achievements() {
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
 		switch (i) {
 			case aid.achievement_babys_first_block:
-				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_babys_first_block", "images/a_locked.png");
+				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_babys_first_block", "images/a_babys_first_block.png");
 				break;
 			case aid.achievement_reality_sprang_a_leak:
 				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_reality_sprang_a_leak", "images/a_reality_sprang.png");

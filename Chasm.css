@@ -201,4 +201,7 @@ canvas {
 
 #log_box {
 	height: calc(100% - 280px);
+	padding-top: 5px;
+	padding-left: 8px;
+	color: white;
 }

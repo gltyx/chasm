@@ -215,19 +215,18 @@ class storage_bitmap {
 	stringifyElements(element_count) {
 		let out = "Stored: ";
 
-		let value_prewrapper 				= "<p style = 'margin-left: 6px;'>";
-		let value_postwrapper 				= "</p>";
-
 		if (element_count[eid.element_earth] > 0) {
-			out 							+= value_prewrapper;
+			out 							+= "<p style = 'margin-left: 6px;'>";
 			out 							+= element_count[eid.element_earth];
-			out 							+= "earth" + value_postwrapper;
+			out 							+= "<div class = 'element_sample' style = 'background-color: SaddleBrown;'></div>";
+			out								+= "</p>";
 		}
 
 		if (element_count[eid.element_water] > 0) {
-			out 							+= value_prewrapper;
+			out 							+= "<p style = 'margin-left: 6px;'>";;
 			out 							+= element_count[eid.element_water];
-			out 							+= "water" + value_postwrapper;
+			out 							+= "<div class = 'element_sample' style = 'background-color: DodgerBlue;'></div>";
+			out 							+= "</p>";
 		}
 
 		return out;

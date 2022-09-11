@@ -66,7 +66,7 @@ function game_init() {
 	animation_tick();
 
 	// Log Initialization
-	chasm_log = new lib_chasm_log("log_box", 20, 0);
+	chasm_log = new lib_chasm_log("log_box", 35, 0);
 
 	// Upgrade Initialization
 	initUpgrades();
@@ -224,7 +224,6 @@ function gather(resource) {
 	switch (resource) {
 		case earth:
 			resource.gain(1);
-			chasm_log.write("+1");
 			break;
 		case water:
 			resource.gain(1);
@@ -241,9 +240,7 @@ function drop(storage) {
 				earth_storage.clear();
 
 				if (chasm_achievements[aid.achievement_babys_first_block].unlocked == false) {
-					chasm_achievements[aid.achievement_babys_first_block].unlocked = true;
-					resetAchievementTile(aid.achievement_babys_first_block);
-					chasm_log.write("You got achievement_babys_first_block");
+					chasm_achievements[aid.achievement_babys_first_block].unlock();
 				}
 			}
 			break;

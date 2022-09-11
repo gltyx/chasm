@@ -9,24 +9,36 @@
 class _INSPECTOR_ID {
 	none 										= 0x0000;	// 0x0000 Clear inspector
 
-	particles									= 0xa001;	// 0xa0xx Start currency section
-	strands										= 0xa002;
-	spirit										= 0xa003;
-	soul										= 0xa004;
+	offset_currency								= 0x0100;	// 0x01xx Start currency section
+	particles									= 0x0101;	// 0x01xx Start currency section
+	strands										= 0x0102;
+	spirit										= 0x0103;
+	soul										= 0x0104;
 
-	upgrade_steel_toed_boots 					= 0xa101;	// 0xa1xx Start upgrade section
+	offset_elements								= 0x0600;	// 0x06xx Start elements section
+	element_earth 								= eid.element_earth							+ this.offset_elements;
+	element_water 								= eid.element_water							+ this.offset_elements;
+	element_coal								= eid.element_coal							+ this.offset_elements;
+	element_copper								= eid.element_copper						+ this.offset_elements;
+	element_iron								= eid.element_iron							+ this.offset_elements;
+	element_fish								= eid.element_fish							+ this.offset_elements;
+
+	offset_upgrades								= 0xa100;	// 0xa1xx Start upgrade section
+	upgrade_steel_toed_boots 					= 0xa101;
 	upgrade_ant_farm							= 0xa102;
 	upgrade_catapult							= 0xa103;
 	upgrade_water_storage						= 0xa104;
 	upgrade_rain_barrels						= 0xa105;
 	upgrade_sprinkler							= 0xa106;
 
-	achievement_unknown			 				= 0xd100;	// 0xd1xx Start achievement section
-	achievement_babys_first_block 				= 0xd101;
-	achievement_reality_sprang_a_leak 			= 0xd102;
-	achievement_nothing_to_worry_about			= 0xd103;
-	achievement_minor_case_of_wormhole			= 0xd104;
-	achievement_eye_feel_extremely_unwell		= 0xd105;
+	offset_achivements							= 0xd100;	// 0xd1xx Start achievement section
+	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achivements;
+	achievement_reality_sprang_a_leak 			= aid.achievement_reality_sprang_a_leak 	+ this.offset_achivements;
+	achievement_nothing_to_worry_about			= aid.achievement_nothing_to_worry_about 	+ this.offset_achivements;
+	achievement_minor_case_of_wormhole			= aid.achievement_minor_case_of_wormhole 	+ this.offset_achivements;
+	achievement_eye_feel_extremely_unwell		= aid.achievement_eye_feel_extremely_unwell + this.offset_achivements;
+	achievement_unknown			 				= aid.achievement_count 					+ this.offset_achivements;
+
 } var iid = new _INSPECTOR_ID();
 
 function registerInspectorEvents() {
@@ -58,6 +70,10 @@ var inspector_symbol_spirit 	= "<i class = 'material-icons green-text text-light
 var inspector_symbol_soul 		= "<i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>";
 
 function showInspector(id) {
+	if (id != current_inspector_id) {
+		let selector = $("#inspector_content");
+		selector.stop().fadeTo(0, 0).fadeTo(300, 1);
+	}
 	switch(id) {
 		// Currency
 		case iid.particles:
@@ -85,6 +101,50 @@ function showInspector(id) {
 			$("#inspector_title")	.html(inspector_symbol_soul + "Soul Shards");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("When human flesh is dropped into the Chasm, it screams. Glassy shards grow around the edge of the pit... It's best not to consider what they are made of.");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+
+		// Elements
+		case iid.element_earth:
+			$("#inspector_title")	.html("<div class = 'element_sample' style = 'background-color: SaddleBrown;'></div>Dirt");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("blah blah blah");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("value: x");
+			break;
+		case iid.element_water:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_coal:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_copper:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_iron:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_fish:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unkown");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;

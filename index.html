@@ -34,9 +34,9 @@
 		<script type = "text/javascript" src = "./Chasm_Achievements.js"></script>
 		<script type = "text/javascript" src = "./Chasm_Debug.js"></script>
 		<script type = "text/javascript" src = "./Chasm_Upgrades.js"></script>
-		<script type = "text/javascript" src = "./Chasm_Inspector.js"></script>
 		<script type = "text/javascript" src = "./Chasm_Animation.js"></script>
 		<script type = "text/javascript" src = "./Chasm_Storage.js"></script>
+		<script type = "text/javascript" src = "./Chasm_Inspector.js"></script>
 		<script type = "text/javascript" src = "./Chasm.js"></script>
 		<link rel = "stylesheet" href = "./Chasm.css"></script>
 </head>
@@ -157,9 +157,8 @@
 
 							<div class = "unflex">
 								<p class = "resource_title">Earth</p>
-								<div id = "element_earth_amount" class = "vertcenter"></div>
-								<div id = "value_earth_amount" class = "vertcenter"></div>
-								
+								<div id = "element_earth_amount" class = "resource_info vertcenter"></div>
+								<div id = "value_earth_amount" class = "resource_info vertcenter"></div>
 							</div>
 						</div>
 
@@ -183,32 +182,36 @@
 					</div>
 					
 					<!--Water-->
-					<div id = "water_box" class = "flex card blue-grey lighten-4" style = "display: none;">
+					<div id = "water_box" class = "card blue-grey lighten-4" style = "display: none;">
 						<!--Storage-->
-						<canvas id = "water_storage" width = "66" height = "66"></canvas>
-						<div class = "unflex">
-							<div>
+						<div class = "flex">
+							<div style = "height: 66px; width: 66px;">
+								<canvas id = "water_storage" width = "66" height = "66"></canvas>
+							</div>
+
+							<div class = "unflex">
 								<p class = "resource_title">Water</p>
+								<div id = "element_water_amount" class = "resource_info vertcenter"></div>
+								<div id = "value_water_amount" class = "resource_info vertcenter"></div>
 							</div>
-
-							<div id = "element_water_amount" class = "flex"></div>
-							<div id = "value_water_amount" class = "flex"></div>
 						</div>
 
-						<!--Gather-->
-						<div style = "width: 88px;">
-							<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
+						<div class = "flex">
+							<!--Gather-->
+							<div style = "width: 88px;">
+								<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+									<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
+								</div>
+								<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
 							</div>
-							<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
-						</div>
 
-						<!--Drop-->
-						<div style = "width: 71px;">
-							<div id = "water_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
-								<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
+							<!--Drop-->
+							<div style = "width: 71px;">
+								<div id = "water_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+									<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
+								</div>
+								<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
 							</div>
-							<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
 						</div>
 					</div>
 				</div>
@@ -243,7 +246,7 @@
 			<div id = "right_col" class = "col s12 m3">
 				<!--Inspector Box-->
 				<div id = "inspector_box" class = "card blue-grey lighten-4">
-					<div class = "card-content">
+					<div id = "inspector_content" class = "card-content">
 						<div id = "inspector_title" class = "black-text vertcenter"></div>
 						<div id = "inspector_cost" class = "grey-text text-darken-3 vertcenter"></div>
 						<div id = "inspector_text" class = "grey-text text-darken-3"></div>

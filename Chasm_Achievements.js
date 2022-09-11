@@ -27,7 +27,9 @@ class _ACHIEVEMENT {
 	unlocked = false;
 	dom_id;
 
-	constructor(id, name, img_src) {
+	log_message;
+
+	constructor(id, name, img_src, log_message) {
 		this.id = id;
 
 		// Add element to achievement div
@@ -37,6 +39,15 @@ class _ACHIEVEMENT {
 		this.dom_id = $("#" + name);
 		this.dom_id.mouseenter(function(){highlightAchievementTile(id);});
 		this.dom_id.mouseleave(function(){resetAchievementTile(id);});
+
+		this.log_message = log_message;
+	}
+
+	unlock() {
+		this.unlocked = true;
+		resetAchievementTile(this.id);
+		showInspector(this.id + iid.offset_achivements);
+		chasm_log.write("Achievement: " + this.log_message);
 	}
 }
 
@@ -46,20 +57,35 @@ function init_achievements() {
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
 		switch (i) {
 			case aid.achievement_babys_first_block:
-				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_babys_first_block", "images/a_babys_first_block.png");
+				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_babys_first_block",
+															"images/a_babys_first_block.png",
+															"Baby's First Block");
 				break;
+
 			case aid.achievement_reality_sprang_a_leak:
-				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_reality_sprang_a_leak", "images/a_reality_sprang.png");
+				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_reality_sprang_a_leak",
+															"images/a_reality_sprang.png",
+															"Reality Sprang a Leak");
 				break;
+
 			case aid.achievement_nothing_to_worry_about:
-				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_nothing_to_worry_about", "images/a_nothing_to_worry_about.png");
+				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_nothing_to_worry_about",
+															"images/a_nothing_to_worry_about.png",
+															"Nothing to Worry About");
 				break;
+
 			case aid.achievement_minor_case_of_wormhole:
-				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_minor_case_of_wormhole", "images/a_minor_case_of_wormhole.png");
+				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_minor_case_of_wormhole",
+															"images/a_minor_case_of_wormhole.png",
+															"A Minor Case of Wormhole");
 				break;
+
 			case aid.achievement_eye_feel_extremely_unwell:
-				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_eye_feel_extremely_unwell", "images/a_eye_feel_extremely_unwell.png");
+				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_eye_feel_extremely_unwell",
+															"images/a_eye_feel_extremely_unwell.png",
+															"Eye Feel Extremely Unwell");
 				break;
+
 			default:
 				chasm_achievements[i] = new _ACHIEVEMENT(i, "a" + i, "images/a_locked.png");
 		}
@@ -70,32 +96,28 @@ function achievement_tick() {
 	// Reality sprang a leak (1 particle)
 	if (!chasm_achievements[aid.achievement_reality_sprang_a_leak].unlocked) {
 		if (particles.alltime.gte(1)) {
-			chasm_achievements[aid.achievement_reality_sprang_a_leak].unlocked = true;
-			resetAchievementTile(aid.achievement_reality_sprang_a_leak);
+			chasm_achievements[aid.achievement_reality_sprang_a_leak].unlock();
 		}
 	}
 
 	// Nothing to worry about (100 particles)
 	if (!chasm_achievements[aid.achievement_nothing_to_worry_about].unlocked) {
 		if (particles.alltime.gte(100)) {
-			chasm_achievements[aid.achievement_nothing_to_worry_about].unlocked = true;
-			resetAchievementTile(aid.achievement_nothing_to_worry_about);
+			chasm_achievements[aid.achievement_nothing_to_worry_about].unlock();
 		}
 	}
 
 	// Minor Case of Wormhole (10,000 particles)
 	if (!chasm_achievements[aid.achievement_minor_case_of_wormhole].unlocked) {
 		if (particles.alltime.gte(10000)) {
-			chasm_achievements[aid.achievement_minor_case_of_wormhole].unlocked = true;
-			resetAchievementTile(aid.achievement_minor_case_of_wormhole);
+			chasm_achievements[aid.achievement_minor_case_of_wormhole].unlock();
 		}
 	}
 
 	// Eye Feel Extremely Unwell (1,000,000 particles)
 	if (!chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlocked) {
 		if (particles.alltime.gte(1000000)) {
-			chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlocked = true;
-			resetAchievementTile(aid.achievement_eye_feel_extremely_unwell);
+			chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlock();
 		}
 	}
 }

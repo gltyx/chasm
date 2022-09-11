@@ -226,7 +226,7 @@ function buy_upgrade(upgrade) {
 				chasm_upgrades[uid.upgrade_water_storage].unlock();
 				$("#upgrade_water_storage").addClass("disabled");
 
-				$("#water_box").css("display", "flex");
+				$("#water_box").css("display", "block");
 			}
 			break;
 			

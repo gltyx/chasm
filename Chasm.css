@@ -98,6 +98,11 @@ canvas {
 .resource_title {
 	font-family: Tahoma, sans-serif;
 	font-weight: bold;
+	padding-left: 8px;
+}
+
+.resource_info {
+	padding-left: 16px;
 }
 
 .flex {
@@ -131,6 +136,12 @@ canvas {
 .locked_tile {
 	filter: grayscale(100%);
 	cursor: pointer;
+}
+
+.element_sample {
+	width: 12px;
+	height: 12px;
+	margin-left: 3px;
 }
 
 /* Chasm id's */
@@ -201,7 +212,8 @@ canvas {
 
 #log_box {
 	height: calc(100% - 280px);
-	padding-top: 5px;
+	padding-top: 8px;
 	padding-left: 8px;
 	color: white;
+	overflow: hidden;
 }

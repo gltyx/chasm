@@ -19,8 +19,9 @@ class _UPGRADE_ID {
 	upgrade_water_storage		= 0x0003;
 	upgrade_rain_barrels		= 0x0004;
 	upgrade_sprinkler			= 0x0005;
+	upgrade_prospectors_tools	= 0x0006;
 
-	upgrade_count				= 0x0006;
+	upgrade_count				= 0x0007;
 } var uid = new _UPGRADE_ID();
 
 class cost_map {
@@ -174,6 +175,15 @@ function initUpgrades() {
 					1,		// Soul
 				);
 				break;
+			
+			case uid.upgrade_prospectors_tools:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					100,	// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+				);
+				break;
 
 			default:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
@@ -241,6 +251,13 @@ function buy_upgrade(upgrade) {
 			if (chasm_upgrades[uid.upgrade_sprinkler].unlocked == false && chasm_upgrades[uid.upgrade_sprinkler].buy()) {
 				chasm_upgrades[uid.upgrade_sprinkler].unlock();
 				$("#upgrade_sprinkler").addClass("disabled");
+			}
+			break;
+
+		case "upgrade_prospectors_tools":
+			if (chasm_upgrades[uid.upgrade_prospectors_tools].unlocked == false && chasm_upgrades[uid.upgrade_prospectors_tools].buy()) {
+				chasm_upgrades[uid.upgrade_prospectors_tools].unlock();
+				$("#upgrade_prospectors_tools").addClass("disabled");
 			}
 			break;
 

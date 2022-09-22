@@ -94,16 +94,25 @@ class resource_storage {
 			// Choose brick type
 			let type;
 			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
-				type = eid.element_earth;
+				if (chasm_upgrades[uid.upgrade_prospectors_tools].unlocked) {
+					if (Math.random() > 0.975) {
+						type = eid.element_copper;
+					} else {
+						type = eid.element_earth;
+					}
+				} else {
+					type = eid.element_earth;
+				}
 			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
 				type = eid.element_water;
 			}
 	
 			// Choose brick color
-			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
+			if (type == eid.element_earth) {
 				color = colorRange_MkII(color_MkII_earth);
-
-			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
+			} else if (type == eid.element_copper) {
+				color = colorRange_MkII(color_MkII_copper);
+			} else if (type == eid.element_water) {
 				color_MkII_water_temp = color_MkII_water;
 				color_MkII_water_temp.darkness_low = 0.6 * ((this.canvas_h - draw_y) / this.canvas_h) + 0.2;
 				color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
@@ -201,6 +210,9 @@ class storage_bitmap {
 				case eid.element_earth:
 					currency_count[cid.currency_particles] += element_count[eid.element_earth] * 0.01;
 					break;
+				case eid.element_copper:
+					currency_count[cid.currency_strands] += element_count[eid.element_copper] * 0.01;
+					break;
 				case eid.element_water:
 					currency_count[cid.currency_particles] += element_count[eid.element_water] * 0.01;
 					break;
@@ -219,6 +231,13 @@ class storage_bitmap {
 			out 							+= "<p style = 'margin-left: 6px;'>";
 			out 							+= element_count[eid.element_earth];
 			out 							+= "<div class = 'element_sample' style = 'background-color: SaddleBrown;'></div>";
+			out								+= "</p>";
+		}
+
+		if (element_count[eid.element_copper] > 0) {
+			out 							+= "<p style = 'margin-left: 6px;'>";
+			out 							+= element_count[eid.element_copper];
+			out 							+= "<div class = 'element_sample' style = 'background-color: DarkOrange;'></div>";
 			out								+= "</p>";
 		}
 

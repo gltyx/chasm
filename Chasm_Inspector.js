@@ -30,6 +30,7 @@ class _INSPECTOR_ID {
 	upgrade_water_storage						= 0xa104;
 	upgrade_rain_barrels						= 0xa105;
 	upgrade_sprinkler							= 0xa106;
+	upgrade_prospectors_tools					= 0xa107;
 
 	offset_achivements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achivements;
@@ -53,6 +54,7 @@ function registerInspectorEvents() {
 	$("#select_upgrade_water_storage")			.mouseenter(function(){showInspector(iid.upgrade_water_storage);});
 	$("#select_upgrade_rain_barrels")			.mouseenter(function(){showInspector(iid.upgrade_rain_barrels);});
 	$("#select_upgrade_sprinkler")				.mouseenter(function(){showInspector(iid.upgrade_sprinkler);});
+	$("#select_upgrade_prospectors_tools")		.mouseenter(function(){showInspector(iid.upgrade_prospectors_tools);});
 
 	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
 	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});
@@ -191,6 +193,13 @@ function showInspector(id) {
 			$("#inspector_text")	.html("Attach a sprinkler system to your water tank to spray directly into the Chasm");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-drop Water");
+			break;
+		case iid.upgrade_prospectors_tools:
+			$("#inspector_title")	.html("Prospector's Tools");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_prospectors_tools].cost.stringify());
+			$("#inspector_text")	.html("An old prospector offers to sell you a spare pickaxe and shovel so you can gather earth from a little bit deeper");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Small chance of gathering copper ore");
 			break;
 
 		// Achievements

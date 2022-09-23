@@ -22,8 +22,6 @@ class _ACHIEVEMENT_ID {
 	achievement_count							= 0x0005;
 } var aid = new _ACHIEVEMENT_ID();
 
-var achievement_log_color = "LightGreen"
-
 class _ACHIEVEMENT {
 	id;
 	unlocked = false;
@@ -49,7 +47,7 @@ class _ACHIEVEMENT {
 		this.unlocked = true;
 		resetAchievementTile(this.id);
 		showInspector(this.id + iid.offset_achivements);
-		chasm_log.writeColor("Achievement: " + this.log_message, achievement_log_color);
+		chasm_log.writeColor("Achievement: " + this.log_message, log_color_achievement);
 	}
 }
 

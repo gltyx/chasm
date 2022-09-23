@@ -52,6 +52,10 @@ class saveData {
 	}
 }
 
+// Log colors
+var log_color_story 		= "GhostWhite"
+var log_color_achievement 	= "LightGreen"
+
 var chasm;
 var chasm_log;
 
@@ -67,6 +71,7 @@ function game_init() {
 
 	// Log Initialization
 	chasm_log = new lib_chasm_log("log_box", 35, 0);
+	chasm_log.writeColor("You stand in front of a massive, seemingly bottomless Chasm in the middle of nowhere. Some wretched urge inside you insists that you fill it up.", log_color_story);
 
 	// Upgrade Initialization
 	initUpgrades();
@@ -241,6 +246,7 @@ function drop(storage) {
 
 				if (chasm_achievements[aid.achievement_babys_first_block].unlocked == false) {
 					chasm_achievements[aid.achievement_babys_first_block].unlock();
+					chasm_log.writeColor("You drop a block of dirt into the Chasm's maw. A few motes of some mysterious substance float from the depths to the surface.", log_color_story);
 				}
 			}
 			break;

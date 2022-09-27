@@ -70,22 +70,26 @@ class _ACHIEVEMENT {
 		resetAchievementTile(this.id);
 		showInspector(this.id + iid.offset_achivements);
 
-		if (this.log_message != "") {
-			chasm_log.writeColor("Achievement: " + this.log_message, log_color_achievement);
-		}
-
-		if (this.unlock_message != "") {
-			chasm_log.writeColor(this.unlock_message, log_color_unlock);
+		if (this.log_message != "" || this.unlock_message != "" || this.story_message != "" || achievement_tab_hidden) {
+			chasm_log.writeSectionDivider();
 		}
 
 		if (this.story_message != "") {
 			chasm_log.writeColor(this.story_message, log_color_story);
 		}
 
+		if (this.unlock_message != "") {
+			chasm_log.writeColor(this.unlock_message, log_color_unlock);
+		}
+
 		if (achievement_tab_hidden) {
 			achievement_tab_hidden = false;
 			$("#tab_achievements").fadeIn(400);
 			chasm_log.writeColor("Unlocked: Achievements tab", log_color_unlock);
+		}
+
+		if (this.log_message != "") {
+			chasm_log.writeColor("Achievement: " + this.log_message, log_color_achievement);
 		}
 	}
 }
@@ -105,6 +109,10 @@ class _MILESTONE {
 
 	unlock() {
 		this.unlocked = true;
+
+		if (this.unlock_message != "" || this.story_message != "") {
+			chasm_log.writeSectionDivider();
+		}
 
 		if (this.story_message != "") {
 			chasm_log.writeColor(this.story_message, log_color_story);

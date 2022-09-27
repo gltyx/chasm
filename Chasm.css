@@ -16,6 +16,11 @@ canvas {
 	image-rendering: crisp-edges;
 }
 
+hr {
+	border: 1px dashed ghostwhite;
+	border-style: dashed none none none;
+}
+
 /* Materialize override */
 .container {
 	margin: 0 auto;

@@ -35,9 +35,14 @@ class _MILESTONE_ID {
 	milestone_first								= 0x0000;
 
 	// Milestone list
-	milestone_reveal_research					= 0X0000;		// Show research tab once you gather enough currency to buy an upgrade
+	milestone_reveal_research					= 0x0000;		// Show research tab once you gather enough currency to buy an upgrade
+	milestone_reveal_currency					= 0x0001;		// Show currency box after collecting a few blocks
+	milestone_reveal_currency_particles			= 0x0002;		// Show particles after getting some
+	milestone_reveal_currency_strands			= 0x0003;		// Show strands after getting some
+	milestone_reveal_currency_spirit			= 0x0004;		// Show spirit after getting some
+	milestone_reveal_currency_soul				= 0x0005;		// Show soul after getting some
 
-	milestone_count								= 0x0001;
+	milestone_count								= 0x0006;
 } var mid = new _MILESTONE_ID();
 
 class _ACHIEVEMENT {
@@ -127,7 +132,12 @@ class _MILESTONE {
 var chasm_achievements 	= new Array(aid.achievement_count);
 var chasm_milestones 	= new Array(mid.milestone_count);
 
-var achievement_tab_hidden = true;
+var achievement_tab_hidden 		= true;
+var currency_box_hidden 		= true;
+var currency_particles_hidden 	= true;
+var currency_strands_hidden 	= true;
+var currency_spirit_hidden 		= true;
+var currency_soul_hidden 		= true;
 
 function init_achievements() {
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
@@ -185,6 +195,27 @@ function init_milestones() {
 				chasm_milestones[i] = new _MILESTONE(i, "You are going need to make some improvements around here if you ever want to fill the Chasm.",
 														"Unlocked: Research tab");
 				break;
+				
+			case mid.milestone_reveal_currency:
+				chasm_milestones[i] = new _MILESTONE(i, "You are able to catch a few Void Particles in a jar. Maybe they can be useful?",
+														"Unlocked: Currency storage");
+				break;
+				
+			case mid.milestone_reveal_currency_particles:
+				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				break;
+			
+			case mid.milestone_reveal_currency_strands:
+				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				break;
+		
+			case mid.milestone_reveal_currency_spirit:
+				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				break;
+	
+			case mid.milestone_reveal_currency_soul:
+				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				break;
 
 			default:
 				chasm_milestones[i] = new _MILESTONE(i, "", "");
@@ -223,13 +254,72 @@ function achievement_tick() {
 }
 
 function milestone_tick() {
+	// Reveal particles (> 0 particles)
+	if (!chasm_milestones[mid.milestone_reveal_currency_particles].unlocked) {
+		if (particles.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_particles].unlock();
+			if (currency_particles_hidden) {
+				currency_particles_hidden = false;
+				$("#currency_particles_symbol").fadeIn(800);
+				$("#currency_particles_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal currency (0.12 particles)
+	else if (!chasm_milestones[mid.milestone_reveal_currency].unlocked) {
+		if (particles.alltime.gte(0.12)) {
+			chasm_milestones[mid.milestone_reveal_currency].unlock();
+			if (currency_box_hidden) {
+				currency_box_hidden = false;
+				$("#currency_box").fadeIn(800);
+			}
+		}
+	}
+
 	// Reveal research (0.4 particles)
-	if (!chasm_milestones[mid.milestone_reveal_research].unlocked) {
+	else if (!chasm_milestones[mid.milestone_reveal_research].unlocked) {
 		if (particles.alltime.gte(0.4)) {
 			chasm_milestones[mid.milestone_reveal_research].unlock();
 			if (research_tab_hidden) {
 				research_tab_hidden = false;
 				$("#tab_research").fadeIn(400);
+			}
+		}
+	}
+
+	// Reveal strands (> 0 strands)
+	if (!chasm_milestones[mid.milestone_reveal_currency_strands].unlocked) {
+		if (strands.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_strands].unlock();
+			if (currency_strands_hidden) {
+				currency_strands_hidden = false;
+				$("#currency_strands_symbol").fadeIn(800);
+				$("#currency_strands_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal spirit (> 0 spirit)
+	if (!chasm_milestones[mid.milestone_reveal_currency_spirit].unlocked) {
+		if (spirit.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_spirit].unlock();
+			if (currency_spirit_hidden) {
+				currency_spirit_hidden = false;
+				$("#currency_spirit_symbol").fadeIn(800);
+				$("#currency_spirit_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal soul (> 0 soul)
+	if (!chasm_milestones[mid.milestone_reveal_currency_soul].unlocked) {
+		if (soul.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_soul].unlock();
+			if (currency_soul_hidden) {
+				currency_soul_hidden = false;
+				$("#currency_soul_symbol").fadeIn(800);
+				$("#currency_soul_value").fadeIn(800);
 			}
 		}
 	}

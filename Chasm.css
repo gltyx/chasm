@@ -17,8 +17,8 @@ canvas {
 }
 
 hr {
-	border: 1px dashed ghostwhite;
-	border-style: dashed none none none;
+	border: 1px solid silver;
+	border-style: solid none none none;
 }
 
 /* Materialize override */

@@ -53,9 +53,10 @@ class saveData {
 }
 
 // Log colors
-var log_color_story 		= "GhostWhite"
-var log_color_achievement 	= "LightGreen"
-var log_color_unlock 		= "Tomato"
+var log_color_story 		= "GhostWhite";
+var log_color_achievement 	= "LightGreen";
+var log_color_unlock 		= "Tomato";
+var log_color_cheat 		= "Plum";
 
 var chasm;
 var chasm_log;

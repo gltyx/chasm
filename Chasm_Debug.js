@@ -14,7 +14,9 @@ function debug_free_upgrades() {
 	$("#debug_reprice_upgrades").removeClass("disabled");
 	$("#debug_free_upgrades").addClass("disabled");
 	showInspector(current_inspector_id);
-	return "Five finger discount!";
+
+	chasm_log.writeSectionDivider();
+	chasm_log.writeColor("Five finger discount!", log_color_cheat);
 }
 
 function debug_reprice_upgrades() {
@@ -33,7 +35,9 @@ function debug_reprice_upgrades() {
 	$("#debug_free_upgrades").removeClass("disabled");
 	$("#debug_reprice_upgrades").addClass("disabled");
 	showInspector(current_inspector_id);
-	return "It's like un-cheating.";
+
+	chasm_log.writeSectionDivider();
+	chasm_log.writeColor("It's like un-cheating.", log_color_cheat);
 }
 
 function debug_unlock_upgrades() {
@@ -46,7 +50,8 @@ function debug_unlock_upgrades() {
 		chasm_upgrades[i].unlock;
 	}
 
-	return "It's not cheating if you made the game.";
+	chasm_log.writeSectionDivider();
+	chasm_log.writeColor("It's not cheating if you made the game.", log_color_cheat);
 }
 
 function debug_unlock_achievements() {
@@ -58,5 +63,16 @@ function debug_unlock_achievements() {
 	
 	load_achivements();
 
-	return "A sense of pride and acomplisment washes over you.";
+	chasm_log.writeSectionDivider();
+	chasm_log.writeColor("A sense of pride and acomplishment washes over you.", log_color_cheat);
+}
+
+function debug_gain_100_each() {
+	particles.gain(100);
+	strands.gain(100);
+	spirit.gain(100);
+	soul.gain(100);
+
+	chasm_log.writeSectionDivider();
+	chasm_log.writeColor("A sense of pride and acomplishment washes over you.", log_color_cheat);
 }

@@ -90,28 +90,28 @@
 			<!--Left Column-->
 			<div id = "left_col" class = "col s12 m3">
 				<!--Currency Box-->
-				<div id = "currency_box" class = "card blue-grey darken-1">
+				<div id = "currency_box" class = "card blue-grey darken-1 hidden">
 					<div class = "card-content white-text" style = "display: flex;">
 
 						<!--Currency Icons-->
 						<div style = "display: block;">
 							<!--Void Particles-->
-							<div class = "currency_particles currency_line vertcenter">
+							<div id = "currency_particles_symbol" class = "currency_particles currency_line vertcenter" style = "display: none">
 								<i class = "material-icons purple-text text-lighten-3 currency_icon">blur_circular</i>
 							</div>
 	
 							<!--Gravity Strands-->
-							<div class = "currency_strands currency_line vertcenter">
+							<div id = "currency_strands_symbol" class = "currency_strands currency_line vertcenter" style = "display: none">
 								<i class = "material-icons amber-text text-lighten-1 currency_icon">gesture</i>
 							</div>
 	
 							<!--Spirit Sand-->
-							<div class = "currency_spirit currency_line vertcenter">
+							<div id = "currency_spirit_symbol" class = "currency_spirit currency_line vertcenter" style = "display: none">
 								<i class = "material-icons green-text text-lighten-2 currency_icon">flare</i>
 							</div>
 	
 							<!--Soul Splinters-->
-							<div class = "currency_soul currency_line vertcenter">
+							<div id = "currency_soul_symbol" class = "currency_soul currency_line vertcenter" style = "display: none">
 								<i class = "material-icons red-text text-lighten-2 currency_icon">whatshot</i>
 							</div>
 						</div>
@@ -119,22 +119,22 @@
 						<!--Currency Values-->
 						<div style = "display: block;">
 							<!--Void Particles-->
-							<div class = "currency_particles currency_line currency_amount vertcenter">
+							<div id = "currency_particles_value" class = "currency_particles currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_particles_amount"></span></p>
 							</div>
 
 							<!--Gravity Strands-->
-							<div class = "currency_strands currency_line currency_amount vertcenter">
+							<div id = "currency_strands_value" class = "currency_strands currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_strands_amount"></span></p>
 							</div>
 
 							<!--Spirit Sand-->
-							<div class = "currency_spirit currency_line currency_amount vertcenter">
+							<div id = "currency_spirit_value" class = "currency_spirit currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_spirit_amount"></span></p>
 							</div>
 
 							<!--Soul Splinters-->
-							<div class = "currency_soul currency_line currency_amount vertcenter">
+							<div id = "currency_soul_value" class = "currency_soul currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_soul_amount"></span></p>
 							</div>
 						</div>
@@ -240,6 +240,7 @@
 					<a id = "debug_free_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_free_upgrades();">Free Upgrades</a>
 					<a id = "debug_reprice_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text disabled" onclick = "debug_reprice_upgrades();">Re-price Upgrades</a>
 					<a id = "debug_unlock_achievements" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_unlock_achievements();">Unlock Achievements</a>
+					<a id = "debug_gain_100_each" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_gain_100_each();">Gain 100 of each resource</a>
 				</div>
 			</div>
 

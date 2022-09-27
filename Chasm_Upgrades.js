@@ -118,6 +118,7 @@ class _CHASM_UPGRADE {
 }
 
 var chasm_upgrades = new Array(uid.upgrade_count);
+var research_tab_hidden = true;
 
 function initUpgrades() {
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {

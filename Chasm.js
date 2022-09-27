@@ -55,6 +55,7 @@ class saveData {
 // Log colors
 var log_color_story 		= "GhostWhite"
 var log_color_achievement 	= "LightGreen"
+var log_color_unlock 		= "Tomato"
 
 var chasm;
 var chasm_log;
@@ -78,10 +79,12 @@ function game_init() {
 
 	// Achievement Initialization
 	init_achievements();
+	init_milestones();
 
 	// Timing Initialization
 	chasm_timing_add_process_to_scheduler(game_tick, 80, 0);
 	chasm_timing_add_process_to_scheduler(achievement_tick, 700, chasm_process_flag_disable_multitick);
+	chasm_timing_add_process_to_scheduler(milestone_tick, 700, chasm_process_flag_disable_multitick);
 	chasm_timing_init(animation_tick);
 	
 	// Register Events
@@ -246,7 +249,6 @@ function drop(storage) {
 
 				if (chasm_achievements[aid.achievement_babys_first_block].unlocked == false) {
 					chasm_achievements[aid.achievement_babys_first_block].unlock();
-					chasm_log.writeColor("You drop a block of dirt into the Chasm's maw. A few motes of some mysterious substance float from the depths to the surface.", log_color_story);
 				}
 			}
 			break;

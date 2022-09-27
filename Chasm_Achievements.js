@@ -7,29 +7,49 @@
 	// 1. Generate achievement resources									[xxx.png added to images]
 	// 2. Add Achievement Id												[_ACHIEVEMENT_ID]
 	// 3. Add achievement resources	to the init function					[init_achivements]
-	// 4. Add achievement trigger to tick function or other location		[achievement_tick / wherever you want to handle the unlcok]
-	
+	// 4. Add achievement trigger to tick function or other location		[achievement_tick / wherever you want to handle the unlock]
+
+// Chasm Milestones
+	// Milestones are used to track player progress without an entry on the achievement page.
+	//
+	// To add a new Milestone, do the following:
+	//
+	// 1. Add Milestone Id													[_MILESTONE_ID]
+	// 2. Add milestone to the init function								[init_milestones]
+	// 3. Add milestone trigger to tick function or other location			[milestone_tick / wherever you want to handle the unlock]
+
 class _ACHIEVEMENT_ID {
 	achievement_first							= 0x0000;
 
 	// Achievement list
-	achievement_babys_first_block 				= 0x0000;
-	achievement_reality_sprang_a_leak 			= 0x0001;
-	achievement_nothing_to_worry_about			= 0x0002;
-	achievement_minor_case_of_wormhole			= 0x0003;
-	achievement_eye_feel_extremely_unwell		= 0x0004;
+	achievement_babys_first_block 				= 0x0000;		// Drop a block into the Chasm
+	achievement_reality_sprang_a_leak 			= 0x0001;		// Collect 1 particle alltime
+	achievement_nothing_to_worry_about			= 0x0002;		// Collect 100 particles alltime
+	achievement_minor_case_of_wormhole			= 0x0003;		// Collect 10000 particles alltime
+	achievement_eye_feel_extremely_unwell		= 0x0004;		// Collect 1000000 particles alltime
 
 	achievement_count							= 0x0005;
 } var aid = new _ACHIEVEMENT_ID();
+	
+class _MILESTONE_ID {
+	milestone_first								= 0x0000;
+
+	// Milestone list
+	milestone_reveal_research					= 0X0000;		// Show research tab once you gather enough currency to buy an upgrade
+
+	milestone_count								= 0x0001;
+} var mid = new _MILESTONE_ID();
 
 class _ACHIEVEMENT {
 	id;
 	unlocked = false;
 	dom_id;
 
-	log_message;
+	log_message = "";
+	story_message = "";
+	unlock_message = "";
 
-	constructor(id, name, img_src, log_message) {
+	constructor(id, name, img_src, log_message, story_message, unlock_message) {
 		this.id = id;
 
 		// Add element to achievement div
@@ -41,17 +61,65 @@ class _ACHIEVEMENT {
 		this.dom_id.mouseleave(function(){resetAchievementTile(id);});
 
 		this.log_message = log_message;
+		this.story_message = story_message;
+		this.unlock_message = unlock_message;
 	}
 
 	unlock() {
 		this.unlocked = true;
 		resetAchievementTile(this.id);
 		showInspector(this.id + iid.offset_achivements);
-		chasm_log.writeColor("Achievement: " + this.log_message, log_color_achievement);
+
+		if (this.log_message != "") {
+			chasm_log.writeColor("Achievement: " + this.log_message, log_color_achievement);
+		}
+
+		if (this.unlock_message != "") {
+			chasm_log.writeColor(this.unlock_message, log_color_unlock);
+		}
+
+		if (this.story_message != "") {
+			chasm_log.writeColor(this.story_message, log_color_story);
+		}
+
+		if (achievement_tab_hidden) {
+			achievement_tab_hidden = false;
+			$("#tab_achievements").fadeIn(400);
+			chasm_log.writeColor("Unlocked: Achievements tab", log_color_unlock);
+		}
 	}
 }
 
-var chasm_achievements = new Array(aid.achievement_count);
+class _MILESTONE {
+	id;
+	unlocked = false;
+
+	story_message = "";
+	unlock_message = "";
+
+	constructor(id, story_message, unlock_message) {
+		this.id = id;
+		this.story_message = story_message;
+		this.unlock_message = unlock_message;
+	}
+
+	unlock() {
+		this.unlocked = true;
+
+		if (this.story_message != "") {
+			chasm_log.writeColor(this.story_message, log_color_story);
+		}
+
+		if (this.unlock_message != "") {
+			chasm_log.writeColor(this.unlock_message, log_color_unlock);
+		}
+	}
+}
+
+var chasm_achievements 	= new Array(aid.achievement_count);
+var chasm_milestones 	= new Array(mid.milestone_count);
+
+var achievement_tab_hidden = true;
 
 function init_achievements() {
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
@@ -59,35 +127,59 @@ function init_achievements() {
 			case aid.achievement_babys_first_block:
 				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_babys_first_block",
 															"images/a_babys_first_block.png",
-															"Baby's First Block");
+															"Baby's First Block",
+															"You drop a block of dirt into the Chasm's maw. A few motes of some mysterious substance float from the depths to the surface.",
+															"");
 				break;
 
 			case aid.achievement_reality_sprang_a_leak:
 				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_reality_sprang_a_leak",
 															"images/a_reality_sprang.png",
-															"Reality Sprang a Leak");
+															"Reality Sprang a Leak",
+															"",
+															"");
 				break;
 
 			case aid.achievement_nothing_to_worry_about:
 				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_nothing_to_worry_about",
 															"images/a_nothing_to_worry_about.png",
-															"Nothing to Worry About");
+															"Nothing to Worry About",
+															"",
+															"");
 				break;
 
 			case aid.achievement_minor_case_of_wormhole:
 				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_minor_case_of_wormhole",
 															"images/a_minor_case_of_wormhole.png",
-															"A Minor Case of Wormhole");
+															"A Minor Case of Wormhole",
+															"",
+															"");
 				break;
 
 			case aid.achievement_eye_feel_extremely_unwell:
 				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_eye_feel_extremely_unwell",
 															"images/a_eye_feel_extremely_unwell.png",
-															"Eye Feel Extremely Unwell");
+															"Eye Feel Extremely Unwell",
+															"",
+															"");
 				break;
 
 			default:
-				chasm_achievements[i] = new _ACHIEVEMENT(i, "a" + i, "images/a_locked.png");
+				chasm_achievements[i] = new _ACHIEVEMENT(i, "a" + i, "images/a_locked.png", "", "", "");
+		}
+	}
+}
+
+function init_milestones() {
+	for (let i = mid.milestone_first; i < mid.milestone_count; i++) {
+		switch (i) {
+			case mid.milestone_reveal_research:
+				chasm_milestones[i] = new _MILESTONE(i, "You are going need to make some improvements around here if you ever want to fill the Chasm.",
+														"Unlocked: Research tab");
+				break;
+
+			default:
+				chasm_milestones[i] = new _MILESTONE(i, "", "");
 		}
 	}
 }
@@ -101,23 +193,32 @@ function achievement_tick() {
 	}
 
 	// Nothing to worry about (100 particles)
-	if (!chasm_achievements[aid.achievement_nothing_to_worry_about].unlocked) {
+	else if (!chasm_achievements[aid.achievement_nothing_to_worry_about].unlocked) {
 		if (particles.alltime.gte(100)) {
 			chasm_achievements[aid.achievement_nothing_to_worry_about].unlock();
 		}
 	}
 
 	// Minor Case of Wormhole (10,000 particles)
-	if (!chasm_achievements[aid.achievement_minor_case_of_wormhole].unlocked) {
+	else if (!chasm_achievements[aid.achievement_minor_case_of_wormhole].unlocked) {
 		if (particles.alltime.gte(10000)) {
 			chasm_achievements[aid.achievement_minor_case_of_wormhole].unlock();
 		}
 	}
 
 	// Eye Feel Extremely Unwell (1,000,000 particles)
-	if (!chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlocked) {
+	else if (!chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlocked) {
 		if (particles.alltime.gte(1000000)) {
 			chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlock();
+		}
+	}
+}
+
+function milestone_tick() {
+	// Reveal research (0.4 particles)
+	if (!chasm_milestones[mid.milestone_reveal_research].unlocked) {
+		if (particles.alltime.gte(0.4)) {
+			chasm_milestones[mid.milestone_reveal_research].unlock();
 		}
 	}
 }

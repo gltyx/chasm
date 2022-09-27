@@ -227,6 +227,10 @@ function milestone_tick() {
 	if (!chasm_milestones[mid.milestone_reveal_research].unlocked) {
 		if (particles.alltime.gte(0.4)) {
 			chasm_milestones[mid.milestone_reveal_research].unlock();
+			if (research_tab_hidden) {
+				research_tab_hidden = false;
+				$("#tab_research").fadeIn(400);
+			}
 		}
 	}
 }

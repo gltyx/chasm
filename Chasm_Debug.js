@@ -37,6 +37,11 @@ function debug_reprice_upgrades() {
 }
 
 function debug_unlock_upgrades() {
+	if (research_tab_hidden) {
+		research_tab_hidden = false;
+		$("#tab_research").fadeIn(400);
+	}
+
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
 		chasm_upgrades[i].unlock;
 	}

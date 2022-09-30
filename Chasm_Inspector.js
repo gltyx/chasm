@@ -10,7 +10,7 @@ class _INSPECTOR_ID {
 	none 										= 0x0000;	// 0x0000 Clear inspector
 
 	offset_currency								= 0x0100;	// 0x01xx Start currency section
-	particles									= 0x0101;	// 0x01xx Start currency section
+	particles									= 0x0101;
 	strands										= 0x0102;
 	spirit										= 0x0103;
 	soul										= 0x0104;
@@ -24,13 +24,17 @@ class _INSPECTOR_ID {
 	element_fish								= eid.element_fish							+ this.offset_elements;
 
 	offset_upgrades								= 0xa100;	// 0xa1xx Start upgrade section
-	upgrade_steel_toed_boots 					= 0xa101;
-	upgrade_ant_farm							= 0xa102;
-	upgrade_catapult							= 0xa103;
-	upgrade_water_storage						= 0xa104;
-	upgrade_rain_barrels						= 0xa105;
-	upgrade_sprinkler							= 0xa106;
-	upgrade_prospectors_tools					= 0xa107;
+	upgrade_steel_toed_boots 					= uid.upgrade_steel_toed_boots				+ this.offset_upgrades;
+	upgrade_tamping_rod							= uid.upgrade_tamping_rod					+ this.offset_upgrades;
+	upgrade_trash_compactor						= uid.upgrade_trash_compactor				+ this.offset_upgrades;
+	upgrade_macrosonic_agitator					= uid.upgrade_macrosonic_agitator			+ this.offset_upgrades;
+	upgrade_gravity_well						= uid.upgrade_gravity_well					+ this.offset_upgrades;
+	upgrade_ant_farm							= uid.upgrade_ant_farm						+ this.offset_upgrades;
+	upgrade_catapult							= uid.upgrade_catapult						+ this.offset_upgrades;
+	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
+	upgrade_rain_barrels						= uid.upgrade_rain_barrels					+ this.offset_upgrades;
+	upgrade_sprinkler							= uid.upgrade_sprinkler						+ this.offset_upgrades;
+	upgrade_prospectors_tools					= uid.upgrade_prospectors_tools				+ this.offset_upgrades;
 
 	offset_achivements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achivements;
@@ -49,6 +53,10 @@ function registerInspectorEvents() {
 	$(".currency_soul")							.mouseenter(function(){showInspector(iid.soul);});
 
 	$("#select_upgrade_steel_toed_boots")		.mouseenter(function(){showInspector(iid.upgrade_steel_toed_boots);});
+	$("#select_upgrade_tamping_rod")			.mouseenter(function(){showInspector(iid.upgrade_tamping_rod);});
+	$("#select_upgrade_trash_compactor")		.mouseenter(function(){showInspector(iid.upgrade_trash_compactor);});
+	$("#select_upgrade_macrosonic_agitator")	.mouseenter(function(){showInspector(iid.upgrade_macrosonic_agitator);});
+	$("#select_upgrade_gravity_well")			.mouseenter(function(){showInspector(iid.upgrade_gravity_well);});
 	$("#select_upgrade_ant_farm")				.mouseenter(function(){showInspector(iid.upgrade_ant_farm);});
 	$("#select_upgrade_catapult")				.mouseenter(function(){showInspector(iid.upgrade_catapult);});
 	$("#select_upgrade_water_storage")			.mouseenter(function(){showInspector(iid.upgrade_water_storage);});
@@ -81,7 +89,7 @@ function showInspector(id) {
 		case iid.particles:
 			$("#inspector_title")	.html(inspector_symbol_particles + "Void Particles");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("When matter is dropped into the Chasm, it releases small clouds of nothing. Our researchers say this is supposed to be impossible.");
+			$("#inspector_text")	.html("When matter is dropped into the Chasm, it releases small clouds of nothing. Not nothing... Something? Something that is nothing.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -95,7 +103,7 @@ function showInspector(id) {
 		case iid.spirit:
 			$("#inspector_title")	.html(inspector_symbol_spirit + "Spirit Sand");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("When living matter is dropped into the Chasm, it sprays grains of silver-green sand. Our researchers are conivinced this sand has something to do with a metaphysical 'life-force'.");
+			$("#inspector_text")	.html("When living matter is dropped into the Chasm, it sprays grains of silver-green sand. Our researchers are convinced this sand has something to do with a metaphysical 'life-force'.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -156,6 +164,34 @@ function showInspector(id) {
 			$("#inspector_title")	.html("Steel-toed Boots");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_steel_toed_boots].cost.stringify());
 			$("#inspector_text")	.html("You can fit a lot more dirt into your storage with a few well-placed stomps");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("2x Earth density");
+			break;
+		case iid.upgrade_tamping_rod:
+			$("#inspector_title")	.html("Tamping Rod");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_tamping_rod].cost.stringify());
+			$("#inspector_text")	.html("A long stick with a flat metal plate at one end. The perfect tool for squishing dirt or less lethal jousting.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("2x Earth density");
+			break;
+		case iid.upgrade_trash_compactor:
+			$("#inspector_title")	.html("Steel-toed Boots");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_trash_compactor].cost.stringify());
+			$("#inspector_text")	.html("A repurposed trash compactor can smash earth into a dense cube. Ignore the stench and raccoons.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("2x Earth density");
+			break;
+		case iid.upgrade_macrosonic_agitator:
+			$("#inspector_title")	.html("Steel-toed Boots");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_macrosonic_agitator].cost.stringify());
+			$("#inspector_text")	.html("A marvel of modern science. Vibrates the earth at incredible frequencies to squeeze out every last bit of empty space.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("2x Earth density");
+			break;
+		case iid.upgrade_gravity_well:
+			$("#inspector_title")	.html("Steel-toed Boots");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_gravity_well].cost.stringify());
+			$("#inspector_text")	.html("A miniature black hole which can compact earth to a ridiculous degree. You can also say it ate your homework.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;

@@ -55,7 +55,7 @@ class saveData {
 // Log colors
 var log_color_story 		= "GhostWhite";
 var log_color_achievement 	= "LightGreen";
-var log_color_unlock 		= "Tomato";
+var log_color_unlock 		= "LightPink";
 var log_color_cheat 		= "Plum";
 
 var chasm;
@@ -184,7 +184,7 @@ function draw_resources() {
 function game_tick(scalar) {
 	
 	// Earth Gather
-	if (chasm_upgrades[uid.upgrade_ant_farm].unlocked) {
+	if (chasm_upgrades[uid.upgrade_ant_farm].unlocked && $("#earth_gather_checkbox").is(':checked')) {
 		earth_gather_progress += (50 * scalar);
 	}
 	if (earth_gather_progress > 100) {
@@ -197,7 +197,7 @@ function game_tick(scalar) {
 	}
 
 	// Earth Drop
-	if (chasm_upgrades[uid.upgrade_catapult].unlocked) {
+	if (chasm_upgrades[uid.upgrade_catapult].unlocked && $("#earth_drop_checkbox").is(':checked')) {
 		earth_drop_progress += (10 * scalar);
 	}
 	if (earth_drop_progress > 100) {
@@ -210,7 +210,7 @@ function game_tick(scalar) {
 	}
 
 	// Water Gather
-	if (chasm_upgrades[uid.upgrade_rain_barrels].unlocked) {
+	if (chasm_upgrades[uid.upgrade_rain_barrels].unlocked && $("#water_gather_checkbox").is(':checked')) {
 		water_gather_progress += (5 * scalar);
 	}
 	if (water_gather_progress > 100) {
@@ -219,7 +219,7 @@ function game_tick(scalar) {
 	}
 
 	// Water Drop
-	if (chasm_upgrades[uid.upgrade_sprinkler].unlocked) {
+	if (chasm_upgrades[uid.upgrade_sprinkler].unlocked && $("#water_drop_checkbox").is(':checked')) {
 		water_drop_progress += (0.8 * scalar);
 	}
 	if (water_gather_progress > 100) {

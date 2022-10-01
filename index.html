@@ -164,11 +164,17 @@
 
 						<div class = "flex">
 							<!--Gather-->
-							<div style = "width: 88px;">
+							<div class = "gather_button" style = "width: 88px;">
 								<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
 									<div id = "earth_gather_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
+								<div style = "border: 1px dashed whitesmoke; border-top: none;">
+									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+										<input type = "checkbox" id = "earth_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+									</label></p></form></div>
+								</div>
 							</div>
 
 							<!--Drop-->
@@ -177,6 +183,12 @@
 									<div id = "earth_drop_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick = "drop('earth_storage')">Drop</a>
+								<div style = "border: 1px dashed whitesmoke; border-top: none;">
+									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+										<input type = "checkbox" id = "earth_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+									</label></p></form></div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -198,11 +210,17 @@
 
 						<div class = "flex">
 							<!--Gather-->
-							<div style = "width: 88px;">
+							<div class = "gather_button" style = "width: 88px;">
 								<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
 									<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
+								<div style = "border: 1px dashed whitesmoke; border-top: none;">
+									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+										<input type = "checkbox" id = "water_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+									</label></p></form></div>
+								</div>
 							</div>
 
 							<!--Drop-->
@@ -211,6 +229,12 @@
 									<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
+								<div style = "border: 1px dashed whitesmoke; border-top: none;">
+									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+										<input type = "checkbox" id = "water_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+									</label></p></form></div>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -36,13 +36,12 @@ class _MILESTONE_ID {
 
 	// Milestone list
 	milestone_reveal_research					= 0x0000;		// Show research tab once you gather enough currency to buy an upgrade
-	milestone_reveal_currency					= 0x0001;		// Show currency box after collecting a few blocks
-	milestone_reveal_currency_particles			= 0x0002;		// Show particles after getting some
-	milestone_reveal_currency_strands			= 0x0003;		// Show strands after getting some
-	milestone_reveal_currency_spirit			= 0x0004;		// Show spirit after getting some
-	milestone_reveal_currency_soul				= 0x0005;		// Show soul after getting some
+	milestone_reveal_currency_particles			= 0x0001;		// Show particles after getting some
+	milestone_reveal_currency_strands			= 0x0002;		// Show strands after getting some
+	milestone_reveal_currency_spirit			= 0x0003;		// Show spirit after getting some
+	milestone_reveal_currency_soul				= 0x0004;		// Show soul after getting some
 
-	milestone_count								= 0x0006;
+	milestone_count								= 0x0005;
 } var mid = new _MILESTONE_ID();
 
 class _ACHIEVEMENT {
@@ -189,11 +188,6 @@ function init_milestones() {
 			case mid.milestone_reveal_research:
 				chasm_milestones[i] = new _MILESTONE(i, "You are going need to make some improvements around here if you ever want to fill the Chasm.",
 														"Unlocked: Research tab");
-				break;
-				
-			case mid.milestone_reveal_currency:
-				chasm_milestones[i] = new _MILESTONE(i, "You are able to catch a few Void Particles in a jar. Maybe they can be useful?",
-														"Unlocked: Currency storage");
 				break;
 				
 			case mid.milestone_reveal_currency_particles:

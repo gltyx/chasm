@@ -23,18 +23,6 @@ class _ELEMENT_ID {
 	element_count		= 0x0007;
 } var eid = new _ELEMENT_ID();
 
-class _CURRENCY_ID {
-	currency_first		= 0x0000;
-
-	// Currency list
-	currency_particles 	= 0x0000;
-	currency_strands 	= 0x0001;
-	currency_spirit 	= 0x0002;
-	currency_soul	 	= 0x0003;
-
-	currency_count		= 0x0004;
-} var cid = new _CURRENCY_ID();
-
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {
 	name = "";										// Storage name (for debugging)
@@ -186,9 +174,9 @@ class storage_bitmap {
 		}
 	}
 
-	element_count() { // Returns count of all elements
+	element_count() { // Returns count of all elements in a storage
 		let element_count = new Array(eid.element_count);
-		for (let i = 0; i < element_count.length; i++) {
+		for (let i = 0; i < eid.element_count; i++) {
 			element_count[i] = 0;
 		}
 
@@ -198,14 +186,13 @@ class storage_bitmap {
 		return element_count;
 	}
 
-	value(element_count) {
-
+	value(element_count) { // Returns currency value of all elements in a storage
 		let currency_count = new Array(cid.currency_count);
-		for (let i = 0; i < currency_count.length; i++) {
+		for (let i = 0; i < cid.currency_count; i++) {
 			currency_count[i] = 0;
 		}
 
-		for (let i = 0; i < element_count.length; i++) {
+		for (let i = 0; i < eid.element_count; i++) {
 			switch (i) {
 				case eid.element_earth:
 					currency_count[cid.currency_particles] += element_count[eid.element_earth] * 0.01;
@@ -257,28 +244,12 @@ class storage_bitmap {
 		let value_prewrapper 				= "<p style = 'margin-left: 6px;'>";
 		let value_postwrapper 				= "</p>";
 
-		if (currency_count[cid.currency_particles] > 0) {
-			out 							+= value_prewrapper;
-			out 							+= currency_count[cid.currency_particles];
-			out 							+= value_postwrapper + inspector_symbol_particles;
-		}
-
-		if (currency_count[cid.currency_strands] > 0) {
-			out 							+= value_prewrapper;
-			out 							+= currency_count[cid.currency_strands];
-			out 							+= value_postwrapper + inspector_symbol_strands;
-		}
-
-		if (currency_count[cid.currency_spirit] > 0) {
-			out 							+= value_prewrapper;
-			out 							+= currency_count[cid.currency_spirit];
-			out 							+= value_postwrapper + inspector_symbol_spirit;
-		}
-
-		if (currency_count[cid.currency_soul] > 0) {
-			out 							+= value_prewrapper;
-			out 							+= currency_count[cid.currency_soul];
-			out 							+= value_postwrapper + inspector_symbol_soul;
+		for (let i = 0; i < cid.currency_count; i++) {
+			if (currency_count[i] > 0) {
+				out 							+= value_prewrapper;
+				out 							+= currency_count[i];
+				out 							+= value_postwrapper + chasm_currency[i].inspector_symbol;
+			}
 		}
 
 		return out;
@@ -295,25 +266,5 @@ class bitmap_bit {
 
 	clear() {
 		this.type = eid.element_none;
-	}
-}
-
-function currency_gain(currency_map) {
-	for(let i = 0; i < currency_map.length; i++) {
-		switch (i) {
-			case cid.currency_particles:
-				particles.gain(currency_map[cid.currency_particles]);
-				break;
-			case cid.currency_strands:
-				strands.gain(currency_map[cid.currency_strands]);
-				break;
-			case cid.currency_spirit:
-				spirit.gain(currency_map[cid.currency_spirit]);
-				break;
-			case cid.currency_soul:
-				soul.gain(currency_map[cid.currency_soul]);
-				break;
-			default:
-		}
 	}
 }

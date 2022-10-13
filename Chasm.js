@@ -1,16 +1,4 @@
 // Resource Initialization
-var particles = new chasm_resource("Void Particles");
-particles.option_unlocked = true;
-
-var strands = new chasm_resource("Gravity Strands");
-strands.option_unlocked = true;
-
-var spirit = new chasm_resource("Spirit Sand");
-spirit.option_unlocked = true;
-
-var soul = new chasm_resource("Soul Splinters");
-soul.option_unlocked = true;
-
 var earth = new chasm_resource_small("earth");
 earth.option_unlocked = true;
 earth.option_cap = true;
@@ -66,14 +54,12 @@ function game_init() {
 	// Page Initialization
 	$("#lib_chasm_version").html(lib_chasm_version());
 
-	// Animation Initialization
-	earth_storage.init($("#earth_storage")[0].getContext("2d"));
-	water_storage.init($("#water_storage")[0].getContext("2d"));
-	animation_tick();
-
 	// Log Initialization
 	chasm_log = new lib_chasm_log("log_box", 35, 0);
 	chasm_log.writeColor("You stand in front of a massive, seemingly bottomless Chasm in the middle of nowhere. Some wretched urge inside you insists that you fill it up.", log_color_story);
+
+	// Currency Initialization
+	initCurrency();
 
 	// Upgrade Initialization
 	initUpgrades();
@@ -81,6 +67,11 @@ function game_init() {
 	// Achievement Initialization
 	init_achievements();
 	init_milestones();
+
+	// Animation Initialization
+	earth_storage.init($("#earth_storage")[0].getContext("2d"));
+	water_storage.init($("#water_storage")[0].getContext("2d"));
+	animation_tick();
 
 	// Timing Initialization
 	chasm_timing_add_process_to_scheduler(game_tick, 80, 0);
@@ -164,10 +155,10 @@ function animation_tick() {
 
 function draw_resources() {
 	// Update currency
-	$("#currency_particles_amount").html(particles.current.toFixed(2));
-	$("#currency_strands_amount").html(strands.current.toFixed(2));
-	$("#currency_spirit_amount").html(spirit.current.toFixed(2));
-	$("#currency_soul_amount").html(soul.current.toFixed(2));
+	$("#currency_particles_amount").html(chasm_currency[cid.currency_particles].resource.current.toFixed(2));
+	$("#currency_strands_amount").html(chasm_currency[cid.currency_strands].resource.current.toFixed(2));
+	$("#currency_spirit_amount").html(chasm_currency[cid.currency_spirit].resource.current.toFixed(2));
+	$("#currency_soul_amount").html(chasm_currency[cid.currency_soul].resource.current.toFixed(2));
 
 	// Update resources
 	let earth_element_count = earth_storage.bitmap.element_count();

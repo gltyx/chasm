@@ -133,11 +133,6 @@ var chasm_achievements 	= new Array(aid.achievement_count);
 var chasm_milestones 	= new Array(mid.milestone_count);
 
 var achievement_tab_hidden 		= true;
-var currency_box_hidden 		= true;
-var currency_particles_hidden 	= true;
-var currency_strands_hidden 	= true;
-var currency_spirit_hidden 		= true;
-var currency_soul_hidden 		= true;
 
 function init_achievements() {
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
@@ -226,60 +221,50 @@ function init_milestones() {
 function achievement_tick() {
 	// Reality sprang a leak (1 particle)
 	if (!chasm_achievements[aid.achievement_reality_sprang_a_leak].unlocked) {
-		if (particles.alltime.gte(1)) {
+		if (chasm_currency[cid.currency_particles].resource.alltime.gte(1)) {
 			chasm_achievements[aid.achievement_reality_sprang_a_leak].unlock();
 		}
 	}
 
 	// Nothing to worry about (100 particles)
 	else if (!chasm_achievements[aid.achievement_nothing_to_worry_about].unlocked) {
-		if (particles.alltime.gte(100)) {
+		if (chasm_currency[cid.currency_particles].resource.alltime.gte(100)) {
 			chasm_achievements[aid.achievement_nothing_to_worry_about].unlock();
 		}
 	}
 
 	// Minor Case of Wormhole (10,000 particles)
 	else if (!chasm_achievements[aid.achievement_minor_case_of_wormhole].unlocked) {
-		if (particles.alltime.gte(10000)) {
+		if (chasm_currency[cid.currency_particles].resource.alltime.gte(10000)) {
 			chasm_achievements[aid.achievement_minor_case_of_wormhole].unlock();
 		}
 	}
 
 	// Eye Feel Extremely Unwell (1,000,000 particles)
 	else if (!chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlocked) {
-		if (particles.alltime.gte(1000000)) {
+		if (chasm_currency[cid.currency_particles].resource.alltime.gte(1000000)) {
 			chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlock();
 		}
 	}
 }
 
 function milestone_tick() {
-	// Reveal particles (> 0 particles)
+	// Reveal currency & particles (> 0 particles)
 	if (!chasm_milestones[mid.milestone_reveal_currency_particles].unlocked) {
-		if (particles.alltime.gt(0)) {
+		if (chasm_currency[cid.currency_particles].resource.alltime.gt(0)) {
 			chasm_milestones[mid.milestone_reveal_currency_particles].unlock();
-			if (currency_particles_hidden) {
-				currency_particles_hidden = false;
-				$("#currency_particles_symbol").fadeIn(800);
-				$("#currency_particles_value").fadeIn(800);
-			}
-		}
-	}
-
-	// Reveal currency (0.12 particles)
-	else if (!chasm_milestones[mid.milestone_reveal_currency].unlocked) {
-		if (particles.alltime.gte(0.12)) {
-			chasm_milestones[mid.milestone_reveal_currency].unlock();
-			if (currency_box_hidden) {
-				currency_box_hidden = false;
+			if (chasm_currency[cid.currency_particles].hidden) {
+				chasm_currency[cid.currency_particles].hidden = false;
 				$("#currency_box").fadeIn(800);
+				$("#currency_particles_symbol").fadeIn(900);
+				$("#currency_particles_value").fadeIn(900);
 			}
 		}
 	}
 
 	// Reveal research (0.4 particles)
 	else if (!chasm_milestones[mid.milestone_reveal_research].unlocked) {
-		if (particles.alltime.gte(0.4)) {
+		if (chasm_currency[cid.currency_particles].resource.alltime.gte(0.4)) {
 			chasm_milestones[mid.milestone_reveal_research].unlock();
 			if (research_tab_hidden) {
 				research_tab_hidden = false;
@@ -290,10 +275,10 @@ function milestone_tick() {
 
 	// Reveal strands (> 0 strands)
 	if (!chasm_milestones[mid.milestone_reveal_currency_strands].unlocked) {
-		if (strands.alltime.gt(0)) {
+		if (chasm_currency[cid.currency_strands].resource.alltime.gt(0)) {
 			chasm_milestones[mid.milestone_reveal_currency_strands].unlock();
-			if (currency_strands_hidden) {
-				currency_strands_hidden = false;
+			if (chasm_currency[cid.currency_strands].hidden) {
+				chasm_currency[cid.currency_strands].hidden = false;
 				$("#currency_strands_symbol").fadeIn(800);
 				$("#currency_strands_value").fadeIn(800);
 			}
@@ -302,10 +287,10 @@ function milestone_tick() {
 
 	// Reveal spirit (> 0 spirit)
 	if (!chasm_milestones[mid.milestone_reveal_currency_spirit].unlocked) {
-		if (spirit.alltime.gt(0)) {
+		if (chasm_currency[cid.currency_spirit].resource.alltime.gt(0)) {
 			chasm_milestones[mid.milestone_reveal_currency_spirit].unlock();
-			if (currency_spirit_hidden) {
-				currency_spirit_hidden = false;
+			if (chasm_currency[cid.currency_spirit].hidden) {
+				chasm_currency[cid.currency_spirit].hidden = false;
 				$("#currency_spirit_symbol").fadeIn(800);
 				$("#currency_spirit_value").fadeIn(800);
 			}
@@ -314,10 +299,10 @@ function milestone_tick() {
 
 	// Reveal soul (> 0 soul)
 	if (!chasm_milestones[mid.milestone_reveal_currency_soul].unlocked) {
-		if (soul.alltime.gt(0)) {
+		if (chasm_currency[cid.currency_soul].resource.alltime.gt(0)) {
 			chasm_milestones[mid.milestone_reveal_currency_soul].unlock();
-			if (currency_soul_hidden) {
-				currency_soul_hidden = false;
+			if (chasm_currency[cid.currency_soul].hidden) {
+				chasm_currency[cid.currency_soul].hidden = false;
 				$("#currency_soul_symbol").fadeIn(800);
 				$("#currency_soul_value").fadeIn(800);
 			}

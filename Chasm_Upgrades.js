@@ -8,7 +8,6 @@
 	// 4. (optional) Add upgrade handling to game task		[game_tick]
 	// 5. (todo) Add upgrade unlocked state to save module	[]
 
-
 class _UPGRADE_ID {
 	upgrade_first					= 0x0000;
 
@@ -29,88 +28,26 @@ class _UPGRADE_ID {
 	upgrade_count					= 0x000b;
 } var uid = new _UPGRADE_ID();
 
-class cost_map {
-	particles = 0;
-	strands = 0;
-	spirit = 0;
-	soul = 0;
-
-	constructor(particles, strands, spirit, soul) {
-		this.particles = particles;
-		this.strands = strands;
-		this.spirit = spirit;
-		this.soul = soul;
-	}
-
-	stringify() {
-		let out = "";
-
-		let cost_prewrapper 				= "<p style = 'margin-left: 6px;'>";
-		let cost_postwrapper 				= "</p>";
-
-		let cost_unaffordable_prewrapper 	= "<span style = 'color: red;'>";
-		let cost_unaffordable_postwrapper 	= "<span style = 'color: red;'>";
-
-		if (this.particles > 0) {
-			out 												+= cost_prewrapper;
-			if (particles.current.lt(this.particles)) out 		+= cost_unaffordable_prewrapper;
-			out 												+= this.particles;
-			if (particles.current.lt(this.particles)) out 		+= cost_unaffordable_postwrapper;
-			out 												+= cost_postwrapper + inspector_symbol_particles;
-		}
-
-		if (this.strands > 0) {
-			out 												+= cost_prewrapper;
-			if (strands.current.lt(this.strands)) out 			+= cost_unaffordable_prewrapper;
-			out 												+= this.strands;
-			if (strands.current.lt(this.strands)) out 			+= cost_unaffordable_postwrapper;
-			out 												+= cost_postwrapper + inspector_symbol_strands;
-		}
-
-		if (this.spirit > 0) {
-			out 												+= cost_prewrapper;
-			if (spirit.current.lt(this.spirit)) out 			+= cost_unaffordable_prewrapper;
-			out 												+= this.spirit;
-			if (spirit.current.lt(this.spirit)) out 			+= cost_unaffordable_postwrapper;
-			out 												+= cost_postwrapper + inspector_symbol_spirit;
-		}
-
-		if (this.soul > 0) {
-			out 												+= cost_prewrapper;
-			if (soul.current.lt(this.soul)) out 				+= cost_unaffordable_prewrapper;
-			out 												+= this.soul;
-			if (soul.current.lt(this.soul)) out 				+= cost_unaffordable_postwrapper;
-			out 												+= cost_postwrapper + inspector_symbol_soul;
-		}
-
-		return out;
-	}
-}
-
 class _CHASM_UPGRADE {
 	unlocked = false;
-	cost = new cost_map(0, 0, 0, 0);
+	cost = new currency_value_map([]);
 
-	constructor(aparticles, strands, spirit, soul) {
-		this.cost = new cost_map(aparticles, strands, spirit, soul);
+	constructor(cost) {
+		this.cost = new currency_value_map(cost);
 	}
 
 	buy() {
-		if (particles.current.gte(this.cost.particles) &&
-			strands.current.gte(this.cost.strands) &&
-			soul.current.gte(this.cost.soul) &&
-			spirit.current.gte(this.cost.spirit)) {
-			
-			particles.spend(this.cost.particles);
-			strands.spend(this.cost.strands);
-			soul.spend(this.cost.soul);
-			spirit.spend(this.cost.spirit);
-
-			return true;
-		} else {
-			return false;
+		for (let i = 0; i < cid.currency_count; i++) {
+			if (chasm_currency[i].resource.current.lt(this.cost.map[i])) {
+				return false;
+			}
 		}
-			
+
+		for (let i = 0; i < cid.currency_count; i++) {
+			chasm_currency[i].resource.spend(this.cost.map[i]);
+		}
+
+		return true;
 	}
 
 	unlock() {
@@ -129,111 +66,111 @@ function initUpgrades() {
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
 		switch(i) {
 			case uid.upgrade_steel_toed_boots:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					0.4,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			case uid.upgrade_tamping_rod:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					1,		// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			case uid.upgrade_trash_compactor:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					2,		// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			case uid.upgrade_macrosonic_agitator:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					3,		// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			case uid.upgrade_gravity_well:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					4,		// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			case uid.upgrade_ant_farm:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					0.8,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			case uid.upgrade_catapult:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					1.5,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			case uid.upgrade_water_storage:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					20,		// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			case uid.upgrade_rain_barrels:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					100,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			case uid.upgrade_sprinkler:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					1,		// Particles
 					1,		// Strands
 					1,		// Spirit
 					1,		// Soul
-				);
+				]);
 				break;
 			
 			case uid.upgrade_prospectors_tools:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					100,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 				break;
 
 			default:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					0,		// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				);
+				]);
 		}
 	}
 }

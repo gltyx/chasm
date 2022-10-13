@@ -10,10 +10,10 @@ class _INSPECTOR_ID {
 	none 										= 0x0000;	// 0x0000 Clear inspector
 
 	offset_currency								= 0x0100;	// 0x01xx Start currency section
-	particles									= 0x0101;
-	strands										= 0x0102;
-	spirit										= 0x0103;
-	soul										= 0x0104;
+	currency_particles							= cid.currency_particles					+ this.offset_currency;
+	currency_strands							= cid.currency_strands						+ this.offset_currency;
+	currency_spirit								= cid.currency_spirit						+ this.offset_currency;
+	currency_soul								= cid.currency_soul							+ this.offset_currency;
 
 	offset_elements								= 0x0600;	// 0x06xx Start elements section
 	element_earth 								= eid.element_earth							+ this.offset_elements;
@@ -71,13 +71,7 @@ function registerInspectorEvents() {
 	$("#achievement_eye_feel_extremely_unwell")	.mouseenter(function(){showInspector(iid.achievement_eye_feel_extremely_unwell);});
 }
 
-
 var current_inspector_id = iid.none; // Saved id of current inspector panel. Used to redraw inspector.
-
-var inspector_symbol_particles 	= "<i class = 'material-icons purple-text text-lighten-3 currency_icon'>blur_circular</i>";
-var inspector_symbol_strands 	= "<i class = 'material-icons amber-text text-darken-1 currency_icon'>gesture</i>";
-var inspector_symbol_spirit 	= "<i class = 'material-icons green-text text-lighten-2 currency_icon'>flare</i>";
-var inspector_symbol_soul 		= "<i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>";
 
 function showInspector(id) {
 	if (id != current_inspector_id) {
@@ -86,29 +80,29 @@ function showInspector(id) {
 	}
 	switch(id) {
 		// Currency
-		case iid.particles:
-			$("#inspector_title")	.html(inspector_symbol_particles + "Void Particles");
+		case iid.currency_particles:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_particles].inspector_symbol + "Void Particles");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("When matter is dropped into the Chasm, it releases small clouds of nothing. Not nothing... Something? Something that is nothing.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
-		case iid.strands:
-			$("#inspector_title")	.html(inspector_symbol_strands + "Gravity Strands");
+		case iid.currency_strands:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_strands].inspector_symbol + "Gravity Strands");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("When dense matter is dropped into the Chasm, it releases gossamer strands of gravity. Our researchers say gravity has no carrying particle, but here it is.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
-		case iid.spirit:
-			$("#inspector_title")	.html(inspector_symbol_spirit + "Spirit Sand");
+		case iid.currency_spirit:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_spirit].inspector_symbol + "Spirit Sand");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("When living matter is dropped into the Chasm, it sprays grains of silver-green sand. Our researchers are convinced this sand has something to do with a metaphysical 'life-force'.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
-		case iid.soul:
-			$("#inspector_title")	.html(inspector_symbol_soul + "Soul Shards");
+		case iid.currency_soul:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_soul].inspector_symbol + "Soul Shards");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("When human flesh is dropped into the Chasm, it screams. Glassy shards grow around the edge of the pit... It's best not to consider what they are made of.");
 			$("#inspector_divider")	.css("display", "none");

@@ -3,12 +3,12 @@
 
 function debug_free_upgrades() {
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
-		chasm_upgrades[i].cost = new cost_map(
+		chasm_upgrades[i].cost = new currency_value_map([
 			0,		// Particles
 			0,		// Strands
 			0,		// Spirit
 			0,		// Soul
-		);
+		]);
 	}
 
 	$("#debug_reprice_upgrades").removeClass("disabled");
@@ -68,10 +68,9 @@ function debug_unlock_achievements() {
 }
 
 function debug_gain_100_each() {
-	particles.gain(100);
-	strands.gain(100);
-	spirit.gain(100);
-	soul.gain(100);
+	for (let i = 0; i < cid.currency_count; i++) {
+		chasm_currency[i].resource.gain(100);
+	}
 
 	chasm_log.writeSectionDivider();
 	chasm_log.writeColor("A sense of pride and acomplishment washes over you.", log_color_cheat);

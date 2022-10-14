@@ -1,44 +1,8 @@
-// Resource Initialization
-var earth = new chasm_resource_small("earth");
-earth.option_unlocked = true;
-earth.option_cap = true;
-
-var water = new chasm_resource_small("water");
-water.option_unlocked = true;
-water.option_cap = true;
-
-// Storage Initialization
-var earth_storage = new resource_storage("earth_storage", earth);
-earth_storage.storage_flags |= STORAGE_FLAGS_EARTH;
-earth_storage.brick_w = 32;
-earth_storage.brick_h = 32;
-earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-
-var water_storage = new resource_storage("water_storage", water);
-water_storage.storage_flags |= STORAGE_FLAGS_WATER;
-water_storage.brick_w = 64;
-water_storage.brick_h = 1;
-water.setCap((water_storage.canvas_w * water_storage.canvas_h) / (water_storage.brick_w * water_storage.brick_h));
-
 // Transient globals (not saved across sessions)
 var earth_gather_progress = 0;
 var earth_drop_progress = 0;
 var water_gather_progress = 0;
 var water_drop_progress = 0;
-
-// Game Save data
-// Need a way to handle save data version change
-class saveData {
-	saveCount;
-	other_stuff;
-	morethings;
-
-	constructor() {
-		this.saveCount = 1;
-		this.other_stuff = 0;
-		this.morethings = 3;
-	}
-}
 
 // Log colors
 var log_color_story 		= "GhostWhite";
@@ -46,8 +10,12 @@ var log_color_achievement 	= "LightGreen";
 var log_color_unlock 		= "LightPink";
 var log_color_cheat 		= "Plum";
 
-var chasm;
 var chasm_log;
+
+// Materialize Colors
+var color_disabled = "blue-grey lighten-3";
+var color_earth = "brown lighten-1";
+var color_water = "blue lighten-2";
 
 // Game Initialization
 function game_init() {
@@ -57,6 +25,9 @@ function game_init() {
 	// Log Initialization
 	chasm_log = new lib_chasm_log("log_box", 35, 0);
 	chasm_log.writeColor("You stand in front of a massive, seemingly bottomless Chasm in the middle of nowhere. Some wretched urge inside you insists that you fill it up.", log_color_story);
+
+	// Storage Initialization
+	initStorage();
 
 	// Currency Initialization
 	initCurrency();
@@ -83,24 +54,11 @@ function game_init() {
 	registerInspectorEvents();
 
 	// Load Saved Game
-	chasm = JSON.parse(localStorage.getItem("chasm"));
-	if (!chasm) {
-		// New Game
-		chasm = new saveData();
-	} else {
-		// Load Game
-		chasm.saveCount++;
-	}
-	localStorage.setItem("chasm", JSON.stringify(chasm));
+	loadSave();
 
 	// Loading finished, reveal the game
 	$("#game_box").css("display", "block")
 }
-
-// Materialize Colors
-var color_disabled = "blue-grey lighten-3";
-var color_earth = "brown lighten-1";
-var color_water = "blue lighten-2"
 
 function animation_tick() {
 	draw_resources();

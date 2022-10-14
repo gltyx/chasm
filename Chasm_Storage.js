@@ -8,6 +8,15 @@ var STORAGE_CANVAS_H_DEFAULT = 64;
 var STORAGE_FLAGS_EARTH = 1 << 0;
 var STORAGE_FLAGS_WATER = 1 << 1;
 
+// Resource Initialization
+var earth;
+var water;
+
+// Storage Initialization
+var earth_storage;
+var water_storage;
+
+// Storage Elements
 class _ELEMENT_ID {
 	element_first		= 0x0000;
 
@@ -22,6 +31,28 @@ class _ELEMENT_ID {
 
 	element_count		= 0x0007;
 } var eid = new _ELEMENT_ID();
+
+function initStorage() {
+	earth = new chasm_resource_small("earth");
+	earth.option_unlocked = true;
+	earth.option_cap = true;
+
+	water = new chasm_resource_small("water");
+	water.option_unlocked = true;
+	water.option_cap = true;
+
+	earth_storage = new resource_storage("earth_storage", earth);
+	earth_storage.storage_flags |= STORAGE_FLAGS_EARTH;
+	earth_storage.brick_w = 32;
+	earth_storage.brick_h = 32;
+	earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
+
+	water_storage = new resource_storage("water_storage", water);
+	water_storage.storage_flags |= STORAGE_FLAGS_WATER;
+	water_storage.brick_w = 64;
+	water_storage.brick_h = 1;
+	water.setCap((water_storage.canvas_w * water_storage.canvas_h) / (water_storage.brick_w * water_storage.brick_h));
+}
 
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {

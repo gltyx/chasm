@@ -1,27 +1,37 @@
 // Game Save data
 // Need a way to handle save data version change
+chasm_version_major = 0;
+chasm_version_minor = 1;
+
 class saveData {
+	version_major;
+	version_minor;
 	saveCount;
-	other_stuff;
-	morethings;
 
 	constructor() {
+		this.version_major = chasm_version_major;
+		this.version_minor = chasm_version_minor;
 		this.saveCount = 1;
-		this.other_stuff = 0;
-		this.morethings = 3;
 	}
 }
 
-var chasm;
+var chasm_save;
 
 function loadSave() {
-	chasm = JSON.parse(localStorage.getItem("chasm"));
-	if (!chasm) {
+	chasm_save = JSON.parse(localStorage.getItem("chasm"));
+	if (!chasm_save) {
 		// New Game
-		chasm = new saveData();
+		chasm_save = new saveData();
 	} else {
 		// Load Game
-		chasm.saveCount++;
 	}
-	localStorage.setItem("chasm", JSON.stringify(chasm));
+}
+
+function storeSave() {
+	chasm_save.saveCount++;
+	localStorage.setItem("chasm", JSON.stringify(chasm_save));
+}
+
+function autoSave() {
+	storeSave();
 }

@@ -164,7 +164,6 @@ form {
 
 #game_box {
 	padding-top: 12px;
-	height: 100%;
 }
 
 #left_col {
@@ -194,8 +193,6 @@ form {
 #right_col {
 	margin: 0px 0px 12px 0px;
 	padding: 0px 0px 12px 10px;
-
-	height: 100%;
 }
 
 #inspector_box {

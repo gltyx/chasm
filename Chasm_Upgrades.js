@@ -252,6 +252,8 @@ function buy_upgrade(upgrade) {
 			if (chasm_upgrades[uid.upgrade_ant_farm].unlocked == false && chasm_upgrades[uid.upgrade_ant_farm].buy()) {
 				chasm_upgrades[uid.upgrade_ant_farm].unlock();
 				$("#upgrade_ant_farm").addClass("disabled");
+				
+				$("#earth_gather_menu").fadeIn(400);
 			}
 			break;
 		
@@ -259,6 +261,8 @@ function buy_upgrade(upgrade) {
 			if (chasm_upgrades[uid.upgrade_catapult].unlocked == false && chasm_upgrades[uid.upgrade_catapult].buy()) {
 				chasm_upgrades[uid.upgrade_catapult].unlock();
 				$("#upgrade_catapult").addClass("disabled");
+				
+				$("#earth_drop_menu").fadeIn(400);
 			}
 			break;
 			
@@ -275,6 +279,8 @@ function buy_upgrade(upgrade) {
 			if (chasm_upgrades[uid.upgrade_rain_barrels].unlocked == false && chasm_upgrades[uid.upgrade_rain_barrels].buy()) {
 				chasm_upgrades[uid.upgrade_rain_barrels].unlock();
 				$("#upgrade_rain_barrels").addClass("disabled");
+				
+				$("#water_drop_menu").fadeIn(400);
 			}
 			break;
 			
@@ -282,6 +288,8 @@ function buy_upgrade(upgrade) {
 			if (chasm_upgrades[uid.upgrade_sprinkler].unlocked == false && chasm_upgrades[uid.upgrade_sprinkler].buy()) {
 				chasm_upgrades[uid.upgrade_sprinkler].unlock();
 				$("#upgrade_sprinkler").addClass("disabled");
+				
+				$("#water_drop_menu").fadeIn(400);
 			}
 			break;
 

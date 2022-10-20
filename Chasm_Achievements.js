@@ -249,7 +249,6 @@ function milestone_tick() {
 			chasm_milestones[mid.milestone_reveal_currency_particles].unlock();
 			if (chasm_currency[cid.currency_particles].hidden) {
 				chasm_currency[cid.currency_particles].hidden = false;
-				$("#currency_box").fadeIn(800);
 				$("#currency_particles_symbol").fadeIn(900);
 				$("#currency_particles_value").fadeIn(900);
 			}

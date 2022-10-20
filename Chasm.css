@@ -167,8 +167,11 @@ form {
 }
 
 #left_col {
-	margin: 0px 0px 0px 0px;
+	margin: 0px 0px 12px 0px;
 	padding: 0px 10px 0px 0px;
+
+	position: sticky;
+	top: 12px;
 }
 
 #currency_box {
@@ -176,7 +179,7 @@ form {
 }
 
 #mid_col {
-	margin: 0px 0px 0px 0px;
+	margin: 0px 0px 12px 0px;
 	padding: 0px 0px 0px 0px;
 }
 
@@ -192,7 +195,10 @@ form {
 
 #right_col {
 	margin: 0px 0px 12px 0px;
-	padding: 0px 0px 12px 10px;
+	padding: 0px 0px 0px 10px;
+
+	position: sticky;
+	top: 12px;
 }
 
 #inspector_box {
@@ -222,7 +228,7 @@ form {
 }
 
 #log_box {
-	height: calc(100% - 280px);
+	height: calc(100% - 190px);
 	padding-top: 12px;
 	padding-left: 12px;
 	padding-right: 12px;

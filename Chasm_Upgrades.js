@@ -280,7 +280,7 @@ function buy_upgrade(upgrade) {
 				chasm_upgrades[uid.upgrade_rain_barrels].unlock();
 				$("#upgrade_rain_barrels").addClass("disabled");
 				
-				$("#water_drop_menu").fadeIn(400);
+				$("#water_gather_menu").fadeIn(400);
 			}
 			break;
 			

@@ -47,10 +47,10 @@ class _INSPECTOR_ID {
 } var iid = new _INSPECTOR_ID();
 
 function registerInspectorEvents() {
-	$(".currency_particles")					.mouseenter(function(){showInspector(iid.particles);});
-	$(".currency_strands")						.mouseenter(function(){showInspector(iid.strands);});
-	$(".currency_spirit")						.mouseenter(function(){showInspector(iid.spirit);});
-	$(".currency_soul")							.mouseenter(function(){showInspector(iid.soul);});
+	$(".currency_particles").each(function(){	$(this).mouseenter(function(){showInspector(iid.currency_particles);});});
+	$(".currency_strands").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_strands);});});
+	$(".currency_spirit").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_spirit);});});
+	$(".currency_soul").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_soul);});});
 
 	$("#select_upgrade_steel_toed_boots")		.mouseenter(function(){showInspector(iid.upgrade_steel_toed_boots);});
 	$("#select_upgrade_tamping_rod")			.mouseenter(function(){showInspector(iid.upgrade_tamping_rod);});

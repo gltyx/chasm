@@ -175,6 +175,7 @@ form {
 }
 
 #currency_box {
+	height: calc(100% - 20px);
 	padding: 10px 10px 10px 12px;
 }
 

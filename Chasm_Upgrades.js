@@ -173,6 +173,8 @@ function initUpgrades() {
 				]);
 		}
 	}
+
+	drawResearchMap();
 }
 
 function lock_all_upgrades() {
@@ -302,4 +304,96 @@ function buy_upgrade(upgrade) {
 
 		default:
 	}
+}
+
+class _TILE_ID {
+	tile_first						= 0x0000;
+
+	// Tile list
+	tile_none 						= 0x0000;
+	tile_connect_ud 				= 0x0001;	// up down
+	tile_connect_ur 				= 0x0002;	// up right
+	tile_connect_ul 				= 0x0003;	// up left
+	tile_connect_lr 				= 0x0004;	// left right
+	tile_connect_ld 				= 0x0005;	// left down
+	tile_connect_rd 				= 0x0006;	// right down
+	tile_connect_ulr				= 0x0007;	// up left right
+	tile_connect_uld				= 0x0008;	// up left down
+	tile_connect_urd				= 0x0009;	// up right down
+	tile_connect_lrd				= 0x000a;	// left right down
+	tile_connect_ulrd				= 0x000b;	// up left right down
+
+	tile_count						= 0x000c;
+} var tid = new _TILE_ID();
+
+function drawResearchMap() {
+	let map = generateResearchMap();
+	let out;
+
+	for (let i = 0; i < map.length; i++) {
+		out += "<div class = 'upgrade_tile' style = 'background-color: ";
+
+		switch (map[i]) {
+			case tid.tile_connect_ud:
+				out += "AliceBlue";
+				break;
+
+			case tid.tile_connect_ur:
+				out += "AntiqueWhite";
+				break;
+				
+			case tid.tile_connect_ul:
+				out += "Aqua";
+				break;
+				
+			case tid.tile_connect_lr:
+				out += "Silver";
+				break;
+				
+			case tid.tile_connect_ld:
+				out += "Aquamarine";
+				break;
+				
+			case tid.tile_connect_rd:
+				out += "Azure";
+				break;
+				
+			case tid.tile_connect_ulr:
+				out += "Beige";
+				break;
+				
+			case tid.tile_connect_uld:
+				out += "Bisque";
+				break;
+				
+			case tid.tile_connect_urd:
+				out += "Black";
+				break;
+				
+			case tid.tile_connect_lrd:
+				out += "Blue";
+				break;
+				
+			case tid.tile_connect_ulrd:
+				out += "Maroon";
+				break;
+				
+			default:
+				out += "Coral";
+		}
+
+		out += "'></div>";
+	}
+
+	$("#research_map").html(out);
+}
+
+function generateResearchMap() {
+	let out = [];
+
+	for (let i = tid.tile_first; i < tid.tile_count; i++) {
+		out.push(i);
+	}
+
+	return out;
 }

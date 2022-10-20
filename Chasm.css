@@ -157,6 +157,11 @@ form {
 	margin-right: 8px;
 }
 
+.upgrade_tile {
+	width: 20px;
+	height: 20px;
+}
+
 /* Chasm id's */
 #chasm_title {
 	padding-left: 34px;

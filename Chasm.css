@@ -1,0 +1,246 @@
+/* Structural modifications */
+p {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	height: 100%;
+}
+
+canvas {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+hr {
+	border: 1px solid silver;
+	border-style: solid none none none;
+}
+
+form {
+	margin-bottom: 0px;
+}
+
+/* Materialize override */
+.container {
+	margin: 0 auto;
+	max-width: 1280px;
+	min-width: 1280px;
+	width: 90%;
+}
+
+.row {
+	margin: 0px;
+	padding: 0px;
+}
+
+.tabs-vertical .tabs {
+	height: auto;
+	-ms-flex-direction: column;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	display: -webkit-flex;
+	display: flex;
+  }
+
+.tabs-vertical .tab {
+	width: 100%;
+}
+
+.tabs-vertical .tab .active {
+  -moz-transition: border-color .5s ease;
+  -o-transition: border-color .5s ease;
+  -webkit-transition: border-color .5s ease;
+  transition: border-color .5s ease;
+  border-right: 3px solid #424242;
+}
+
+.card {
+	margin: 0px;
+	padding: 0px;
+}
+
+.card-content {
+	margin: 0px;
+	padding: 0px;
+}
+
+.card .card-content {
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Chasm classes */
+.noble { /* Prevents highlighting/dragging */
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+
+	-webkit-user-drag: none;
+	-khtml-user-drag: none;
+	-moz-user-drag: none;
+	-o-user-drag: none;
+	user-drag: none;
+}
+
+.testoutline { /*Simple border for checking boundaries*/
+	border: 1px solid black;
+}
+
+.hidden {
+	display: none;
+}
+
+.pixelart {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+.resource_title {
+	font-family: Tahoma, sans-serif;
+	font-weight: bold;
+	padding-left: 8px;
+}
+
+.resource_info {
+	padding-left: 16px;
+}
+
+.flex {
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.unflex {
+	display: block;
+}
+
+.vertcenter {
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+}
+
+.currency_line {
+	margin-bottom: 3px;
+}
+
+.currency_icon {
+	font-size: 22px;
+	margin-right: 3px;
+}
+
+.currency_amount {
+	padding-left: 3px;
+}
+
+.locked_tile {
+	filter: grayscale(100%);
+	cursor: pointer;
+}
+
+.element_sample {
+	width: 12px;
+	height: 12px;
+	margin-left: 3px;
+}
+
+.gather_button {
+	margin-right: 8px;
+}
+
+.upgrade_tile {
+	width: 20px;
+	height: 20px;
+}
+
+/* Chasm id's */
+#chasm_title {
+	padding-left: 34px;
+}
+
+#game_box {
+	padding-top: 12px;
+}
+
+#left_col {
+	margin: 0px 0px 12px 0px;
+	padding: 0px 10px 0px 0px;
+
+	position: sticky;
+	top: 10px;
+}
+
+#currency_box {
+	height: calc(100% - 20px);
+	padding: 10px 10px 10px 12px;
+}
+
+#mid_col {
+	margin: 0px 0px 12px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+#earth_box {
+	padding: 5px 5px 5px 5px;
+	margin-bottom: 5px;
+}
+
+#water_box {
+	padding: 5px 5px 5px 5px;
+	margin-bottom: 5px;
+}
+
+#right_col {
+	margin: 0px 0px 12px 0px;
+	padding: 0px 0px 0px 10px;
+
+	position: sticky;
+	top: 10px;
+}
+
+#inspector_box {
+	margin: 0px 0px 8px 0px;
+	padding: 10px 10px 10px 12px;
+
+	height: 160px;
+	line-height: 1.3;
+}
+
+#inspector_title {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#inspector_text {
+	font-size: 14px;
+}
+
+#inspector_cost {
+	padding-left: 12px;
+	font-size: 14px;
+}
+
+#inspector_subtext {
+	font-size: 14px;
+}
+
+#log_box {
+	height: calc(100% - 190px);
+	padding-top: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+	
+	line-height: 1.3;
+
+	color: white;
+	overflow: hidden;
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html style = "height: 100%">
+
+<head>
+	<title>Chasm</title>
+	<meta charset = "utf-8">
+
+	<!--Library sources-->
+		<!--jQuery-->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+		<!--bignumber.js-->
+		<script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
+
+		<!--Materialize-->
+    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+		<!--Remote lib_chasm source-->
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm.js"></script>
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_timing.js"></script>
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_logging.js"></script>
+		<!--<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_math.js"></script>-->
+		
+
+		<!--Local lib_chasm source (for parallel development)-->
+		<!--
+		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm.js"></script>
+		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_timing.js"></script>
+		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_logging.js"></script>
+		<!--<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_math.js"></script>-->
+
+		<!--Game script source-->
+		<script type = "text/javascript" src = "./Chasm_Achievements.js"></script>
+		<script type = "text/javascript" src = "./Chasm_Debug.js"></script>
+		<script type = "text/javascript" src = "./Chasm_Upgrades.js"></script>
+		<script type = "text/javascript" src = "./Chasm_Animation.js"></script>
+		<script type = "text/javascript" src = "./Chasm_Storage.js"></script>
+		<script type = "text/javascript" src = "./Chasm_Currency.js"></script>
+		<script type = "text/javascript" src = "./Chasm_Inspector.js"></script>
+		<script type = "text/javascript" src = "./Chasm_Save.js"></script>
+		<script type = "text/javascript" src = "./Chasm.js"></script>
+		<link rel = "stylesheet" href = "./Chasm.css"></script>
+</head>
+
+<body onload = "game_init();">
+
+	<!--Navbar-->
+	<nav class = "nav-extended noble">
+		<!--Upper Navbar-->
+		<div class = "nav-wrapper blue-grey darken-2">
+			
+			<!--Title-->
+			<div id = "chasm_title">
+				<p class = "brand-logo">Chasm<i class = "material-icons ">call_to_action</i></p>
+			</div>
+
+			<!--Sidenav Button-->
+			<a href = "#" data-target = "chasm_sidenav" class = "sidenav-trigger"><i class = "material-icons">menu</i></a>
+
+			<!--lib_chasm link-->
+			<ul class = "right hide-on-med-and-down vertcenter">
+				<li><a href = "https://github.com/Blooperly/lib_chasm" target = ”_blank” style = "vertical-align: middle;" draggable = "false"><img src = "images/GitHub-Mark-32px.png" style = "vertical-align: middle;"><span style = "margin-left: 8px; margin-top: 8px;">lib_chasm <span id = "lib_chasm_version" style = "color: lightSlateGray">x.x.x</span></span></a></li>
+			</ul>
+		</div>
+
+		<!--Lower Navbar-->
+		<div class = "nav-content blue-grey darken-1 hide-on-med-and-down">
+		  	<ul class = "tabs tabs-transparent">
+				<li class = "tab"><a id = "tab_chasm" 			class = "active" 			href = "#resource_box" 		draggable = "false">Chasm</a></li>
+				<li class = "tab"><a id = "tab_research" 		style = "display: none;"  	href = "#upgrades_box" 		draggable = "false">Research</a></li>
+				<li class = "tab"><a id = "tab_achievements" 	style = "display: none;" 	href = "#achievements_box" 	draggable = "false">Achievements</a></li>
+				<li class = "tab"><a id = "tab_debug" 										href = "#debug_box" 		draggable = "false">Debug</a></li>
+		  	</ul>
+		</div>
+	</nav>
+	
+	<!--Sidenav-->
+	<ul id = "chasm_sidenav" class = "sidenav noble">
+		<ul class = "tabs-vertical">
+			<li class = "tab"><a class = "active" href = "#resource_box" draggable = "false">Chasm</a></li>
+			<li class = "tab"><a href = "#upgrades_box" draggable = "false">Research</a></li>
+			<li class = "tab"><a href = "#achievements_box" draggable = "false">Achievements</a></li>
+			<li class = "tab"><a href = "#debug_box" draggable = "false">Debug</a></li>
+		</ul>
+	</ul>
+
+	<!--Game-->
+	<div id = "game_box" class = "container noble" style = "display: none;">
+		<div class = "row">
+
+			<!--Left Column-->
+			<div id = "left_col" class = "col s12 m3">
+				<!--Currency Box-->
+				<div id = "currency_box" class = "card blue-grey darken-1">
+					<div class = "card-content white-text" style = "display: flex;">
+
+						<!--Currency Icons-->
+						<div style = "display: block;">
+							<!--Void Particles-->
+							<div id = "currency_particles_symbol" class = "currency_particles currency_line vertcenter" style = "display: none">
+								<i class = "material-icons purple-text text-lighten-3 currency_icon">blur_circular</i>
+							</div>
+	
+							<!--Gravity Strands-->
+							<div id = "currency_strands_symbol" class = "currency_strands currency_line vertcenter" style = "display: none">
+								<i class = "material-icons amber-text text-lighten-1 currency_icon">gesture</i>
+							</div>
+	
+							<!--Spirit Sand-->
+							<div id = "currency_spirit_symbol" class = "currency_spirit currency_line vertcenter" style = "display: none">
+								<i class = "material-icons green-text text-lighten-2 currency_icon">flare</i>
+							</div>
+	
+							<!--Soul Splinters-->
+							<div id = "currency_soul_symbol" class = "currency_soul currency_line vertcenter" style = "display: none">
+								<i class = "material-icons red-text text-lighten-2 currency_icon">whatshot</i>
+							</div>
+						</div>
+
+						<!--Currency Values-->
+						<div style = "display: block;">
+							<!--Void Particles-->
+							<div id = "currency_particles_value" class = "currency_particles currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_particles_amount"></span></p>
+							</div>
+
+							<!--Gravity Strands-->
+							<div id = "currency_strands_value" class = "currency_strands currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_strands_amount"></span></p>
+							</div>
+
+							<!--Spirit Sand-->
+							<div id = "currency_spirit_value" class = "currency_spirit currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_spirit_amount"></span></p>
+							</div>
+
+							<!--Soul Splinters-->
+							<div id = "currency_soul_value" class = "currency_soul currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_soul_amount"></span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--Middle Column-->
+			<div id = "mid_col" class = "col s12 m6">
+				<!--Resource Box-->
+				<div id = "resource_box">
+
+					<!--Earth-->
+					<div id = "earth_box" class = "card blue-grey lighten-4">
+						<!--Storage-->
+						<div class = "flex">
+							<div style = "height: 66px; width: 66px;">
+								<canvas id = "earth_storage" width = "66" height = "66"></canvas>
+							</div>
+
+							<div class = "unflex">
+								<p class = "resource_title">Earth</p>
+								<div id = "element_earth_amount" class = "resource_info vertcenter"></div>
+								<div id = "value_earth_amount" class = "resource_info vertcenter"></div>
+							</div>
+						</div>
+
+						<div class = "flex">
+							<!--Gather-->
+							<div class = "gather_button" style = "width: 88px;">
+								<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+									<div id = "earth_gather_progress" class = "determinate" style = "width: 0%"></div>
+								</div>
+								<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
+								<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
+									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+										<input type = "checkbox" id = "earth_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+									</label></p></form></div>
+								</div>
+							</div>
+
+							<!--Drop-->
+							<div style = "width: 71px;">
+								<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+									<div id = "earth_drop_progress" class = "determinate" style = "width: 0%"></div>
+								</div>
+								<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick = "drop('earth_storage')">Drop</a>
+								<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
+									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+										<input type = "checkbox" id = "earth_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+									</label></p></form></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--Water-->
+					<div id = "water_box" class = "card blue-grey lighten-4" style = "display: none;">
+						<!--Storage-->
+						<div class = "flex">
+							<div style = "height: 66px; width: 66px;">
+								<canvas id = "water_storage" width = "66" height = "66"></canvas>
+							</div>
+
+							<div class = "unflex">
+								<p class = "resource_title">Water</p>
+								<div id = "element_water_amount" class = "resource_info vertcenter"></div>
+								<div id = "value_water_amount" class = "resource_info vertcenter"></div>
+							</div>
+						</div>
+
+						<div class = "flex">
+							<!--Gather-->
+							<div class = "gather_button" style = "width: 88px;">
+								<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+									<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
+								</div>
+								<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
+								<div id = "water_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
+									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+										<input type = "checkbox" id = "water_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+									</label></p></form></div>
+								</div>
+							</div>
+
+							<!--Drop-->
+							<div style = "width: 71px;">
+								<div id = "water_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+									<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
+								</div>
+								<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
+								<div id = "water_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
+									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+										<input type = "checkbox" id = "water_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+									</label></p></form></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<!--Upgrades Box-->
+				<div id = "upgrades_box">
+					<div id = "research_map" class = "flex" style = "font-size: 0px; width: 600px; margin: auto;">
+						<div style = "width: 15px; height: 15px; background-color: maroon;">
+
+						</div>
+					</div>
+
+					<div class = "card blue-grey lighten-4" style = "margin-top: 20px;">
+						<div class = "flex">
+							<div id = "select_upgrade_steel_toed_boots"><a id = "upgrade_steel_toed_boots" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_steel_toed_boots')">Steel-toed Boots</a></div>
+							<div id = "select_upgrade_tamping_rod"><a id = "upgrade_tamping_rod" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_tamping_rod')">Tamping Rod</a></div>
+							<div id = "select_upgrade_trash_compactor"><a id = "upgrade_trash_compactor" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_trash_compactor')">Trash Compactor</a></div>
+							<div id = "select_upgrade_macrosonic_agitator"><a id = "upgrade_macrosonic_agitator" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_macrosonic_agitator')">Macrosonic Agitator</a></div>
+							<div id = "select_upgrade_gravity_well"><a id = "upgrade_gravity_well" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_gravity_well')">Gravity Well</a></div>
+							<div id = "select_upgrade_ant_farm"><a id = "upgrade_ant_farm" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_ant_farm')">Ant farm</a></div>
+							<div id = "select_upgrade_catapult"><a id = "upgrade_catapult" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_catapult')">Catapult</a></div>
+							<div id = "select_upgrade_prospectors_tools"><a id = "upgrade_prospectors_tools" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_prospectors_tools')">Prospector's Tools</a></div>
+						</div>
+						<div class = "flex">
+							<div id = "select_upgrade_water_storage"><a id = "upgrade_water_storage" class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_water_storage')">Water storage</a></div>
+							<div id = "select_upgrade_rain_barrels"><a id = "upgrade_rain_barrels" class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_rain_barrels')">Rain barrels</a></div>
+							<div id = "select_upgrade_sprinkler"><a id = "upgrade_sprinkler" class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_sprinkler')">Sprinkler</a></div>
+						</div>
+					</div>
+				</div>
+	
+				<!--Achievements Box-->
+				<div id = "achievements_box" style = "font-size: 0px; width: 600px; margin: auto;">
+				</div>
+	
+				<!--Debug Box-->
+				<div id = "debug_box" class = "card blue-grey lighten-4">
+					<a id = "debug_free_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_free_upgrades();">Free Upgrades</a>
+					<a id = "debug_reprice_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text disabled" onclick = "debug_reprice_upgrades();">Re-price Upgrades</a>
+					<a id = "debug_unlock_achievements" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_unlock_achievements();">Unlock Achievements</a>
+					<a id = "debug_gain_100_each" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_gain_100_each();">Gain 100 of each resource</a>
+				</div>
+			</div>
+
+			<!--Right Column-->
+			<div id = "right_col" class = "col s12 m3">
+				<!--Inspector Box-->
+				<div id = "inspector_box" class = "card blue-grey lighten-4">
+					<div id = "inspector_content" class = "card-content">
+						<div id = "inspector_title" class = "black-text vertcenter"></div>
+						<div id = "inspector_cost" class = "grey-text text-darken-3 vertcenter"></div>
+						<div id = "inspector_text" class = "grey-text text-darken-3"></div>
+						<hr  id = "inspector_divider" class = "hidden">
+						<div id = "inspector_subtext" class = "grey-text text-darken-3"></div>
+					</div>
+				</div>
+
+				<!--Log Box-->
+				<div id = "log_box" class = "card blue-grey darken-1">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

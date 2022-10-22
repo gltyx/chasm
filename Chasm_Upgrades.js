@@ -330,59 +330,33 @@ function drawResearchMap() {
 	let map = generateResearchMap();
 	let out;
 
-	for (let i = 0; i < map.length; i++) {
-		out += "<div class = 'upgrade_tile' style = 'background-color: ";
+	for (let i = 0; i < 400; i++) {
 
 		switch (map[i]) {
 			case tid.tile_connect_ud:
-				out += "AliceBlue";
+				out += "<img src = 'images/tile_research_connect_ud.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_ur:
-				out += "AntiqueWhite";
+				out += "<img src = 'images/tile_research_connect_ur.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
 				break;
-				
-			case tid.tile_connect_ul:
-				out += "Aqua";
-				break;
-				
-			case tid.tile_connect_lr:
-				out += "Silver";
-				break;
-				
-			case tid.tile_connect_ld:
-				out += "Aquamarine";
-				break;
-				
-			case tid.tile_connect_rd:
-				out += "Azure";
-				break;
-				
-			case tid.tile_connect_ulr:
-				out += "Beige";
-				break;
-				
-			case tid.tile_connect_uld:
-				out += "Bisque";
-				break;
-				
-			case tid.tile_connect_urd:
-				out += "Black";
-				break;
-				
-			case tid.tile_connect_lrd:
-				out += "Blue";
-				break;
-				
-			case tid.tile_connect_ulrd:
-				out += "Maroon";
-				break;
-				
-			default:
-				out += "Coral";
-		}
 
-		out += "'></div>";
+			case tid.tile_connect_ul:
+				out += "<img src = 'images/tile_research_connect_ul.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
+			case tid.tile_connect_lr:
+				out += "<img src = 'images/tile_research_connect_lr.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
+			case tid.tile_connect_ulrd:
+				out += "<img src = 'images/tile_research_connect_ulrd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
+			case tid.tile_none:
+			default:
+				out += "<img src = 'images/tile_research_bkg.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+		}
 	}
 
 	$("#research_map").html(out);

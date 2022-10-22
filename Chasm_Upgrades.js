@@ -330,7 +330,7 @@ function drawResearchMap() {
 	let map = generateResearchMap();
 	let out;
 
-	for (let i = 0; i < 400; i++) {
+	for (let i = 0; i < map.length; i++) {
 
 		switch (map[i]) {
 			case tid.tile_connect_ud:
@@ -349,6 +349,14 @@ function drawResearchMap() {
 				out += "<img src = 'images/tile_research_connect_lr.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
 				break;
 
+			case tid.tile_connect_ld:
+				out += "<img src = 'images/tile_research_connect_ld.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
+			case tid.tile_connect_rd:
+				out += "<img src = 'images/tile_research_connect_rd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
 			case tid.tile_connect_ulrd:
 				out += "<img src = 'images/tile_research_connect_ulrd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
 				break;
@@ -363,11 +371,25 @@ function drawResearchMap() {
 }
 
 function generateResearchMap() {
-	let out = [];
-
-	for (let i = tid.tile_first; i < tid.tile_count; i++) {
-		out.push(i);
-	}
+	let mapHeight = 30;
+	let out = new Array(30 * mapHeight);
+	
+	out[mapRowCol(2, 5)] = tid.tile_connect_rd;
+	out[mapRowCol(2, 6)] = tid.tile_connect_lr;
+	out[mapRowCol(2, 7)] = tid.tile_connect_ld;
+	out[mapRowCol(3, 5)] = tid.tile_connect_ud;
+	out[mapRowCol(3, 7)] = tid.tile_connect_ud;
+	out[mapRowCol(4, 5)] = tid.tile_connect_ur;
+	out[mapRowCol(4, 6)] = tid.tile_connect_lr;
+	out[mapRowCol(4, 7)] = tid.tile_connect_ulrd;
+	out[mapRowCol(4, 8)] = tid.tile_connect_lr;
+	out[mapRowCol(4, 8)] = tid.tile_connect_ld;
+	out[mapRowCol(5, 7)] = tid.tile_connect_ur;
+	out[mapRowCol(5, 8)] = tid.tile_connect_ul;
 
 	return out;
+}
+
+function mapRowCol(row, col) {
+	return ((30 * row) + col);
 }

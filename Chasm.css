@@ -168,11 +168,10 @@ form {
 }
 
 #game_box {
-	padding-top: 12px;
 }
 
 #left_col {
-	margin: 0px 0px 12px 0px;
+	margin: 10px 0px 12px 0px;
 	padding: 0px 10px 0px 0px;
 
 	position: sticky;
@@ -185,7 +184,7 @@ form {
 }
 
 #mid_col {
-	margin: 0px 0px 12px 0px;
+	margin: 10px 0px 12px 0px;
 	padding: 0px 0px 0px 0px;
 }
 
@@ -200,7 +199,7 @@ form {
 }
 
 #right_col {
-	margin: 0px 0px 12px 0px;
+	margin: 10px 0px 12px 0px;
 	padding: 0px 0px 0px 10px;
 
 	position: sticky;

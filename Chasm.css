@@ -203,14 +203,14 @@ form {
 	padding: 0px 0px 0px 10px;
 
 	position: sticky;
-	top: 10px;
+	top: 8px;
 }
 
 #inspector_box {
 	margin: 0px 0px 8px 0px;
 	padding: 10px 10px 10px 12px;
 
-	height: 160px;
+	height: 162px;
 	line-height: 1.3;
 }
 

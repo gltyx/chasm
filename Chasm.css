@@ -89,7 +89,7 @@ form {
 }
 
 .testoutline { /*Simple border for checking boundaries*/
-	border: 1px solid black;
+	border: 1px solid red;
 }
 
 .hidden {

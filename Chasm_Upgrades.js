@@ -329,9 +329,12 @@ class _TILE_ID {
 function drawResearchMap() {
 	let map = generateResearchMap();
 	let out;
-
+	
+	// Background image
+	out += "<div class = 'flex' style = 'width: 600px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(\"./images/research_bkg.png\");'>";
+	
+	// Upgrade tiles
 	for (let i = 0; i < map.length; i++) {
-
 		switch (map[i]) {
 			case tid.tile_connect_ud:
 				out += "<img src = 'images/tile_research_connect_ud.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
@@ -363,9 +366,11 @@ function drawResearchMap() {
 
 			case tid.tile_none:
 			default:
-				out += "<img src = 'images/tile_research_bkg.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<div style = 'width: 20px; height: 20px;'></div>";
 		}
 	}
+
+	out += "</div>";
 
 	$("#research_map").html(out);
 }

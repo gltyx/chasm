@@ -171,15 +171,15 @@ form {
 }
 
 #left_col {
-	margin: 10px 0px 10px 0px;
+	margin: 10px 0px 12px 0px;
 	padding: 0px 10px 0px 0px;
 
 	position: sticky;
-	top: 10px;
+	top: 8px;
 }
 
 #currency_box {
-	height: calc(100% - 20px);
+	height: calc(100% - 22px);
 	padding: 10px 10px 10px 12px;
 }
 
@@ -210,7 +210,7 @@ form {
 	margin: 0px 0px 8px 0px;
 	padding: 10px 10px 10px 12px;
 
-	height: 162px;
+	height: 160px;
 	line-height: 1.3;
 }
 

@@ -392,7 +392,7 @@ function drawResearchMap() {
 }
 
 function generateResearchMap() {
-	let mapHeight = 30;
+	let mapHeight = 60;
 	let out = new Array(30 * mapHeight);
 
 	for (let i = 0; i < tid.tile_count; i++) {

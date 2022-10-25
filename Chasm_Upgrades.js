@@ -333,7 +333,7 @@ function drawResearchMap() {
 	// Background image
 	out += "<div class = 'flex' style = 'width: 600px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(\"./images/research_bkg.png\");'>";
 	
-	// Upgrade tiles
+	// Tiles
 	for (let i = 0; i < map.length; i++) {
 		switch (map[i]) {
 			case tid.tile_connect_ud:
@@ -360,6 +360,22 @@ function drawResearchMap() {
 				out += "<img src = 'images/tile_research_connect_rd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
 				break;
 
+			case tid.tile_connect_ulr:
+				out += "<img src = 'images/tile_research_connect_ulr.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
+			case tid.tile_connect_uld:
+				out += "<img src = 'images/tile_research_connect_uld.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
+			case tid.tile_connect_urd:
+				out += "<img src = 'images/tile_research_connect_urd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
+			case tid.tile_connect_lrd:
+				out += "<img src = 'images/tile_research_connect_lrd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
 			case tid.tile_connect_ulrd:
 				out += "<img src = 'images/tile_research_connect_ulrd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
 				break;
@@ -378,6 +394,10 @@ function drawResearchMap() {
 function generateResearchMap() {
 	let mapHeight = 30;
 	let out = new Array(30 * mapHeight);
+
+	for (let i = 0; i < tid.tile_count; i++) {
+		out[i] = i;
+	}
 	
 	out[mapRowCol(2, 5)] = tid.tile_connect_rd;
 	out[mapRowCol(2, 6)] = tid.tile_connect_lr;

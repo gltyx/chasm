@@ -37,17 +37,22 @@ class _CHASM_UPGRADE {
 	}
 
 	buy() {
-		for (let i = 0; i < cid.currency_count; i++) {
-			if (chasm_currency[i].resource.current.lt(this.cost.map[i])) {
-				return false;
+		if (this.unlocked == false) {
+			for (let i = 0; i < cid.currency_count; i++) {
+				if (chasm_currency[i].resource.current.lt(this.cost.map[i])) {
+					return false;
+				}
 			}
+	
+			for (let i = 0; i < cid.currency_count; i++) {
+				chasm_currency[i].resource.spend(this.cost.map[i]);
+			}
+	
+			this.unlock();
+			return true;
 		}
 
-		for (let i = 0; i < cid.currency_count; i++) {
-			chasm_currency[i].resource.spend(this.cost.map[i]);
-		}
-
-		return true;
+		return false;
 	}
 
 	unlock() {
@@ -186,8 +191,7 @@ function lock_all_upgrades() {
 function buy_upgrade(upgrade) {
 	switch (upgrade) {
 		case "upgrade_steel_toed_boots":
-			if (chasm_upgrades[uid.upgrade_steel_toed_boots].unlocked == false && chasm_upgrades[uid.upgrade_steel_toed_boots].buy()) {
-				chasm_upgrades[uid.upgrade_steel_toed_boots].unlock();
+			if (chasm_upgrades[uid.upgrade_steel_toed_boots].buy()) {
 				$("#upgrade_steel_toed_boots").addClass("disabled");
 
 				earth_storage.brick_h = earth_storage.brick_h / 2;
@@ -199,8 +203,7 @@ function buy_upgrade(upgrade) {
 			break;
 
 		case "upgrade_tamping_rod":
-			if (chasm_upgrades[uid.upgrade_tamping_rod].unlocked == false && chasm_upgrades[uid.upgrade_tamping_rod].buy()) {
-				chasm_upgrades[uid.upgrade_tamping_rod].unlock();
+			if (chasm_upgrades[uid.upgrade_tamping_rod].buy()) {
 				$("#upgrade_tamping_rod").addClass("disabled");
 
 				earth_storage.brick_h = earth_storage.brick_h / 2;
@@ -212,8 +215,7 @@ function buy_upgrade(upgrade) {
 			break;
 
 		case "upgrade_trash_compactor":
-			if (chasm_upgrades[uid.upgrade_trash_compactor].unlocked == false && chasm_upgrades[uid.upgrade_trash_compactor].buy()) {
-				chasm_upgrades[uid.upgrade_trash_compactor].unlock();
+			if (chasm_upgrades[uid.upgrade_trash_compactor].buy()) {
 				$("#upgrade_trash_compactor").addClass("disabled");
 
 				earth_storage.brick_h = earth_storage.brick_h / 2;
@@ -225,8 +227,7 @@ function buy_upgrade(upgrade) {
 			break;
 
 		case "upgrade_macrosonic_agitator":
-			if (chasm_upgrades[uid.upgrade_macrosonic_agitator].unlocked == false && chasm_upgrades[uid.upgrade_macrosonic_agitator].buy()) {
-				chasm_upgrades[uid.upgrade_macrosonic_agitator].unlock();
+			if (chasm_upgrades[uid.upgrade_macrosonic_agitator].buy()) {
 				$("#upgrade_macrosonic_agitator").addClass("disabled");
 
 				earth_storage.brick_h = earth_storage.brick_h / 2;
@@ -238,8 +239,7 @@ function buy_upgrade(upgrade) {
 			break;
 
 		case "upgrade_gravity_well":
-			if (chasm_upgrades[uid.upgrade_gravity_well].unlocked == false && chasm_upgrades[uid.upgrade_gravity_well].buy()) {
-				chasm_upgrades[uid.upgrade_gravity_well].unlock();
+			if (chasm_upgrades[uid.upgrade_gravity_well].buy()) {
 				$("#upgrade_gravity_well").addClass("disabled");
 
 				earth_storage.brick_h = earth_storage.brick_h / 2;
@@ -251,8 +251,7 @@ function buy_upgrade(upgrade) {
 			break;
 
 		case "upgrade_ant_farm":
-			if (chasm_upgrades[uid.upgrade_ant_farm].unlocked == false && chasm_upgrades[uid.upgrade_ant_farm].buy()) {
-				chasm_upgrades[uid.upgrade_ant_farm].unlock();
+			if (chasm_upgrades[uid.upgrade_ant_farm].buy()) {
 				$("#upgrade_ant_farm").addClass("disabled");
 				
 				$("#earth_gather_menu").fadeIn(400);
@@ -260,8 +259,7 @@ function buy_upgrade(upgrade) {
 			break;
 		
 		case "upgrade_catapult":
-			if (chasm_upgrades[uid.upgrade_catapult].unlocked == false && chasm_upgrades[uid.upgrade_catapult].buy()) {
-				chasm_upgrades[uid.upgrade_catapult].unlock();
+			if (chasm_upgrades[uid.upgrade_catapult].buy()) {
 				$("#upgrade_catapult").addClass("disabled");
 				
 				$("#earth_drop_menu").fadeIn(400);
@@ -269,8 +267,7 @@ function buy_upgrade(upgrade) {
 			break;
 			
 		case "upgrade_water_storage":
-			if (chasm_upgrades[uid.upgrade_water_storage].unlocked == false && chasm_upgrades[uid.upgrade_water_storage].buy()) {
-				chasm_upgrades[uid.upgrade_water_storage].unlock();
+			if (chasm_upgrades[uid.upgrade_water_storage].buy()) {
 				$("#upgrade_water_storage").addClass("disabled");
 
 				$("#water_box").css("display", "block");
@@ -278,8 +275,7 @@ function buy_upgrade(upgrade) {
 			break;
 			
 		case "upgrade_rain_barrels":
-			if (chasm_upgrades[uid.upgrade_rain_barrels].unlocked == false && chasm_upgrades[uid.upgrade_rain_barrels].buy()) {
-				chasm_upgrades[uid.upgrade_rain_barrels].unlock();
+			if (chasm_upgrades[uid.upgrade_rain_barrels].buy()) {
 				$("#upgrade_rain_barrels").addClass("disabled");
 				
 				$("#water_gather_menu").fadeIn(400);
@@ -287,8 +283,7 @@ function buy_upgrade(upgrade) {
 			break;
 			
 		case "upgrade_sprinkler":
-			if (chasm_upgrades[uid.upgrade_sprinkler].unlocked == false && chasm_upgrades[uid.upgrade_sprinkler].buy()) {
-				chasm_upgrades[uid.upgrade_sprinkler].unlock();
+			if (chasm_upgrades[uid.upgrade_sprinkler].buy()) {
 				$("#upgrade_sprinkler").addClass("disabled");
 				
 				$("#water_drop_menu").fadeIn(400);
@@ -296,8 +291,7 @@ function buy_upgrade(upgrade) {
 			break;
 
 		case "upgrade_prospectors_tools":
-			if (chasm_upgrades[uid.upgrade_prospectors_tools].unlocked == false && chasm_upgrades[uid.upgrade_prospectors_tools].buy()) {
-				chasm_upgrades[uid.upgrade_prospectors_tools].unlock();
+			if (chasm_upgrades[uid.upgrade_prospectors_tools].buy()) {
 				$("#upgrade_prospectors_tools").addClass("disabled");
 			}
 			break;
@@ -322,8 +316,9 @@ class _TILE_ID {
 	tile_connect_urd				= 0x0009;	// up right down
 	tile_connect_lrd				= 0x000a;	// left right down
 	tile_connect_ulrd				= 0x000b;	// up left right down
+	tile_node						= 0x000c;
 
-	tile_count						= 0x000c;
+	tile_count						= 0x000d;
 } var tid = new _TILE_ID();
 
 function drawResearchMap() {
@@ -380,6 +375,10 @@ function drawResearchMap() {
 				out += "<img src = 'images/tile_research_connect_ulrd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
 				break;
 
+			case tid.tile_node:
+				out += "<img src = 'images/tile_research_node.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				break;
+
 			case tid.tile_none:
 			default:
 				out += "<div style = 'width: 20px; height: 20px;'></div>";
@@ -411,6 +410,16 @@ function generateResearchMap() {
 	out[mapRowCol(4, 8)] = tid.tile_connect_ld;
 	out[mapRowCol(5, 7)] = tid.tile_connect_ur;
 	out[mapRowCol(5, 8)] = tid.tile_connect_ul;
+
+	out[mapRowCol(3, 21)] = tid.tile_node;
+	out[mapRowCol(4, 21)] = tid.tile_connect_ud;
+	out[mapRowCol(5, 21)] = tid.tile_node;
+	out[mapRowCol(6, 21)] = tid.tile_connect_ulr;
+	out[mapRowCol(6, 20)] = tid.tile_connect_rd;
+	out[mapRowCol(6, 22)] = tid.tile_connect_ld;
+	out[mapRowCol(7, 20)] = tid.tile_node;
+	out[mapRowCol(7, 22)] = tid.tile_connect_ud;
+	out[mapRowCol(8, 22)] = tid.tile_node;
 
 	return out;
 }

@@ -332,47 +332,47 @@ function drawResearchMap() {
 	for (let i = 0; i < map.length; i++) {
 		switch (map[i]) {
 			case tid.tile_connect_ud:
-				out += "<img src = 'images/tile_research_connect_ud.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_ud.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_ur:
-				out += "<img src = 'images/tile_research_connect_ur.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_ur.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_ul:
-				out += "<img src = 'images/tile_research_connect_ul.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_ul.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_lr:
-				out += "<img src = 'images/tile_research_connect_lr.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_lr.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_ld:
-				out += "<img src = 'images/tile_research_connect_ld.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_ld.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_rd:
-				out += "<img src = 'images/tile_research_connect_rd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_rd.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_ulr:
-				out += "<img src = 'images/tile_research_connect_ulr.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_ulr.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_uld:
-				out += "<img src = 'images/tile_research_connect_uld.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_uld.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_urd:
-				out += "<img src = 'images/tile_research_connect_urd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_urd.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_lrd:
-				out += "<img src = 'images/tile_research_connect_lrd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_lrd.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_connect_ulrd:
-				out += "<img src = 'images/tile_research_connect_ulrd.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += "<img src = 'images/tile_research_connect_ulrd.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 				break;
 
 			case tid.tile_node:

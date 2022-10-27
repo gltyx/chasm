@@ -21,7 +21,6 @@
 		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_timing.js"></script>
 		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_logging.js"></script>
 		<!--<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_math.js"></script>-->
-		
 
 		<!--Local lib_chasm source (for parallel development)-->
 		<!--
@@ -40,7 +39,7 @@
 		<script type = "text/javascript" src = "./Chasm_Inspector.js"></script>
 		<script type = "text/javascript" src = "./Chasm_Save.js"></script>
 		<script type = "text/javascript" src = "./Chasm.js"></script>
-		<link rel = "stylesheet" href = "./Chasm.css"></script>
+		<link rel = "stylesheet" href = "./Chasm.css">
 </head>
 
 <body onload = "game_init();">
@@ -97,6 +96,11 @@
 
 						<!--Currency Icons-->
 						<div style = "display: block;">
+							<!--Workers-->
+							<div id = "currency_workers_symbol" class = "currency_workers currency_line vertcenter" style = "display: none">
+								<i class = "material-icons purple-text text-lighten-3 currency_icon">face</i>
+							</div>
+
 							<!--Void Particles-->
 							<div id = "currency_particles_symbol" class = "currency_particles currency_line vertcenter" style = "display: none">
 								<i class = "material-icons purple-text text-lighten-3 currency_icon">blur_circular</i>
@@ -120,6 +124,11 @@
 
 						<!--Currency Values-->
 						<div style = "display: block;">
+							<!--Workers-->
+							<div id = "currency_workers_value" class = "currency_workers currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_workers_amount"></span></p>
+							</div>
+
 							<!--Void Particles-->
 							<div id = "currency_particles_value" class = "currency_particles currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_particles_amount"></span></p>
@@ -171,11 +180,22 @@
 									<div id = "earth_gather_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
-								<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
-									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+								<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
+									<form>
+										<!--Auto-gather checkbox (deprecated)-->
+										<!--
+										<p><label style = "zoom: 0.75;">
 										<input type = "checkbox" id = "earth_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
 										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-									</label></p></form></div>
+										</label></p>
+										-->
+										
+										<!--Workers Slider-->
+										<p class = "range-field">
+										<input type = "range" id = "earth_gather_workers" min = "0" max = "20" />
+										<span class = "thumb" style = "height: 0px; width: 0px; top: 10px; margin-left: 7px; left: 131.878px;">
+										</p>
+									</form>
 								</div>
 							</div>
 

@@ -16,7 +16,10 @@ class _CURRENCY_ID {
 
 	// Prestige Currency
 
-	currency_count		= 0x0004;
+	// Special Currency
+	currency_workers	= 0x0004;
+
+	currency_count		= 0x0005;
 } var cid = new _CURRENCY_ID();
 
 class _CHASM_CURRENCY {
@@ -37,6 +40,11 @@ var chasm_currency = new Array(cid.currency_count);
 function initCurrency() {
 	for (let i = cid.currency_first; i < cid.currency_count; i++) {
 		switch(i) {
+			case cid.currency_workers:
+				chasm_currency[i] = new _CHASM_CURRENCY("Workers",
+														"<i class = 'material-icons purple-text text-lighten-3 currency_icon'>face</i>");
+				break;
+
 			case cid.currency_particles:
 				chasm_currency[i] = new _CHASM_CURRENCY("Void Particles",
 														"<i class = 'material-icons purple-text text-lighten-3 currency_icon'>blur_circular</i>");

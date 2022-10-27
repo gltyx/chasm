@@ -118,6 +118,7 @@ function draw_resources() {
 	$("#currency_strands_amount").html(chasm_currency[cid.currency_strands].resource.current.toFixed(2));
 	$("#currency_spirit_amount").html(chasm_currency[cid.currency_spirit].resource.current.toFixed(2));
 	$("#currency_soul_amount").html(chasm_currency[cid.currency_soul].resource.current.toFixed(2));
+	$("#currency_workers_amount").html(chasm_currency[cid.currency_workers].resource.current.toFixed(0));
 
 	// Update resources
 	let earth_element_count = earth_storage.bitmap.element_count();
@@ -134,7 +135,7 @@ function draw_resources() {
 function game_tick(scalar) {
 	
 	// Earth Gather
-	if (chasm_upgrades[uid.upgrade_ant_farm].unlocked && $("#earth_gather_checkbox").is(':checked')) {
+	if (chasm_upgrades[uid.upgrade_earth_auto_gather].unlocked && $("#earth_gather_checkbox").is(':checked')) {
 		earth_gather_progress += (50 * scalar);
 	}
 	if (earth_gather_progress > 100) {
@@ -147,7 +148,7 @@ function game_tick(scalar) {
 	}
 
 	// Earth Drop
-	if (chasm_upgrades[uid.upgrade_catapult].unlocked && $("#earth_drop_checkbox").is(':checked')) {
+	if (chasm_upgrades[uid.upgrade_earth_auto_drop].unlocked && $("#earth_drop_checkbox").is(':checked')) {
 		earth_drop_progress += (10 * scalar);
 	}
 	if (earth_drop_progress > 100) {
@@ -160,7 +161,7 @@ function game_tick(scalar) {
 	}
 
 	// Water Gather
-	if (chasm_upgrades[uid.upgrade_rain_barrels].unlocked && $("#water_gather_checkbox").is(':checked')) {
+	if (chasm_upgrades[uid.upgrade_water_auto_gather].unlocked && $("#water_gather_checkbox").is(':checked')) {
 		water_gather_progress += (5 * scalar);
 	}
 	if (water_gather_progress > 100) {
@@ -169,7 +170,7 @@ function game_tick(scalar) {
 	}
 
 	// Water Drop
-	if (chasm_upgrades[uid.upgrade_sprinkler].unlocked && $("#water_drop_checkbox").is(':checked')) {
+	if (chasm_upgrades[uid.upgrade_water_auto_drop].unlocked && $("#water_drop_checkbox").is(':checked')) {
 		water_drop_progress += (0.8 * scalar);
 	}
 	if (water_gather_progress > 100) {
@@ -219,4 +220,6 @@ function drop(storage) {
 $(document).ready(function(){
 	M.AutoInit();
     $('.tabs-vertical').tabs();
+	var sliders = document.querySelectorAll("input[type=range]");
+    M.Range.init(sliders);
 });

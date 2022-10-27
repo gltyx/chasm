@@ -24,17 +24,17 @@ class _INSPECTOR_ID {
 	element_fish								= eid.element_fish							+ this.offset_elements;
 
 	offset_upgrades								= 0xa100;	// 0xa1xx Start upgrade section
-	upgrade_steel_toed_boots 					= uid.upgrade_steel_toed_boots				+ this.offset_upgrades;
-	upgrade_tamping_rod							= uid.upgrade_tamping_rod					+ this.offset_upgrades;
-	upgrade_trash_compactor						= uid.upgrade_trash_compactor				+ this.offset_upgrades;
-	upgrade_macrosonic_agitator					= uid.upgrade_macrosonic_agitator			+ this.offset_upgrades;
-	upgrade_gravity_well						= uid.upgrade_gravity_well					+ this.offset_upgrades;
-	upgrade_ant_farm							= uid.upgrade_ant_farm						+ this.offset_upgrades;
-	upgrade_catapult							= uid.upgrade_catapult						+ this.offset_upgrades;
+	upgrade_earth_density_1 					= uid.upgrade_earth_density_1				+ this.offset_upgrades;
+	upgrade_earth_density_2						= uid.upgrade_earth_density_2				+ this.offset_upgrades;
+	upgrade_earth_density_3						= uid.upgrade_earth_density_3				+ this.offset_upgrades;
+	upgrade_earth_density_4						= uid.upgrade_earth_density_4				+ this.offset_upgrades;
+	upgrade_earth_density_5						= uid.upgrade_earth_density_5				+ this.offset_upgrades;
+	upgrade_earth_auto_gather					= uid.upgrade_earth_auto_gather				+ this.offset_upgrades;
+	upgrade_earth_auto_drop						= uid.upgrade_earth_auto_drop				+ this.offset_upgrades;
+	upgrade_earth_metals_1						= uid.upgrade_earth_metals_1				+ this.offset_upgrades;
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
-	upgrade_rain_barrels						= uid.upgrade_rain_barrels					+ this.offset_upgrades;
-	upgrade_sprinkler							= uid.upgrade_sprinkler						+ this.offset_upgrades;
-	upgrade_prospectors_tools					= uid.upgrade_prospectors_tools				+ this.offset_upgrades;
+	upgrade_water_auto_gather					= uid.upgrade_water_auto_gather				+ this.offset_upgrades;
+	upgrade_water_auto_drop						= uid.upgrade_water_auto_drop				+ this.offset_upgrades;
 
 	offset_achivements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achivements;
@@ -51,18 +51,6 @@ function registerInspectorEvents() {
 	$(".currency_strands").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_strands);});});
 	$(".currency_spirit").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_spirit);});});
 	$(".currency_soul").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_soul);});});
-
-	$("#select_upgrade_steel_toed_boots")		.mouseenter(function(){showInspector(iid.upgrade_steel_toed_boots);});
-	$("#select_upgrade_tamping_rod")			.mouseenter(function(){showInspector(iid.upgrade_tamping_rod);});
-	$("#select_upgrade_trash_compactor")		.mouseenter(function(){showInspector(iid.upgrade_trash_compactor);});
-	$("#select_upgrade_macrosonic_agitator")	.mouseenter(function(){showInspector(iid.upgrade_macrosonic_agitator);});
-	$("#select_upgrade_gravity_well")			.mouseenter(function(){showInspector(iid.upgrade_gravity_well);});
-	$("#select_upgrade_ant_farm")				.mouseenter(function(){showInspector(iid.upgrade_ant_farm);});
-	$("#select_upgrade_catapult")				.mouseenter(function(){showInspector(iid.upgrade_catapult);});
-	$("#select_upgrade_water_storage")			.mouseenter(function(){showInspector(iid.upgrade_water_storage);});
-	$("#select_upgrade_rain_barrels")			.mouseenter(function(){showInspector(iid.upgrade_rain_barrels);});
-	$("#select_upgrade_sprinkler")				.mouseenter(function(){showInspector(iid.upgrade_sprinkler);});
-	$("#select_upgrade_prospectors_tools")		.mouseenter(function(){showInspector(iid.upgrade_prospectors_tools);});
 
 	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
 	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});
@@ -154,54 +142,61 @@ function showInspector(id) {
 			break;
 		
 		// Upgrades
-		case iid.upgrade_steel_toed_boots:
+		case iid.upgrade_earth_density_1:
 			$("#inspector_title")	.html("Steel-toed Boots");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_steel_toed_boots].cost.stringify());
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_1].cost.stringify());
 			$("#inspector_text")	.html("You can fit a lot more dirt into your storage with a few well-placed stomps");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
-		case iid.upgrade_tamping_rod:
+		case iid.upgrade_earth_density_2:
 			$("#inspector_title")	.html("Tamping Rod");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_tamping_rod].cost.stringify());
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_2].cost.stringify());
 			$("#inspector_text")	.html("A long stick with a flat metal plate at one end. The perfect tool for squishing dirt or less lethal jousting.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
-		case iid.upgrade_trash_compactor:
+		case iid.upgrade_earth_density_3:
 			$("#inspector_title")	.html("Trash Compactor");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_trash_compactor].cost.stringify());
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_3].cost.stringify());
 			$("#inspector_text")	.html("A repurposed trash compactor can smash earth into a dense cube. Ignore the stench and raccoons.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
-		case iid.upgrade_macrosonic_agitator:
+		case iid.upgrade_earth_density_4:
 			$("#inspector_title")	.html("Macrosonic Agitator");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_macrosonic_agitator].cost.stringify());
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_4].cost.stringify());
 			$("#inspector_text")	.html("A marvel of modern science. Vibrates the earth at incredible frequencies to squeeze out every last bit of empty space.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
-		case iid.upgrade_gravity_well:
+		case iid.upgrade_earth_density_5:
 			$("#inspector_title")	.html("Gravity Well");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_gravity_well].cost.stringify());
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_5].cost.stringify());
 			$("#inspector_text")	.html("A miniature black hole which can compact earth to a ridiculous degree. You can also say it ate your homework.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
-		case iid.upgrade_ant_farm:
+		case iid.upgrade_earth_auto_gather:
 			$("#inspector_title")	.html("Ant farm");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_ant_farm].cost.stringify());
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_auto_gather].cost.stringify());
 			$("#inspector_text")	.html("These little guys can help you move mountains of earth... Very, very slowly");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-gather Earth");
 			break;
-		case iid.upgrade_catapult:
+		case iid.upgrade_earth_auto_drop:
 			$("#inspector_title")	.html("Catapult");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_catapult].cost.stringify());
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_auto_drop].cost.stringify());
 			$("#inspector_text")	.html("Flinging dirt into the Chasm is a lot more fun than dumping it in by hand");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-drop Earth");
+			break;
+		case iid.upgrade_earth_metals_1:
+			$("#inspector_title")	.html("Prospector's Tools");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_metals_1].cost.stringify());
+			$("#inspector_text")	.html("An old prospector offers to sell you a spare pickaxe and shovel so you can gather earth from a little bit deeper");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Small chance of gathering copper ore");
 			break;
 		case iid.upgrade_water_storage:
 			$("#inspector_title")	.html("Water storage");
@@ -210,26 +205,19 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("Unlock Water");
 			$("#inspector_divider")	.css("display", "block");
 			break;
-		case iid.upgrade_rain_barrels:
+		case iid.upgrade_water_auto_gather:
 			$("#inspector_title")	.html("Rain barrels");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_rain_barrels].cost.stringify());
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_auto_gather].cost.stringify());
 			$("#inspector_text")	.html("Your back hurts from carrying so much water. Let mother nature do some of the work herself");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-gather Water");
 			break;
-		case iid.upgrade_sprinkler:
+		case iid.upgrade_water_auto_drop:
 			$("#inspector_title")	.html("Sprinkler");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_sprinkler].cost.stringify());
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_auto_drop].cost.stringify());
 			$("#inspector_text")	.html("Attach a sprinkler system to your water tank to spray directly into the Chasm");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-drop Water");
-			break;
-		case iid.upgrade_prospectors_tools:
-			$("#inspector_title")	.html("Prospector's Tools");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_prospectors_tools].cost.stringify());
-			$("#inspector_text")	.html("An old prospector offers to sell you a spare pickaxe and shovel so you can gather earth from a little bit deeper");
-			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Small chance of gathering copper ore");
 			break;
 
 		// Achievements

@@ -13,18 +13,18 @@ class _UPGRADE_ID {
 	upgrade_first					= 0x0000;
 
 	// Upgrade list
-	upgrade_steel_toed_boots 		= 0x0000;	// 2x Earth density (4x4)
-	upgrade_tamping_rod				= 0x0001;	// 2x Earth density (8x8)
-	upgrade_trash_compactor			= 0x0002;	// 2x Earth density (16x16)
-	upgrade_macrosonic_agitator		= 0x0003;	// 2x Earth density (32x32)
-	upgrade_gravity_well			= 0x0004;	// 2x Earth density (64x64)
+	upgrade_earth_density_1 		= 0x0000;	// 2x Earth density (4x4)
+	upgrade_earth_density_2			= 0x0001;	// 2x Earth density (8x8)
+	upgrade_earth_density_3			= 0x0002;	// 2x Earth density (16x16)
+	upgrade_earth_density_4			= 0x0003;	// 2x Earth density (32x32)
+	upgrade_earth_density_5			= 0x0004;	// 2x Earth density (64x64)
+	upgrade_earth_auto_gather		= 0x0005;	// Unlock auto-gather
+	upgrade_earth_auto_drop			= 0x0006;	// Unlock auto-drop
+	upgrade_earth_metals_1			= 0x0007;	// Gather copper
 
-	upgrade_ant_farm				= 0x0005;
-	upgrade_catapult				= 0x0006;
-	upgrade_water_storage			= 0x0007;
-	upgrade_rain_barrels			= 0x0008;
-	upgrade_sprinkler				= 0x0009;
-	upgrade_prospectors_tools		= 0x000a;
+	upgrade_water_storage			= 0x0008;	// Unlock water storage
+	upgrade_water_auto_gather		= 0x0009;	// Unlock auto-gather
+	upgrade_water_auto_drop			= 0x000a;	// Unlock auto-drop
 
 	upgrade_count					= 0x000b;
 } var uid = new _UPGRADE_ID();
@@ -72,7 +72,7 @@ var research_tab_hidden = true;
 function initUpgrades() {
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
 		switch(i) {
-			case uid.upgrade_steel_toed_boots:
+			case uid.upgrade_earth_density_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					0.4,	// Particles
 					0,		// Strands
@@ -81,7 +81,7 @@ function initUpgrades() {
 				]);
 				break;
 
-			case uid.upgrade_tamping_rod:
+			case uid.upgrade_earth_density_2:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					1,		// Particles
 					0,		// Strands
@@ -90,7 +90,7 @@ function initUpgrades() {
 				]);
 				break;
 
-			case uid.upgrade_trash_compactor:
+			case uid.upgrade_earth_density_3:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					2,		// Particles
 					0,		// Strands
@@ -99,7 +99,7 @@ function initUpgrades() {
 				]);
 				break;
 
-			case uid.upgrade_macrosonic_agitator:
+			case uid.upgrade_earth_density_4:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					3,		// Particles
 					0,		// Strands
@@ -108,7 +108,7 @@ function initUpgrades() {
 				]);
 				break;
 
-			case uid.upgrade_gravity_well:
+			case uid.upgrade_earth_density_5:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					4,		// Particles
 					0,		// Strands
@@ -117,7 +117,7 @@ function initUpgrades() {
 				]);
 				break;
 
-			case uid.upgrade_ant_farm:
+			case uid.upgrade_earth_auto_gather:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					0.8,	// Particles
 					0,		// Strands
@@ -126,7 +126,7 @@ function initUpgrades() {
 				]);
 				break;
 
-			case uid.upgrade_catapult:
+			case uid.upgrade_earth_auto_drop:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					1.5,	// Particles
 					0,		// Strands
@@ -144,7 +144,7 @@ function initUpgrades() {
 				]);
 				break;
 
-			case uid.upgrade_rain_barrels:
+			case uid.upgrade_water_auto_gather:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					100,	// Particles
 					0,		// Strands
@@ -153,7 +153,7 @@ function initUpgrades() {
 				]);
 				break;
 
-			case uid.upgrade_sprinkler:
+			case uid.upgrade_water_auto_drop:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					1,		// Particles
 					1,		// Strands
@@ -162,7 +162,7 @@ function initUpgrades() {
 				]);
 				break;
 			
-			case uid.upgrade_prospectors_tools:
+			case uid.upgrade_earth_metals_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					100,	// Particles
 					0,		// Strands
@@ -193,62 +193,74 @@ function lock_all_upgrades() {
 function buy_upgrade(upgrade_id) {
 	if (chasm_upgrades[upgrade_id].buy()) {
 		switch (upgrade_id) {
-			case uid.upgrade_steel_toed_boots:
+			case uid.upgrade_earth_density_1:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
 				earth_storage.clear();
 				break;
 
-			case uid.upgrade_tamping_rod:
+			case uid.upgrade_earth_density_2:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
 				earth_storage.clear();
 				break;
 
-			case uid.upgrade_trash_compactor:
+			case uid.upgrade_earth_density_3:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
 				earth_storage.clear();
 				break;
 
-			case uid.upgrade_macrosonic_agitator:
+			case uid.upgrade_earth_density_4:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
 				earth_storage.clear();
 				break;
 
-			case uid.upgrade_gravity_well:
+			case uid.upgrade_earth_density_5:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
 				earth_storage.clear();
 				break;
 
-			case uid.upgrade_ant_farm:
+			case uid.upgrade_earth_auto_gather:
 				$("#earth_gather_menu").fadeIn(400);
+				if (chasm_currency[cid.currency_workers].resource.current.lt(1)) {
+					chasm_currency[cid.currency_workers].resource.gain(1);
+				}
 				break;
 
-			case uid.upgrade_catapult:
+			case uid.upgrade_earth_auto_drop:
 				$("#earth_drop_menu").fadeIn(400);
+				if (chasm_currency[cid.currency_workers].resource.current.lt(1)) {
+					chasm_currency[cid.currency_workers].resource.gain(1);
+				}
 				break;
 
 			case uid.upgrade_water_storage:
 				$("#water_box").css("display", "block");
 				break;
 
-			case uid.upgrade_rain_barrels:
+			case uid.upgrade_water_auto_gather:
 				$("#water_gather_menu").fadeIn(400);
+				if (chasm_currency[cid.currency_workers].resource.current.lt(1)) {
+					chasm_currency[cid.currency_workers].resource.gain(1);
+				}
 				break;
 
-			case uid.upgrade_sprinkler:
+			case uid.upgrade_water_auto_drop:
 				$("#water_drop_menu").fadeIn(400);
+				if (chasm_currency[cid.currency_workers].resource.current.lt(1)) {
+					chasm_currency[cid.currency_workers].resource.gain(1);
+				}
 				break;
 
-			case uid.upgrade_prospectors_tools:
+			case uid.upgrade_earth_metals_1:
 				break;
 			
 			default:
@@ -390,17 +402,17 @@ function generateResearchMap() {
 		out[i].assign_tile(i, uid.upgrade_count);
 	}
 
-	out[mapRowCol(5, 5)].assign_tile(tid.tile_node, uid.upgrade_steel_toed_boots);
-	out[mapRowCol(6, 5)].assign_tile(tid.tile_node, uid.upgrade_tamping_rod);
-	out[mapRowCol(7, 5)].assign_tile(tid.tile_node, uid.upgrade_trash_compactor);
-	out[mapRowCol(8, 5)].assign_tile(tid.tile_node, uid.upgrade_macrosonic_agitator);
-	out[mapRowCol(9, 5)].assign_tile(tid.tile_node, uid.upgrade_gravity_well);
-	out[mapRowCol(10, 5)].assign_tile(tid.tile_node, uid.upgrade_ant_farm);
-	out[mapRowCol(11, 5)].assign_tile(tid.tile_node, uid.upgrade_catapult);
+	out[mapRowCol(5, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_1);
+	out[mapRowCol(6, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_2);
+	out[mapRowCol(7, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_3);
+	out[mapRowCol(8, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_4);
+	out[mapRowCol(9, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_5);
+	out[mapRowCol(10, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_auto_gather);
+	out[mapRowCol(11, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_auto_drop);
+	out[mapRowCol(8, 8)].assign_tile(tid.tile_node, uid.upgrade_earth_metals_1);
 	out[mapRowCol(5, 8)].assign_tile(tid.tile_node, uid.upgrade_water_storage);
-	out[mapRowCol(6, 8)].assign_tile(tid.tile_node, uid.upgrade_rain_barrels);
-	out[mapRowCol(7, 8)].assign_tile(tid.tile_node, uid.upgrade_sprinkler);
-	out[mapRowCol(8, 8)].assign_tile(tid.tile_node, uid.upgrade_prospectors_tools);
+	out[mapRowCol(6, 8)].assign_tile(tid.tile_node, uid.upgrade_water_auto_gather);
+	out[mapRowCol(7, 8)].assign_tile(tid.tile_node, uid.upgrade_water_auto_drop);
 
 	return out;
 }

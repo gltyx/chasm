@@ -113,7 +113,7 @@ class resource_storage {
 			// Choose brick type
 			let type;
 			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
-				if (chasm_upgrades[uid.upgrade_prospectors_tools].unlocked) {
+				if (chasm_upgrades[uid.upgrade_earth_metals_1].unlocked) {
 					if (Math.random() > 0.975) {
 						type = eid.element_copper;
 					} else {

@@ -169,21 +169,21 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
 		case iid.upgrade_trash_compactor:
-			$("#inspector_title")	.html("Steel-toed Boots");
+			$("#inspector_title")	.html("Trash Compactor");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_trash_compactor].cost.stringify());
 			$("#inspector_text")	.html("A repurposed trash compactor can smash earth into a dense cube. Ignore the stench and raccoons.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
 		case iid.upgrade_macrosonic_agitator:
-			$("#inspector_title")	.html("Steel-toed Boots");
+			$("#inspector_title")	.html("Macrosonic Agitator");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_macrosonic_agitator].cost.stringify());
 			$("#inspector_text")	.html("A marvel of modern science. Vibrates the earth at incredible frequencies to squeeze out every last bit of empty space.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
 		case iid.upgrade_gravity_well:
-			$("#inspector_title")	.html("Steel-toed Boots");
+			$("#inspector_title")	.html("Gravity Well");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_gravity_well].cost.stringify());
 			$("#inspector_text")	.html("A miniature black hole which can compact earth to a ridiculous degree. You can also say it ate your homework.");
 			$("#inspector_divider")	.css("display", "block");

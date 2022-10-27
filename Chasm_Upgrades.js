@@ -5,8 +5,9 @@
 	// 1. Add upgrade to uid table							[_UPGRADE_ID]
 	// 2. Add upgrade cost to init function					[initUpgrades]
 	// 3. Add upgrade purchase handling to buy function 	[buy_upgrade]
-	// 4. (optional) Add upgrade handling to game task		[game_tick]
-	// 5. (todo) Add upgrade unlocked state to save module	[]
+	// 4. Add upgrade to research map						[generateResearchMap]
+	// 5. (optional) Add upgrade handling to game task		[game_tick]
+	// 6. (todo) Add upgrade unlocked state to save module	[]
 
 class _UPGRADE_ID {
 	upgrade_first					= 0x0000;
@@ -49,6 +50,7 @@ class _CHASM_UPGRADE {
 			}
 	
 			this.unlock();
+			drawResearchMap();
 			return true;
 		}
 
@@ -188,115 +190,69 @@ function lock_all_upgrades() {
 	}
 }
 
-function buy_upgrade(upgrade) {
-	switch (upgrade) {
-		case "upgrade_steel_toed_boots":
-			if (chasm_upgrades[uid.upgrade_steel_toed_boots].buy()) {
-				$("#upgrade_steel_toed_boots").addClass("disabled");
-
+function buy_upgrade(upgrade_id) {
+	if (chasm_upgrades[upgrade_id].buy()) {
+		switch (upgrade_id) {
+			case uid.upgrade_steel_toed_boots:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-
 				earth_storage.clear();
-			}
-			break;
+				break;
 
-		case "upgrade_tamping_rod":
-			if (chasm_upgrades[uid.upgrade_tamping_rod].buy()) {
-				$("#upgrade_tamping_rod").addClass("disabled");
-
+			case uid.upgrade_tamping_rod:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-
 				earth_storage.clear();
-			}
-			break;
+				break;
 
-		case "upgrade_trash_compactor":
-			if (chasm_upgrades[uid.upgrade_trash_compactor].buy()) {
-				$("#upgrade_trash_compactor").addClass("disabled");
-
+			case uid.upgrade_trash_compactor:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-
 				earth_storage.clear();
-			}
-			break;
+				break;
 
-		case "upgrade_macrosonic_agitator":
-			if (chasm_upgrades[uid.upgrade_macrosonic_agitator].buy()) {
-				$("#upgrade_macrosonic_agitator").addClass("disabled");
-
+			case uid.upgrade_macrosonic_agitator:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-
 				earth_storage.clear();
-			}
-			break;
+				break;
 
-		case "upgrade_gravity_well":
-			if (chasm_upgrades[uid.upgrade_gravity_well].buy()) {
-				$("#upgrade_gravity_well").addClass("disabled");
-
+			case uid.upgrade_gravity_well:
 				earth_storage.brick_h = earth_storage.brick_h / 2;
 				earth_storage.brick_w = earth_storage.brick_w / 2;
 				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-
 				earth_storage.clear();
-			}
-			break;
+				break;
 
-		case "upgrade_ant_farm":
-			if (chasm_upgrades[uid.upgrade_ant_farm].buy()) {
-				$("#upgrade_ant_farm").addClass("disabled");
-				
+			case uid.upgrade_ant_farm:
 				$("#earth_gather_menu").fadeIn(400);
-			}
-			break;
-		
-		case "upgrade_catapult":
-			if (chasm_upgrades[uid.upgrade_catapult].buy()) {
-				$("#upgrade_catapult").addClass("disabled");
-				
+				break;
+
+			case uid.upgrade_catapult:
 				$("#earth_drop_menu").fadeIn(400);
-			}
-			break;
-			
-		case "upgrade_water_storage":
-			if (chasm_upgrades[uid.upgrade_water_storage].buy()) {
-				$("#upgrade_water_storage").addClass("disabled");
+				break;
 
+			case uid.upgrade_water_storage:
 				$("#water_box").css("display", "block");
-			}
-			break;
-			
-		case "upgrade_rain_barrels":
-			if (chasm_upgrades[uid.upgrade_rain_barrels].buy()) {
-				$("#upgrade_rain_barrels").addClass("disabled");
-				
+				break;
+
+			case uid.upgrade_rain_barrels:
 				$("#water_gather_menu").fadeIn(400);
-			}
-			break;
-			
-		case "upgrade_sprinkler":
-			if (chasm_upgrades[uid.upgrade_sprinkler].buy()) {
-				$("#upgrade_sprinkler").addClass("disabled");
-				
+				break;
+
+			case uid.upgrade_sprinkler:
 				$("#water_drop_menu").fadeIn(400);
-			}
-			break;
+				break;
 
-		case "upgrade_prospectors_tools":
-			if (chasm_upgrades[uid.upgrade_prospectors_tools].buy()) {
-				$("#upgrade_prospectors_tools").addClass("disabled");
-			}
-			break;
-
-		default:
+			case uid.upgrade_prospectors_tools:
+				break;
+			
+			default:
+		}
 	}
 }
 
@@ -321,62 +277,89 @@ class _TILE_ID {
 	tile_count						= 0x000d;
 } var tid = new _TILE_ID();
 
+class Research_Tile {
+	tile_id = tid.tile_none;
+	upgrade_id = uid.upgrade_count;
+
+	constructor() {
+	}
+
+	assign_tile(tile_id, upgrade_id) {
+		if (this.tile_id == tid.tile_none && this.upgrade_id) {
+			this.tile_id = tile_id;
+			this.upgrade_id = upgrade_id;
+			return true;
+		} else {
+			throw new Error("Research map generation collision");
+		}
+	}
+}
+
 function drawResearchMap() {
 	let map = generateResearchMap();
 	let out;
+
+	let image_header = "<img src = '";
+	let image_footer = "' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
 	
 	// Background image
 	out += "<div class = 'flex' style = 'width: 600px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(\"./images/research_bkg.png\");'>";
 	
 	// Tiles
 	for (let i = 0; i < map.length; i++) {
-		switch (map[i]) {
+		switch (map[i].tile_id) {
 			case tid.tile_connect_ud:
-				out += "<img src = 'images/tile_research_connect_ud.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_ud.png" + image_footer;
 				break;
 
 			case tid.tile_connect_ur:
-				out += "<img src = 'images/tile_research_connect_ur.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_ur.png" + image_footer;
 				break;
 
 			case tid.tile_connect_ul:
-				out += "<img src = 'images/tile_research_connect_ul.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_ul.png" + image_footer;
 				break;
 
 			case tid.tile_connect_lr:
-				out += "<img src = 'images/tile_research_connect_lr.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_lr.png" + image_footer;
 				break;
 
 			case tid.tile_connect_ld:
-				out += "<img src = 'images/tile_research_connect_ld.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_ld.png" + image_footer;
 				break;
 
 			case tid.tile_connect_rd:
-				out += "<img src = 'images/tile_research_connect_rd.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_rd.png" + image_footer;
 				break;
 
 			case tid.tile_connect_ulr:
-				out += "<img src = 'images/tile_research_connect_ulr.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_ulr.png" + image_footer;
 				break;
 
 			case tid.tile_connect_uld:
-				out += "<img src = 'images/tile_research_connect_uld.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_uld.png" + image_footer;
 				break;
 
 			case tid.tile_connect_urd:
-				out += "<img src = 'images/tile_research_connect_urd.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_urd.png" + image_footer;
 				break;
 
 			case tid.tile_connect_lrd:
-				out += "<img src = 'images/tile_research_connect_lrd.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_lrd.png" + image_footer;
 				break;
 
 			case tid.tile_connect_ulrd:
-				out += "<img src = 'images/tile_research_connect_ulrd.png' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+				out += image_header + "images/tile_research_connect_ulrd.png" + image_footer;
 				break;
 
 			case tid.tile_node:
-				out += "<img src = 'images/tile_research_node.png' class = 'pixelart' width = '20' height = '20'  draggable = 'false'></img>";
+				out += image_header + "images/tile_research_node.png' id = 'upgrade_node_" + map[i].upgrade_id + "'";
+				if (chasm_upgrades[map[i].upgrade_id].unlocked) {
+					out += " style = 'cursor: pointer; filter: hue-rotate(180deg);'";
+				} else {
+					out += " style = 'cursor: pointer;'";
+				}
+				out += " onclick = 'buy_upgrade(" + map[i].upgrade_id + ")" + image_footer;
 				break;
 
 			case tid.tile_none:
@@ -386,40 +369,38 @@ function drawResearchMap() {
 	}
 
 	out += "</div>";
-
 	$("#research_map").html(out);
+
+	// Register mouse events
+	for (let i = 0; i < uid.upgrade_count; i++) {
+		$("#upgrade_node_" + i).mouseenter(function(){showInspector(i + iid.offset_upgrades);});
+	}
 }
 
 function generateResearchMap() {
-	let mapHeight = 60;
-	let out = new Array(30 * mapHeight);
+	let mapHeight 	= 60;
+	let mapSize		= mapHeight * 30;
+	let out 		= new Array(30 * mapHeight);
 
-	for (let i = 0; i < tid.tile_count; i++) {
-		out[i] = i;
+	for (let i = 0; i < mapSize; i++) {
+		out[i] = new Research_Tile();
 	}
-	
-	out[mapRowCol(2, 5)] = tid.tile_connect_rd;
-	out[mapRowCol(2, 6)] = tid.tile_connect_lr;
-	out[mapRowCol(2, 7)] = tid.tile_connect_ld;
-	out[mapRowCol(3, 5)] = tid.tile_connect_ud;
-	out[mapRowCol(3, 7)] = tid.tile_connect_ud;
-	out[mapRowCol(4, 5)] = tid.tile_connect_ur;
-	out[mapRowCol(4, 6)] = tid.tile_connect_lr;
-	out[mapRowCol(4, 7)] = tid.tile_connect_ulrd;
-	out[mapRowCol(4, 8)] = tid.tile_connect_lr;
-	out[mapRowCol(4, 8)] = tid.tile_connect_ld;
-	out[mapRowCol(5, 7)] = tid.tile_connect_ur;
-	out[mapRowCol(5, 8)] = tid.tile_connect_ul;
 
-	out[mapRowCol(3, 21)] = tid.tile_node;
-	out[mapRowCol(4, 21)] = tid.tile_connect_ud;
-	out[mapRowCol(5, 21)] = tid.tile_node;
-	out[mapRowCol(6, 21)] = tid.tile_connect_ulr;
-	out[mapRowCol(6, 20)] = tid.tile_connect_rd;
-	out[mapRowCol(6, 22)] = tid.tile_connect_ld;
-	out[mapRowCol(7, 20)] = tid.tile_node;
-	out[mapRowCol(7, 22)] = tid.tile_connect_ud;
-	out[mapRowCol(8, 22)] = tid.tile_node;
+	for (let i = 0; i < tid.tile_count - 1; i++) {
+		out[i].assign_tile(i, uid.upgrade_count);
+	}
+
+	out[mapRowCol(5, 5)].assign_tile(tid.tile_node, uid.upgrade_steel_toed_boots);
+	out[mapRowCol(6, 5)].assign_tile(tid.tile_node, uid.upgrade_tamping_rod);
+	out[mapRowCol(7, 5)].assign_tile(tid.tile_node, uid.upgrade_trash_compactor);
+	out[mapRowCol(8, 5)].assign_tile(tid.tile_node, uid.upgrade_macrosonic_agitator);
+	out[mapRowCol(9, 5)].assign_tile(tid.tile_node, uid.upgrade_gravity_well);
+	out[mapRowCol(10, 5)].assign_tile(tid.tile_node, uid.upgrade_ant_farm);
+	out[mapRowCol(11, 5)].assign_tile(tid.tile_node, uid.upgrade_catapult);
+	out[mapRowCol(5, 8)].assign_tile(tid.tile_node, uid.upgrade_water_storage);
+	out[mapRowCol(6, 8)].assign_tile(tid.tile_node, uid.upgrade_rain_barrels);
+	out[mapRowCol(7, 8)].assign_tile(tid.tile_node, uid.upgrade_sprinkler);
+	out[mapRowCol(8, 8)].assign_tile(tid.tile_node, uid.upgrade_prospectors_tools);
 
 	return out;
 }

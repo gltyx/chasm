@@ -135,21 +135,24 @@ function draw_resources() {
 function game_tick(scalar) {
 	
 	// Earth Gather
-	if (chasm_upgrades[uid.upgrade_earth_auto_gather].unlocked && $("#earth_gather_checkbox").is(':checked')) {
-		earth_gather_progress += (50 * scalar);
+	if (chasm_upgrades[uid.upgrade_earth_auto_gather].unlocked && earth_storage.workers_gather > 0) {
+		earth_gather_progress += earth_storage.workers_gather * 10 * scalar;
 	}
 	if (earth_gather_progress > 100) {
 		if (earth.current == earth.cap) {
 			earth_gather_progress = 100;
 		} else {
-			earth_gather_progress = 0;
-			gather(earth);
+			let cycles = earth_gather_progress / 100;
+			earth_gather_progress -= cycles * 100;
+			for (let i = 0; i < cycles; i++) {
+				gather(earth);
+			}
 		}
 	}
 
 	// Earth Drop
-	if (chasm_upgrades[uid.upgrade_earth_auto_drop].unlocked && $("#earth_drop_checkbox").is(':checked')) {
-		earth_drop_progress += (10 * scalar);
+	if (chasm_upgrades[uid.upgrade_earth_auto_drop].unlocked && earth_storage.workers_drop > 0) {
+		earth_drop_progress += earth_storage.workers_drop * 10 * scalar;
 	}
 	if (earth_drop_progress > 100) {
 		if (earth.current == earth.cap) {

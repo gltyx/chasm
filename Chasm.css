@@ -129,6 +129,10 @@ form {
 	align-items: center;
 }
 
+.hcenter {
+	text-align: center;
+}
+
 .currency_line {
 	margin-bottom: 3px;
 }
@@ -160,6 +164,10 @@ form {
 .upgrade_tile {
 	width: 20px;
 	height: 20px;
+}
+
+.worker_button {
+	font-size: 10px;
 }
 
 /* Chasm id's */

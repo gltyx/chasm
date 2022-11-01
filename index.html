@@ -190,26 +190,43 @@
 										</label></p>
 										-->
 										
-										<!--Workers Slider-->
+										<!--Workers Slider (deprecated)-->
+										<!--
 										<p class = "range-field">
 										<input type = "range" id = "earth_gather_workers" min = "0" max = "20" />
 										<span class = "thumb" style = "height: 0px; width: 0px; top: 10px; margin-left: 7px; left: 131.878px;">
 										</p>
+										-->
+
+										<!--Workers Arrows-->
+										<div class = "flex">
+											<input type = "button" class = "worker_button" onclick = "earth_storage.manage_workers(-1, 'gather')" value = "<" />
+											<div class = "hcenter" style = "width: 40px;">
+												<p id = "earth_workers_gather">0</p>
+											</div>
+											<input type = "button" class = "worker_button" onclick = "earth_storage.manage_workers(1, 'gather')" value = ">" />
+										</div>
 									</form>
 								</div>
 							</div>
 
 							<!--Drop-->
-							<div style = "width: 71px;">
+							<div class = "drop_button" style = "width: 88px;">
 								<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
 									<div id = "earth_drop_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
-								<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick = "drop('earth_storage')">Drop</a>
-								<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
-									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
-										<input type = "checkbox" id = "earth_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
-										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-									</label></p></form></div>
+								<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "drop('earth_storage')">Drop</a>
+								<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
+									<form>
+										<!--Workers Arrows-->
+										<div class = "flex">
+											<input type = "button" class = "worker_button" onclick = "earth_storage.manage_workers(-1, 'drop')" value = "<" />
+											<div class = "hcenter" style = "width: 40px;">
+												<p id = "earth_workers_drop">0</p>
+											</div>
+											<input type = "button" class = "worker_button" onclick = "earth_storage.manage_workers(1, 'drop')" value = ">" />
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -237,7 +254,7 @@
 									<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
-								<div id = "water_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
+								<div id = "water_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
 									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
 										<input type = "checkbox" id = "water_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
 										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
@@ -251,7 +268,7 @@
 									<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
-								<div id = "water_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
+								<div id = "water_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
 									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
 										<input type = "checkbox" id = "water_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
 										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>

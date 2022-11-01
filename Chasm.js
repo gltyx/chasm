@@ -142,8 +142,8 @@ function game_tick(scalar) {
 		if (earth.current == earth.cap) {
 			earth_gather_progress = 100;
 		} else {
-			let cycles = earth_gather_progress / 100;
-			earth_gather_progress -= cycles * 100;
+			let cycles = Math.floor(earth_gather_progress / 100);
+			earth_gather_progress -= Math.floor(cycles) * 100;
 			for (let i = 0; i < cycles; i++) {
 				gather(earth);
 			}

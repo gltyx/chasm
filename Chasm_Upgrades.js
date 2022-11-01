@@ -4,10 +4,9 @@
 	//
 	// 1. Add upgrade to uid table							[_UPGRADE_ID]
 	// 2. Add upgrade cost to init function					[initUpgrades]
-	// 3. Add upgrade purchase handling to buy function 	[buy_upgrade]
+	// 3. (optional) Add purchase-time functionality		[buy_upgrade]
 	// 4. Add upgrade to research map						[generateResearchMap]
 	// 5. (optional) Add upgrade handling to game task		[game_tick]
-	// 6. (todo) Add upgrade unlocked state to save module	[]
 
 class _UPGRADE_ID {
 	upgrade_first					= 0x0000;
@@ -18,15 +17,16 @@ class _UPGRADE_ID {
 	upgrade_earth_density_3			= 0x0002;	// 2x Earth density (16x16)
 	upgrade_earth_density_4			= 0x0003;	// 2x Earth density (32x32)
 	upgrade_earth_density_5			= 0x0004;	// 2x Earth density (64x64)
-	upgrade_earth_auto_gather		= 0x0005;	// Unlock auto-gather
-	upgrade_earth_auto_drop			= 0x0006;	// Unlock auto-drop
-	upgrade_earth_metals_1			= 0x0007;	// Gather copper
+	upgrade_earth_value_1			= 0x0005;	// Value +0.01
+	upgrade_earth_auto_gather		= 0x0006;	// Unlock auto-gather
+	upgrade_earth_auto_drop			= 0x0007;	// Unlock auto-drop
+	upgrade_earth_metals_1			= 0x0008;	// Gather copper
 
-	upgrade_water_storage			= 0x0008;	// Unlock water storage
-	upgrade_water_auto_gather		= 0x0009;	// Unlock auto-gather
-	upgrade_water_auto_drop			= 0x000a;	// Unlock auto-drop
+	upgrade_water_storage			= 0x0009;	// Unlock water storage
+	upgrade_water_auto_gather		= 0x000a;	// Unlock auto-gather
+	upgrade_water_auto_drop			= 0x000b;	// Unlock auto-drop
 
-	upgrade_count					= 0x000b;
+	upgrade_count					= 0x000c;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -111,6 +111,15 @@ function initUpgrades() {
 			case uid.upgrade_earth_density_5:
 				chasm_upgrades[i] = new _CHASM_UPGRADE([
 					4,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+				]);
+				break;
+
+			case uid.upgrade_earth_value_1:
+				chasm_upgrades[i] = new _CHASM_UPGRADE([
+					0.4,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -398,25 +407,40 @@ function generateResearchMap() {
 		out[i] = new Research_Tile();
 	}
 
-	for (let i = 0; i < tid.tile_count - 1; i++) {
-		out[i].assign_tile(i, uid.upgrade_count);
-	}
+	// Earth Starting Tree
+	out[mapColRow(2, 2)].assign_tile(tid.tile_node, uid.upgrade_earth_value_1);
+	out[mapColRow(4, 2)].assign_tile(tid.tile_node, uid.upgrade_earth_density_1);
+	out[mapColRow(2, 3)].assign_tile(tid.tile_connect_ur, uid.upgrade_count);
+	out[mapColRow(3, 3)].assign_tile(tid.tile_connect_lrd, uid.upgrade_count);
+	out[mapColRow(4, 3)].assign_tile(tid.tile_connect_ul, uid.upgrade_count);
+	out[mapColRow(3, 4)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
+	out[mapColRow(3, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_auto_gather);
+	out[mapColRow(4, 5)].assign_tile(tid.tile_connect_lr, uid.upgrade_count);
+	out[mapColRow(5, 5)].assign_tile(tid.tile_connect_lrd, uid.upgrade_count);
+	out[mapColRow(6, 5)].assign_tile(tid.tile_connect_ul, uid.upgrade_count);
+	out[mapColRow(6, 4)].assign_tile(tid.tile_node, uid.upgrade_earth_auto_drop);
+	out[mapColRow(5, 6)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
+	out[mapColRow(5, 7)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
+	out[mapColRow(5, 8)].assign_tile(tid.tile_node, uid.upgrade_earth_density_2);
+	out[mapColRow(5, 9)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
+	out[mapColRow(5, 10)].assign_tile(tid.tile_node, uid.upgrade_earth_density_3);
+	out[mapColRow(5, 11)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
+	out[mapColRow(5, 12)].assign_tile(tid.tile_node, uid.upgrade_earth_density_4);
+	out[mapColRow(5, 13)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
+	out[mapColRow(5, 14)].assign_tile(tid.tile_node, uid.upgrade_earth_density_5);
+	out[mapColRow(5, 15)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
+	out[mapColRow(5, 16)].assign_tile(tid.tile_node, uid.upgrade_earth_metals_1);
 
-	out[mapRowCol(5, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_1);
-	out[mapRowCol(6, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_2);
-	out[mapRowCol(7, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_3);
-	out[mapRowCol(8, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_4);
-	out[mapRowCol(9, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_density_5);
-	out[mapRowCol(10, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_auto_gather);
-	out[mapRowCol(11, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_auto_drop);
-	out[mapRowCol(8, 8)].assign_tile(tid.tile_node, uid.upgrade_earth_metals_1);
-	out[mapRowCol(5, 8)].assign_tile(tid.tile_node, uid.upgrade_water_storage);
-	out[mapRowCol(6, 8)].assign_tile(tid.tile_node, uid.upgrade_water_auto_gather);
-	out[mapRowCol(7, 8)].assign_tile(tid.tile_node, uid.upgrade_water_auto_drop);
+	// Water Starting Tree
+	out[mapColRow(18, 2)].assign_tile(tid.tile_node, uid.upgrade_water_storage);
+	out[mapColRow(18, 3)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
+	out[mapColRow(18, 4)].assign_tile(tid.tile_connect_ulr, uid.upgrade_count);
+	out[mapColRow(17, 4)].assign_tile(tid.tile_node, uid.upgrade_water_auto_gather);
+	out[mapColRow(19, 4)].assign_tile(tid.tile_node, uid.upgrade_water_auto_drop);
 
 	return out;
 }
 
-function mapRowCol(row, col) {
+function mapColRow(col, row) {
 	return ((30 * row) + col);
 }

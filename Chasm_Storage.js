@@ -297,7 +297,9 @@ class storage_bitmap {
 		for (let i = 0; i < eid.element_count; i++) {
 			switch (i) {
 				case eid.element_earth:
-					currency_count[cid.currency_particles] += element_count[eid.element_earth] * 0.01;
+					let value = 0.01;
+					if (chasm_upgrades[uid.upgrade_earth_value_1].unlocked) value += 0.01;
+					currency_count[cid.currency_particles] += element_count[eid.element_earth] * value;
 					break;
 				case eid.element_copper:
 					currency_count[cid.currency_strands] += element_count[eid.element_copper] * 0.01;

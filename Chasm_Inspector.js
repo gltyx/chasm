@@ -29,6 +29,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_density_3						= uid.upgrade_earth_density_3				+ this.offset_upgrades;
 	upgrade_earth_density_4						= uid.upgrade_earth_density_4				+ this.offset_upgrades;
 	upgrade_earth_density_5						= uid.upgrade_earth_density_5				+ this.offset_upgrades;
+	upgrade_earth_value_1						= uid.upgrade_earth_value_1					+ this.offset_upgrades;
 	upgrade_earth_auto_gather					= uid.upgrade_earth_auto_gather				+ this.offset_upgrades;
 	upgrade_earth_auto_drop						= uid.upgrade_earth_auto_drop				+ this.offset_upgrades;
 	upgrade_earth_metals_1						= uid.upgrade_earth_metals_1				+ this.offset_upgrades;
@@ -176,6 +177,13 @@ function showInspector(id) {
 			$("#inspector_text")	.html("A miniature black hole which can compact earth to a ridiculous degree. You can also say it ate your homework.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
+			break;
+		case iid.upgrade_earth_value_1:
+			$("#inspector_title")	.html("Dustbusting");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_1].cost.stringify());
+			$("#inspector_text")	.html("By filtering out some of the lighter dust particles you can make your earth particles worth more.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+0.01 earth particle value");
 			break;
 		case iid.upgrade_earth_auto_gather:
 			$("#inspector_title")	.html("Ant farm");

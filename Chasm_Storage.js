@@ -72,6 +72,9 @@ class resource_storage {
 
 	bricks_stored = 0;								// Number of bricks currently stored
 
+	workers_gather = 0;
+	workers_drop = 0;
+
 	constructor(name, resource) {
 		this.name = name;
 		this.resource = resource;
@@ -113,7 +116,7 @@ class resource_storage {
 			// Choose brick type
 			let type;
 			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
-				if (chasm_upgrades[uid.upgrade_prospectors_tools].unlocked) {
+				if (chasm_upgrades[uid.upgrade_earth_metals_1].unlocked) {
 					if (Math.random() > 0.975) {
 						type = eid.element_copper;
 					} else {
@@ -156,6 +159,74 @@ class resource_storage {
 			this.image_data.data[i] = this.bitmap.bitcolors[i];
 		}
 		this.canvas.putImageData(this.image_data, this.canvas_border, this.canvas_border);
+	}
+
+	manage_workers(num, target) {
+		if (target == "gather") {
+			let out = num;
+
+			// Gain workers
+			if (num > 0) {
+				if (chasm_currency[cid.currency_workers].resource.current.lt(num)) {
+					out = chasm_currency[cid.currency_workers].resource.current;
+
+					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+						this.workers_gather += out.toNumber();
+					}
+				} else {
+					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+						this.workers_gather += out;
+					}
+				}
+
+				$("#earth_workers_gather").html(this.workers_gather);
+
+			// Reduce workers
+			} else if (num < 0) {
+				if (num < -this.workers_gather) {
+					out = this.workers_gather;
+				} else {
+					out = -out;
+				}
+
+				chasm_currency[cid.currency_workers].resource.gain(out);
+				this.workers_gather -= out;
+
+				$("#earth_workers_gather").html(this.workers_gather);
+			}
+		} else if (target == "drop") {
+			let out = num;
+
+			// Gain workers
+			if (num > 0) {
+				if (chasm_currency[cid.currency_workers].resource.current.lt(num)) {
+					out = chasm_currency[cid.currency_workers].resource.current;
+
+					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+						this.workers_drop += out.toNumber();
+					}
+				} else {
+					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+						this.workers_drop += out;
+					}
+				}
+
+				$("#earth_workers_drop").html(this.workers_drop);
+
+			// Reduce workers
+			} else if (num < 0) {
+				if (num < -this.workers_drop) {
+					out = this.workers_drop;
+				} else {
+					out = -out;
+				}
+
+				chasm_currency[cid.currency_workers].resource.gain(out);
+				this.workers_drop -= out;
+
+				$("#earth_workers_drop").html(this.workers_drop);
+			}
+		}
 	}
 }
 
@@ -226,7 +297,9 @@ class storage_bitmap {
 		for (let i = 0; i < eid.element_count; i++) {
 			switch (i) {
 				case eid.element_earth:
-					currency_count[cid.currency_particles] += element_count[eid.element_earth] * 0.01;
+					let value = 0.01;
+					if (chasm_upgrades[uid.upgrade_earth_value_1].unlocked) value += 0.01;
+					currency_count[cid.currency_particles] += element_count[eid.element_earth] * value;
 					break;
 				case eid.element_copper:
 					currency_count[cid.currency_strands] += element_count[eid.element_copper] * 0.01;

@@ -40,7 +40,7 @@
 		<script type = "text/javascript" src = "./Chasm_Inspector.js"></script>
 		<script type = "text/javascript" src = "./Chasm_Save.js"></script>
 		<script type = "text/javascript" src = "./Chasm.js"></script>
-		<link rel = "stylesheet" href = "./Chasm.css"></script>
+		<link rel = "stylesheet" href = "./Chasm.css">
 </head>
 
 <body onload = "game_init();">
@@ -98,6 +98,11 @@
 
 						<!--Currency Icons-->
 						<div style = "display: block;">
+							<!--Workers-->
+							<div id = "currency_workers_symbol" class = "currency_workers currency_line vertcenter" style = "display: none">
+								<i class = "material-icons purple-text text-lighten-3 currency_icon">face</i>
+							</div>
+
 							<!--Void Particles-->
 							<div id = "currency_particles_symbol" class = "currency_particles currency_line vertcenter" style = "display: none">
 								<i class = "material-icons purple-text text-lighten-3 currency_icon">blur_circular</i>
@@ -121,6 +126,11 @@
 
 						<!--Currency Values-->
 						<div style = "display: block;">
+							<!--Workers-->
+							<div id = "currency_workers_value" class = "currency_workers currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_workers_amount"></span></p>
+							</div>
+
 							<!--Void Particles-->
 							<div id = "currency_particles_value" class = "currency_particles currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_particles_amount"></span></p>
@@ -172,25 +182,59 @@
 									<div id = "earth_gather_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
-								<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
-									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
+								<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
+									<form>
+										<!--Auto-gather checkbox (deprecated)-->
+										<!--
+										<p><label style = "zoom: 0.75;">
 										<input type = "checkbox" id = "earth_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
 										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-									</label></p></form></div>
+										</label></p>
+										-->
+										
+										<!--Workers Slider (deprecated)-->
+										<!--
+										<p class = "range-field">
+										<input type = "range" id = "earth_gather_workers" min = "0" max = "20" />
+										<span class = "thumb" style = "height: 0px; width: 0px; top: 10px; margin-left: 7px; left: 131.878px;">
+										</p>
+										-->
+
+										<!--Workers Arrows-->
+										<div class = "flex">
+											<input type = "button" class = "worker_button" onclick = "earth_storage.manage_workers(-1, 'gather')" value = "<" />
+											<div class = "hcenter" style = "width: 40px;">
+												<p id = "earth_workers_gather">0</p>
+											</div>
+											<input type = "button" class = "worker_button" onclick = "earth_storage.manage_workers(1, 'gather')" value = ">" />
+											<div class = "hcenter" style = "margin: auto;">
+												<p style = "font-size: 8px;">workers</p>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
 
 							<!--Drop-->
-							<div style = "width: 71px;">
+							<div class = "drop_button" style = "width: 88px;">
 								<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
 									<div id = "earth_drop_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
-								<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 71px;" onclick = "drop('earth_storage')">Drop</a>
-								<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
-									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
-										<input type = "checkbox" id = "earth_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
-										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-									</label></p></form></div>
+								<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "drop('earth_storage')">Drop</a>
+								<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
+									<form>
+										<!--Workers Arrows-->
+										<div class = "flex">
+											<input type = "button" class = "worker_button" onclick = "earth_storage.manage_workers(-1, 'drop')" value = "<" />
+											<div class = "hcenter" style = "width: 40px;">
+												<p id = "earth_workers_drop">0</p>
+											</div>
+											<input type = "button" class = "worker_button" onclick = "earth_storage.manage_workers(1, 'drop')" value = ">" />
+											<div class = "hcenter" style = "margin: auto;">
+												<p style = "font-size: 8px;">workers</p>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -218,7 +262,7 @@
 									<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
-								<div id = "water_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
+								<div id = "water_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
 									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
 										<input type = "checkbox" id = "water_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
 										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
@@ -232,7 +276,7 @@
 									<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
 								</div>
 								<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
-								<div id = "water_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none;">
+								<div id = "water_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
 									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
 										<input type = "checkbox" id = "water_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
 										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
@@ -246,27 +290,6 @@
 				<!--Upgrades Box-->
 				<div id = "upgrades_box">
 					<div id = "research_map" class = "flex" style = "font-size: 0px; width: 600px; margin: auto;">
-						<div style = "width: 15px; height: 15px; background-color: maroon;">
-
-						</div>
-					</div>
-
-					<div class = "card blue-grey lighten-4" style = "margin-top: 20px;">
-						<div class = "flex">
-							<div id = "select_upgrade_steel_toed_boots"><a id = "upgrade_steel_toed_boots" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_steel_toed_boots')">Steel-toed Boots</a></div>
-							<div id = "select_upgrade_tamping_rod"><a id = "upgrade_tamping_rod" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_tamping_rod')">Tamping Rod</a></div>
-							<div id = "select_upgrade_trash_compactor"><a id = "upgrade_trash_compactor" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_trash_compactor')">Trash Compactor</a></div>
-							<div id = "select_upgrade_macrosonic_agitator"><a id = "upgrade_macrosonic_agitator" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_macrosonic_agitator')">Macrosonic Agitator</a></div>
-							<div id = "select_upgrade_gravity_well"><a id = "upgrade_gravity_well" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_gravity_well')">Gravity Well</a></div>
-							<div id = "select_upgrade_ant_farm"><a id = "upgrade_ant_farm" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_ant_farm')">Ant farm</a></div>
-							<div id = "select_upgrade_catapult"><a id = "upgrade_catapult" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_catapult')">Catapult</a></div>
-							<div id = "select_upgrade_prospectors_tools"><a id = "upgrade_prospectors_tools" class = "waves-effect waves-light btn brown darken-3" onclick = "buy_upgrade('upgrade_prospectors_tools')">Prospector's Tools</a></div>
-						</div>
-						<div class = "flex">
-							<div id = "select_upgrade_water_storage"><a id = "upgrade_water_storage" class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_water_storage')">Water storage</a></div>
-							<div id = "select_upgrade_rain_barrels"><a id = "upgrade_rain_barrels" class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_rain_barrels')">Rain barrels</a></div>
-							<div id = "select_upgrade_sprinkler"><a id = "upgrade_sprinkler" class = "waves-effect waves-light btn blue lighten-2" onclick = "buy_upgrade('upgrade_sprinkler')">Sprinkler</a></div>
-						</div>
 					</div>
 				</div>
 	

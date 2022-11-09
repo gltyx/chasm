@@ -203,38 +203,38 @@ function buy_upgrade(upgrade_id) {
 	if (chasm_upgrades[upgrade_id].buy()) {
 		switch (upgrade_id) {
 			case uid.upgrade_earth_density_1:
-				earth_storage.brick_h = earth_storage.brick_h / 2;
-				earth_storage.brick_w = earth_storage.brick_w / 2;
-				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-				earth_storage.clear();
+				chasm_storage[sid.storage_earth].brick_h = chasm_storage[sid.storage_earth].brick_h / 2;
+				chasm_storage[sid.storage_earth].brick_w = chasm_storage[sid.storage_earth].brick_w / 2;
+				earth.setCap((chasm_storage[sid.storage_earth].canvas_w * chasm_storage[sid.storage_earth].canvas_h) / (chasm_storage[sid.storage_earth].brick_w * chasm_storage[sid.storage_earth].brick_h));
+				chasm_storage[sid.storage_earth].clear();
 				break;
 
 			case uid.upgrade_earth_density_2:
-				earth_storage.brick_h = earth_storage.brick_h / 2;
-				earth_storage.brick_w = earth_storage.brick_w / 2;
-				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-				earth_storage.clear();
+				chasm_storage[sid.storage_earth].brick_h = chasm_storage[sid.storage_earth].brick_h / 2;
+				chasm_storage[sid.storage_earth].brick_w = chasm_storage[sid.storage_earth].brick_w / 2;
+				earth.setCap((chasm_storage[sid.storage_earth].canvas_w * chasm_storage[sid.storage_earth].canvas_h) / (chasm_storage[sid.storage_earth].brick_w * chasm_storage[sid.storage_earth].brick_h));
+				chasm_storage[sid.storage_earth].clear();
 				break;
 
 			case uid.upgrade_earth_density_3:
-				earth_storage.brick_h = earth_storage.brick_h / 2;
-				earth_storage.brick_w = earth_storage.brick_w / 2;
-				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-				earth_storage.clear();
+				chasm_storage[sid.storage_earth].brick_h = chasm_storage[sid.storage_earth].brick_h / 2;
+				chasm_storage[sid.storage_earth].brick_w = chasm_storage[sid.storage_earth].brick_w / 2;
+				earth.setCap((chasm_storage[sid.storage_earth].canvas_w * chasm_storage[sid.storage_earth].canvas_h) / (chasm_storage[sid.storage_earth].brick_w * chasm_storage[sid.storage_earth].brick_h));
+				chasm_storage[sid.storage_earth].clear();
 				break;
 
 			case uid.upgrade_earth_density_4:
-				earth_storage.brick_h = earth_storage.brick_h / 2;
-				earth_storage.brick_w = earth_storage.brick_w / 2;
-				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-				earth_storage.clear();
+				chasm_storage[sid.storage_earth].brick_h = chasm_storage[sid.storage_earth].brick_h / 2;
+				chasm_storage[sid.storage_earth].brick_w = chasm_storage[sid.storage_earth].brick_w / 2;
+				earth.setCap((chasm_storage[sid.storage_earth].canvas_w * chasm_storage[sid.storage_earth].canvas_h) / (chasm_storage[sid.storage_earth].brick_w * chasm_storage[sid.storage_earth].brick_h));
+				chasm_storage[sid.storage_earth].clear();
 				break;
 
 			case uid.upgrade_earth_density_5:
-				earth_storage.brick_h = earth_storage.brick_h / 2;
-				earth_storage.brick_w = earth_storage.brick_w / 2;
-				earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
-				earth_storage.clear();
+				chasm_storage[sid.storage_earth].brick_h = chasm_storage[sid.storage_earth].brick_h / 2;
+				chasm_storage[sid.storage_earth].brick_w = chasm_storage[sid.storage_earth].brick_w / 2;
+				earth.setCap((chasm_storage[sid.storage_earth].canvas_w * chasm_storage[sid.storage_earth].canvas_h) / (chasm_storage[sid.storage_earth].brick_w * chasm_storage[sid.storage_earth].brick_h));
+				chasm_storage[sid.storage_earth].clear();
 				break;
 
 			case uid.upgrade_earth_auto_gather:

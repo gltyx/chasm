@@ -17,6 +17,12 @@ var color_disabled = "blue-grey lighten-3";
 var color_earth = "brown lighten-1";
 var color_water = "blue lighten-2";
 
+
+
+// Remove gather/drop buttons? All workers/upgrades!
+
+
+
 // Game Initialization
 function game_init() {
 	// Page Initialization
@@ -40,8 +46,8 @@ function game_init() {
 	init_milestones();
 
 	// Animation Initialization
-	earth_storage.init($("#earth_storage")[0].getContext("2d"));
-	water_storage.init($("#water_storage")[0].getContext("2d"));
+	chasm_storage[sid.storage_earth].init($("#earth_storage")[0].getContext("2d"));
+	chasm_storage[sid.storage_water].init($("#water_storage")[0].getContext("2d"));
 	animation_tick();
 
 	// Timing Initialization
@@ -66,7 +72,7 @@ function animation_tick() {
 	showInspector(current_inspector_id);
 
 	// Earth
-	earth_storage.draw();
+	chasm_storage[sid.storage_earth].draw();
 	if (earth.current == earth.cap) {
 		// Disable gather
 		$("#earth_gather").addClass("disabled");
@@ -89,7 +95,7 @@ function animation_tick() {
 	$("#earth_drop_progress").width(earth_drop_progress + "%");
 
 	// Water
-	water_storage.draw();
+	chasm_storage[sid.storage_water].draw();
 	if (water.current == water.cap) {
 		// Disable gather
 		$("#water_gather").addClass("disabled");
@@ -121,22 +127,22 @@ function draw_resources() {
 	$("#currency_workers_amount").html(chasm_currency[cid.currency_workers].resource.current.toFixed(0));
 
 	// Update resources
-	let earth_element_count = earth_storage.bitmap.element_count();
-	let earth_currency_count = earth_storage.bitmap.value(earth_element_count);
-	$("#element_earth_amount").html(earth_storage.bitmap.stringifyElements(earth_element_count));
-	$("#value_earth_amount").html(earth_storage.bitmap.stringifyValue(earth_currency_count));
+	let earth_element_count = chasm_storage[sid.storage_earth].bitmap.element_count();
+	let earth_currency_count = chasm_storage[sid.storage_earth].bitmap.value(earth_element_count);
+	$("#element_earth_amount").html(chasm_storage[sid.storage_earth].bitmap.stringifyElements(earth_element_count));
+	$("#value_earth_amount").html(chasm_storage[sid.storage_earth].bitmap.stringifyValue(earth_currency_count));
 
-	let water_element_count = water_storage.bitmap.element_count();
-	let water_currency_count = water_storage.bitmap.value(water_element_count);
-	$("#element_water_amount").html(water_storage.bitmap.stringifyElements(water_element_count));
-	$("#value_water_amount").html(water_storage.bitmap.stringifyValue(water_currency_count));
+	let water_element_count = chasm_storage[sid.storage_water].bitmap.element_count();
+	let water_currency_count = chasm_storage[sid.storage_water].bitmap.value(water_element_count);
+	$("#element_water_amount").html(chasm_storage[sid.storage_water].bitmap.stringifyElements(water_element_count));
+	$("#value_water_amount").html(chasm_storage[sid.storage_water].bitmap.stringifyValue(water_currency_count));
 }
 
 function game_tick(scalar) {
 	
 	// Earth Gather
-	if (chasm_upgrades[uid.upgrade_earth_auto_gather].unlocked && earth_storage.workers_gather > 0) {
-		earth_gather_progress += earth_storage.workers_gather * 10 * scalar;
+	if (chasm_upgrades[uid.upgrade_earth_auto_gather].unlocked && chasm_storage[sid.storage_earth].workers_gather > 0) {
+		earth_gather_progress += chasm_storage[sid.storage_earth].workers_gather * 10 * scalar;
 	}
 	if (earth_gather_progress > 100) {
 		if (earth.current == earth.cap) {
@@ -151,8 +157,8 @@ function game_tick(scalar) {
 	}
 
 	// Earth Drop
-	if (chasm_upgrades[uid.upgrade_earth_auto_drop].unlocked && earth_storage.workers_drop > 0) {
-		earth_drop_progress += earth_storage.workers_drop * 10 * scalar;
+	if (chasm_upgrades[uid.upgrade_earth_auto_drop].unlocked && chasm_storage[sid.storage_earth].workers_drop > 0) {
+		earth_drop_progress += chasm_storage[sid.storage_earth].workers_drop * 10 * scalar;
 	}
 	if (earth_drop_progress > 100) {
 		if (earth.current == earth.cap) {
@@ -198,9 +204,9 @@ function gather(resource) {
 function drop(storage) {
 	switch (storage) {
 		case "earth_storage":
-			if(earth_storage.drop()) {
-				currency_gain(earth_storage.bitmap.value(earth_storage.bitmap.element_count()));
-				earth_storage.clear();
+			if(chasm_storage[sid.storage_earth].drop()) {
+				currency_gain(chasm_storage[sid.storage_earth].bitmap.value(chasm_storage[sid.storage_earth].bitmap.element_count()));
+				chasm_storage[sid.storage_earth].clear();
 
 				if (chasm_achievements[aid.achievement_babys_first_block].unlocked == false) {
 					chasm_achievements[aid.achievement_babys_first_block].unlock();
@@ -209,9 +215,9 @@ function drop(storage) {
 			break;
 
 		case "water_storage":
-			if (water_storage.drop()) {
-				currency_gain(water_storage.bitmap.value(water_storage.bitmap.element_count()));
-				water_storage.clear();
+			if (chasm_storage[sid.storage_water].drop()) {
+				currency_gain(chasm_storage[sid.storage_water].bitmap.value(chasm_storage[sid.storage_water].bitmap.element_count()));
+				chasm_storage[sid.storage_water].clear();
 			}
 			break;
 			

@@ -12,11 +12,18 @@ var STORAGE_FLAGS_WATER = 1 << 1;
 var earth;
 var water;
 
-// Storage Initialization
-var earth_storage;
-var water_storage;
+class _STORAGE_ID {
+	storage_first		= 0x0000;
 
-// Storage Elements
+	// Storage list
+	storage_earth 		= 0x0000;
+	storage_water 		= 0x0001;
+
+	storage_count		= 0x0002;
+} var sid = new _STORAGE_ID();
+
+var chasm_storage = new Array(sid.storage_count);
+
 class _ELEMENT_ID {
 	element_first		= 0x0000;
 
@@ -41,17 +48,27 @@ function initStorage() {
 	water.option_unlocked = true;
 	water.option_cap = true;
 
-	earth_storage = new resource_storage("earth_storage", earth);
-	earth_storage.storage_flags |= STORAGE_FLAGS_EARTH;
-	earth_storage.brick_w = 32;
-	earth_storage.brick_h = 32;
-	earth.setCap((earth_storage.canvas_w * earth_storage.canvas_h) / (earth_storage.brick_w * earth_storage.brick_h));
+	for (let i = 0; i < sid.storage_count; i++) {
+		switch (i) {
+			case sid.storage_earth:
+				chasm_storage[i] = new resource_storage("earth storage", earth);
+				chasm_storage[i].storage_flags |= STORAGE_FLAGS_EARTH;
+				chasm_storage[i].brick_w = 32;
+				chasm_storage[i].brick_h = 32;
+				earth.setCap((chasm_storage[i].canvas_w * chasm_storage[i].canvas_h) / (chasm_storage[i].brick_w * chasm_storage[i].brick_h));
+				break;
 
-	water_storage = new resource_storage("water_storage", water);
-	water_storage.storage_flags |= STORAGE_FLAGS_WATER;
-	water_storage.brick_w = 64;
-	water_storage.brick_h = 1;
-	water.setCap((water_storage.canvas_w * water_storage.canvas_h) / (water_storage.brick_w * water_storage.brick_h));
+			case sid.storage_water:
+				chasm_storage[i] = new resource_storage("water storage", water);
+				chasm_storage[i].storage_flags |= STORAGE_FLAGS_WATER;
+				chasm_storage[i].brick_w = 64;
+				chasm_storage[i].brick_h = 1;
+				water.setCap((chasm_storage[i].canvas_w * chasm_storage[i].canvas_h) / (chasm_storage[i].brick_w * chasm_storage[i].brick_h));
+				break;
+
+			default:
+		}
+	}
 }
 
 // Resource Storage Class - Represents a resource storage box in the gui

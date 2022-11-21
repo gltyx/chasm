@@ -75,3 +75,7 @@ function debug_gain_100_each() {
 	chasm_log.writeSectionDivider();
 	chasm_log.writeColor("A sense of pride and acomplishment washes over you.", log_color_cheat);
 }
+
+function debug_save() {
+	storeSave();
+}

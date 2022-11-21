@@ -8,22 +8,31 @@ class saveData {
 	version_minor;
 	saveCount;
 
+	//achievements = chasm_achievements;
+
 	constructor() {
 		this.version_major = chasm_version_major;
 		this.version_minor = chasm_version_minor;
-		this.saveCount = 1;
+		this.saveCount = 0;
 	}
 }
 
 var chasm_save;
+var chasm_incoming_save;
 
 function loadSave() {
-	chasm_save = JSON.parse(localStorage.getItem("chasm"));
-	if (!chasm_save) {
+	chasm_save = new saveData();
+	chasm_incoming_save = JSON.parse(localStorage.getItem("chasm"));
+	if (!chasm_incoming_save) {
 		// New Game
-		chasm_save = new saveData();
 	} else {
 		// Load Game
+		for (var prop in chasm_incoming_save) {
+			if (!chasm_save.hasOwnProperty(prop)) {
+				delete chasm_incoming_save[prop];
+			}
+		}
+		Object.assign(chasm_save, chasm_incoming_save);
 	}
 }
 

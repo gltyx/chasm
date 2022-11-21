@@ -19,8 +19,7 @@ var color_water = "blue lighten-2";
 
 
 
-// Remove gather/drop buttons? All workers/upgrades!
-
+// Look into resource sinks. Gacha style storage to recycle high-volume resources for high-rarity resources?
 
 
 // Game Initialization

@@ -79,3 +79,7 @@ function debug_gain_100_each() {
 function debug_save() {
 	storeSave();
 }
+
+function debug_load() {
+	loadSave();
+}

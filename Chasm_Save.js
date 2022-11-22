@@ -5,6 +5,7 @@ class saveData {
 	version_minor;
 	saveCount;
 
+	// Need to figure out a way to attach names to ambiguous data types (arrays, etc)
 	//achievements = chasm_achievements;
 
 	constructor() {
@@ -25,7 +26,6 @@ function loadSave() {
 		// New Game
 	} else {
 		// Load Game
-		lib_chasm_match_save_classes(chasm_save, chasm_incoming_save);
 		lib_chasm_merge_save(chasm_save, chasm_incoming_save);
 	}
 }

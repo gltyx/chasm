@@ -1,17 +1,17 @@
 // Game Save data
-// Need a way to handle save data version change
 class saveData {
 	version_major;
 	version_minor;
 	saveCount;
 
-	// Need to figure out a way to attach names to ambiguous data types (arrays, etc)
-	//achievements = chasm_achievements;
+	achievements;
 
 	constructor() {
 		this.version_major = 0;
 		this.version_minor = 1;
 		this.saveCount = 0;
+
+		save_pack_achievements(this.achievements);
 	}
 }
 
@@ -37,4 +37,11 @@ function storeSave() {
 
 function autoSave() {
 	storeSave();
+}
+
+// Save data population
+function save_pack_achievements(object) {
+	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
+		object[chasm_achievements[i].name] = chasm_achievements[i].unlocked;
+	}
 }

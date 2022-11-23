@@ -48,6 +48,7 @@ class _MILESTONE_ID {
 class _ACHIEVEMENT {
 	id;
 	unlocked = false;
+	name;
 	dom_id;
 
 	log_message = "";
@@ -68,6 +69,8 @@ class _ACHIEVEMENT {
 		this.log_message = log_message;
 		this.story_message = story_message;
 		this.unlock_message = unlock_message;
+
+		this.name = name;
 	}
 
 	unlock() {

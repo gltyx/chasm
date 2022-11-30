@@ -140,7 +140,7 @@ function draw_resources() {
 function game_tick(scalar) {
 	
 	// Earth Gather
-	if (chasm_upgrades[uid.upgrade_earth_auto_gather].unlocked && chasm_storage[sid.storage_earth].workers_gather > 0) {
+	if (chasm_storage[sid.storage_earth].workers_gather > 0) {
 		earth_gather_progress += chasm_storage[sid.storage_earth].workers_gather * 10 * scalar;
 	}
 	if (earth_gather_progress > 100) {
@@ -156,7 +156,7 @@ function game_tick(scalar) {
 	}
 
 	// Earth Drop
-	if (chasm_upgrades[uid.upgrade_earth_auto_drop].unlocked && chasm_storage[sid.storage_earth].workers_drop > 0) {
+	if (chasm_storage[sid.storage_earth].workers_drop > 0) {
 		earth_drop_progress += chasm_storage[sid.storage_earth].workers_drop * 10 * scalar;
 	}
 	if (earth_drop_progress > 100) {
@@ -169,7 +169,7 @@ function game_tick(scalar) {
 	}
 
 	// Water Gather
-	if (chasm_upgrades[uid.upgrade_water_auto_gather].unlocked && $("#water_gather_checkbox").is(':checked')) {
+	if ($("#water_gather_checkbox").is(':checked')) {
 		water_gather_progress += (5 * scalar);
 	}
 	if (water_gather_progress > 100) {
@@ -178,7 +178,7 @@ function game_tick(scalar) {
 	}
 
 	// Water Drop
-	if (chasm_upgrades[uid.upgrade_water_auto_drop].unlocked && $("#water_drop_checkbox").is(':checked')) {
+	if ($("#water_drop_checkbox").is(':checked')) {
 		water_drop_progress += (0.8 * scalar);
 	}
 	if (water_gather_progress > 100) {

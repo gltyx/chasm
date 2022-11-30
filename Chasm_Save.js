@@ -4,14 +4,14 @@ class saveData {
 	version_minor;
 	saveCount;
 
-	achievements;
+	achievements = {};
 
 	constructor() {
 		this.version_major = 0;
 		this.version_minor = 1;
 		this.saveCount = 0;
 
-		save_pack_achievements(this.achievements);
+		this.achievements = save_pack_achievements();
 	}
 }
 
@@ -32,6 +32,7 @@ function loadSave() {
 
 function storeSave() {
 	chasm_save.saveCount++;
+	chasm_save.achievements = save_pack_achievements();
 	lib_chasm_store_save(save_path, chasm_save);
 }
 
@@ -40,8 +41,10 @@ function autoSave() {
 }
 
 // Save data population
-function save_pack_achievements(object) {
+function save_pack_achievements() {
+	var object = {};
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
 		object[chasm_achievements[i].name] = chasm_achievements[i].unlocked;
 	}
+	return object;
 }

@@ -1,22 +1,13 @@
 // Chasm Achievements
 	// Achievements are used to track player progress throughout the game, as well as offer specific challenges
-	// and rewards for player actions.
+	// and rewards for player actions. Milestones are hidden achievements which do not appear on the achievement page.
 	//
 	// To add a new Achievement, do the following:
 	//
-	// 1. Generate achievement resources									[xxx.png added to images]
-	// 2. Add Achievement Id												[_ACHIEVEMENT_ID]
-	// 3. Add achievement resources	to the init function					[init_achievements]
+	// 1. (optional) Generate achievement resources							[xxx.png added to images]
+	// 2. Add Achievement Id												[_ACHIEVEMENT_ID / _MILESTONE_ID]
+	// 3. Add achievement resources	to the init function					[init_achievements / init_milestones]
 	// 4. Add achievement trigger to tick function or other location		[achievement_tick / wherever you want to handle the unlock]
-
-// Chasm Milestones
-	// Milestones are used to track player progress without an entry on the achievement page.
-	//
-	// To add a new Milestone, do the following:
-	//
-	// 1. Add Milestone Id													[_MILESTONE_ID]
-	// 2. Add milestone to the init function								[init_milestones]
-	// 3. Add milestone trigger to tick function or other location			[milestone_tick / wherever you want to handle the unlock]
 
 class _ACHIEVEMENT_ID {
 	achievement_first							= 0x0000;
@@ -56,7 +47,7 @@ class _ACHIEVEMENT {
 	unlock_message 	= "";		// Unlocked: New Feature
 	story_message 	= "";		// This is the story explanation for the achievement
 
-	// Save data
+	// Saved data
 	unlocked 		= false; 	// Achievement unlocked state
 
 	constructor(id, name, img_src, log_message, unlock_message, story_message) {
@@ -230,6 +221,7 @@ function init_milestones() {
 }
 
 function achievement_tick() {
+	// ACHIEVEMENTS
 	// Reality sprang a leak (1 particle)
 	if (!chasm_achievements[aid.achievement_reality_sprang_a_leak].unlocked) {
 		if (chasm_currency[cid.currency_particles].resource.alltime.gte(1)) {
@@ -257,9 +249,8 @@ function achievement_tick() {
 			chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlock();
 		}
 	}
-}
 
-function milestone_tick() {
+	// MILESTONES
 	// Reveal currency & particles (> 0 particles)
 	if (!chasm_milestones[mid.milestone_reveal_currency_particles].unlocked) {
 		if (chasm_currency[cid.currency_particles].resource.alltime.gt(0)) {

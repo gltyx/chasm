@@ -1,4 +1,3 @@
-// Transient globals (not saved across sessions)
 var earth_gather_progress = 0;
 var earth_drop_progress = 0;
 var water_gather_progress = 0;
@@ -52,8 +51,7 @@ function game_init() {
 	// Timing Initialization
 	chasm_timing_add_process_to_scheduler(game_tick, 80, 0);
 	chasm_timing_add_process_to_scheduler(achievement_tick, 700, chasm_process_flag_disable_multitick);
-	chasm_timing_add_process_to_scheduler(milestone_tick, 700, chasm_process_flag_disable_multitick);
-	chasm_timing_add_process_to_scheduler(autoSave, 10000, chasm_process_flag_disable_multitick);
+	chasm_timing_add_process_to_scheduler(autoSave, 30000, chasm_process_flag_disable_multitick);
 	chasm_timing_init(animation_tick);
 	
 	// Register Events

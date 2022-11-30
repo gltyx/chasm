@@ -23,15 +23,16 @@ class _CURRENCY_ID {
 } var cid = new _CURRENCY_ID();
 
 class _CHASM_CURRENCY {
-	resource;
 	inspector_symbol;
-	hidden;
+	hidden = true;
+
+	// Saved data
+	resource;
 
 	constructor(name, inspector_symbol) {
-		this.resource = new chasm_resource(name);
+		this.resource = new chasm_resource(name); // Must match Currency ID for save/load compatibility
 		this.resource.option_unlocked = true;
 		this.inspector_symbol = inspector_symbol;
-		this.hidden = true;
 	}
 }
 
@@ -41,34 +42,33 @@ function initCurrency() {
 	for (let i = cid.currency_first; i < cid.currency_count; i++) {
 		switch(i) {
 			case cid.currency_workers:
-				chasm_currency[i] = new _CHASM_CURRENCY("Workers",
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_workers",
 														"<i class = 'material-icons purple-text text-lighten-3 currency_icon'>face</i>");
 				chasm_currency[i].resource.gain(8);
 				break;
 
 			case cid.currency_particles:
-				chasm_currency[i] = new _CHASM_CURRENCY("Void Particles",
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_particles",
 														"<i class = 'material-icons purple-text text-lighten-3 currency_icon'>blur_circular</i>");
 				break;
 
 			case cid.currency_strands:
-				chasm_currency[i] = new _CHASM_CURRENCY("Gravity Strands",
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_strands",
 														"<i class = 'material-icons amber-text text-darken-1 currency_icon'>gesture</i>");
 				break;
 				
 			case cid.currency_spirit:
-				chasm_currency[i] = new _CHASM_CURRENCY("Spirit Sand",
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_spirit",
 														"<i class = 'material-icons green-text text-lighten-2 currency_icon'>flare</i>");
 				break;
 
 			case cid.currency_soul:
-				chasm_currency[i] = new _CHASM_CURRENCY("Soul Splinters",
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_soul",
 														"<i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>");
 				break;
 
 			default:
-				chasm_currency[i] = new _CHASM_CURRENCY("error",
-														"");
+				chasm_currency[i] = new _CHASM_CURRENCY("error", "");
 		}
 	}
 }

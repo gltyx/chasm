@@ -27,6 +27,7 @@ function loadSave() {
 	} else {
 		// Load Game
 		lib_chasm_merge_save(chasm_save, chasm_incoming_save);
+		save_unpack_achievements(chasm_save.achievements);
 	}
 }
 
@@ -47,4 +48,10 @@ function save_pack_achievements() {
 		object[chasm_achievements[i].name] = chasm_achievements[i].unlocked;
 	}
 	return object;
+}
+
+function save_unpack_achievements(object) {
+	for (var prop in object) {
+		chasm_achievements[aid[prop]].unlocked = object[prop];
+	}
 }

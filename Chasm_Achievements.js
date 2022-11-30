@@ -48,7 +48,7 @@ class _MILESTONE_ID {
 class _ACHIEVEMENT {
 	id;
 	unlocked = false;
-	name;
+	name;					// Must match achievement ID name
 	dom_id;
 
 	log_message = "";

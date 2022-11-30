@@ -5,6 +5,7 @@ class saveData {
 	saveCount;
 
 	achievements = {};
+	milestones = {};
 
 	constructor() {
 		this.version_major = 0;
@@ -12,6 +13,7 @@ class saveData {
 		this.saveCount = 0;
 
 		this.achievements = save_pack_achievements();
+		this.milestones = save_pack_milestones();
 	}
 }
 
@@ -28,12 +30,14 @@ function loadSave() {
 		// Load Game
 		lib_chasm_merge_save(chasm_save, chasm_incoming_save);
 		save_unpack_achievements(chasm_save.achievements);
+		save_unpack_milestones(chasm_save.milestones);
 	}
 }
 
 function storeSave() {
 	chasm_save.saveCount++;
 	chasm_save.achievements = save_pack_achievements();
+	chasm_save.milestones = save_pack_milestones();
 	lib_chasm_store_save(save_path, chasm_save);
 }
 
@@ -53,5 +57,19 @@ function save_pack_achievements() {
 function save_unpack_achievements(object) {
 	for (var prop in object) {
 		chasm_achievements[aid[prop]].unlocked = object[prop];
+	}
+}
+
+function save_pack_milestones() {
+	var object = {};
+	for (let i = mid.milestone_first; i < mid.milestone_count; i++) {
+		object[chasm_milestones[i].name] = chasm_milestones[i].unlocked;
+	}
+	return object;
+}
+
+function save_unpack_milestones(object) {
+	for (var prop in object) {
+		chasm_milestones[mid[prop]].unlocked = object[prop];
 	}
 }

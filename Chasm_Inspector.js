@@ -37,13 +37,13 @@ class _INSPECTOR_ID {
 	upgrade_water_auto_gather					= uid.upgrade_water_auto_gather				+ this.offset_upgrades;
 	upgrade_water_auto_drop						= uid.upgrade_water_auto_drop				+ this.offset_upgrades;
 
-	offset_achivements							= 0xd100;	// 0xd1xx Start achievement section
-	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achivements;
-	achievement_reality_sprang_a_leak 			= aid.achievement_reality_sprang_a_leak 	+ this.offset_achivements;
-	achievement_nothing_to_worry_about			= aid.achievement_nothing_to_worry_about 	+ this.offset_achivements;
-	achievement_minor_case_of_wormhole			= aid.achievement_minor_case_of_wormhole 	+ this.offset_achivements;
-	achievement_eye_feel_extremely_unwell		= aid.achievement_eye_feel_extremely_unwell + this.offset_achivements;
-	achievement_unknown			 				= aid.achievement_count 					+ this.offset_achivements;
+	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
+	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
+	achievement_reality_sprang_a_leak 			= aid.achievement_reality_sprang_a_leak 	+ this.offset_achievements;
+	achievement_nothing_to_worry_about			= aid.achievement_nothing_to_worry_about 	+ this.offset_achievements;
+	achievement_minor_case_of_wormhole			= aid.achievement_minor_case_of_wormhole 	+ this.offset_achievements;
+	achievement_eye_feel_extremely_unwell		= aid.achievement_eye_feel_extremely_unwell + this.offset_achievements;
+	achievement_unknown			 				= aid.achievement_count 					+ this.offset_achievements;
 
 } var iid = new _INSPECTOR_ID();
 

@@ -61,7 +61,7 @@ function debug_unlock_achievements() {
 		chasm_achievements[i].unlocked = true;
 	}
 	
-	load_achivements();
+	reload_achievements();
 
 	chasm_log.writeSectionDivider();
 	chasm_log.writeColor("A sense of pride and acomplishment washes over you.", log_color_cheat);

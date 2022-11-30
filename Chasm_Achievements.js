@@ -1,12 +1,12 @@
 // Chasm Achievements
-	// Achievements are used to track player progress throught the game, as well as offer specific challenges
+	// Achievements are used to track player progress throughout the game, as well as offer specific challenges
 	// and rewards for player actions.
 	//
 	// To add a new Achievement, do the following:
 	//
 	// 1. Generate achievement resources									[xxx.png added to images]
 	// 2. Add Achievement Id												[_ACHIEVEMENT_ID]
-	// 3. Add achievement resources	to the init function					[init_achivements]
+	// 3. Add achievement resources	to the init function					[init_achievements]
 	// 4. Add achievement trigger to tick function or other location		[achievement_tick / wherever you want to handle the unlock]
 
 // Chasm Milestones
@@ -46,38 +46,50 @@ class _MILESTONE_ID {
 } var mid = new _MILESTONE_ID();
 
 class _ACHIEVEMENT {
-	id;
-	unlocked = false;
-	name;					// Must match achievement ID name
-	dom_id;
+	// ID info
+	id;							// Index within achievement array
+	name;						// Must match ID name for save/load compatibility
+	dom_id 			= "";		// HTML DOM ID
 
-	log_message = "";
-	story_message = "";
-	unlock_message = "";
+	// Log messages
+	log_message 	= "";		// Achievement: Achievement Name
+	unlock_message 	= "";		// Unlocked: New Feature
+	story_message 	= "";		// This is the story explanation for the achievement
 
-	constructor(id, name, img_src, log_message, story_message, unlock_message) {
-		this.id = id;
+	// Save data
+	unlocked 		= false; 	// Achievement unlocked state
+
+	constructor(id, name, img_src, log_message, unlock_message, story_message) {
+		this.id 				= id;
+		this.name 				= name;
+		this.log_message 		= log_message;
+		this.unlock_message 	= unlock_message;
+		this.story_message 		= story_message;
 
 		// Add element to achievement div
-		$("#achievements_box").append("<img id = '" + name + "' src = '" + img_src + "' class = 'pixelart locked_tile' width = '75' height = '75'  draggable = 'false'></img>");
+		if (img_src != "") {
+			$("#achievements_box").append("<img id = '" + name + "' src = '" + img_src + "' class = 'pixelart locked_tile' width = '75' height = '75'  draggable = 'false'></img>");
 
-		// Register events
-		this.dom_id = $("#" + name);
-		this.dom_id.mouseenter(function(){highlightAchievementTile(id);});
-		this.dom_id.mouseleave(function(){resetAchievementTile(id);});
+			// Register events
+			this.dom_id = $("#" + name);
+			this.dom_id.mouseenter(function(){highlightAchievementTile(id);});
+			this.dom_id.mouseleave(function(){resetAchievementTile(id);});
+		}
+	}
 
-		this.log_message = log_message;
-		this.story_message = story_message;
-		this.unlock_message = unlock_message;
-
-		this.name = name;
+	isMilestone() {
+		if (this.dom_id == "") 	return true;
+		else 					return false;
 	}
 
 	unlock() {
 		if (!this.unlocked) {
 			this.unlocked = true;
-			resetAchievementTile(this.id);
-			showInspector(this.id + iid.offset_achivements);
+
+			if (!this.isMilestone()) {
+				resetAchievementTile(this.id);
+				showInspector(this.id + iid.offset_achievements);
+			}
 	
 			if (this.log_message != "" || this.unlock_message != "" || this.story_message != "" || achievement_tab_hidden) {
 				chasm_log.writeSectionDivider();
@@ -91,45 +103,17 @@ class _ACHIEVEMENT {
 				chasm_log.writeColor(this.unlock_message, log_color_unlock);
 			}
 	
-			if (achievement_tab_hidden) {
-				achievement_tab_hidden = false;
-				$("#tab_achievements").fadeIn(400);
-				chasm_log.writeColor("Unlocked: Achievements tab", log_color_unlock);
+			if (!this.isMilestone()) {
+				if (achievement_tab_hidden) {
+					achievement_tab_hidden = false;
+					$("#tab_achievements").fadeIn(400);
+					chasm_log.writeColor("Unlocked: Achievements tab", log_color_unlock);
+				}
 			}
 	
 			if (this.log_message != "") {
 				chasm_log.writeColor("Achievement: " + this.log_message, log_color_achievement);
 			}
-		}
-	}
-}
-
-class _MILESTONE {
-	id;
-	unlocked = false;
-
-	story_message = "";
-	unlock_message = "";
-
-	constructor(id, story_message, unlock_message) {
-		this.id = id;
-		this.story_message = story_message;
-		this.unlock_message = unlock_message;
-	}
-
-	unlock() {
-		this.unlocked = true;
-
-		if (this.unlock_message != "" || this.story_message != "") {
-			chasm_log.writeSectionDivider();
-		}
-
-		if (this.story_message != "") {
-			chasm_log.writeColor(this.story_message, log_color_story);
-		}
-
-		if (this.unlock_message != "") {
-			chasm_log.writeColor(this.unlock_message, log_color_unlock);
 		}
 	}
 }
@@ -146,8 +130,8 @@ function init_achievements() {
 				chasm_achievements[i] = new _ACHIEVEMENT(i, "achievement_babys_first_block",
 															"images/a_babys_first_block.png",
 															"Baby's First Block",
-															"You drop a block of dirt into the Chasm's maw. A few motes of some mysterious substance float from the depths to the surface.",
-															"");
+															"",
+															"You drop a block of dirt into the Chasm's maw. A few motes of some mysterious substance float from the depths to the surface.");
 				break;
 
 			case aid.achievement_reality_sprang_a_leak:
@@ -192,32 +176,55 @@ function init_milestones() {
 	for (let i = mid.milestone_first; i < mid.milestone_count; i++) {
 		switch (i) {
 			case mid.milestone_reveal_research:
-				chasm_milestones[i] = new _MILESTONE(i, "You are going need to make some improvements around here if you ever want to fill the Chasm.",
-														"Unlocked: Research tab");
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_research",
+														"",
+														"",
+														"Unlocked: Research tab",
+														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
 				break;
 				
 			case mid.milestone_reveal_currency_particles:
-				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_particles",
+														"",
+														"",
+														"Unlocked: Research tab",
+														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
 				break;
 			
 			case mid.milestone_reveal_currency_strands:
-				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_strands",
+														"",
+														"",
+														"Unlocked: Research tab",
+														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
 				break;
 		
 			case mid.milestone_reveal_currency_spirit:
-				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_spirit",
+														"",
+														"",
+														"Unlocked: Research tab",
+														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
 				break;
 	
 			case mid.milestone_reveal_currency_soul:
-				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_soul",
+														"",
+														"",
+														"Unlocked: Research tab",
+														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
 				break;
 	
 			case mid.milestone_reveal_currency_workers:
-				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_workers",
+														"",
+														"",
+														"Unlocked: Research tab",
+														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
 				break;
 
 			default:
-				chasm_milestones[i] = new _MILESTONE(i, "", "");
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "", "", "", "", "");
 		}
 	}
 }
@@ -337,7 +344,7 @@ function resetAchievementTile(id) {
 	}
 }
 
-function load_achivements() {
+function reload_achievements() {
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
 		resetAchievementTile(i);
 	}

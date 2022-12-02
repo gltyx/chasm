@@ -1,27 +1,10 @@
-var earth_gather_progress = 0;
-var earth_drop_progress = 0;
-var water_gather_progress = 0;
-var water_drop_progress = 0;
-
-// Log colors
-var log_color_story 		= "GhostWhite";
-var log_color_achievement 	= "LightGreen";
-var log_color_unlock 		= "LightPink";
-var log_color_cheat 		= "Plum";
-
-var chasm_log;
-
-// Materialize Colors
-var color_disabled = "blue-grey lighten-3";
-var color_earth = "brown lighten-1";
-var color_water = "blue lighten-2";
-
-
-
+// Todo:
 // Look into resource sinks. Gacha style storage to recycle high-volume resources for high-rarity resources?
 
+// +---------------------+
+// | Game Initialization |
+// +---------------------+
 
-// Game Initialization
 function game_init() {
 	// Page Initialization
 	$("#lib_chasm_version").html(lib_chasm_version());
@@ -49,9 +32,9 @@ function game_init() {
 	animation_tick();
 
 	// Timing Initialization
-	chasm_timing_add_process_to_scheduler(game_tick, 80, 0);
-	chasm_timing_add_process_to_scheduler(achievement_tick, 700, chasm_process_flag_disable_multitick);
-	chasm_timing_add_process_to_scheduler(autoSave, 30000, chasm_process_flag_disable_multitick);
+	chasm_timing_add_task_to_scheduler(game_tick, 			80, 	0);
+	chasm_timing_add_task_to_scheduler(achievement_tick, 	200, 	chasm_task_flag_disable_multitick);
+	chasm_timing_add_task_to_scheduler(autoSave, 			30000, 	chasm_task_flag_disable_multitick);
 	chasm_timing_init(animation_tick);
 	
 	// Register Events
@@ -63,6 +46,10 @@ function game_init() {
 	// Loading finished, reveal the game
 	$("#game_box").css("display", "block")
 }
+
+// +----------------+
+// | Task Callbacks |
+// +----------------+
 
 function animation_tick() {
 	draw_resources();
@@ -185,7 +172,10 @@ function game_tick(scalar) {
 	}
 }
 
-// Button handling
+// +-----------------+
+// | Button Handling |
+// +-----------------+
+
 function gather(resource) {
 	switch (resource) {
 		case earth:
@@ -219,6 +209,84 @@ function drop(storage) {
 			break;
 			
 		default:
+	}
+}
+
+// +---------------+
+// | UI Management |
+// +---------------+
+
+// Chasm log
+var chasm_log;
+
+// Log colors
+const log_color_story 			= "GhostWhite";
+const log_color_achievement 	= "LightGreen";
+const log_color_unlock 			= "LightPink";
+const log_color_cheat 			= "Plum";
+
+// Materialize Colors
+const color_disabled 			= "blue-grey lighten-3";
+const color_earth 				= "brown lighten-1";
+const color_water 				= "blue lighten-2";
+
+// Progress bars
+var earth_gather_progress 		= 0;
+var earth_drop_progress 		= 0;
+var water_gather_progress 		= 0;
+var water_drop_progress 		= 0;
+
+// UI Progression
+var achievement_tab_hidden 		= true;
+var research_tab_hidden 		= true;
+
+// This is for instantly updating UI on game load, UI reveal animations handled by milestones
+function refresh_ui() {
+	// Achievements
+	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
+		if (chasm_achievements[i].unlocked) {
+			achievement_tab_hidden = false;
+			$("#tab_achievements").css("display", "block")
+			break;
+		}
+	}
+	reload_achievements();
+
+	// Research
+	if (chasm_milestones[mid.milestone_reveal_research].unlocked) {
+		$("#tab_research").css("display", "block")
+	}
+	drawResearchMap();
+
+	// Currency
+	if (chasm_milestones[mid.milestone_reveal_currency_particles].unlocked) {
+		chasm_currency[cid.currency_particles].hidden = false;
+		$("#currency_particles_symbol").css("display", "block");
+		$("#currency_particles_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_strands].unlocked) {
+		chasm_currency[cid.currency_strands].hidden = false;
+		$("#currency_strands_symbol").css("display", "block");
+		$("#currency_strands_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_spirit].unlocked) {
+		chasm_currency[cid.currency_spirit].hidden = false;
+		$("#currency_spirit_symbol").css("display", "block");
+		$("#currency_spirit_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_soul].unlocked) {
+		chasm_currency[cid.currency_soul].hidden = false;
+		$("#currency_soul_symbol").css("display", "block");
+		$("#currency_soul_value").css("display", "block");
+	}
+	
+	if (chasm_milestones[mid.milestone_reveal_currency_workers].unlocked) {
+		chasm_currency[cid.currency_workers].hidden = false;
+		$("#currency_workers_symbol").css("display", "block");
+		$("#currency_workers_value").css("display", "block");
 	}
 }
 

@@ -112,8 +112,6 @@ class _ACHIEVEMENT {
 var chasm_achievements 	= new Array(aid.achievement_count);
 var chasm_milestones 	= new Array(mid.milestone_count);
 
-var achievement_tab_hidden = true;
-
 function init_achievements() {
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
 		switch (i) {

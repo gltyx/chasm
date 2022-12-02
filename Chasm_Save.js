@@ -28,22 +28,16 @@ function loadSave() {
 	chasm_incoming_save = lib_chasm_load_save(save_path);
 
 	if (chasm_incoming_save) {
-		// Load Game
+		// Merge Save
 		lib_chasm_merge_save(chasm_save, chasm_incoming_save);
 
+		// Load Game
 		save_unpack_achievements(chasm_save.achievements);
 		save_unpack_milestones(chasm_save.milestones);
 		save_unpack_currency(chasm_save.currency);
 
 		// Update UI elements
-		for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
-			if (chasm_achievements[i].unlocked) {
-				achievement_tab_hidden = false;
-				$("#tab_achievements").fadeIn(0);
-				break;
-			}
-		}
-		reload_achievements();
+		refresh_ui();
 	}
 }
 

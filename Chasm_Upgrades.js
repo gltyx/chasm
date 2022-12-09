@@ -30,10 +30,12 @@ class _UPGRADE_ID {
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
+	name;
 	unlocked = false;
 	cost = new currency_value_map([]);
 
-	constructor(cost) {
+	constructor(name, cost) {
+		this.name = name;
 		this.cost = new currency_value_map(cost);
 	}
 
@@ -72,7 +74,9 @@ function initUpgrades() {
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
 		switch(i) {
 			case uid.upgrade_earth_density_1:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_density_1",
+					[
 					0.4,	// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -81,7 +85,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_earth_density_2:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_density_2",
+					[
 					1,		// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -90,7 +96,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_earth_density_3:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_density_3",
+					[
 					2,		// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -99,7 +107,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_earth_density_4:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_density_4",
+					[
 					3,		// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -108,7 +118,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_earth_density_5:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_density_5",
+					[
 					4,		// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -117,7 +129,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_earth_value_1:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_value_1",
+					[
 					0.4,	// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -126,7 +140,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_earth_auto_gather:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_auto_gather",
+					[
 					0.8,	// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -135,7 +151,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_earth_auto_drop:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_auto_drop",
+					[
 					1.5,	// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -144,7 +162,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_water_storage:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_water_storage",
+					[
 					20,		// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -153,7 +173,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_water_auto_gather:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_water_auto_gather",
+					[
 					100,	// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -162,7 +184,9 @@ function initUpgrades() {
 				break;
 
 			case uid.upgrade_water_auto_drop:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_water_auto_drop",
+					[
 					1,		// Particles
 					1,		// Strands
 					1,		// Spirit
@@ -171,7 +195,9 @@ function initUpgrades() {
 				break;
 			
 			case uid.upgrade_earth_metals_1:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_metals_1",
+					[
 					100,	// Particles
 					0,		// Strands
 					0,		// Spirit
@@ -180,7 +206,9 @@ function initUpgrades() {
 				break;
 
 			default:
-				chasm_upgrades[i] = new _CHASM_UPGRADE([
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"",
+					[
 					0,		// Particles
 					0,		// Strands
 					0,		// Spirit

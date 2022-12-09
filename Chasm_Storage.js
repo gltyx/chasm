@@ -51,19 +51,23 @@ function initStorage() {
 	for (let i = 0; i < sid.storage_count; i++) {
 		switch (i) {
 			case sid.storage_earth:
-				chasm_storage[i] = new resource_storage("earth storage", earth);
+				chasm_storage[i] = new resource_storage("storage_earth", earth);
 				chasm_storage[i].storage_flags |= STORAGE_FLAGS_EARTH;
 				chasm_storage[i].brick_w = 32;
 				chasm_storage[i].brick_h = 32;
 				earth.setCap((chasm_storage[i].canvas_w * chasm_storage[i].canvas_h) / (chasm_storage[i].brick_w * chasm_storage[i].brick_h));
+				chasm_storage[i].gather_dom = "#earth_workers_gather";
+				chasm_storage[i].drop_dom = "#earth_workers_drop";
 				break;
 
 			case sid.storage_water:
-				chasm_storage[i] = new resource_storage("water storage", water);
+				chasm_storage[i] = new resource_storage("storage_water", water);
 				chasm_storage[i].storage_flags |= STORAGE_FLAGS_WATER;
 				chasm_storage[i].brick_w = 64;
 				chasm_storage[i].brick_h = 1;
 				water.setCap((chasm_storage[i].canvas_w * chasm_storage[i].canvas_h) / (chasm_storage[i].brick_w * chasm_storage[i].brick_h));
+				chasm_storage[i].gather_dom = "#water_workers_gather";
+				chasm_storage[i].drop_dom = "#water_workers_drop";
 				break;
 
 			default:
@@ -73,7 +77,7 @@ function initStorage() {
 
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {
-	name = "";										// Storage name (for debugging)
+	name = "";										// Storage name (must match storage ID)
 	resource;										// chasm_resource_small associated with storage
 	
 	canvas;											// Canvas handle for animation
@@ -82,6 +86,9 @@ class resource_storage {
 	canvas_border = STORAGE_CANVAS_BORDER_OFFSET;	// Border offset
 	image_data;										// Canvas image data
 	bitmap;											// Storage bitmap
+
+	gather_dom;
+	drop_dom;
 
 	storage_flags = 0;								// Flags for different storage types (STORAGE_FLAGS_*)
 	brick_w = 1;									// Number of x pixels in a brick
@@ -196,7 +203,7 @@ class resource_storage {
 					}
 				}
 
-				$("#earth_workers_gather").html(this.workers_gather);
+				$(this.gather_dom).html(this.workers_gather);
 
 			// Reduce workers
 			} else if (num < 0) {
@@ -209,7 +216,9 @@ class resource_storage {
 				chasm_currency[cid.currency_workers].resource.gain(out);
 				this.workers_gather -= out;
 
-				$("#earth_workers_gather").html(this.workers_gather);
+				$(this.gather_dom).html(this.workers_gather);
+			} else {
+				$(this.gather_dom).html(this.workers_gather);
 			}
 		} else if (target == "drop") {
 			let out = num;
@@ -228,7 +237,7 @@ class resource_storage {
 					}
 				}
 
-				$("#earth_workers_drop").html(this.workers_drop);
+				$(this.drop_dom).html(this.workers_drop);
 
 			// Reduce workers
 			} else if (num < 0) {
@@ -241,7 +250,9 @@ class resource_storage {
 				chasm_currency[cid.currency_workers].resource.gain(out);
 				this.workers_drop -= out;
 
-				$("#earth_workers_drop").html(this.workers_drop);
+				$(this.drop_dom).html(this.workers_drop);
+			} else {
+				$(this.drop_dom).html(this.workers_drop);
 			}
 		}
 	}

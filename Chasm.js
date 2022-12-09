@@ -288,6 +288,12 @@ function refresh_ui() {
 		$("#currency_workers_symbol").css("display", "block");
 		$("#currency_workers_value").css("display", "block");
 	}
+
+	// Storage
+	for (let i = sid.storage_first; i < sid.storage_count; i++) {
+		chasm_storage[i].manage_workers(0, "gather");
+		chasm_storage[i].manage_workers(0, "drop");
+	}
 }
 
 // Materialize UI

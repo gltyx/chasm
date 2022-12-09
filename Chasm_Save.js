@@ -8,6 +8,7 @@ class saveData {
 	milestones 		= {};
 	currency 		= {};
 	upgrades		= {};
+	storage			= {};
 
 	constructor() {
 		this.version_major 	= 0;
@@ -18,6 +19,7 @@ class saveData {
 		this.milestones 	= save_pack_milestones();
 		this.currency 		= save_pack_currency();
 		this.upgrades 		= save_pack_upgrades();
+		this.storage		= save_pack_storage();
 	}
 }
 
@@ -38,6 +40,7 @@ function loadSave() {
 		save_unpack_milestones(chasm_save.milestones);
 		save_unpack_currency(chasm_save.currency);
 		save_unpack_upgrades(chasm_save.upgrades);
+		save_unpack_storage(chasm_save.storage);
 
 		// Update UI elements
 		refresh_ui();
@@ -50,6 +53,7 @@ function storeSave() {
 	chasm_save.milestones 		= save_pack_milestones();
 	chasm_save.currency 		= save_pack_currency();
 	chasm_save.upgrades 		= save_pack_upgrades();
+	chasm_save.storage			= save_pack_storage();
 
 	// Save to Local Storage
 	lib_chasm_store_save(save_path, chasm_save);
@@ -113,5 +117,22 @@ function save_pack_upgrades() {
 function save_unpack_upgrades(object) {
 	for (var prop in object) {
 		chasm_upgrades[uid[prop]].unlocked = object[prop];
+	}
+}
+
+function save_pack_storage() {
+	var object = {};
+	for (let i = sid.storage_first; i < sid.storage_count; i++) {
+		object[chasm_storage[i].name] = {};
+		object[chasm_storage[i].name].workers_gather 	= chasm_storage[i].workers_gather;
+		object[chasm_storage[i].name].workers_drop 		= chasm_storage[i].workers_drop;
+	}
+	return object;
+}
+
+function save_unpack_storage(object) {
+	for (var storage in object) {
+		chasm_storage[sid[storage]].workers_gather 		= object[storage].workers_gather;
+		chasm_storage[sid[storage]].workers_drop 		= object[storage].workers_drop;
 	}
 }

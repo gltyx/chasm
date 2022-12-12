@@ -80,6 +80,6 @@ function debug_save() {
 	storeSave();
 }
 
-function debug_load() {
-	loadSave();
+function debug_clear() {
+	clearSave();
 }

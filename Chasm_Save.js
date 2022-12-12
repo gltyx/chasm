@@ -63,6 +63,10 @@ function autoSave() {
 	//storeSave();
 }
 
+function clearSave() {
+	lib_chasm_delete_save(save_path);
+}
+
 // Save data population
 function save_pack_achievements() {
 	var object = {};

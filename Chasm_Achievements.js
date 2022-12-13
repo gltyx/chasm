@@ -175,32 +175,32 @@ function init_milestones() {
 				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_particles",
 														"",
 														"",
-														"Unlocked: Research tab",
-														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
+														"",
+														"");
 				break;
 			
 			case mid.milestone_reveal_currency_strands:
 				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_strands",
 														"",
 														"",
-														"Unlocked: Research tab",
-														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
+														"",
+														"");
 				break;
 		
 			case mid.milestone_reveal_currency_spirit:
 				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_spirit",
 														"",
 														"",
-														"Unlocked: Research tab",
-														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
+														"",
+														"");
 				break;
 	
 			case mid.milestone_reveal_currency_soul:
 				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_soul",
 														"",
 														"",
-														"Unlocked: Research tab",
-														"You are going need to make some improvements around here if you ever want to fill the Chasm.");
+														"",
+														"");
 				break;
 
 			default:

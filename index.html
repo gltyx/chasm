@@ -100,8 +100,8 @@
 						<!--Currency Icons-->
 						<div style = "display: block;">
 							<!--Workers-->
-							<div id = "currency_workers_symbol" class = "currency_workers currency_line vertcenter" style = "display: none">
-								<i class = "material-icons purple-text text-lighten-3 currency_icon">face</i>
+							<div id = "currency_workers_symbol" class = "currency_workers currency_line vertcenter">
+								<i class = "material-icons grey-text text-darken-4 currency_icon">face</i>
 							</div>
 
 							<!--Void Particles-->
@@ -128,7 +128,7 @@
 						<!--Currency Values-->
 						<div style = "display: block;">
 							<!--Workers-->
-							<div id = "currency_workers_value" class = "currency_workers currency_line currency_amount vertcenter" style = "display: none">
+							<div id = "currency_workers_value" class = "currency_workers currency_line currency_amount vertcenter">
 								<p><span id = "currency_workers_amount"></span></p>
 							</div>
 
@@ -226,23 +226,32 @@
 
 							<!--Drop-->
 							<div class = "drop_button" style = "width: 88px;">
-								<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
-									<div id = "earth_drop_progress" class = "determinate" style = "width: 0%"></div>
+								<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+									<div id = "earth_drop_progress" class = "determinate" style = "width: 0% transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
 								</div>
+								
+								<!--Drop button (deprecated)
 								<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "drop('earth_storage')">Drop</a>
-								<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
-									<form>
-										<!--Workers Arrows-->
-										<div class = "flex">
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(-1, 'drop')" value = "<" />
-											<div class = "hcenter" style = "width: 40px;">
-												<p id = "earth_workers_drop">0</p>
-											</div>
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'drop')" value = ">" />
-											<div class = "hcenter" style = "margin: auto;">
-												<p style = "font-size: 8px;">workers</p>
-											</div>
+								-->
+
+								<p class = "hcenter" style = "font-weight: bold;">Drop</p>
+								
+								<!--Workers Arrows-->
+								<form>
+									<div class = "flex">
+										<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(-1, 'drop')" value = "<" />
+										<div class = "hcenter" style = "width: 40px;">
+											<p id = "earth_workers_drop">0</p>
 										</div>
+										<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'drop')" value = ">" />
+										<div class = "hcenter" style = "margin: auto;">
+											<p style = "font-size: 8px;">workers</p>
+										</div>
+									</div>
+								</form>
+
+								<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
+									<form>
 									</form>
 								</div>
 							</div>

@@ -282,12 +282,6 @@ function refresh_ui() {
 		$("#currency_soul_symbol").css("display", "block");
 		$("#currency_soul_value").css("display", "block");
 	}
-	
-	if (chasm_milestones[mid.milestone_reveal_currency_workers].unlocked) {
-		chasm_currency[cid.currency_workers].hidden = false;
-		$("#currency_workers_symbol").css("display", "block");
-		$("#currency_workers_value").css("display", "block");
-	}
 
 	// Storage
 	for (let i = sid.storage_first; i < sid.storage_count; i++) {

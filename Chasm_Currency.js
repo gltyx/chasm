@@ -44,7 +44,7 @@ function initCurrency() {
 			case cid.currency_workers:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_workers",
 														"<i class = 'material-icons purple-text text-lighten-3 currency_icon'>face</i>");
-				chasm_currency[i].resource.gain(8);
+				chasm_currency[i].resource.gain(1);
 				break;
 
 			case cid.currency_particles:

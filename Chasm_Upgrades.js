@@ -26,7 +26,9 @@ class _UPGRADE_ID {
 	upgrade_water_auto_gather		= 0x000a;	// Unlock auto-gather
 	upgrade_water_auto_drop			= 0x000b;	// Unlock auto-drop
 
-	upgrade_count					= 0x000c;
+	upgrade_workers_1				= 0x000c;	// +1 Worker
+
+	upgrade_count					= 0x000d;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -132,7 +134,7 @@ function initUpgrades() {
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_1",
 					[
-					0.4,	// Particles
+					0.08,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -204,6 +206,17 @@ function initUpgrades() {
 					0,		// Soul
 				]);
 				break;
+			
+			case uid.upgrade_workers_1:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_workers_1",
+					[
+					0.08,	// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+				]);
+				break;
 
 			default:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
@@ -266,16 +279,10 @@ function buy_upgrade(upgrade_id) {
 
 			case uid.upgrade_earth_auto_gather:
 				$("#earth_gather_menu").fadeIn(400);
-				if (chasm_currency[cid.currency_workers].resource.current.lt(1)) {
-					chasm_currency[cid.currency_workers].resource.gain(1);
-				}
 				break;
 
 			case uid.upgrade_earth_auto_drop:
 				$("#earth_drop_menu").fadeIn(400);
-				if (chasm_currency[cid.currency_workers].resource.current.lt(1)) {
-					chasm_currency[cid.currency_workers].resource.gain(1);
-				}
 				break;
 
 			case uid.upgrade_water_storage:
@@ -284,19 +291,18 @@ function buy_upgrade(upgrade_id) {
 
 			case uid.upgrade_water_auto_gather:
 				$("#water_gather_menu").fadeIn(400);
-				if (chasm_currency[cid.currency_workers].resource.current.lt(1)) {
-					chasm_currency[cid.currency_workers].resource.gain(1);
-				}
 				break;
 
 			case uid.upgrade_water_auto_drop:
 				$("#water_drop_menu").fadeIn(400);
-				if (chasm_currency[cid.currency_workers].resource.current.lt(1)) {
-					chasm_currency[cid.currency_workers].resource.gain(1);
-				}
 				break;
 
 			case uid.upgrade_earth_metals_1:
+				break;
+
+			case uid.upgrade_workers_1:
+				$("#water_drop_menu").fadeIn(400);
+				chasm_currency[cid.currency_workers].resource.gain(1);
 				break;
 			
 			default:
@@ -464,6 +470,9 @@ function generateResearchMap() {
 	out[mapColRow(18, 4)].assign_tile(tid.tile_connect_ulr, uid.upgrade_count);
 	out[mapColRow(17, 4)].assign_tile(tid.tile_node, uid.upgrade_water_auto_gather);
 	out[mapColRow(19, 4)].assign_tile(tid.tile_node, uid.upgrade_water_auto_drop);
+
+	// Workers Starting Tree
+	out[mapColRow(8, 2)].assign_tile(tid.tile_node, uid.upgrade_workers_1);
 
 	return out;
 }

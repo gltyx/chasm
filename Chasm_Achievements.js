@@ -254,7 +254,7 @@ function achievement_tick() {
 
 	// Reveal research (0.4 particles)
 	else if (!chasm_milestones[mid.milestone_reveal_research].unlocked) {
-		if (chasm_currency[cid.currency_particles].resource.alltime.gte(0.4)) {
+		if (chasm_currency[cid.currency_particles].resource.alltime.gte(0.08)) {
 			chasm_milestones[mid.milestone_reveal_research].unlock();
 			if (research_tab_hidden) {
 				research_tab_hidden = false;

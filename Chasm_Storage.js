@@ -96,8 +96,10 @@ class resource_storage {
 
 	bricks_stored = 0;								// Number of bricks currently stored
 
-	workers_gather = 0;
-	workers_drop = 0;
+	workers_gather = 0;								// Number of workers currently gathering
+	workers_drop = 0;								// Numeber of workers currently dropping
+	gather_progress = 0;							// Percentage towards next gather action
+	drop_progress = 0;								// Percentage towards next drop action
 
 	constructor(name, resource) {
 		this.name = name;

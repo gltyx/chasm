@@ -75,8 +75,8 @@ function animation_tick() {
 		$("#earth_drop_progress").removeClass(color_earth).addClass(color_disabled);
 	}
 
-	$("#earth_gather_progress").width(earth_gather_progress + "%");
-	$("#earth_drop_progress").width(earth_drop_progress + "%");
+	$("#earth_gather_progress").width(chasm_storage[sid.storage_earth].gather_progress + "%");
+	$("#earth_drop_progress").width(chasm_storage[sid.storage_earth].drop_progress + "%");
 
 	// Water
 	chasm_storage[sid.storage_water].draw();
@@ -98,8 +98,8 @@ function animation_tick() {
 		$("#water_drop_progress").removeClass(color_water).addClass(color_disabled);
 	}
 
-	$("#water_gather_progress").width(Math.floor(water_gather_progress) + "%");
-	$("#water_drop_progress").width(Math.floor(water_drop_progress) + "%");
+	$("#water_gather_progress").width(chasm_storage[sid.storage_water].gather_progress + "%");
+	$("#water_drop_progress").width(chasm_storage[sid.storage_water].drop_progress + "%");
 }
 
 function draw_resources() {
@@ -126,14 +126,14 @@ function game_tick(scalar) {
 	
 	// Earth Gather
 	if (chasm_storage[sid.storage_earth].workers_gather > 0) {
-		earth_gather_progress += chasm_storage[sid.storage_earth].workers_gather * 10 * scalar;
+		chasm_storage[sid.storage_earth].gather_progress += chasm_storage[sid.storage_earth].workers_gather * 10 * scalar;
 	}
-	if (earth_gather_progress > 100) {
+	if (chasm_storage[sid.storage_earth].gather_progress > 100) {
 		if (earth.current == earth.cap) {
-			earth_gather_progress = 100;
+			chasm_storage[sid.storage_earth].gather_progress = 100;
 		} else {
-			let cycles = Math.floor(earth_gather_progress / 100);
-			earth_gather_progress -= Math.floor(cycles) * 100;
+			let cycles = Math.floor(chasm_storage[sid.storage_earth].gather_progress / 100);
+			chasm_storage[sid.storage_earth].gather_progress -= Math.floor(cycles) * 100;
 			for (let i = 0; i < cycles; i++) {
 				gather(earth);
 			}
@@ -142,33 +142,44 @@ function game_tick(scalar) {
 
 	// Earth Drop
 	if (chasm_storage[sid.storage_earth].workers_drop > 0) {
-		earth_drop_progress += chasm_storage[sid.storage_earth].workers_drop * 10 * scalar;
+		chasm_storage[sid.storage_earth].drop_progress += chasm_storage[sid.storage_earth].workers_drop * 10 * scalar;
 	}
-	if (earth_drop_progress > 100) {
+	if (chasm_storage[sid.storage_earth].drop_progress > 100) {
 		if (earth.current == earth.cap) {
-			earth_drop_progress = 0;
+			chasm_storage[sid.storage_earth].drop_progress = 0;
 			drop("earth_storage");
 		} else {
-			earth_drop_progress = 100;
+			chasm_storage[sid.storage_earth].drop_progress = 100;
 		}
 	}
 
 	// Water Gather
-	if ($("#water_gather_checkbox").is(':checked')) {
-		water_gather_progress += (5 * scalar);
+	if (chasm_storage[sid.storage_water].workers_gather > 0) {
+		chasm_storage[sid.storage_water].gather_progress += chasm_storage[sid.storage_water].workers_gather * 10 * scalar;
 	}
-	if (water_gather_progress > 100) {
-		water_gather_progress = 0;
-		gather(water);
+	if (chasm_storage[sid.storage_water].gather_progress > 100) {
+		if (water.current == water.cap) {
+			chasm_storage[sid.storage_water].gather_progress = 100;
+		} else {
+			let cycles = Math.floor(chasm_storage[sid.storage_water].gather_progress / 100);
+			chasm_storage[sid.storage_water].gather_progress -= Math.floor(cycles) * 100;
+			for (let i = 0; i < cycles; i++) {
+				gather(water);
+			}
+		}
 	}
 
 	// Water Drop
-	if ($("#water_drop_checkbox").is(':checked')) {
-		water_drop_progress += (0.8 * scalar);
+	if (chasm_storage[sid.storage_water].workers_drop > 0) {
+		chasm_storage[sid.storage_water].drop_progress += chasm_storage[sid.storage_water].workers_drop * 10 * scalar;
 	}
-	if (water_gather_progress > 100) {
-		water_gather_progress = 0;
-		drop("water_storage");
+	if (chasm_storage[sid.storage_water].drop_progress > 100) {
+		if (water.current == water.cap) {
+			chasm_storage[sid.storage_water].drop_progress = 0;
+			drop("water_storage");
+		} else {
+			chasm_storage[sid.storage_water].drop_progress = 100;
+		}
 	}
 }
 
@@ -229,12 +240,6 @@ const log_color_cheat 			= "Plum";
 const color_disabled 			= "blue-grey lighten-3";
 const color_earth 				= "brown lighten-1";
 const color_water 				= "blue lighten-2";
-
-// Progress bars
-var earth_gather_progress 		= 0;
-var earth_drop_progress 		= 0;
-var water_gather_progress 		= 0;
-var water_drop_progress 		= 0;
 
 // UI Progression
 var achievement_tab_hidden 		= true;

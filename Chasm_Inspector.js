@@ -14,6 +14,7 @@ class _INSPECTOR_ID {
 	currency_strands							= cid.currency_strands						+ this.offset_currency;
 	currency_spirit								= cid.currency_spirit						+ this.offset_currency;
 	currency_soul								= cid.currency_soul							+ this.offset_currency;
+	currency_workers							= cid.currency_workers						+ this.offset_currency;
 
 	offset_elements								= 0x0600;	// 0x06xx Start elements section
 	element_earth 								= eid.element_earth							+ this.offset_elements;
@@ -36,6 +37,7 @@ class _INSPECTOR_ID {
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
 	upgrade_water_auto_gather					= uid.upgrade_water_auto_gather				+ this.offset_upgrades;
 	upgrade_water_auto_drop						= uid.upgrade_water_auto_drop				+ this.offset_upgrades;
+	upgrade_workers_1							= uid.upgrade_workers_1						+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
@@ -52,6 +54,7 @@ function registerInspectorEvents() {
 	$(".currency_strands").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_strands);});});
 	$(".currency_spirit").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_spirit);});});
 	$(".currency_soul").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_soul);});});
+	$(".currency_workers").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_workers);});});
 
 	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
 	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});
@@ -94,6 +97,17 @@ function showInspector(id) {
 			$("#inspector_title")	.html(chasm_currency[cid.currency_soul].inspector_symbol + "Soul Shards");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("When human flesh is dropped into the Chasm, it screams. Glassy shards grow around the edge of the pit... It's best not to consider what they are made of.");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.currency_workers:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_workers].inspector_symbol + "Workers");
+			$("#inspector_cost")	.html("");
+			if (chasm_currency[cid.currency_workers].resource.alltime.lte(1)) {
+				$("#inspector_text")	.html("Labor makes the world go round.<br>Right now it's just you.");
+			} else {
+				$("#inspector_text")	.html("Labor makes the world go round.<br>The crew is busy filling up the Chasm.");
+			}
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -226,6 +240,13 @@ function showInspector(id) {
 			$("#inspector_text")	.html("Attach a sprinkler system to your water tank to spray directly into the Chasm");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-drop Water");
+			break;
+		case iid.upgrade_workers_1:
+			$("#inspector_title")	.html("Fringe Researcher");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_1].cost.stringify());
+			$("#inspector_text")	.html("You know a guy who would be very interested in studying the exotic materials coming out of the Chasm. He is a bit of a conspiracy nut, but you can probably convince him to shovel dirt.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker");
 			break;
 
 		// Achievements

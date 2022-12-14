@@ -41,12 +41,6 @@ var chasm_currency = new Array(cid.currency_count);
 function initCurrency() {
 	for (let i = cid.currency_first; i < cid.currency_count; i++) {
 		switch(i) {
-			case cid.currency_workers:
-				chasm_currency[i] = new _CHASM_CURRENCY("currency_workers",
-														"<i class = 'material-icons purple-text text-lighten-3 currency_icon'>face</i>");
-				chasm_currency[i].resource.gain(1);
-				break;
-
 			case cid.currency_particles:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_particles",
 														"<i class = 'material-icons purple-text text-lighten-3 currency_icon'>blur_circular</i>");
@@ -67,6 +61,12 @@ function initCurrency() {
 														"<i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>");
 				break;
 
+			case cid.currency_workers:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_workers",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon'>face</i>");
+				chasm_currency[i].resource.gain(1);
+				break;
+	
 			default:
 				chasm_currency[i] = new _CHASM_CURRENCY("error", "");
 		}

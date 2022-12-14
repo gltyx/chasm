@@ -213,7 +213,7 @@ class resource_storage {
 					out = -out;
 				}
 
-				chasm_currency[cid.currency_workers].resource.gain(out);
+				chasm_currency[cid.currency_workers].resource.gainUntracked(out);
 				this.workers_gather -= out;
 
 				$(this.gather_dom).html(this.workers_gather);
@@ -247,7 +247,7 @@ class resource_storage {
 					out = -out;
 				}
 
-				chasm_currency[cid.currency_workers].resource.gain(out);
+				chasm_currency[cid.currency_workers].resource.gainUntracked(out);
 				this.workers_drop -= out;
 
 				$(this.drop_dom).html(this.workers_drop);

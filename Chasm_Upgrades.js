@@ -18,17 +18,13 @@ class _UPGRADE_ID {
 	upgrade_earth_density_4			= 0x0003;	// 2x Earth density (32x32)
 	upgrade_earth_density_5			= 0x0004;	// 2x Earth density (64x64)
 	upgrade_earth_value_1			= 0x0005;	// Value +0.01
-	upgrade_earth_auto_gather		= 0x0006;	// Unlock auto-gather
-	upgrade_earth_auto_drop			= 0x0007;	// Unlock auto-drop
-	upgrade_earth_metals_1			= 0x0008;	// Gather copper
+	upgrade_earth_metals_1			= 0x0006;	// Gather copper
 
-	upgrade_water_storage			= 0x0009;	// Unlock water storage
-	upgrade_water_auto_gather		= 0x000a;	// Unlock auto-gather
-	upgrade_water_auto_drop			= 0x000b;	// Unlock auto-drop
+	upgrade_water_storage			= 0x0007;	// Unlock water storage
 
-	upgrade_workers_1				= 0x000c;	// +1 Worker
+	upgrade_workers_1				= 0x0008;	// +1 Worker
 
-	upgrade_count					= 0x000d;
+	upgrade_count					= 0x0009;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -141,28 +137,6 @@ function initUpgrades() {
 				]);
 				break;
 
-			case uid.upgrade_earth_auto_gather:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
-					"upgrade_earth_auto_gather",
-					[
-					0.8,	// Particles
-					0,		// Strands
-					0,		// Spirit
-					0,		// Soul
-				]);
-				break;
-
-			case uid.upgrade_earth_auto_drop:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
-					"upgrade_earth_auto_drop",
-					[
-					1.5,	// Particles
-					0,		// Strands
-					0,		// Spirit
-					0,		// Soul
-				]);
-				break;
-
 			case uid.upgrade_water_storage:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_water_storage",
@@ -171,28 +145,6 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-				]);
-				break;
-
-			case uid.upgrade_water_auto_gather:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
-					"upgrade_water_auto_gather",
-					[
-					100,	// Particles
-					0,		// Strands
-					0,		// Spirit
-					0,		// Soul
-				]);
-				break;
-
-			case uid.upgrade_water_auto_drop:
-				chasm_upgrades[i] = new _CHASM_UPGRADE(
-					"upgrade_water_auto_drop",
-					[
-					1,		// Particles
-					1,		// Strands
-					1,		// Spirit
-					1,		// Soul
 				]);
 				break;
 			
@@ -277,24 +229,8 @@ function buy_upgrade(upgrade_id) {
 				chasm_storage[sid.storage_earth].clear();
 				break;
 
-			case uid.upgrade_earth_auto_gather:
-				$("#earth_gather_menu").fadeIn(400);
-				break;
-
-			case uid.upgrade_earth_auto_drop:
-				$("#earth_drop_menu").fadeIn(400);
-				break;
-
 			case uid.upgrade_water_storage:
 				$("#water_box").css("display", "block");
-				break;
-
-			case uid.upgrade_water_auto_gather:
-				$("#water_gather_menu").fadeIn(400);
-				break;
-
-			case uid.upgrade_water_auto_drop:
-				$("#water_drop_menu").fadeIn(400);
 				break;
 
 			case uid.upgrade_earth_metals_1:
@@ -447,11 +383,9 @@ function generateResearchMap() {
 	out[mapColRow(3, 3)].assign_tile(tid.tile_connect_lrd, uid.upgrade_count);
 	out[mapColRow(4, 3)].assign_tile(tid.tile_connect_ul, uid.upgrade_count);
 	out[mapColRow(3, 4)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	out[mapColRow(3, 5)].assign_tile(tid.tile_node, uid.upgrade_earth_auto_gather);
 	out[mapColRow(4, 5)].assign_tile(tid.tile_connect_lr, uid.upgrade_count);
 	out[mapColRow(5, 5)].assign_tile(tid.tile_connect_lrd, uid.upgrade_count);
 	out[mapColRow(6, 5)].assign_tile(tid.tile_connect_ul, uid.upgrade_count);
-	out[mapColRow(6, 4)].assign_tile(tid.tile_node, uid.upgrade_earth_auto_drop);
 	out[mapColRow(5, 6)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
 	out[mapColRow(5, 7)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
 	out[mapColRow(5, 8)].assign_tile(tid.tile_node, uid.upgrade_earth_density_2);
@@ -468,8 +402,6 @@ function generateResearchMap() {
 	out[mapColRow(18, 2)].assign_tile(tid.tile_node, uid.upgrade_water_storage);
 	out[mapColRow(18, 3)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
 	out[mapColRow(18, 4)].assign_tile(tid.tile_connect_ulr, uid.upgrade_count);
-	out[mapColRow(17, 4)].assign_tile(tid.tile_node, uid.upgrade_water_auto_gather);
-	out[mapColRow(19, 4)].assign_tile(tid.tile_node, uid.upgrade_water_auto_drop);
 
 	// Workers Starting Tree
 	out[mapColRow(8, 2)].assign_tile(tid.tile_node, uid.upgrade_workers_1);

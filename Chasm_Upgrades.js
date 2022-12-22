@@ -296,7 +296,7 @@ function drawResearchMap() {
 	let out;
 
 	let image_header = "<img src = '";
-	let image_footer = "' class = 'pixelart' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
+	let image_footer = "' class = 'pixelart' style = 'position: absolute; left: 0px; top: 0px;' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
 	
 	// Background image
 	out += "<div class = 'flex' style = 'width: " + upgrade_menu_width + "px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(\"./images/research_bkg.png\");'>";
@@ -305,47 +305,86 @@ function drawResearchMap() {
 	for (let i = 0; i < map.length; i++) {
 		switch (map[i].tile_id) {
 			case tid.tile_connect_ud:
-				out += image_header + "images/tile_research_connect_ud.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_up.png" + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_ur:
-				out += image_header + "images/tile_research_connect_ur.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_up.png" + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_ul:
-				out += image_header + "images/tile_research_connect_ul.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_up.png" + image_footer;
+				out += image_header + "images/tile_research_connect_left.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_lr:
-				out += image_header + "images/tile_research_connect_lr.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_left.png" + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_ld:
-				out += image_header + "images/tile_research_connect_ld.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_left.png" + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_rd:
-				out += image_header + "images/tile_research_connect_rd.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_right.png" + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_ulr:
-				out += image_header + "images/tile_research_connect_ulr.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_up.png" + image_footer;
+				out += image_header + "images/tile_research_connect_left.png" + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_uld:
-				out += image_header + "images/tile_research_connect_uld.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_up.png" + image_footer;
+				out += image_header + "images/tile_research_connect_left.png" + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_urd:
-				out += image_header + "images/tile_research_connect_urd.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_up.png" + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_lrd:
-				out += image_header + "images/tile_research_connect_lrd.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_left.png" + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_connect_ulrd:
-				out += image_header + "images/tile_research_connect_ulrd.png" + image_footer;
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_connect_up.png" + image_footer;
+				out += image_header + "images/tile_research_connect_left.png" + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_node:

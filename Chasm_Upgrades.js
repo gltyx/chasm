@@ -285,15 +285,21 @@ class Research_Tile {
 	}
 }
 
+// Upgrade menu layout
+let upgrade_menu_width = 600;
+let upgrade_tile_width = 40;
+let upgrade_menu_rows = 30;
+let upgrade_menu_cols = upgrade_menu_width / upgrade_tile_width;
+
 function drawResearchMap() {
 	let map = generateResearchMap();
 	let out;
 
 	let image_header = "<img src = '";
-	let image_footer = "' class = 'pixelart' width = '20' height = '20' draggable = 'false'></img>";
+	let image_footer = "' class = 'pixelart' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
 	
 	// Background image
-	out += "<div class = 'flex' style = 'width: 600px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(\"./images/research_bkg.png\");'>";
+	out += "<div class = 'flex' style = 'width: " + upgrade_menu_width + "px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(\"./images/research_bkg.png\");'>";
 	
 	// Tiles
 	for (let i = 0; i < map.length; i++) {
@@ -354,7 +360,7 @@ function drawResearchMap() {
 
 			case tid.tile_none:
 			default:
-				out += "<div style = 'width: 20px; height: 20px;'></div>";
+				out += "<div style = 'width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'></div>";
 		}
 	}
 
@@ -368,9 +374,8 @@ function drawResearchMap() {
 }
 
 function generateResearchMap() {
-	let mapHeight 	= 60;
-	let mapSize		= mapHeight * 30;
-	let out 		= new Array(30 * mapHeight);
+	let mapSize		= upgrade_menu_cols * upgrade_menu_rows;
+	let out 		= new Array(mapSize);
 
 	for (let i = 0; i < mapSize; i++) {
 		out[i] = new Research_Tile();
@@ -399,9 +404,9 @@ function generateResearchMap() {
 	out[mapColRow(5, 16)].assign_tile(tid.tile_node, uid.upgrade_earth_metals_1);
 
 	// Water Starting Tree
-	out[mapColRow(18, 2)].assign_tile(tid.tile_node, uid.upgrade_water_storage);
-	out[mapColRow(18, 3)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	out[mapColRow(18, 4)].assign_tile(tid.tile_connect_ulr, uid.upgrade_count);
+	//out[mapColRow(18, 2)].assign_tile(tid.tile_node, uid.upgrade_water_storage);
+	//out[mapColRow(18, 3)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
+	//out[mapColRow(18, 4)].assign_tile(tid.tile_connect_ulr, uid.upgrade_count);
 
 	// Workers Starting Tree
 	out[mapColRow(8, 2)].assign_tile(tid.tile_node, uid.upgrade_workers_1);
@@ -410,5 +415,5 @@ function generateResearchMap() {
 }
 
 function mapColRow(col, row) {
-	return ((30 * row) + col);
+	return ((upgrade_menu_cols * row) + col);
 }

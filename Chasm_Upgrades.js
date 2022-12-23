@@ -297,6 +297,8 @@ function drawResearchMap() {
 
 	let image_header = "<img src = '";
 	let image_footer = "' class = 'pixelart' style = 'position: absolute; left: 0px; top: 0px;' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
+	let image_footer_node = "' class = 'pixelart' style = 'cursor: pointer; position: absolute; left: 0px; top: 0px;' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
+	let image_footer_node_purchased = "' class = 'pixelart' style = 'cursor: pointer; filter: hue-rotate(180deg); position: absolute; left: 0px; top: 0px;' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>"; // Image tags could be cleaned up/combined
 	
 	// Background image
 	out += "<div class = 'flex' style = 'width: " + upgrade_menu_width + "px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(\"./images/research_bkg.png\");'>";
@@ -388,13 +390,15 @@ function drawResearchMap() {
 				break;
 
 			case tid.tile_node:
-				out += image_header + "images/tile_research_node.png' id = 'upgrade_node_" + map[i].upgrade_id + "'";
+				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+				out += image_header + "images/tile_research_upgrade_unknown.png" + image_footer;
+				out += image_header + "images/tile_research_node.png' id = 'upgrade_node_" + map[i].upgrade_id + "' onclick = 'buy_upgrade(" + map[i].upgrade_id + ")";
 				if (chasm_upgrades[map[i].upgrade_id].unlocked) {
-					out += " style = 'cursor: pointer; filter: hue-rotate(180deg);'";
+					out +=  image_footer_node_purchased;
 				} else {
-					out += " style = 'cursor: pointer;'";
+					out +=  image_footer_node;
 				}
-				out += " onclick = 'buy_upgrade(" + map[i].upgrade_id + ")" + image_footer;
+				out += "</div>";
 				break;
 
 			case tid.tile_none:

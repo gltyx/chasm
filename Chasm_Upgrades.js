@@ -267,144 +267,180 @@ class _TILE_ID {
 	tile_count						= 0x000d;
 } var tid = new _TILE_ID();
 
-class Research_Tile {
-	tile_id = tid.tile_none;
-	upgrade_id = uid.upgrade_count;
-
-	constructor() {
-	}
-
-	assign_tile(tile_id, upgrade_id) {
-		if (this.tile_id == tid.tile_none && this.upgrade_id) {
-			this.tile_id = tile_id;
-			this.upgrade_id = upgrade_id;
-			return true;
-		} else {
-			throw new Error("Research map generation collision");
-		}
-	}
-}
-
 // Upgrade menu layout
 let upgrade_menu_width = 600;
 let upgrade_tile_width = 40;
 let upgrade_menu_rows = 30;
 let upgrade_menu_cols = upgrade_menu_width / upgrade_tile_width;
 
-function drawResearchMap() {
-	let map = generateResearchMap();
-	let out;
+let tile_div_header = "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
+let tile_div_footer = "</div>";
 
-	let image_header = "<img src = '";
-	let image_footer = "' class = 'pixelart' style = 'position: absolute; left: 0px; top: 0px;' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
-	let image_footer_node = "' class = 'pixelart' style = 'cursor: pointer; position: absolute; left: 0px; top: 0px;' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
-	let image_footer_node_purchased = "' class = 'pixelart' style = 'cursor: pointer; filter: hue-rotate(180deg); position: absolute; left: 0px; top: 0px;' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>"; // Image tags could be cleaned up/combined
-	
-	// Background image
-	out += "<div class = 'flex' style = 'width: " + upgrade_menu_width + "px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(\"./images/research_bkg.png\");'>";
-	
-	// Tiles
-	for (let i = 0; i < map.length; i++) {
-		switch (map[i].tile_id) {
+let image_header = "<img src = '";
+let image_style_core = "' class = 'pixelart' style = 'position: absolute; left: 0px; top: 0px;";
+let image_style_purchased = " filter: hue-rotate(180deg);";
+let image_style_node = " cursor: pointer;";
+let image_footer = "' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
+
+class Research_Tile {
+	tile_id = tid.tile_none;
+	upgrade_id = uid.upgrade_count;
+	upgrade_triggers_1;
+	upgrade_triggers_2;
+
+	constructor() {
+	}
+
+	assign_tile(tile_id, upgrade_id, upgrade_triggers_1, upgrade_triggers_2) {
+		if (this.tile_id == tid.tile_none && this.upgrade_id) {
+			this.tile_id = tile_id;
+			this.upgrade_id = upgrade_id;
+			this.upgrade_triggers_1 = upgrade_triggers_1;
+			this.upgrade_triggers_2 = upgrade_triggers_2;
+			return true;
+		} else {
+			throw new Error("Research map generation collision");
+		}
+	}
+
+	purchase_style(upgrade_array_1, upgrade_array_2) {
+		// Check purchase state
+		if (upgrade_array_1 !== undefined) {
+			for (let i = 0; i < upgrade_array_1.length; i++) {
+				if (!chasm_upgrades[upgrade_array_1[i]].unlocked) {
+					return "";
+				}
+			}
+
+			// Optional second upgrade array
+			if (upgrade_array_2 !== undefined) {
+				for (let i = 0; i < upgrade_array_2.length; i++) {
+					if (!chasm_upgrades[upgrade_array_2[i]].unlocked) {
+						return "";
+					}
+				}
+			}
+
+			// Prerequisites purchased, output style modifier
+			return image_style_purchased;
+		}
+
+		return "";
+	}
+
+	generate_tile_string() {
+		let out;
+
+		switch (this.tile_id) {
 			case tid.tile_connect_ud:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_up.png" + image_footer;
-				out += image_header + "images/tile_research_connect_down.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_up.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_ur:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_up.png" + image_footer;
-				out += image_header + "images/tile_research_connect_right.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_up.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_ul:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_up.png" + image_footer;
-				out += image_header + "images/tile_research_connect_left.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_up.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_left.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_lr:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_left.png" + image_footer;
-				out += image_header + "images/tile_research_connect_right.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_left.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_ld:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_left.png" + image_footer;
-				out += image_header + "images/tile_research_connect_down.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_left.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_rd:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_right.png" + image_footer;
-				out += image_header + "images/tile_research_connect_down.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_right.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_ulr:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_up.png" + image_footer;
-				out += image_header + "images/tile_research_connect_left.png" + image_footer;
-				out += image_header + "images/tile_research_connect_right.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_up.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_left.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_uld:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_up.png" + image_footer;
-				out += image_header + "images/tile_research_connect_left.png" + image_footer;
-				out += image_header + "images/tile_research_connect_down.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_up.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_left.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_urd:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_up.png" + image_footer;
-				out += image_header + "images/tile_research_connect_right.png" + image_footer;
-				out += image_header + "images/tile_research_connect_down.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_up.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_lrd:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_left.png" + image_footer;
-				out += image_header + "images/tile_research_connect_right.png" + image_footer;
-				out += image_header + "images/tile_research_connect_down.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_left.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_style_core + this.purchase_style(this.upgrade_triggers_2) + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1, this.upgrade_triggers_2) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_connect_ulrd:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_connect_up.png" + image_footer;
-				out += image_header + "images/tile_research_connect_left.png" + image_footer;
-				out += image_header + "images/tile_research_connect_right.png" + image_footer;
-				out += image_header + "images/tile_research_connect_down.png" + image_footer;
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_connect_up.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_left.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_right.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += image_header + "images/tile_research_connect_down.png" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_node:
-				out += "<div style = 'position: relative; width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'>";
-				out += image_header + "images/tile_research_upgrade_unknown.png" + image_footer;
-				out += image_header + "images/tile_research_node.png' id = 'upgrade_node_" + map[i].upgrade_id + "' onclick = 'buy_upgrade(" + map[i].upgrade_id + ")";
-				if (chasm_upgrades[map[i].upgrade_id].unlocked) {
-					out +=  image_footer_node_purchased;
-				} else {
-					out +=  image_footer_node;
-				}
-				out += "</div>";
+				out += tile_div_header;
+				out += image_header + "images/tile_research_upgrade_unknown.png" + image_style_core + image_footer; // todo: load upgrade image
+				out += image_header + "images/tile_research_node.png' id = 'upgrade_node_" + this.upgrade_id + "' onclick = 'buy_upgrade(" + this.upgrade_id + ")" + image_style_core + image_style_node + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				out += tile_div_footer;
 				break;
 
 			case tid.tile_none:
 			default:
 				out += "<div style = 'width: " + upgrade_tile_width + "px; height: " + upgrade_tile_width + "px;'></div>";
 		}
+
+		return out;
+	}
+}
+
+function drawResearchMap() {
+	let map = generateResearchMap();
+	let out;
+
+	// Background image
+	out += "<div class = 'flex' style = 'width: " + upgrade_menu_width + "px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(\"./images/research_bkg.png\");'>";
+	
+	// Tiles
+	for (let i = 0; i < map.length; i++) {
+		out += map[i].generate_tile_string();
 	}
 
 	out += "</div>";
@@ -424,35 +460,42 @@ function generateResearchMap() {
 		out[i] = new Research_Tile();
 	}
 
-	// Earth Starting Tree
-	out[mapColRow(2, 2)].assign_tile(tid.tile_node, uid.upgrade_earth_value_1);
-	out[mapColRow(4, 2)].assign_tile(tid.tile_node, uid.upgrade_earth_density_1);
-	out[mapColRow(2, 3)].assign_tile(tid.tile_connect_ur, uid.upgrade_count);
-	out[mapColRow(3, 3)].assign_tile(tid.tile_connect_lrd, uid.upgrade_count);
-	out[mapColRow(4, 3)].assign_tile(tid.tile_connect_ul, uid.upgrade_count);
-	out[mapColRow(3, 4)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	out[mapColRow(4, 5)].assign_tile(tid.tile_connect_lr, uid.upgrade_count);
-	out[mapColRow(5, 5)].assign_tile(tid.tile_connect_lrd, uid.upgrade_count);
-	out[mapColRow(6, 5)].assign_tile(tid.tile_connect_ul, uid.upgrade_count);
-	out[mapColRow(5, 6)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	out[mapColRow(5, 7)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	out[mapColRow(5, 8)].assign_tile(tid.tile_node, uid.upgrade_earth_density_2);
-	out[mapColRow(5, 9)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	out[mapColRow(5, 10)].assign_tile(tid.tile_node, uid.upgrade_earth_density_3);
-	out[mapColRow(5, 11)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	out[mapColRow(5, 12)].assign_tile(tid.tile_node, uid.upgrade_earth_density_4);
-	out[mapColRow(5, 13)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	out[mapColRow(5, 14)].assign_tile(tid.tile_node, uid.upgrade_earth_density_5);
-	out[mapColRow(5, 15)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	out[mapColRow(5, 16)].assign_tile(tid.tile_node, uid.upgrade_earth_metals_1);
+	// Upgrade Tree
+	out[mapColRow(2, 2)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_1,		[uid.upgrade_earth_value_1]															);
+	out[mapColRow(2, 3)]	.assign_tile(tid.tile_connect_ur, 	uid.upgrade_count,				[uid.upgrade_earth_value_1]															);
 
-	// Water Starting Tree
-	//out[mapColRow(18, 2)].assign_tile(tid.tile_node, uid.upgrade_water_storage);
-	//out[mapColRow(18, 3)].assign_tile(tid.tile_connect_ud, uid.upgrade_count);
-	//out[mapColRow(18, 4)].assign_tile(tid.tile_connect_ulr, uid.upgrade_count);
+	out[mapColRow(4, 2)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_1,	[uid.upgrade_earth_density_1]														);
+	out[mapColRow(4, 3)]	.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,				[uid.upgrade_earth_density_1]														);
 
-	// Workers Starting Tree
-	out[mapColRow(8, 2)].assign_tile(tid.tile_node, uid.upgrade_workers_1);
+	out[mapColRow(3, 3)]	.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,				[uid.upgrade_earth_value_1], 		[uid.upgrade_earth_density_1]					);
+	out[mapColRow(3, 4)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1]							);
+	out[mapColRow(3, 5)]	.assign_tile(tid.tile_connect_ur, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1]							);
+	out[mapColRow(4, 5)]	.assign_tile(tid.tile_connect_lr, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1]							);
+	
+	out[mapColRow(8, 4)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_1,			[uid.upgrade_workers_1]																);
+	out[mapColRow(8, 3)]	.assign_tile(tid.tile_connect_ld, 	uid.upgrade_count,				[uid.upgrade_workers_1]																);
+	out[mapColRow(7, 3)]	.assign_tile(tid.tile_connect_rd, 	uid.upgrade_count,				[uid.upgrade_workers_1]																);
+	out[mapColRow(7, 4)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_workers_1]																);
+	out[mapColRow(7, 5)]	.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,				[uid.upgrade_workers_1]																);
+	out[mapColRow(6, 5)]	.assign_tile(tid.tile_connect_lr, 	uid.upgrade_count,				[uid.upgrade_workers_1]																);
+
+	out[mapColRow(5, 5)]	.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1], [uid.upgrade_workers_1] 	);
+	out[mapColRow(5, 6)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1, uid.upgrade_workers_1] 	);
+	out[mapColRow(5, 7)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1, uid.upgrade_workers_1] 	);
+
+	out[mapColRow(5, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_2,	[uid.upgrade_earth_density_2]														);
+	out[mapColRow(5, 9)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_density_2]														);
+
+	out[mapColRow(5, 10)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_3,	[uid.upgrade_earth_density_3]														);
+	out[mapColRow(5, 11)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_density_3]														);
+
+	out[mapColRow(5, 12)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_4,	[uid.upgrade_earth_density_4]														);
+	out[mapColRow(5, 13)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_density_4]														);
+
+	out[mapColRow(5, 14)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_5,	[uid.upgrade_earth_density_5]														);
+	out[mapColRow(5, 15)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_density_5]														);
+
+	out[mapColRow(5, 16)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_metals_1,		[uid.upgrade_earth_metals_1]														);
 
 	return out;
 }

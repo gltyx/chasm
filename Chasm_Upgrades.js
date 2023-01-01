@@ -278,7 +278,7 @@ let tile_div_footer = "</div>";
 
 let image_header = "<img src = '";
 let image_style_core = "' class = 'pixelart' style = 'position: absolute; left: 0px; top: 0px;";
-let image_style_purchased = " filter: hue-rotate(180deg);";
+let image_style_purchased = " filter: hue-rotate(90deg) brightness(1.5);";
 let image_style_node = " cursor: pointer;";
 let image_footer = "' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
 

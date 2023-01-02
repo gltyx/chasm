@@ -54,6 +54,7 @@ function game_init() {
 function animation_tick() {
 	draw_resources();
 	showInspector(current_inspector_id);
+	animateResearchMap();
 
 	// Earth
 	chasm_storage[sid.storage_earth].draw();

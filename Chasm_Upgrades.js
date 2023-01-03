@@ -29,12 +29,16 @@ class _UPGRADE_ID {
 
 class _CHASM_UPGRADE {
 	name;
+	upgrade_image = "images/tile_research_upgrade_unknown.png";
 	unlocked = false;
 	cost = new currency_value_map([]);
 	prerequisites;
 
-	constructor(name, cost) {
+	constructor(name, upgrade_image, cost) {
 		this.name = name;
+		if (upgrade_image !== undefined && upgrade_image != "") {
+			this.upgrade_image = upgrade_image;
+		}
 		this.cost = new currency_value_map(cost);
 	}
 
@@ -94,6 +98,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_density_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_density_1",
+					"images/tile_research_upgrade_unknown.png",
 					[
 					0.4,	// Particles
 					0,		// Strands
@@ -105,6 +110,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_density_2:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_density_2",
+					"images/tile_research_upgrade_unknown.png",
 					[
 					1,		// Particles
 					0,		// Strands
@@ -116,6 +122,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_density_3:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_density_3",
+					"images/tile_research_upgrade_unknown.png",
 					[
 					2,		// Particles
 					0,		// Strands
@@ -127,6 +134,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_density_4:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_density_4",
+					"images/tile_research_upgrade_unknown.png",
 					[
 					3,		// Particles
 					0,		// Strands
@@ -138,6 +146,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_density_5:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_density_5",
+					"images/tile_research_upgrade_unknown.png",
 					[
 					4,		// Particles
 					0,		// Strands
@@ -149,6 +158,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_1",
+					"images/tile_research_upgrade_unknown.png",
 					[
 					0.08,	// Particles
 					0,		// Strands
@@ -160,6 +170,7 @@ function initUpgrades() {
 			case uid.upgrade_water_storage:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_water_storage",
+					"images/tile_research_upgrade_unknown.png",
 					[
 					20,		// Particles
 					0,		// Strands
@@ -171,6 +182,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_metals_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_metals_1",
+					"images/tile_research_upgrade_unknown.png",
 					[
 					100,	// Particles
 					0,		// Strands
@@ -182,6 +194,7 @@ function initUpgrades() {
 			case uid.upgrade_workers_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_workers_1",
+					"images/tile_research_upgrade_workers_1.png",
 					[
 					0.08,	// Particles
 					0,		// Strands
@@ -193,6 +206,7 @@ function initUpgrades() {
 			default:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"",
+					"images/tile_research_upgrade_unknown.png",
 					[
 					0,		// Particles
 					0,		// Strands
@@ -462,7 +476,7 @@ class Research_Tile {
 				break;
 
 			case tid.tile_node:
-				out += image_header + "images/tile_research_upgrade_unknown.png" + image_style_core + image_footer; // todo: load upgrade image
+				out += image_header + chasm_upgrades[this.upgrade_id].upgrade_image + image_style_core + image_footer;
 				out += image_header + "images/tile_research_node.png'" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
 				break;
 

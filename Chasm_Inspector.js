@@ -158,91 +158,91 @@ function showInspector(id) {
 		
 		// Upgrades
 		case iid.upgrade_earth_density_1:
-			$("#inspector_title")	.html("Steel-toed Boots");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Steel-toed Boots");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_1].cost.stringify());
 			$("#inspector_text")	.html("You can fit a lot more dirt into your storage with a few well-placed stomps");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
 		case iid.upgrade_earth_density_2:
-			$("#inspector_title")	.html("Tamping Rod");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Tamping Rod");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_2].cost.stringify());
 			$("#inspector_text")	.html("A long stick with a flat metal plate at one end. The perfect tool for squishing dirt or less lethal jousting.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
 		case iid.upgrade_earth_density_3:
-			$("#inspector_title")	.html("Trash Compactor");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Trash Compactor");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_3].cost.stringify());
 			$("#inspector_text")	.html("A repurposed trash compactor can smash earth into a dense cube. Ignore the stench and raccoons.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
 		case iid.upgrade_earth_density_4:
-			$("#inspector_title")	.html("Macrosonic Agitator");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Macrosonic Agitator");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_4].cost.stringify());
 			$("#inspector_text")	.html("A marvel of modern science. Vibrates the earth at incredible frequencies to squeeze out every last bit of empty space.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
 		case iid.upgrade_earth_density_5:
-			$("#inspector_title")	.html("Gravity Well");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Gravity Well");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_density_5].cost.stringify());
 			$("#inspector_text")	.html("A miniature black hole which can compact earth to a ridiculous degree. You can also say it ate your homework.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("2x Earth density");
 			break;
 		case iid.upgrade_earth_value_1:
-			$("#inspector_title")	.html("Dustbusting");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Dustbusting");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_1].cost.stringify());
 			$("#inspector_text")	.html("By filtering out some of the lighter dust particles you can make your earth particles worth more.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+0.01 earth particle value");
 			break;
 		case iid.upgrade_earth_auto_gather:
-			$("#inspector_title")	.html("Ant farm");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Ant farm");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_auto_gather].cost.stringify());
 			$("#inspector_text")	.html("These little guys can help you move mountains of earth... Very, very slowly");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-gather Earth");
 			break;
 		case iid.upgrade_earth_auto_drop:
-			$("#inspector_title")	.html("Catapult");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Catapult");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_auto_drop].cost.stringify());
 			$("#inspector_text")	.html("Flinging dirt into the Chasm is a lot more fun than dumping it in by hand");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-drop Earth");
 			break;
 		case iid.upgrade_earth_metals_1:
-			$("#inspector_title")	.html("Prospector's Tools");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Prospector's Tools");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_metals_1].cost.stringify());
 			$("#inspector_text")	.html("An old prospector offers to sell you a spare pickaxe and shovel so you can gather earth from a little bit deeper");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Small chance of gathering copper ore");
 			break;
 		case iid.upgrade_water_storage:
-			$("#inspector_title")	.html("Water storage");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water storage");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_storage].cost.stringify());
 			$("#inspector_text")	.html("Dumping water into the Chasm might speed things up, but you'll have to build some water tanks first");
 			$("#inspector_subtext")	.html("Unlock Water");
 			$("#inspector_divider")	.css("display", "block");
 			break;
 		case iid.upgrade_water_auto_gather:
-			$("#inspector_title")	.html("Rain barrels");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Rain barrels");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_auto_gather].cost.stringify());
 			$("#inspector_text")	.html("Your back hurts from carrying so much water. Let mother nature do some of the work herself");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-gather Water");
 			break;
 		case iid.upgrade_water_auto_drop:
-			$("#inspector_title")	.html("Sprinkler");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Sprinkler");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_auto_drop].cost.stringify());
 			$("#inspector_text")	.html("Attach a sprinkler system to your water tank to spray directly into the Chasm");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Auto-drop Water");
 			break;
 		case iid.upgrade_workers_1:
-			$("#inspector_title")	.html("Fringe Researcher");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fringe Researcher");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_1].cost.stringify());
 			$("#inspector_text")	.html("You know a guy who would be very interested in studying the exotic materials coming out of the Chasm. He is a bit of a conspiracy nut, but you can probably convince him to shovel dirt.");
 			$("#inspector_divider")	.css("display", "block");

@@ -110,7 +110,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_density_2:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_density_2",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_density_2.png",
 					[
 					1,		// Particles
 					0,		// Strands

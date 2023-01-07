@@ -184,7 +184,7 @@ function initUpgrades() {
 					"upgrade_earth_metals_1",
 					"images/tile_research_upgrade_unknown.png",
 					[
-					100,	// Particles
+					2.5,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul

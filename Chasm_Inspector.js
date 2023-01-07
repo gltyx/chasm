@@ -306,7 +306,7 @@ function showInspector(id) {
 			if (chasm_achievements[aid.achievement_minor_case_of_wormhole].unlocked) {
 				$("#inspector_title")	.html("<img src = 'images/a_minor_case_of_wormhole.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>A Minor Case of Wormhole");
 				$("#inspector_cost")	.html("");
-				$("#inspector_text")	.html("Worms? In my hole??");
+				$("#inspector_text")	.html("Worms? In MY hole??");
 				$("#inspector_divider")	.css("display", "none");
 				$("#inspector_subtext")	.html("");
 			} else {

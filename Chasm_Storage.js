@@ -329,12 +329,16 @@ class storage_bitmap {
 				case eid.element_earth:
 					let value = 0.01;
 					if (chasm_upgrades[uid.upgrade_earth_value_1].unlocked) value += 0.01;
+
+					currency_count[cid.currency_mass] += element_count[eid.element_earth] * value;
 					currency_count[cid.currency_particles] += element_count[eid.element_earth] * value;
 					break;
 				case eid.element_copper:
+					currency_count[cid.currency_mass] += element_count[eid.element_copper] * 0.01;
 					currency_count[cid.currency_strands] += element_count[eid.element_copper] * 0.01;
 					break;
 				case eid.element_water:
+					currency_count[cid.currency_mass] += element_count[eid.element_water] * 0.01;
 					currency_count[cid.currency_particles] += element_count[eid.element_water] * 0.01;
 					break;
 				case eid.element_none:

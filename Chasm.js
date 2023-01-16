@@ -109,6 +109,8 @@ function draw_resources() {
 	$("#currency_strands_amount").html(chasm_currency[cid.currency_strands].resource.current.toFixed(2));
 	$("#currency_spirit_amount").html(chasm_currency[cid.currency_spirit].resource.current.toFixed(2));
 	$("#currency_soul_amount").html(chasm_currency[cid.currency_soul].resource.current.toFixed(2));
+
+	$("#currency_mass_amount").html(chasm_currency[cid.currency_mass].resource.current.toFixed(2));
 	$("#currency_workers_amount").html(chasm_currency[cid.currency_workers].resource.current.toFixed(0));
 
 	// Update resources

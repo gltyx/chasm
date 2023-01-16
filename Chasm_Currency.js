@@ -17,9 +17,10 @@ class _CURRENCY_ID {
 	// Prestige Currency
 
 	// Special Currency
-	currency_workers	= 0x0004;
+	currency_mass 		= 0x0004;
+	currency_workers	= 0x0005;
 
-	currency_count		= 0x0005;
+	currency_count		= 0x0006;
 } var cid = new _CURRENCY_ID();
 
 class _CHASM_CURRENCY {
@@ -59,6 +60,11 @@ function initCurrency() {
 			case cid.currency_soul:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_soul",
 														"<i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>");
+				break;
+
+			case cid.currency_mass:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_mass",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon'>archive</i>");
 				break;
 
 			case cid.currency_workers:

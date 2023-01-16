@@ -14,6 +14,7 @@ class _INSPECTOR_ID {
 	currency_strands							= cid.currency_strands						+ this.offset_currency;
 	currency_spirit								= cid.currency_spirit						+ this.offset_currency;
 	currency_soul								= cid.currency_soul							+ this.offset_currency;
+	currency_mass								= cid.currency_mass							+ this.offset_currency;
 	currency_workers							= cid.currency_workers						+ this.offset_currency;
 
 	offset_elements								= 0x0600;	// 0x06xx Start elements section
@@ -54,6 +55,7 @@ function registerInspectorEvents() {
 	$(".currency_strands").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_strands);});});
 	$(".currency_spirit").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_spirit);});});
 	$(".currency_soul").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_soul);});});
+	$(".currency_mass").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_mass);});});
 	$(".currency_workers").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_workers);});});
 
 	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
@@ -97,6 +99,13 @@ function showInspector(id) {
 			$("#inspector_title")	.html(chasm_currency[cid.currency_soul].inspector_symbol + "Soul Shards");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("When human flesh is dropped into the Chasm, it screams. Glassy shards grow around the edge of the pit... It's best not to consider what they are made of.");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.currency_mass:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_mass].inspector_symbol + "Total Mass");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("You have kept a meticulous count of every bit of mass that has been dropped in the Chasm. How much more until it is satisfied?");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;

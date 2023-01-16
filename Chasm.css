@@ -142,6 +142,11 @@ form {
 	margin-right: 3px;
 }
 
+.currency_icon_mass {
+	font-size: 42px;
+	margin-right: 3px;
+}
+
 .currency_amount {
 	padding-left: 3px;
 }
@@ -250,4 +255,8 @@ form {
 
 	color: white;
 	overflow: hidden;
+}
+
+#currency_mass_value {
+	font-size: 28px;
 }

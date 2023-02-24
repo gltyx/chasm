@@ -79,6 +79,7 @@ function initStorage() {
 class resource_storage {
 	name = "";										// Storage name (must match storage ID)
 	resource;										// chasm_resource_small associated with storage
+	// todo: move resource completely into the storage class
 	
 	canvas;											// Canvas handle for animation
 	canvas_w = STORAGE_CANVAS_W_DEFAULT;			// Canvas width
@@ -115,6 +116,7 @@ class resource_storage {
 	}
 
 	drop() {
+		this.update_bitmap();
 		if (this.resource.spend(this.resource.cap)) {
 			return true;
 		} else {

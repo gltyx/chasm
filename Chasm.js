@@ -297,6 +297,10 @@ function refresh_ui() {
 		chasm_storage[i].manage_workers(0, "drop");
 		chasm_storage[i].manage_workers(0, "survey");
 	}
+	
+	if (chasm_upgrades[uid.upgrade_earth_metals_1].unlocked) {
+		$("#earth_survey").css("display", "block");
+	}
 }
 
 // Materialize UI

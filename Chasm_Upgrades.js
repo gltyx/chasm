@@ -268,6 +268,7 @@ function buy_upgrade(upgrade_id) {
 				break;
 
 			case uid.upgrade_earth_metals_1:
+				$("#earth_survey").css("display", "block");
 				break;
 
 			case uid.upgrade_workers_1:

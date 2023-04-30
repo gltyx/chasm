@@ -295,6 +295,7 @@ function refresh_ui() {
 	for (let i = sid.storage_first; i < sid.storage_count; i++) {
 		chasm_storage[i].manage_workers(0, "gather");
 		chasm_storage[i].manage_workers(0, "drop");
+		chasm_storage[i].manage_workers(0, "survey");
 	}
 }
 

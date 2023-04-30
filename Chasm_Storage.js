@@ -39,6 +39,74 @@ class _ELEMENT_ID {
 	element_count		= 0x0007;
 } var eid = new _ELEMENT_ID();
 
+class ELEMENT_PROBABILITY {
+	// Element list
+	element_none 		= 0;
+	element_earth 		= 0;
+	element_water 		= 0;
+	element_coal		= 0;
+	element_copper		= 0;
+	element_iron		= 0;
+	element_fish		= 0;
+
+	zero() {
+		this.element_none = 0;
+		this.element_earth = 0;
+		this.element_water = 0;
+		this.element_coal = 0;
+		this.element_copper = 0;
+		this.element_iron = 0;
+		this.element_fish = 0;
+	}
+
+	refresh(storage_flags) {
+		this.zero();
+		var portion = 1000;
+
+		if (storage_flags & STORAGE_FLAGS_EARTH) {
+			this.element_coal 	+= Math.floor(500 - (500 * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, 0.1))));
+			portion 			-= Math.floor(500 - (500 * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, 0.1))));
+
+			this.element_copper += Math.floor(300 - (300 * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, 0.1))));
+			portion 			-= Math.floor(300 - (300 * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, 0.1))));
+
+			this.element_earth = portion;
+
+			$("#earth_survey_earth").html((this.element_earth / 10) + "%");
+			$("#earth_survey_coal").html((this.element_coal / 10) + "%");
+			$("#earth_survey_copper").html((this.element_copper / 10) + "%");
+			$("#earth_survey_iron").html((this.element_iron / 10) + "%");
+		}
+	}
+
+	roll(storage_flags) {
+		if (storage_flags & STORAGE_FLAGS_EARTH) {
+			var portion = 1000;
+			var roll = Math.floor(Math.random() * 1000);
+
+			if (roll > portion - this.element_iron) {
+				return eid.element_iron;
+			} else {
+				portion -= this.element_iron;
+			}
+
+			if (roll > portion - this.element_copper) {
+				return eid.element_copper;
+			} else {
+				portion -= this.element_copper;
+			}
+
+			if (roll > portion - this.element_coal) {
+				return eid.element_coal;
+			} else {
+				portion -= this.element_coal;
+			}
+
+			return eid.element_earth;
+		}
+	}
+}
+
 function initStorage() {
 	earth = new chasm_resource_small("earth");
 	earth.option_unlocked = true;
@@ -57,7 +125,8 @@ function initStorage() {
 				chasm_storage[i].brick_h = 32;
 				earth.setCap((chasm_storage[i].canvas_w * chasm_storage[i].canvas_h) / (chasm_storage[i].brick_w * chasm_storage[i].brick_h));
 				chasm_storage[i].gather_dom = "#earth_workers_gather";
-				chasm_storage[i].drop_dom = "#earth_workers_drop";
+				chasm_storage[i].drop_dom 	= "#earth_workers_drop";
+				chasm_storage[i].survey_dom = "#earth_workers_survey";
 				break;
 
 			case sid.storage_water:
@@ -88,8 +157,11 @@ class resource_storage {
 	image_data;										// Canvas image data
 	bitmap;											// Storage bitmap
 
+	probability = new ELEMENT_PROBABILITY();
+
 	gather_dom;
 	drop_dom;
+	survey_dom;
 
 	storage_flags = 0;								// Flags for different storage types (STORAGE_FLAGS_*)
 	brick_w = 1;									// Number of x pixels in a brick
@@ -98,7 +170,8 @@ class resource_storage {
 	bricks_stored = 0;								// Number of bricks currently stored
 
 	workers_gather = 0;								// Number of workers currently gathering
-	workers_drop = 0;								// Numeber of workers currently dropping
+	workers_drop = 0;								// Number of workers currently dropping
+	workers_survey = 0;								// Number of workers currently surveying
 	gather_progress = 0;							// Percentage towards next gather action
 	drop_progress = 0;								// Percentage towards next drop action
 
@@ -144,15 +217,7 @@ class resource_storage {
 			// Choose brick type
 			let type;
 			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
-				if (chasm_upgrades[uid.upgrade_earth_metals_1].unlocked) {
-					if (Math.random() > 0.975) {
-						type = eid.element_copper;
-					} else {
-						type = eid.element_earth;
-					}
-				} else {
-					type = eid.element_earth;
-				}
+				type = this.probability.roll(this.storage_flags);
 			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
 				type = eid.element_water;
 			}
@@ -160,6 +225,8 @@ class resource_storage {
 			// Choose brick color
 			if (type == eid.element_earth) {
 				color = colorRange_MkII(color_MkII_earth);
+			} else if (type == eid.element_coal) {
+				color = colorRange_MkII(color_MkII_coal);
 			} else if (type == eid.element_copper) {
 				color = colorRange_MkII(color_MkII_copper);
 			} else if (type == eid.element_water) {
@@ -258,6 +325,42 @@ class resource_storage {
 			} else {
 				$(this.drop_dom).html(this.workers_drop);
 			}
+		} else if (target == "survey") {
+			let out = num;
+
+			// Gain workers
+			if (num > 0) {
+				if (chasm_currency[cid.currency_workers].resource.current.lt(num)) {
+					out = chasm_currency[cid.currency_workers].resource.current;
+
+					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+						this.workers_survey += out.toNumber();
+					}
+				} else {
+					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+						this.workers_survey += out;
+					}
+				}
+
+				$(this.survey_dom).html(this.workers_survey);
+
+			// Reduce workers
+			} else if (num < 0) {
+				if (num < -this.workers_survey) {
+					out = this.workers_survey;
+				} else {
+					out = -out;
+				}
+
+				chasm_currency[cid.currency_workers].resource.gainUntracked(out);
+				this.workers_survey -= out;
+
+				$(this.survey_dom).html(this.workers_survey);
+			} else {
+				$(this.survey_dom).html(this.workers_survey);
+			}
+
+			chasm_storage[sid.storage_earth].probability.refresh(chasm_storage[sid.storage_earth].storage_flags);
 		}
 	}
 }
@@ -335,6 +438,10 @@ class storage_bitmap {
 					currency_count[cid.currency_mass] += element_count[eid.element_earth] * value;
 					currency_count[cid.currency_particles] += element_count[eid.element_earth] * value;
 					break;
+				case eid.element_coal:
+					currency_count[cid.currency_mass] += element_count[eid.element_coal] * 0.01;
+					currency_count[cid.currency_spirit] += element_count[eid.element_coal] * 0.01;
+					break;
 				case eid.element_copper:
 					currency_count[cid.currency_mass] += element_count[eid.element_copper] * 0.01;
 					currency_count[cid.currency_strands] += element_count[eid.element_copper] * 0.01;
@@ -358,6 +465,13 @@ class storage_bitmap {
 			out 							+= "<p style = 'margin-left: 6px;'>";
 			out 							+= element_count[eid.element_earth];
 			out 							+= "<div class = 'element_sample' style = 'background-color: SaddleBrown;'></div>";
+			out								+= "</p>";
+		}
+
+		if (element_count[eid.element_coal] > 0) {
+			out 							+= "<p style = 'margin-left: 6px;'>";
+			out 							+= element_count[eid.element_coal];
+			out 							+= "<div class = 'element_sample' style = 'background-color: Black;'></div>";
 			out								+= "</p>";
 		}
 

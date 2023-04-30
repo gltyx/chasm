@@ -17,6 +17,7 @@ class color_MkII {
 }
 
 var color_MkII_earth 		= new color_MkII(0.08, 0.12, 0.11, 0.28, 0.30, 0.47);
+var color_MkII_coal			= new color_MkII(0.08, 0.12, 0.01, 0.10, 0.01, 0.05);
 var color_MkII_copper 		= new color_MkII(0.07, 0.11, 0.56, 0.68, 0.50, 0.63);
 var color_MkII_water 		= new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
 var color_MkII_water_temp 	= new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);

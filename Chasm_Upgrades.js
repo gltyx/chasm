@@ -264,7 +264,7 @@ function buy_upgrade(upgrade_id) {
 				break;
 
 			case uid.upgrade_water_storage:
-				$("#water_box").css("display", "block");
+				$("#water_section").css("display", "block");
 				break;
 
 			case uid.upgrade_earth_metals_1:
@@ -542,19 +542,17 @@ function generateResearchMap() {
 	upgrade_map[mapColRow(5, 6)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1, uid.upgrade_workers_1] 	);
 	upgrade_map[mapColRow(5, 7)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1, uid.upgrade_workers_1] 	);
 
-	upgrade_map[mapColRow(5, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_2,	[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1, uid.upgrade_workers_1]		);
-	upgrade_map[mapColRow(5, 9)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_density_2]														);
-
-	upgrade_map[mapColRow(5, 10)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_3,	[uid.upgrade_earth_density_2]														);
-	upgrade_map[mapColRow(5, 11)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_density_3]														);
-
-	upgrade_map[mapColRow(5, 12)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_4,	[uid.upgrade_earth_density_3]														);
-	upgrade_map[mapColRow(5, 13)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_density_4]														);
-
-	upgrade_map[mapColRow(5, 14)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_5,	[uid.upgrade_earth_density_4]														);
-	upgrade_map[mapColRow(5, 15)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_density_5]														);
-
-	upgrade_map[mapColRow(5, 16)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_metals_1,		[uid.upgrade_earth_density_5]														);
+	// Testing row
+	var test_row = 12;
+	var test_upgrades = [uid.upgrade_earth_density_2, uid.upgrade_earth_density_3, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5, uid.upgrade_earth_metals_1, uid.upgrade_water_storage];
+	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
+		upgrade_map[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
+		col += 2;
+		if (col > upgrade_menu_cols - 1) {
+			col = 1;
+			row += 2;
+		}
+	}
 }
 
 function mapColRow(col, row) {

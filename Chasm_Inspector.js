@@ -32,12 +32,8 @@ class _INSPECTOR_ID {
 	upgrade_earth_density_4						= uid.upgrade_earth_density_4				+ this.offset_upgrades;
 	upgrade_earth_density_5						= uid.upgrade_earth_density_5				+ this.offset_upgrades;
 	upgrade_earth_value_1						= uid.upgrade_earth_value_1					+ this.offset_upgrades;
-	upgrade_earth_auto_gather					= uid.upgrade_earth_auto_gather				+ this.offset_upgrades;
-	upgrade_earth_auto_drop						= uid.upgrade_earth_auto_drop				+ this.offset_upgrades;
 	upgrade_earth_metals_1						= uid.upgrade_earth_metals_1				+ this.offset_upgrades;
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
-	upgrade_water_auto_gather					= uid.upgrade_water_auto_gather				+ this.offset_upgrades;
-	upgrade_water_auto_drop						= uid.upgrade_water_auto_drop				+ this.offset_upgrades;
 	upgrade_workers_1							= uid.upgrade_workers_1						+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
@@ -132,35 +128,35 @@ function showInspector(id) {
 		case iid.element_water:
 			$("#inspector_title")	.html("???");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_text")	.html("Achievement unknown");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.element_coal:
 			$("#inspector_title")	.html("???");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_text")	.html("Achievement unknown");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.element_copper:
 			$("#inspector_title")	.html("???");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_text")	.html("Achievement unknown");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.element_iron:
 			$("#inspector_title")	.html("???");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_text")	.html("Achievement unknown");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.element_fish:
 			$("#inspector_title")	.html("???");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_text")	.html("Achievement unknown");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -208,26 +204,12 @@ function showInspector(id) {
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+0.01 earth particle value");
 			break;
-		case iid.upgrade_earth_auto_gather:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Ant farm");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_auto_gather].cost.stringify());
-			$("#inspector_text")	.html("These little guys can help you move mountains of earth... Very, very slowly");
-			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Auto-gather Earth");
-			break;
-		case iid.upgrade_earth_auto_drop:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Catapult");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_auto_drop].cost.stringify());
-			$("#inspector_text")	.html("Flinging dirt into the Chasm is a lot more fun than dumping it in by hand");
-			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Auto-drop Earth");
-			break;
 		case iid.upgrade_earth_metals_1:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Prospector's Tools");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Surveying Tools");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_metals_1].cost.stringify());
-			$("#inspector_text")	.html("An old prospector offers to sell you a spare pickaxe and shovel so you can gather earth from a little bit deeper");
+			$("#inspector_text")	.html("A pickaxe, some charts, and a metal detector. Just barely better than guessing where metal ore deposits are in the ground.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Small chance of gathering copper ore");
+			$("#inspector_subtext")	.html("Unlock the Surveying job");
 			break;
 		case iid.upgrade_water_storage:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water storage");
@@ -235,20 +217,6 @@ function showInspector(id) {
 			$("#inspector_text")	.html("Dumping water into the Chasm might speed things up, but you'll have to build some water tanks first");
 			$("#inspector_subtext")	.html("Unlock Water");
 			$("#inspector_divider")	.css("display", "block");
-			break;
-		case iid.upgrade_water_auto_gather:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Rain barrels");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_auto_gather].cost.stringify());
-			$("#inspector_text")	.html("Your back hurts from carrying so much water. Let mother nature do some of the work herself");
-			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Auto-gather Water");
-			break;
-		case iid.upgrade_water_auto_drop:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Sprinkler");
-			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_auto_drop].cost.stringify());
-			$("#inspector_text")	.html("Attach a sprinkler system to your water tank to spray directly into the Chasm");
-			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Auto-drop Water");
 			break;
 		case iid.upgrade_workers_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fringe Researcher");
@@ -262,7 +230,7 @@ function showInspector(id) {
 		case iid.achievement_unknown:
 			$("#inspector_title")	.html("???");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unkown");
+			$("#inspector_text")	.html("Achievement unknown");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;

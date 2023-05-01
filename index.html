@@ -212,7 +212,7 @@
 						<div id = "earth_box" class = "card blue-grey lighten-4">
 							<div class = "flex">
 								<!--Gather-->
-								<div class = "gather_button" style = "width: 88px;">
+								<div class = "gather_button">
 									<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
 										<div id = "earth_gather_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
 									</div>
@@ -232,7 +232,7 @@
 											</div>
 											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'gather')" value = ">" />
 											<div class = "hcenter" style = "margin: auto;">
-												<p style = "font-size: 8px;">workers</p>
+												<p style = "font-size: 10px;">workers</p>
 											</div>
 										</div>
 									</form>
@@ -259,7 +259,7 @@
 								</div>
 
 								<!--Drop-->
-								<div class = "drop_button" style = "width: 88px;">
+								<div class = "drop_button">
 									<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
 										<div id = "earth_drop_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
 									</div>
@@ -279,7 +279,7 @@
 											</div>
 											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'drop')" value = ">" />
 											<div class = "hcenter" style = "margin: auto;">
-												<p style = "font-size: 8px;">workers</p>
+												<p style = "font-size: 10px;">workers</p>
 											</div>
 										</div>
 									</form>
@@ -291,29 +291,44 @@
 								</div>
 
 								<!--Survey-->
-								<div id = "earth_survey" class = "survey_chart hidden" style = "width: 88px;">
+								<div id = "earth_survey" class = "survey_chart hidden" style = "width: 106px; border: 1px dashed whitesmoke; border-radius: 4px;">
 									<p class = "hcenter" style = "font-weight: bold;">Survey</p>
 									
 									<!--Workers Arrows-->
-									<form>
-										<div class = "flex">
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(-1, 'survey')" value = "<" />
-											<div class = "hcenter" style = "width: 40px;">
-												<p id = "earth_workers_survey">0</p>
+									<div style = "width: 88px; margin: auto;">
+										<form>
+											<div class = "flex">
+												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(-1, 'survey')" value = "<" />
+												<div class = "hcenter" style = "width: 40px;">
+													<p id = "earth_workers_survey">0</p>
+												</div>
+												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'survey')" value = ">" />
+												<div class = "hcenter" style = "margin: auto;">
+													<p style = "font-size: 10px;">workers</p>
+												</div>
 											</div>
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'survey')" value = ">" />
-											<div class = "hcenter" style = "margin: auto;">
-												<p style = "font-size: 8px;">workers</p>
-											</div>
-										</div>
-									</form>
-
-									<div id = "earth_drop_menu" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px; padding-left: 6px;">
-										<p style = "font-size: 10px;">Dirt: <span id = "earth_survey_earth"></span></p>
-										<p style = "font-size: 10px;">Coal: <span id = "earth_survey_coal"></span></p>
-										<p style = "font-size: 10px;">Copper: <span id = "earth_survey_copper"></span></p>
-										<p style = "font-size: 10px;">Iron: <span id = "earth_survey_iron"></span></p>
+										</form>
 									</div>
+
+									<div id = "earth_drop_menu" style = "padding-top: 4px; padding-left: 6px; padding-right: 6px; display: flex; width: 106px;">
+										<div style = "display: block;">
+											<p style = "font-size: 12px;">Dirt:</p>
+											<p style = "font-size: 12px;">Coal:</p>
+											<p style = "font-size: 12px;">Copper:</p>
+											<p style = "font-size: 12px;">Iron:</p>
+										</div>
+										<div style = "display: block; text-align: right; width: 100%;">
+											<p style = "font-size: 12px;"><span id = "earth_survey_earth"></span></p>
+											<p style = "font-size: 12px;"><span id = "earth_survey_coal"></span></p>
+											<p style = "font-size: 12px;"><span id = "earth_survey_copper"></span></p>
+											<p style = "font-size: 12px;"><span id = "earth_survey_iron"></span></p>
+										</div>
+									</div>
+								</div>
+
+								<!--Depth-->
+								<div id = "earth_depth" class = "hidden">
+									<p>depth</p>
 								</div>
 							</div>
 						</div>
@@ -396,7 +411,7 @@
 				<div id = "inspector_box" class = "card blue-grey lighten-4">
 					<div id = "inspector_content" class = "card-content">
 						<div id = "inspector_title" class = "black-text vertcenter"></div>
-						<div id = "inspector_cost" class = "grey-text text-darken-3 vertcenter"></div>
+						<div id = "inspector_cost" class = "hidden white-text vertcenter"></div>
 						<div id = "inspector_text" class = "grey-text text-darken-3"></div>
 						<hr  id = "inspector_divider" class = "hidden">
 						<div id = "inspector_subtext" class = "grey-text text-darken-3"></div>

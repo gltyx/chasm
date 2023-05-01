@@ -18,13 +18,14 @@ class _UPGRADE_ID {
 	upgrade_earth_density_4			= 0x0003;	// 2x Earth density (32x32)
 	upgrade_earth_density_5			= 0x0004;	// 2x Earth density (64x64)
 	upgrade_earth_value_1			= 0x0005;	// Value +0.01
-	upgrade_earth_metals_1			= 0x0006;	// Gather copper
+	upgrade_earth_metals_1			= 0x0006;	// Unlock surveying
+	upgrade_earth_depth_1			= 0x0007;	// Unlock depth
 
-	upgrade_water_storage			= 0x0007;	// Unlock water storage
+	upgrade_water_storage			= 0x0008;	// Unlock water storage
 
-	upgrade_workers_1				= 0x0008;	// +1 Worker
+	upgrade_workers_1				= 0x0009;	// +1 Worker
 
-	upgrade_count					= 0x0009;
+	upgrade_count					= 0x000a;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -149,9 +150,9 @@ function initUpgrades() {
 					"images/tile_research_upgrade_unknown.png",
 					[
 					4,		// Particles
-					0,		// Strands
-					0,		// Spirit
-					0,		// Soul
+					3,		// Strands
+					2,		// Spirit
+					1,		// Soul
 				]);
 				break;
 
@@ -186,6 +187,18 @@ function initUpgrades() {
 					[
 					2.5,	// Particles
 					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+				]);
+				break;
+
+			case uid.upgrade_earth_depth_1:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_depth_1",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					5,		// Strands
 					0,		// Spirit
 					0,		// Soul
 				]);
@@ -269,6 +282,10 @@ function buy_upgrade(upgrade_id) {
 
 			case uid.upgrade_earth_metals_1:
 				$("#earth_survey").css("display", "block");
+				break;
+			
+			case uid.upgrade_earth_depth_1:
+				$("#earth_depth").css("display", "block");
 				break;
 
 			case uid.upgrade_workers_1:
@@ -545,7 +562,7 @@ function generateResearchMap() {
 
 	// Testing row
 	var test_row = 12;
-	var test_upgrades = [uid.upgrade_earth_density_2, uid.upgrade_earth_density_3, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5, uid.upgrade_earth_metals_1, uid.upgrade_water_storage];
+	var test_upgrades = [uid.upgrade_earth_density_2, uid.upgrade_earth_density_3, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5, uid.upgrade_earth_metals_1, uid.upgrade_earth_depth_1, uid.upgrade_water_storage];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;

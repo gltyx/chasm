@@ -96,7 +96,7 @@ class currency_value_map {
 	stringify() {
 		let out = "";
 
-		let cost_prewrapper 				= "<p style = 'margin-left: 6px;'>";
+		let cost_prewrapper 				= "<p style = 'margin-left: 6px; margin-right: 3px;'>";
 		let cost_postwrapper 				= "</p>";
 
 		let cost_unaffordable_prewrapper 	= "<span style = 'color: red;'>";

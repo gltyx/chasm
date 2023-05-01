@@ -301,6 +301,10 @@ function refresh_ui() {
 	if (chasm_upgrades[uid.upgrade_earth_metals_1].unlocked) {
 		$("#earth_survey").css("display", "block");
 	}
+	
+	if (chasm_upgrades[uid.upgrade_earth_depth_1].unlocked) {
+		$("#earth_depth").css("display", "block");
+	}
 }
 
 // Materialize UI

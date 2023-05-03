@@ -72,10 +72,36 @@ class ELEMENT_PROBABILITY {
 
 			this.element_earth = portion;
 
-			$("#earth_survey_earth").html((this.element_earth / 10) + "%");
-			$("#earth_survey_coal").html((this.element_coal / 10) + "%");
-			$("#earth_survey_copper").html((this.element_copper / 10) + "%");
-			$("#earth_survey_iron").html((this.element_iron / 10) + "%");
+			this.display(storage_flags);
+		}
+	}
+
+	display(storage_flags) {
+		if (storage_flags & STORAGE_FLAGS_EARTH) {
+			var out 	= "<div style = 'display: block;'>";
+			out 		+= "<p style = 'font-size: 12px;'>Dirt:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Stone:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Coal:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Copper:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Iron:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Lead:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Gold:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Fossil:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Emerald:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Sapphire:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Ruby:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Diamond:</p>";
+			out 		+= "<p style = 'font-size: 12px;'>Magma:</p>";
+			out 		+= "</div>";
+
+			out 		+= "<div style = 'display: block; text-align: right; width: 100%;'>";
+			out 		+= "<p style = 'font-size: 12px;'><span id = 'earth_survey_earth'>" + (this.element_earth / 10) + "%</span></p>";
+			out 		+= "<p style = 'font-size: 12px;'><span id = 'earth_survey_coal'>" + (this.element_coal / 10) + "%</span></p>";
+			out 		+= "<p style = 'font-size: 12px;'><span id = 'earth_survey_copper'>" + (this.element_copper / 10) + "%</span></p>";
+			out 		+= "<p style = 'font-size: 12px;'><span id = 'earth_survey_iron'>" + (this.element_iron / 10) + "%</span></p>";
+			out 		+= "</div>";
+
+			$("#earth_survey_menu").html(out);
 		}
 	}
 
@@ -478,6 +504,7 @@ class storage_bitmap {
 				case eid.element_coal:
 					currency_count[cid.currency_mass] += element_count[eid.element_coal] * 0.01;
 					currency_count[cid.currency_spirit] += element_count[eid.element_coal] * 0.01;
+					currency_count[cid.currency_capital] += element_count[eid.element_coal] * 0.01;
 					break;
 				case eid.element_copper:
 					currency_count[cid.currency_mass] += element_count[eid.element_copper] * 0.01;

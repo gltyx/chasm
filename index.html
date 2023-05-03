@@ -171,6 +171,11 @@
 							<div id = "currency_soul_symbol" class = "currency_soul currency_line vertcenter" style = "display: none">
 								<i class = "material-icons red-text text-lighten-2 currency_icon">whatshot</i>
 							</div>
+	
+							<!--Anticapital-->
+							<div id = "currency_capital_symbol" class = "currency_capital currency_line vertcenter" style = "display: none">
+								<i class = "material-icons light-green-text text-lighten-2 currency_icon">money_off</i>
+							</div>
 						</div>
 
 						<!--Currency Values-->
@@ -193,6 +198,11 @@
 							<!--Soul Splinters-->
 							<div id = "currency_soul_value" class = "currency_soul currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_soul_amount"></span></p>
+							</div>
+
+							<!--Anticapital-->
+							<div id = "currency_capital_value" class = "currency_capital currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_capital_amount"></span></p>
 							</div>
 						</div>
 					</div>
@@ -302,7 +312,7 @@
 								</div>
 
 								<!--Survey-->
-								<div id = "earth_survey" class = "survey_chart hidden" style = "width: 106px; border: 1px dashed whitesmoke; border-radius: 4px; margin-right: 8px;">
+								<div id = "earth_survey" class = "survey_chart hidden" style = "width: 106px; height: fit-content; border: 1px dashed whitesmoke; border-radius: 4px; margin-right: 8px;">
 									<p class = "hcenter" style = "font-weight: bold;">Survey</p>
 									
 									<!--Workers Arrows-->
@@ -321,24 +331,12 @@
 										</form>
 									</div>
 
-									<div id = "earth_drop_menu" style = "padding-top: 4px; padding-left: 6px; padding-right: 6px; display: flex; width: 106px;">
-										<div style = "display: block;">
-											<p style = "font-size: 12px;">Dirt:</p>
-											<p style = "font-size: 12px;">Coal:</p>
-											<p style = "font-size: 12px;">Copper:</p>
-											<p style = "font-size: 12px;">Iron:</p>
-										</div>
-										<div style = "display: block; text-align: right; width: 100%;">
-											<p style = "font-size: 12px;"><span id = "earth_survey_earth"></span></p>
-											<p style = "font-size: 12px;"><span id = "earth_survey_coal"></span></p>
-											<p style = "font-size: 12px;"><span id = "earth_survey_copper"></span></p>
-											<p style = "font-size: 12px;"><span id = "earth_survey_iron"></span></p>
-										</div>
+									<div id = "earth_survey_menu" style = "padding-top: 4px; padding-left: 6px; padding-right: 6px; display: flex; width: 106px;">
 									</div>
 								</div>
 
 								<!--Depth-->
-								<div id = "earth_depth" class = "hidden" style = "width: 106px; border: 1px dashed whitesmoke; border-radius: 4px;">
+								<div id = "earth_depth" class = "hidden" style = "width: 106px; height: fit-content; border: 1px dashed whitesmoke; border-radius: 4px;">
 									<p class = "hcenter" style = "font-weight: bold;">Depth</p>
 									
 									<!--Machinery Arrows-->

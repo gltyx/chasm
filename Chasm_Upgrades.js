@@ -105,6 +105,7 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 
@@ -117,6 +118,7 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 
@@ -129,6 +131,7 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 
@@ -141,6 +144,7 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 
@@ -153,6 +157,7 @@ function initUpgrades() {
 					3,		// Strands
 					2,		// Spirit
 					1,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 
@@ -165,6 +170,7 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 
@@ -177,6 +183,7 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 			
@@ -189,6 +196,7 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 
@@ -201,6 +209,7 @@ function initUpgrades() {
 					5,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 			
@@ -213,6 +222,7 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 				break;
 
@@ -225,6 +235,7 @@ function initUpgrades() {
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
+					0,		// Anticapital
 				]);
 		}
 	}

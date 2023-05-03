@@ -109,6 +109,7 @@ function draw_resources() {
 	$("#currency_strands_amount").html(chasm_currency[cid.currency_strands].resource.current.toFixed(2));
 	$("#currency_spirit_amount").html(chasm_currency[cid.currency_spirit].resource.current.toFixed(2));
 	$("#currency_soul_amount").html(chasm_currency[cid.currency_soul].resource.current.toFixed(2));
+	$("#currency_capital_amount").html(chasm_currency[cid.currency_capital].resource.current.toFixed(2));
 
 	$("#currency_mass_amount").html(chasm_currency[cid.currency_mass].resource.current.toFixed(2));
 	$("#currency_workers_amount").html(chasm_currency[cid.currency_workers].resource.current.toFixed(0));
@@ -292,6 +293,11 @@ function refresh_ui() {
 		$("#currency_soul_value").css("display", "block");
 	}
 
+	if (chasm_milestones[mid.milestone_reveal_currency_capital].unlocked) {
+		chasm_currency[cid.currency_capital].hidden = false;
+		$("#currency_capital_symbol").css("display", "block");
+		$("#currency_capital_value").css("display", "block");
+	}
 	if (chasm_milestones[mid.milestone_reveal_currency_machinery].unlocked) {
 		chasm_currency[cid.currency_machinery].hidden = false;
 		$("#currency_machinery_symbol").css("display", "block");

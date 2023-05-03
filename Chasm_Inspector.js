@@ -14,6 +14,7 @@ class _INSPECTOR_ID {
 	currency_strands							= cid.currency_strands						+ this.offset_currency;
 	currency_spirit								= cid.currency_spirit						+ this.offset_currency;
 	currency_soul								= cid.currency_soul							+ this.offset_currency;
+	currency_capital							= cid.currency_capital						+ this.offset_currency;
 	currency_mass								= cid.currency_mass							+ this.offset_currency;
 	currency_workers							= cid.currency_workers						+ this.offset_currency;
 	currency_machinery							= cid.currency_machinery					+ this.offset_currency;
@@ -53,6 +54,7 @@ function registerInspectorEvents() {
 	$(".currency_strands").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_strands);});});
 	$(".currency_spirit").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_spirit);});});
 	$(".currency_soul").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_soul);});});
+	$(".currency_capital").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_capital);});});
 	$(".currency_mass").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_mass);});});
 	$(".currency_workers").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_workers);});});
 	$(".currency_machinery").each(function(){	$(this).mouseenter(function(){showInspector(iid.currency_machinery);});});
@@ -98,10 +100,18 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.currency_soul:
-			$("#inspector_title")	.html(chasm_currency[cid.currency_soul].inspector_symbol + "Soul Shards");
+			$("#inspector_title")	.html(chasm_currency[cid.currency_soul].inspector_symbol + "Pitfire");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("When human flesh is dropped into the Chasm, it screams. Glassy shards grow around the edge of the pit... It's best not to consider what they are made of.");
+			$("#inspector_text")	.html("When energy-rich matter is dropped into the Chasm, it belches sulpherous clouds of pitfire. Our researchers are using this as a super-dense fuel, and our daredevils are jumping over it for sick motorcycle stunts.");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.currency_capital:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_capital].inspector_symbol + "Anticapital");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("\"We, who pay dearly for every breath of pure, fresh air, must guard against the tendency to fetter the future. If we succeed in clearing the soil from the rubbish of the past and present, we will leave to posterity the greatest and safest heritages of all ages.\"<br><br>Our researchers seem to be feeling a bit revolutionary. You should probably put this somewhere out of the way before they seize it and establish a democratic mode of production.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;

@@ -44,7 +44,7 @@ class _CHASM_UPGRADE {
 	}
 
 	buy() {
-		if (this.affordable()) {
+		if (this.affordable() && !this.unlocked) {
 			for (let i = 0; i < cid.currency_count; i++) {
 				chasm_currency[i].resource.spend(this.cost.map[i]);
 			}
@@ -282,14 +282,15 @@ function buy_upgrade(upgrade_id) {
 
 			case uid.upgrade_earth_metals_1:
 				$("#earth_survey").css("display", "block");
+				chasm_storage[sid.storage_earth].probability.refresh(chasm_storage[sid.storage_earth].storage_flags);
 				break;
 			
 			case uid.upgrade_earth_depth_1:
 				$("#earth_depth").css("display", "block");
+				chasm_currency[cid.currency_machinery].resource.gain(1);
 				break;
 
 			case uid.upgrade_workers_1:
-				$("#water_drop_menu").fadeIn(400);
 				chasm_currency[cid.currency_workers].resource.gain(1);
 				break;
 			

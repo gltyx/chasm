@@ -122,6 +122,11 @@
 							<div id = "currency_workers_symbol" class = "currency_workers currency_line vertcenter">
 								<i class = "material-icons grey-text text-darken-4 currency_icon">face</i>
 							</div>
+							
+							<!--Machinery-->
+							<div id = "currency_machinery_symbol" class = "currency_machinery currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon">toys</i>
+							</div>
 						</div>
 
 						<!--Currency Values-->
@@ -129,6 +134,11 @@
 							<!--Workers-->
 							<div id = "currency_workers_value" class = "currency_workers currency_line currency_amount vertcenter">
 								<p><span id = "currency_workers_amount"></span></p>
+							</div>
+
+							<!--Machinery-->
+							<div id = "currency_machinery_value" class = "currency_machinery currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_machinery_amount"></span></p>
 							</div>
 						</div>
 					</div>
@@ -227,13 +237,13 @@
 									<!--Workers Arrows-->
 									<form>
 										<div class = "flex">
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(-1, 'gather')" value = "<" />
+											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'gather')" value = "<" />
 											<div class = "hcenter" style = "width: 40px;">
 												<p id = "earth_workers_gather">0</p>
 											</div>
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'gather')" value = ">" />
+											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'gather')" value = ">" />
 											<div class = "hcenter" style = "margin: auto;">
-												<p style = "font-size: 10px;">workers</p>
+												<i class = "material-icons grey-text text-darken-4 currency_icon" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
 											</div>
 										</div>
 									</form>
@@ -274,13 +284,13 @@
 									<!--Workers Arrows-->
 									<form>
 										<div class = "flex">
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(-1, 'drop')" value = "<" />
+											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'drop')" value = "<" />
 											<div class = "hcenter" style = "width: 40px;">
 												<p id = "earth_workers_drop">0</p>
 											</div>
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'drop')" value = ">" />
+											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'drop')" value = ">" />
 											<div class = "hcenter" style = "margin: auto;">
-												<p style = "font-size: 10px;">workers</p>
+												<i class = "material-icons grey-text text-darken-4 currency_icon" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
 											</div>
 										</div>
 									</form>
@@ -292,20 +302,20 @@
 								</div>
 
 								<!--Survey-->
-								<div id = "earth_survey" class = "survey_chart hidden" style = "width: 106px; border: 1px dashed whitesmoke; border-radius: 4px;">
+								<div id = "earth_survey" class = "survey_chart hidden" style = "width: 106px; border: 1px dashed whitesmoke; border-radius: 4px; margin-right: 8px;">
 									<p class = "hcenter" style = "font-weight: bold;">Survey</p>
 									
 									<!--Workers Arrows-->
 									<div style = "width: 88px; margin: auto;">
 										<form>
 											<div class = "flex">
-												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(-1, 'survey')" value = "<" />
+												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'survey')" value = "<" />
 												<div class = "hcenter" style = "width: 40px;">
 													<p id = "earth_workers_survey">0</p>
 												</div>
-												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'survey')" value = ">" />
+												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'survey')" value = ">" />
 												<div class = "hcenter" style = "margin: auto;">
-													<p style = "font-size: 10px;">workers</p>
+													<i class = "material-icons grey-text text-darken-4 currency_icon" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
 												</div>
 											</div>
 										</form>
@@ -328,8 +338,24 @@
 								</div>
 
 								<!--Depth-->
-								<div id = "earth_depth" class = "hidden">
-									<p>depth</p>
+								<div id = "earth_depth" class = "hidden" style = "width: 106px; border: 1px dashed whitesmoke; border-radius: 4px;">
+									<p class = "hcenter" style = "font-weight: bold;">Depth</p>
+									
+									<!--Machinery Arrows-->
+									<div style = "width: 88px; margin: auto;">
+										<form>
+											<div class = "flex">
+												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_machinery, -1, 'machinery_1')" value = "<" />
+												<div class = "hcenter" style = "width: 40px;">
+													<p id = "earth_machinery_1">0</p>
+												</div>
+												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_machinery, 1, 'machinery_1')" value = ">" />
+												<div class = "hcenter" style = "margin: auto;">
+													<i class = "material-icons grey-text text-darken-4 currency_icon" style = "margin-right: 0px; margin-bottom: 4px;">toys</i>
+												</div>
+											</div>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -358,13 +384,7 @@
 									<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
 										<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
 									</div>
-									<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
-									<div id = "water_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
-										<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
-											<input type = "checkbox" id = "water_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
-											<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-										</label></p></form></div>
-									</div>
+									<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather('water')">Gather</a>
 								</div>
 
 								<!--Drop-->
@@ -373,12 +393,6 @@
 										<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
 									</div>
 									<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
-									<div id = "water_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
-										<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
-											<input type = "checkbox" id = "water_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
-											<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-										</label></p></form></div>
-									</div>
 								</div>
 							</div>
 						</div>

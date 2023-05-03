@@ -19,8 +19,9 @@ class _CURRENCY_ID {
 	// Special Currency
 	currency_mass 		= 0x0004;
 	currency_workers	= 0x0005;
+	currency_machinery	= 0x0006;
 
-	currency_count		= 0x0006;
+	currency_count		= 0x0007;
 } var cid = new _CURRENCY_ID();
 
 class _CHASM_CURRENCY {
@@ -71,6 +72,11 @@ function initCurrency() {
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_workers",
 														"<i class = 'material-icons grey-text text-darken-4 currency_icon'>face</i>");
 				chasm_currency[i].resource.gain(1);
+				break;
+
+			case cid.currency_machinery:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_machinery",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon'>toys</i>");
 				break;
 	
 			default:

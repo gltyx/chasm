@@ -16,6 +16,7 @@ class _INSPECTOR_ID {
 	currency_soul								= cid.currency_soul							+ this.offset_currency;
 	currency_mass								= cid.currency_mass							+ this.offset_currency;
 	currency_workers							= cid.currency_workers						+ this.offset_currency;
+	currency_machinery							= cid.currency_machinery					+ this.offset_currency;
 
 	offset_elements								= 0x0600;	// 0x06xx Start elements section
 	element_earth 								= eid.element_earth							+ this.offset_elements;
@@ -54,6 +55,7 @@ function registerInspectorEvents() {
 	$(".currency_soul").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_soul);});});
 	$(".currency_mass").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_mass);});});
 	$(".currency_workers").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_workers);});});
+	$(".currency_machinery").each(function(){	$(this).mouseenter(function(){showInspector(iid.currency_machinery);});});
 
 	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
 	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});
@@ -120,6 +122,14 @@ function showInspector(id) {
 			} else {
 				$("#inspector_text")	.html("Labor makes the world go round.<br>The crew is busy filling up the Chasm.");
 			}
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.currency_machinery:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_machinery].inspector_symbol + "Heavy Machinery");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("When you think about it, forklifts and front loaders are basically the same thing. And you are basically certified to operate a forklift. These things should help you with industrial construction.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -237,7 +247,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
 			$("#inspector_text")	.html("It feels a bit silly to dig next to the yawning mouth of the Chasm, but there's some really good stuff down there.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Unlock the Depth slider");
+			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
 			break;
 		case iid.upgrade_water_storage:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water storage");

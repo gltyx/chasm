@@ -112,6 +112,7 @@ function draw_resources() {
 
 	$("#currency_mass_amount").html(chasm_currency[cid.currency_mass].resource.current.toFixed(2));
 	$("#currency_workers_amount").html(chasm_currency[cid.currency_workers].resource.current.toFixed(0));
+	$("#currency_machinery_amount").html(chasm_currency[cid.currency_machinery].resource.current.toFixed(0));
 
 	// Update resources
 	let earth_element_count = chasm_storage[sid.storage_earth].bitmap.element_count();
@@ -291,11 +292,18 @@ function refresh_ui() {
 		$("#currency_soul_value").css("display", "block");
 	}
 
+	if (chasm_milestones[mid.milestone_reveal_currency_machinery].unlocked) {
+		chasm_currency[cid.currency_machinery].hidden = false;
+		$("#currency_machinery_symbol").css("display", "block");
+		$("#currency_machinery_value").css("display", "block");
+	}
+
 	// Storage
 	for (let i = sid.storage_first; i < sid.storage_count; i++) {
-		chasm_storage[i].manage_workers(0, "gather");
-		chasm_storage[i].manage_workers(0, "drop");
-		chasm_storage[i].manage_workers(0, "survey");
+		chasm_storage[i].manage_production_resource(cid.currency_workers, 0, "gather");
+		chasm_storage[i].manage_production_resource(cid.currency_workers, 0, "drop");
+		chasm_storage[i].manage_production_resource(cid.currency_workers, 0, "survey");
+		chasm_storage[i].manage_production_resource(cid.currency_machinery_1, 0, "machinery_1");
 	}
 	
 	if (chasm_upgrades[uid.upgrade_earth_metals_1].unlocked) {
@@ -304,6 +312,10 @@ function refresh_ui() {
 	
 	if (chasm_upgrades[uid.upgrade_earth_depth_1].unlocked) {
 		$("#earth_depth").css("display", "block");
+	}
+
+	if (chasm_upgrades[uid.upgrade_water_storage].unlocked) {
+		$("#water_section").css("display", "block");
 	}
 }
 

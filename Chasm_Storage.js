@@ -127,6 +127,7 @@ function initStorage() {
 				chasm_storage[i].gather_dom = "#earth_workers_gather";
 				chasm_storage[i].drop_dom 	= "#earth_workers_drop";
 				chasm_storage[i].survey_dom = "#earth_workers_survey";
+				chasm_storage[i].machinery_1_dom = "#earth_machinery_1";
 				break;
 
 			case sid.storage_water:
@@ -162,6 +163,7 @@ class resource_storage {
 	gather_dom;
 	drop_dom;
 	survey_dom;
+	machinery_1_dom;
 
 	storage_flags = 0;								// Flags for different storage types (STORAGE_FLAGS_*)
 	brick_w = 1;									// Number of x pixels in a brick
@@ -172,6 +174,7 @@ class resource_storage {
 	workers_gather = 0;								// Number of workers currently gathering
 	workers_drop = 0;								// Number of workers currently dropping
 	workers_survey = 0;								// Number of workers currently surveying
+	machinery_1 = 0;
 	gather_progress = 0;							// Percentage towards next gather action
 	drop_progress = 0;								// Percentage towards next drop action
 
@@ -256,20 +259,20 @@ class resource_storage {
 		this.canvas.putImageData(this.image_data, this.canvas_border, this.canvas_border);
 	}
 
-	manage_workers(num, target) {
+	manage_production_resource(resource_id, num, target) {
 		if (target == "gather") {
 			let out = num;
 
 			// Gain workers
 			if (num > 0) {
-				if (chasm_currency[cid.currency_workers].resource.current.lt(num)) {
-					out = chasm_currency[cid.currency_workers].resource.current;
+				if (chasm_currency[resource_id].resource.current.lt(num)) {
+					out = chasm_currency[resource_id].resource.current;
 
-					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+					if (chasm_currency[resource_id].resource.spend(out)) {
 						this.workers_gather += out.toNumber();
 					}
 				} else {
-					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+					if (chasm_currency[resource_id].resource.spend(out)) {
 						this.workers_gather += out;
 					}
 				}
@@ -284,7 +287,7 @@ class resource_storage {
 					out = -out;
 				}
 
-				chasm_currency[cid.currency_workers].resource.gainUntracked(out);
+				chasm_currency[resource_id].resource.gainUntracked(out);
 				this.workers_gather -= out;
 
 				$(this.gather_dom).html(this.workers_gather);
@@ -296,14 +299,14 @@ class resource_storage {
 
 			// Gain workers
 			if (num > 0) {
-				if (chasm_currency[cid.currency_workers].resource.current.lt(num)) {
-					out = chasm_currency[cid.currency_workers].resource.current;
+				if (chasm_currency[resource_id].resource.current.lt(num)) {
+					out = chasm_currency[resource_id].resource.current;
 
-					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+					if (chasm_currency[resource_id].resource.spend(out)) {
 						this.workers_drop += out.toNumber();
 					}
 				} else {
-					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+					if (chasm_currency[resource_id].resource.spend(out)) {
 						this.workers_drop += out;
 					}
 				}
@@ -318,7 +321,7 @@ class resource_storage {
 					out = -out;
 				}
 
-				chasm_currency[cid.currency_workers].resource.gainUntracked(out);
+				chasm_currency[resource_id].resource.gainUntracked(out);
 				this.workers_drop -= out;
 
 				$(this.drop_dom).html(this.workers_drop);
@@ -330,14 +333,14 @@ class resource_storage {
 
 			// Gain workers
 			if (num > 0) {
-				if (chasm_currency[cid.currency_workers].resource.current.lt(num)) {
-					out = chasm_currency[cid.currency_workers].resource.current;
+				if (chasm_currency[resource_id].resource.current.lt(num)) {
+					out = chasm_currency[resource_id].resource.current;
 
-					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+					if (chasm_currency[resource_id].resource.spend(out)) {
 						this.workers_survey += out.toNumber();
 					}
 				} else {
-					if (chasm_currency[cid.currency_workers].resource.spend(out)) {
+					if (chasm_currency[resource_id].resource.spend(out)) {
 						this.workers_survey += out;
 					}
 				}
@@ -352,7 +355,7 @@ class resource_storage {
 					out = -out;
 				}
 
-				chasm_currency[cid.currency_workers].resource.gainUntracked(out);
+				chasm_currency[resource_id].resource.gainUntracked(out);
 				this.workers_survey -= out;
 
 				$(this.survey_dom).html(this.workers_survey);
@@ -361,6 +364,40 @@ class resource_storage {
 			}
 
 			chasm_storage[sid.storage_earth].probability.refresh(chasm_storage[sid.storage_earth].storage_flags);
+		} else if (target == "machinery_1") {
+			let out = num;
+
+			// Gain machines
+			if (num > 0) {
+				if (chasm_currency[resource_id].resource.current.lt(num)) {
+					out = chasm_currency[resource_id].resource.current;
+
+					if (chasm_currency[resource_id].resource.spend(out)) {
+						this.machinery_1 += out.toNumber();
+					}
+				} else {
+					if (chasm_currency[resource_id].resource.spend(out)) {
+						this.machinery_1 += out;
+					}
+				}
+
+				$(this.machinery_1_dom).html(this.machinery_1);
+
+			// Reduce machines
+			} else if (num < 0) {
+				if (num < -this.machinery_1) {
+					out = this.machinery_1;
+				} else {
+					out = -out;
+				}
+
+				chasm_currency[resource_id].resource.gainUntracked(out);
+				this.machinery_1 -= out;
+
+				$(this.machinery_1_dom).html(this.machinery_1);
+			} else {
+				$(this.machinery_1_dom).html(this.machinery_1);
+			}
 		}
 	}
 }

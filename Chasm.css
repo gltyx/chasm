@@ -249,6 +249,7 @@ form {
 #inspector_title {
 	font-weight: bold;
 	font-size: 16px;
+	margin-bottom: 4px;
 }
 
 #inspector_text {
@@ -263,6 +264,7 @@ form {
 	
 	margin-top: 6px;
 	margin-left: 4px;
+	margin-bottom: 8px;
 	padding-top: 4px;
 	padding-right: 2px;
 	padding-bottom: 4px;

@@ -21,10 +21,19 @@ class _INSPECTOR_ID {
 
 	offset_elements								= 0x0600;	// 0x06xx Start elements section
 	element_earth 								= eid.element_earth							+ this.offset_elements;
-	element_water 								= eid.element_water							+ this.offset_elements;
+	element_stone 								= eid.element_stone							+ this.offset_elements;
 	element_coal								= eid.element_coal							+ this.offset_elements;
 	element_copper								= eid.element_copper						+ this.offset_elements;
 	element_iron								= eid.element_iron							+ this.offset_elements;
+	element_lead								= eid.element_lead							+ this.offset_elements;
+	element_gold								= eid.element_gold							+ this.offset_elements;
+	element_fossil								= eid.element_fossil						+ this.offset_elements;
+	element_emerald								= eid.element_emerald						+ this.offset_elements;
+	element_sapphire							= eid.element_sapphire						+ this.offset_elements;
+	element_ruby								= eid.element_ruby							+ this.offset_elements;
+	element_diamond								= eid.element_diamond						+ this.offset_elements;
+	element_magma								= eid.element_magma							+ this.offset_elements;
+	element_water 								= eid.element_water							+ this.offset_elements;
 	element_fish								= eid.element_fish							+ this.offset_elements;
 
 	offset_upgrades								= 0xa100;	// 0xa1xx Start upgrade section
@@ -153,13 +162,13 @@ function showInspector(id) {
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("value: x");
 			break;
-		case iid.element_water:
+		case iid.element_stone:
 			$("#inspector_title")	.html("???");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			$("#inspector_text")	.html("blah blah blah");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("value: x");
 			break;
 		case iid.element_coal:
 			$("#inspector_title")	.html("???");
@@ -178,6 +187,78 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.element_iron:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unknown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_lead:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unknown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_gold:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unknown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_fossil:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unknown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_emerald:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unknown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_sapphire:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unknown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_ruby:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unknown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_diamond:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unknown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_magma:
+			$("#inspector_title")	.html("???");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Achievement unknown");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.element_water:
 			$("#inspector_title")	.html("???");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");

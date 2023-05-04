@@ -312,6 +312,26 @@ function refresh_ui() {
 		chasm_storage[i].manage_production_resource(cid.currency_machinery_1, 0, "machinery_1");
 	}
 	
+	if (chasm_upgrades[uid.upgrade_earth_density_1].unlocked) {
+		compress_earth();
+	}
+	
+	if (chasm_upgrades[uid.upgrade_earth_density_2].unlocked) {
+		compress_earth();
+	}
+	
+	if (chasm_upgrades[uid.upgrade_earth_density_3].unlocked) {
+		compress_earth();
+	}
+	
+	if (chasm_upgrades[uid.upgrade_earth_density_4].unlocked) {
+		compress_earth();
+	}
+	
+	if (chasm_upgrades[uid.upgrade_earth_density_5].unlocked) {
+		compress_earth();
+	}
+	
 	if (chasm_upgrades[uid.upgrade_earth_metals_1].unlocked) {
 		$("#earth_survey").css("display", "block");
 	}

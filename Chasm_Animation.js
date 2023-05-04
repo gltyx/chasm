@@ -17,8 +17,18 @@ class color_MkII {
 }
 
 var color_MkII_earth 		= new color_MkII(0.08, 0.12, 0.11, 0.28, 0.30, 0.47);
+var color_MkII_stone 		= new color_MkII(0.00, 0.00, 0.50, 0.60, 0.00, 0.00);
 var color_MkII_coal			= new color_MkII(0.08, 0.12, 0.01, 0.10, 0.01, 0.05);
 var color_MkII_copper 		= new color_MkII(0.07, 0.11, 0.56, 0.68, 0.50, 0.63);
+var color_MkII_iron 		= new color_MkII(0.55, 0.60, 0.55, 0.60, 0.15, 0.20);
+var color_MkII_lead 		= new color_MkII(0.00, 0.00, 0.20, 0.30, 0.00, 0.00);
+var color_MkII_gold 		= new color_MkII(0.05, 0.10, 0.60, 0.70, 0.70, 0.80);
+var color_MkII_fossil 		= new color_MkII(0.09, 0.12, 0.70, 0.80, 0.10, 0.20);
+var color_MkII_emerald 		= new color_MkII(0.30, 0.35, 0.20, 0.30, 0.85, 0.95);
+var color_MkII_sapphire		= new color_MkII(0.58, 0.65, 0.80, 0.60, 0.70, 0.90);
+var color_MkII_ruby			= new color_MkII(0.00, 0.05, 0.70, 0.80, 0.80, 0.90);
+var color_MkII_diamond		= new color_MkII(0.55, 0.60, 0.93, 0.96, 0.01, 0.04);
+var color_MkII_magma		= new color_MkII(0.02, 0.12, 0.90, 0.95, 0.90, 0.95);
 var color_MkII_water 		= new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
 var color_MkII_water_temp 	= new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
 

@@ -819,7 +819,7 @@ class storage_bitmap {
 		for (let i = 0; i < cid.currency_count; i++) {
 			if (currency_count[i] > 0) {
 				out 							+= value_prewrapper;
-				out 							+= currency_count[i];
+				out 							+= DisplayNumberFormatter(currency_count[i], true);
 				out 							+= value_postwrapper + chasm_currency[i].inspector_symbol;
 			}
 		}

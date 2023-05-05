@@ -345,6 +345,18 @@ function refresh_ui() {
 	}
 }
 
+function DisplayNumberFormatter(x, fractional) {
+	if (x >= 10000) {
+		return x.toExponential(2).replace('e+', '<div style = "margin-left: 2px; margin-right: 1px;">e</div>');
+	} else {
+		if (fractional) {
+			return x.toFixed(2);
+		} else {
+			return x.toFixed(0);
+		}
+	}
+}
+
 // Materialize UI
 $(document).ready(function(){
 	M.AutoInit();

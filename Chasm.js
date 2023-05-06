@@ -10,7 +10,7 @@ function game_init() {
 	$("#lib_chasm_version").html(lib_chasm_version());
 
 	// Log Initialization
-	chasm_log = new lib_chasm_log("log_box", 35, 0);
+	chasm_log = new lib_chasm_log("log_box", 45, 0);
 	chasm_log.writeColor("You stand in front of a massive, seemingly bottomless Chasm in the middle of nowhere. Some wretched urge inside you insists that you fill it up.", log_color_story);
 
 	// Storage Initialization
@@ -105,13 +105,13 @@ function animation_tick() {
 
 function draw_resources() {
 	// Update currency
-	$("#currency_particles_amount").html(chasm_currency[cid.currency_particles].resource.current.toFixed(2));
-	$("#currency_strands_amount").html(chasm_currency[cid.currency_strands].resource.current.toFixed(2));
-	$("#currency_spirit_amount").html(chasm_currency[cid.currency_spirit].resource.current.toFixed(2));
-	$("#currency_soul_amount").html(chasm_currency[cid.currency_soul].resource.current.toFixed(2));
-	$("#currency_capital_amount").html(chasm_currency[cid.currency_capital].resource.current.toFixed(2));
+	$("#currency_particles_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_particles].resource.current, true));
+	$("#currency_strands_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_strands].resource.current, true));
+	$("#currency_spirit_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_spirit].resource.current, true));
+	$("#currency_soul_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_soul].resource.current, true));
+	$("#currency_capital_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_capital].resource.current, true));
 
-	$("#currency_mass_amount").html(chasm_currency[cid.currency_mass].resource.current.toFixed(2));
+	$("#currency_mass_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_mass].resource.current, true));
 	$("#currency_workers_amount").html(chasm_currency[cid.currency_workers].resource.current.toFixed(0));
 	$("#currency_machinery_amount").html(chasm_currency[cid.currency_machinery].resource.current.toFixed(0));
 
@@ -346,13 +346,25 @@ function refresh_ui() {
 }
 
 function DisplayNumberFormatter(x, fractional) {
-	if (x >= 10000) {
-		return x.toExponential(2).replace('e+', '<div style = "margin-left: 2px; margin-right: 1px;">e</div>');
-	} else {
-		if (fractional) {
-			return x.toFixed(2);
+	if (BigNumber.isBigNumber(x)) {
+		if (x.gte(10000)) {
+			return x.toExponential(2).replace('e+', ' e');
 		} else {
-			return x.toFixed(0);
+			if (fractional) {
+				return x.toFixed(2);
+			} else {
+				return x.toFixed(0);
+			}
+		}
+	} else {
+		if (x >= 10000) {
+			return x.toExponential(2).replace('e+', ' e');
+		} else {
+			if (fractional) {
+				return x.toFixed(2);
+			} else {
+				return x.toFixed(0);
+			}
 		}
 	}
 }

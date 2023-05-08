@@ -117,14 +117,14 @@ function draw_resources() {
 
 	// Update resources
 	let earth_element_count = chasm_storage[sid.storage_earth].bitmap.element_count();
-	let earth_currency_count = chasm_storage[sid.storage_earth].bitmap.value(earth_element_count);
-	$("#element_earth_amount").html(chasm_storage[sid.storage_earth].bitmap.stringifyElements(earth_element_count));
-	$("#value_earth_amount").html(chasm_storage[sid.storage_earth].bitmap.stringifyValue(earth_currency_count));
+	let earth_currency_count = elementValue(earth_element_count);
+	$("#element_earth_amount").html(stringifyElements(earth_element_count));
+	$("#value_earth_amount").html("Value: " + stringifyValue(earth_currency_count));
 
 	let water_element_count = chasm_storage[sid.storage_water].bitmap.element_count();
-	let water_currency_count = chasm_storage[sid.storage_water].bitmap.value(water_element_count);
-	$("#element_water_amount").html(chasm_storage[sid.storage_water].bitmap.stringifyElements(water_element_count));
-	$("#value_water_amount").html(chasm_storage[sid.storage_water].bitmap.stringifyValue(water_currency_count));
+	let water_currency_count = elementValue(water_element_count);
+	$("#element_water_amount").html(stringifyElements(water_element_count));
+	$("#value_water_amount").html("Value: " + stringifyValue(water_currency_count));
 }
 
 function game_tick(scalar) {
@@ -208,7 +208,7 @@ function drop(storage) {
 	switch (storage) {
 		case "earth_storage":
 			if(chasm_storage[sid.storage_earth].drop()) {
-				currency_gain(chasm_storage[sid.storage_earth].bitmap.value(chasm_storage[sid.storage_earth].bitmap.element_count()));
+				currency_gain(elementValue(chasm_storage[sid.storage_earth].bitmap.element_count()));
 				chasm_storage[sid.storage_earth].clear();
 
 				if (chasm_achievements[aid.achievement_babys_first_block].unlocked == false) {
@@ -219,7 +219,7 @@ function drop(storage) {
 
 		case "water_storage":
 			if (chasm_storage[sid.storage_water].drop()) {
-				currency_gain(chasm_storage[sid.storage_water].bitmap.value(chasm_storage[sid.storage_water].bitmap.element_count()));
+				currency_gain(elementValue(chasm_storage[sid.storage_water].bitmap.element_count()));
 				chasm_storage[sid.storage_water].clear();
 			}
 			break;

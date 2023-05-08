@@ -137,38 +137,52 @@ class ELEMENT_PROBABILITY {
 		if (storage_flags & STORAGE_FLAGS_EARTH) {
 			var out = "";
 			out	= "<div style = 'display: block;'>";
-			out	+= "<p style = 'font-size: 12px;'>Dirt:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Stone:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Coal:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Copper:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Iron:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Lead:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Gold:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Fossil:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Emerald:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Sapphire:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Ruby:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Diamond:</p>";
-			out	+= "<p style = 'font-size: 12px;'>Magma:</p>";
+			out	+= "<p class = 'element_earth' 		style = 'font-size: 12px;'>Dirt:</p>";
+			out	+= "<p class = 'element_stone' 		style = 'font-size: 12px;'>Stone:</p>";
+			out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>Coal:</p>";
+			out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>Copper:</p>";
+			out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>Iron:</p>";
+			out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>Lead:</p>";
+			out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>Gold:</p>";
+			out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>Fossil:</p>";
+			out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>Emerald:</p>";
+			out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>Sapphire:</p>";
+			out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>Ruby:</p>";
+			out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>Diamond:</p>";
+			out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>Magma:</p>";
 			out	+= "</div>";
 
 			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_earth / 10) 	+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_stone / 10) 	+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_coal / 10) 		+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_copper / 10) 	+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_iron / 10) 		+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_lead / 10) 		+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_gold / 10) 		+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_fossil / 10) 	+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_emerald / 10) 	+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_sapphire / 10) 	+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_ruby / 10) 		+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_diamond / 10) 	+ "%</p>";
-			out	+= "<p style = 'font-size: 12px;'>" 	+ (this.element_magma / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_earth' 		style = 'font-size: 12px;'>" + (this.element_earth / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_stone' 		style = 'font-size: 12px;'>" + (this.element_stone / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>" + (this.element_coal / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>" + (this.element_copper / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>" + (this.element_iron / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>" + (this.element_lead / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>" + (this.element_gold / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>" + (this.element_fossil / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>" + (this.element_emerald / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>" + (this.element_sapphire / 10) + "%</p>";
+			out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>" + (this.element_ruby / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>" + (this.element_diamond / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>" + (this.element_magma / 10) 	+ "%</p>";
 			out	+= "</div>";
 
 			$("#earth_survey_menu").html(out);
+			
+			$(".element_earth").each(function(){$(this).mouseenter(function(){showInspector(iid.element_earth);});});
+			$(".element_stone").each(function(){$(this).mouseenter(function(){showInspector(iid.element_stone);});});
+			$(".element_coal").each(function(){$(this).mouseenter(function(){showInspector(iid.element_coal);});});
+			$(".element_copper").each(function(){$(this).mouseenter(function(){showInspector(iid.element_copper);});});
+			$(".element_iron").each(function(){$(this).mouseenter(function(){showInspector(iid.element_iron);});});
+			$(".element_lead").each(function(){$(this).mouseenter(function(){showInspector(iid.element_lead);});});
+			$(".element_gold").each(function(){$(this).mouseenter(function(){showInspector(iid.element_gold);});});
+			$(".element_fossil").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fossil);});});
+			$(".element_emerald").each(function(){$(this).mouseenter(function(){showInspector(iid.element_emerald);});});
+			$(".element_sapphire").each(function(){$(this).mouseenter(function(){showInspector(iid.element_sapphire);});});
+			$(".element_ruby").each(function(){$(this).mouseenter(function(){showInspector(iid.element_ruby);});});
+			$(".element_diamond").each(function(){$(this).mouseenter(function(){showInspector(iid.element_diamond);});});
+			$(".element_magma").each(function(){$(this).mouseenter(function(){showInspector(iid.element_magma);});});
 		}
 	}
 
@@ -626,206 +640,206 @@ class storage_bitmap {
 		}
 		return element_count;
 	}
+}
 
-	value(element_count) { // Returns currency value of all elements in a storage
-		let currency_count = new Array(cid.currency_count);
-		for (let i = 0; i < cid.currency_count; i++) {
-			currency_count[i] = 0;
-		}
-
-		for (let i = 0; i < eid.element_count; i++) {
-			switch (i) {
-				case eid.element_earth:
-					let earth_value = 0.01;
-					if (chasm_upgrades[uid.upgrade_earth_value_1].unlocked) earth_value += 0.01;
-
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_earth] * earth_value;
-					currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value;
-					break;
-				case eid.element_stone:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * 0.08;
-					currency_count[cid.currency_particles] 	+= element_count[eid.element_coal] * 0.08;
-					break;
-				case eid.element_coal:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * 0.08;
-					currency_count[cid.currency_particles] 	+= element_count[eid.element_coal] * 0.02;
-					currency_count[cid.currency_soul] 		+= element_count[eid.element_coal] * 0.06;
-					break;
-				case eid.element_copper:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_copper] * 0.01;
-					currency_count[cid.currency_strands] 	+= element_count[eid.element_copper] * 0.01;
-					break;
-				case eid.element_iron:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_iron] * 0.04;
-					currency_count[cid.currency_strands] 	+= element_count[eid.element_iron] * 0.04;
-					break;
-				case eid.element_lead:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_lead] * 0.16;
-					currency_count[cid.currency_strands] 	+= element_count[eid.element_lead] * 0.16;
-					break;
-				case eid.element_gold:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_gold] * 0.42;
-					currency_count[cid.currency_strands] 	+= element_count[eid.element_gold] * 0.32;
-					currency_count[cid.currency_capital] 	+= element_count[eid.element_gold] * 0.10;
-					break;
-				case eid.element_fossil:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_fossil] * 0.44;
-					currency_count[cid.currency_strands] 	+= element_count[eid.element_fossil] * 0.32;
-					currency_count[cid.currency_spirit] 	+= element_count[eid.element_fossil] * 0.12;
-					break;
-				case eid.element_emerald:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_emerald] * 0.04;
-					currency_count[cid.currency_capital] 	+= element_count[eid.element_emerald] * 0.04;
-					break;
-				case eid.element_sapphire:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_sapphire] * 0.20;
-					currency_count[cid.currency_capital] 	+= element_count[eid.element_sapphire] * 0.20;
-					break;
-				case eid.element_ruby:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_ruby] * 1.00;
-					currency_count[cid.currency_capital] 	+= element_count[eid.element_ruby] * 1.00;
-					break;
-				case eid.element_diamond:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_diamond] * 3.00;
-					currency_count[cid.currency_capital] 	+= element_count[eid.element_diamond] * 3.00;
-					break;
-				case eid.element_magma:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_magma] * 2.48;
-					currency_count[cid.currency_soul] 		+= element_count[eid.element_magma] * 1.20;
-					currency_count[cid.currency_strands] 	+= element_count[eid.element_magma] * 1.28;
-					break;
-				case eid.element_water:
-					currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * 0.01;
-					currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * 0.01;
-					break;
-				case eid.element_none:
-				default:
-			}
-		}
-
-		return currency_count;
+function elementValue(element_count) { // Returns currency value of all elements in a storage
+	let currency_count = new Array(cid.currency_count);
+	for (let i = 0; i < cid.currency_count; i++) {
+		currency_count[i] = 0;
 	}
 
-	stringifyElements(element_count) {
-		let out = "Stored: ";
+	for (let i = 0; i < eid.element_count; i++) {
+		switch (i) {
+			case eid.element_earth:
+				let earth_value = 0.01;
+				if (chasm_upgrades[uid.upgrade_earth_value_1].unlocked) earth_value += 0.01;
 
-		if (element_count[eid.element_earth] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_earth];
-			out 							+= "<div class = 'element_sample' style = 'background-color: SaddleBrown;'></div>";
-			out								+= "</p>";
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_earth] * earth_value;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value;
+				break;
+			case eid.element_stone:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * 0.08;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * 0.08;
+				break;
+			case eid.element_coal:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * 0.08;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_coal] * 0.02;
+				currency_count[cid.currency_soul] 		+= element_count[eid.element_coal] * 0.06;
+				break;
+			case eid.element_copper:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_copper] * 0.01;
+				currency_count[cid.currency_strands] 	+= element_count[eid.element_copper] * 0.01;
+				break;
+			case eid.element_iron:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_iron] * 0.04;
+				currency_count[cid.currency_strands] 	+= element_count[eid.element_iron] * 0.04;
+				break;
+			case eid.element_lead:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_lead] * 0.16;
+				currency_count[cid.currency_strands] 	+= element_count[eid.element_lead] * 0.16;
+				break;
+			case eid.element_gold:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_gold] * 0.42;
+				currency_count[cid.currency_strands] 	+= element_count[eid.element_gold] * 0.32;
+				currency_count[cid.currency_capital] 	+= element_count[eid.element_gold] * 0.10;
+				break;
+			case eid.element_fossil:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_fossil] * 0.44;
+				currency_count[cid.currency_strands] 	+= element_count[eid.element_fossil] * 0.32;
+				currency_count[cid.currency_spirit] 	+= element_count[eid.element_fossil] * 0.12;
+				break;
+			case eid.element_emerald:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_emerald] * 0.04;
+				currency_count[cid.currency_capital] 	+= element_count[eid.element_emerald] * 0.04;
+				break;
+			case eid.element_sapphire:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_sapphire] * 0.20;
+				currency_count[cid.currency_capital] 	+= element_count[eid.element_sapphire] * 0.20;
+				break;
+			case eid.element_ruby:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_ruby] * 1.00;
+				currency_count[cid.currency_capital] 	+= element_count[eid.element_ruby] * 1.00;
+				break;
+			case eid.element_diamond:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_diamond] * 3.00;
+				currency_count[cid.currency_capital] 	+= element_count[eid.element_diamond] * 3.00;
+				break;
+			case eid.element_magma:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_magma] * 2.48;
+				currency_count[cid.currency_soul] 		+= element_count[eid.element_magma] * 1.20;
+				currency_count[cid.currency_strands] 	+= element_count[eid.element_magma] * 1.28;
+				break;
+			case eid.element_water:
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * 0.01;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * 0.01;
+				break;
+			case eid.element_none:
+			default:
 		}
-
-		if (element_count[eid.element_stone] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_stone];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #878787;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_coal] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_coal];
-			out 							+= "<div class = 'element_sample' style = 'background-color: Black;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_copper] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_copper];
-			out 							+= "<div class = 'element_sample' style = 'background-color: DarkOrange;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_iron] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_iron];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #8d9ab0;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_lead] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_lead];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #4d4d4d;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_gold] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_gold];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #dbb93d;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_fossil] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_fossil];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #baad95;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_emerald] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_emerald];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #20a30b;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_sapphire] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_sapphire];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #2a44db;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_ruby] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_ruby];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #d43422;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_diamond] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_diamond];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #e6ebed;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_magma] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";
-			out 							+= element_count[eid.element_magma];
-			out 							+= "<div class = 'element_sample' style = 'background-color: #ed5113;'></div>";
-			out								+= "</p>";
-		}
-
-		if (element_count[eid.element_water] > 0) {
-			out 							+= "<p style = 'margin-left: 6px;'>";;
-			out 							+= element_count[eid.element_water];
-			out 							+= "<div class = 'element_sample' style = 'background-color: DodgerBlue;'></div>";
-			out 							+= "</p>";
-		}
-
-		return out;
 	}
 
-	stringifyValue(currency_count) {
-		let out = "Value: ";
+	return currency_count;
+}
 
-		let value_prewrapper 				= "<p style = 'margin-left: 6px;'>";
-		let value_postwrapper 				= "</p>";
+function stringifyElements(element_count) {
+	let out = "Stored: ";
 
-		for (let i = 0; i < cid.currency_count; i++) {
-			if (currency_count[i] > 0) {
-				out 							+= value_prewrapper;
-				out 							+= DisplayNumberFormatter(currency_count[i], true);
-				out 							+= value_postwrapper + chasm_currency[i].inspector_symbol;
-			}
-		}
-
-		return out;
+	if (element_count[eid.element_earth] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_earth];
+		out 							+= ElementSample(eid.element_earth);
+		out								+= "</p>";
 	}
+
+	if (element_count[eid.element_stone] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_stone];
+		out 							+= ElementSample(eid.element_stone);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_coal] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_coal];
+		out 							+= ElementSample(eid.element_coal);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_copper] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_copper];
+		out 							+= ElementSample(eid.element_copper);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_iron] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_iron];
+		out 							+= ElementSample(eid.element_iron);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_lead] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_lead];
+		out 							+= ElementSample(eid.element_lead);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_gold] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_gold];
+		out 							+= ElementSample(eid.element_gold);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_fossil] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_fossil];
+		out 							+= ElementSample(eid.element_fossil);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_emerald] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_emerald];
+		out 							+= ElementSample(eid.element_emerald);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_sapphire] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_sapphire];
+		out 							+= ElementSample(eid.element_sapphire);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_ruby] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_ruby];
+		out 							+= ElementSample(eid.element_ruby);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_diamond] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_diamond];
+		out 							+= ElementSample(eid.element_diamond);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_magma] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";
+		out 							+= element_count[eid.element_magma];
+		out 							+= ElementSample(eid.element_magma);
+		out								+= "</p>";
+	}
+
+	if (element_count[eid.element_water] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";;
+		out 							+= element_count[eid.element_water];
+		out 							+= ElementSample(eid.element_water);
+		out 							+= "</p>";
+	}
+
+	return out;
+}
+
+function stringifyValue(currency_count) {
+	let out = "";
+
+	let value_prewrapper 				= "<p style = 'margin-left: 6px;'>";
+	let value_postwrapper 				= "</p>";
+
+	for (let i = 0; i < cid.currency_count; i++) {
+		if (currency_count[i] > 0) {
+			out 							+= value_prewrapper;
+			out 							+= DisplayNumberFormatter(currency_count[i], true);
+			out 							+= value_postwrapper + chasm_currency[i].inspector_symbol;
+		}
+	}
+
+	return out;
 }
 
 // Bitmap Bit Class - Information saved to an individual bit of the bitmap (keep this as small as possible to conserve resources)
@@ -846,4 +860,71 @@ function compress_earth() {
 	chasm_storage[sid.storage_earth].brick_w = chasm_storage[sid.storage_earth].brick_w / 2;
 	earth.setCap((chasm_storage[sid.storage_earth].canvas_w * chasm_storage[sid.storage_earth].canvas_h) / (chasm_storage[sid.storage_earth].brick_w * chasm_storage[sid.storage_earth].brick_h));
 	chasm_storage[sid.storage_earth].clear();
+}
+
+function ElementSample(id) {
+	switch (id) {
+		case eid.element_earth:
+			return "<div class = 'element_sample' style = 'background-color: SaddleBrown;'></div>";
+			break;
+			
+		case eid.element_stone:
+			return "<div class = 'element_sample' style = 'background-color: #878787;'></div>";
+			break;
+			
+		case eid.element_coal:
+			return "<div class = 'element_sample' style = 'background-color: Black;'></div>";
+			break;
+			
+		case eid.element_copper:
+			return "<div class = 'element_sample' style = 'background-color: DarkOrange;'></div>";
+			break;
+			
+		case eid.element_iron:
+			return "<div class = 'element_sample' style = 'background-color: #8d9ab0;'></div>";
+			break;
+			
+		case eid.element_lead:
+			return "<div class = 'element_sample' style = 'background-color: #4d4d4d;'></div>";
+			break;
+			
+		case eid.element_gold:
+			return "<div class = 'element_sample' style = 'background-color: #dbb93d;'></div>";
+			break;
+			
+		case eid.element_fossil:
+			return "<div class = 'element_sample' style = 'background-color: #baad95;'></div>";
+			break;
+		
+		case eid.element_emerald:
+			return "<div class = 'element_sample' style = 'background-color: #20a30b;'></div>";
+			break;
+	
+		case eid.element_sapphire:
+			return "<div class = 'element_sample' style = 'background-color: #2a44db;'></div>";
+			break;
+	
+		case eid.element_ruby:
+			return "<div class = 'element_sample' style = 'background-color: #d43422;'></div>";
+			break;
+
+		case eid.element_diamond:
+			return "<div class = 'element_sample' style = 'background-color: #e6ebed;'></div>";
+			break;
+
+		case eid.element_magma:
+			return "<div class = 'element_sample' style = 'background-color: #ed5113;'></div>";
+			break;
+
+		case eid.element_water:
+			return "<div class = 'element_sample' style = 'background-color: DodgerBlue;'></div>";
+			break;
+
+		case eid.element_fish:
+			return "<div class = 'element_sample' style = 'background-color: DodgerBlue;'></div>";
+			break;
+		
+		default:
+			return "";
+	}
 }

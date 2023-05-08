@@ -155,124 +155,229 @@ function showInspector(id) {
 
 		// Elements
 		case iid.element_earth:
-			$("#inspector_title")	.html("<div class = 'element_sample' style = 'background-color: SaddleBrown;'></div>Dirt");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("blah blah blah");
-			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("value: x");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_earth]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_earth) + "<div style = 'width: 6px;'></div>Dirt");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("The most readily available resource near the mouth of the Chasm. It doesn't seem to do anything special, but you sure can shovel a lot of it.");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Shallow earth gathering");
+			}
 			break;
 		case iid.element_stone:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("blah blah blah");
-			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("value: x");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_stone]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_stone) + "<div style = 'width: 6px;'></div>Stone");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_coal:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_coal]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_coal) + "<div style = 'width: 6px;'></div>Coal");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_copper:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_copper]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_copper) + "<div style = 'width: 6px;'></div>Copper");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_iron:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_iron]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_iron) + "<div style = 'width: 6px;'></div>Iron");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_lead:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_lead]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_lead) + "<div style = 'width: 6px;'></div>Lead");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_gold:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_gold]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_gold) + "<div style = 'width: 6px;'></div>Gold");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_fossil:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_fossil]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_fossil) + "<div style = 'width: 6px;'></div>Fossil");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_emerald:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_emerald]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_emerald) + "<div style = 'width: 6px;'></div>Emerald");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_sapphire:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_sapphire]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_sapphire) + "<div style = 'width: 6px;'></div>Sapphire");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_ruby:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_ruby]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_ruby) + "<div style = 'width: 6px;'></div>Ruby");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_diamond:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_diamond]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_diamond) + "<div style = 'width: 6px;'></div>Diamond");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_magma:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_magma]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_magma) + "<div style = 'width: 6px;'></div>Magma");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Deep earth gathering");
+			}
 			break;
 		case iid.element_water:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_water]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_water) + "<div style = 'width: 6px;'></div>Water");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Water gathering");
+			}
 			break;
 		case iid.element_fish:
-			$("#inspector_title")	.html("???");
-			$("#inspector_cost")	.css("display", "none");
-			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("Achievement unknown");
-			$("#inspector_divider")	.css("display", "none");
-			$("#inspector_subtext")	.html("");
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_fish]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_fish) + "<div style = 'width: 6px;'></div>Fish");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Has a chance to spawn when water storage is full");
+			}
 			break;
 		
 		// Upgrades

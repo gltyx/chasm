@@ -137,19 +137,19 @@ class ELEMENT_PROBABILITY {
 		if (storage_flags & STORAGE_FLAGS_EARTH) {
 			var out = "";
 			out	= "<div style = 'display: block;'>";
-			out	+= "<p class = 'element_earth' 		style = 'font-size: 12px;'>Dirt:</p>";
-			out	+= "<p class = 'element_stone' 		style = 'font-size: 12px;'>Stone:</p>";
-			out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>Coal:</p>";
-			out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>Copper:</p>";
-			out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>Iron:</p>";
-			out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>Lead:</p>";
-			out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>Gold:</p>";
-			out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>Fossil:</p>";
-			out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>Emerald:</p>";
-			out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>Sapphire:</p>";
-			out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>Ruby:</p>";
-			out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>Diamond:</p>";
-			out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>Magma:</p>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_earth) 	+ "<p class = 'element_earth' 		style = 'font-size: 12px; padding-left: 4px;'>Dirt:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_stone) 	+ "<p class = 'element_stone' 		style = 'font-size: 12px; padding-left: 4px;'>Stone:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_coal) 		+ "<p class = 'element_coal' 		style = 'font-size: 12px; padding-left: 4px;'>Coal:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_copper) 	+ "<p class = 'element_copper' 		style = 'font-size: 12px; padding-left: 4px;'>Copper:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_iron) 		+ "<p class = 'element_iron' 		style = 'font-size: 12px; padding-left: 4px;'>Iron:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_lead) 		+ "<p class = 'element_lead' 		style = 'font-size: 12px; padding-left: 4px;'>Lead:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_gold) 		+ "<p class = 'element_gold' 		style = 'font-size: 12px; padding-left: 4px;'>Gold:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_fossil) 	+ "<p class = 'element_fossil' 		style = 'font-size: 12px; padding-left: 4px;'>Fossil:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_emerald) 	+ "<p class = 'element_emerald' 	style = 'font-size: 12px; padding-left: 4px;'>Emerald:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_sapphire) 	+ "<p class = 'element_sapphire' 	style = 'font-size: 12px; padding-left: 4px;'>Sapphire:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_ruby) 		+ "<p class = 'element_ruby' 		style = 'font-size: 12px; padding-left: 4px;'>Ruby:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_diamond) 	+ "<p class = 'element_diamond' 	style = 'font-size: 12px; padding-left: 4px;'>Diamond:</p></div>";
+			out	+= "<div class = 'vertcenter' style = 'display: flex;'>" + ElementSample(eid.element_magma) 	+ "<p class = 'element_magma' 		style = 'font-size: 12px; padding-left: 4px;'>Magma:</p></div>";
 			out	+= "</div>";
 
 			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";

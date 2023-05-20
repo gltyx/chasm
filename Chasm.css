@@ -160,6 +160,10 @@ form {
 	width: 12px;
 	height: 12px;
 	margin-left: 3px;
+
+	border-width: 1px;
+	border-color: #242424;
+	border-style: solid;
 }
 
 .gather_button {

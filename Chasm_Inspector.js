@@ -47,6 +47,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_depth_1						= uid.upgrade_earth_depth_1					+ this.offset_upgrades;
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
 	upgrade_workers_1							= uid.upgrade_workers_1						+ this.offset_upgrades;
+	upgrade_workers_2							= uid.upgrade_workers_2						+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
@@ -425,7 +426,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Dustbusting");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_1].cost.stringify());
-			$("#inspector_text")	.html("By filtering out some of the lighter dust particles you can make your earth particles worth more.");
+			$("#inspector_text")	.html("By filtering out some of the lighter dust you can make your earth particles more valuable.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+0.01 earth particle value");
 			break;
@@ -458,6 +459,14 @@ function showInspector(id) {
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_1].cost.stringify());
 			$("#inspector_text")	.html("You know a guy who would be very interested in studying the exotic materials coming out of the Chasm. He is a bit of a conspiracy nut, but you can probably convince him to shovel dirt.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker");
+			break;
+		case iid.upgrade_workers_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Internship Program");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_2].cost.stringify());
+			$("#inspector_text")	.html("Filling the Chasm is exhausting; just get a college student to do it. All the labor of an employee with none of the pay!");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker");
 			break;

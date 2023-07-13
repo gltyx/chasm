@@ -18,15 +18,16 @@ class _UPGRADE_ID {
 	upgrade_earth_density_4			= 0x0003;	// 2x Earth density (32x32)
 	upgrade_earth_density_5			= 0x0004;	// 2x Earth density (64x64)
 	upgrade_earth_value_1			= 0x0005;	// Value +0.01
-	upgrade_earth_metals_1			= 0x0006;	// Unlock surveying
-	upgrade_earth_depth_1			= 0x0007;	// Unlock depth
+	upgrade_earth_value_2			= 0x0006;	// Value +0.01
+	upgrade_earth_metals_1			= 0x0007;	// Unlock surveying
+	upgrade_earth_depth_1			= 0x0008;	// Unlock depth
 
-	upgrade_water_storage			= 0x0008;	// Unlock water storage
+	upgrade_water_storage			= 0x0009;	// Unlock water storage
 
-	upgrade_workers_1				= 0x0009;	// +1 Worker
-	upgrade_workers_2				= 0x000a;	// +1 Worker
+	upgrade_workers_1				= 0x000a;	// +1 Worker
+	upgrade_workers_2				= 0x000b;	// +1 Worker
 
-	upgrade_count					= 0x000b;
+	upgrade_count					= 0x000c;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -139,26 +140,26 @@ function initUpgrades() {
 			case uid.upgrade_earth_density_4:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_density_4",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_deprecated.png",
 					[
 					3,		// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
-					0,		// Anticapital
+					7000000,// Anticapital
 				]);
 				break;
 
 			case uid.upgrade_earth_density_5:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_density_5",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_deprecated.png",
 					[
-					4,		// Particles
-					3,		// Strands
-					2,		// Spirit
-					1,		// Soul
-					0,		// Anticapital
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					8000000,// Anticapital
 				]);
 				break;
 
@@ -169,6 +170,19 @@ function initUpgrades() {
 					[
 					0.08,	// Particles
 					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+				]);
+				break;
+
+			case uid.upgrade_earth_value_2:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_value_2",
+					"images/tile_research_earth_value_2.png",
+					[
+					0.36,	// Particles
+					0.80,	// Strands
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
@@ -191,7 +205,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_metals_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_metals_1",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_metals_1.png",
 					[
 					2.5,	// Particles
 					0,		// Strands
@@ -204,7 +218,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_depth_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_depth_1",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_depth_1.png",
 					[
 					0,		// Particles
 					5,		// Strands
@@ -230,7 +244,7 @@ function initUpgrades() {
 			case uid.upgrade_workers_2:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_workers_2",
-					"images/tile_research_upgrade_workers_1.png",
+					"images/tile_research_upgrade_workers_2.png",
 					[
 					0.24,	// Particles
 					0,		// Strands
@@ -569,14 +583,21 @@ function generateResearchMap() {
 	upgrade_map[mapColRow(7, 4)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_2,			[uid.upgrade_workers_1]																);
 	upgrade_map[mapColRow(7, 5)]	.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,				[uid.upgrade_workers_2]																);
 	upgrade_map[mapColRow(6, 5)]	.assign_tile(tid.tile_connect_lr, 	uid.upgrade_count,				[uid.upgrade_workers_2]																);
+	
+	upgrade_map[mapColRow(3, 7)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_2, 																							);
 
 	upgrade_map[mapColRow(5, 5)]	.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1], [uid.upgrade_workers_2] 	);
 	upgrade_map[mapColRow(5, 6)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1, uid.upgrade_workers_2] 	);
-	upgrade_map[mapColRow(5, 7)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,				[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1, uid.upgrade_workers_2] 	);
+	upgrade_map[mapColRow(5, 7)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_metals_1,		[uid.upgrade_earth_value_1, uid.upgrade_earth_density_1, uid.upgrade_workers_2] 	);
+	
+	upgrade_map[mapColRow(3, 8)]	.assign_tile(tid.tile_connect_ur, 	uid.upgrade_count,				[uid.upgrade_earth_value_2] 														);
+	upgrade_map[mapColRow(5, 8)]	.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,				[uid.upgrade_earth_metals_1] 														);
+	upgrade_map[mapColRow(4, 8)]	.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,				[uid.upgrade_earth_value_2], 		[uid.upgrade_earth_metals_1]					);
+	upgrade_map[mapColRow(4, 9)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_1,		[uid.upgrade_earth_value_2, uid.upgrade_earth_metals_1] 							);
 
 	// Testing row
 	var test_row = 12;
-	var test_upgrades = [uid.upgrade_earth_density_2, uid.upgrade_earth_density_3, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5, uid.upgrade_earth_metals_1, uid.upgrade_earth_depth_1, uid.upgrade_water_storage];
+	var test_upgrades = [uid.upgrade_earth_density_2, uid.upgrade_earth_density_3, uid.upgrade_water_storage, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;

@@ -43,6 +43,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_density_4						= uid.upgrade_earth_density_4				+ this.offset_upgrades;
 	upgrade_earth_density_5						= uid.upgrade_earth_density_5				+ this.offset_upgrades;
 	upgrade_earth_value_1						= uid.upgrade_earth_value_1					+ this.offset_upgrades;
+	upgrade_earth_value_2						= uid.upgrade_earth_value_2					+ this.offset_upgrades;
 	upgrade_earth_metals_1						= uid.upgrade_earth_metals_1				+ this.offset_upgrades;
 	upgrade_earth_depth_1						= uid.upgrade_earth_depth_1					+ this.offset_upgrades;
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
@@ -430,6 +431,14 @@ function showInspector(id) {
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+0.01 earth particle value");
 			break;
+		case iid.upgrade_earth_value_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Industrial Waste Handling");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_2].cost.stringify());
+			$("#inspector_text")	.html("Our operation is starting to produce a good amount of oily waste water... Might as well dump that stuff right into the ground!");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+0.01 earth particle value<br>+0.04 stone particle value");
+			break;
 		case iid.upgrade_earth_metals_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Surveying Tools");
 			$("#inspector_cost")	.css("display", "flex");
@@ -466,7 +475,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Internship Program");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_2].cost.stringify());
-			$("#inspector_text")	.html("Filling the Chasm is exhausting; just get a college student to do it. All the labor of an employee with none of the pay!");
+			$("#inspector_text")	.html("Filling the Chasm is exhausting—just get a college student to do it. All the labor of an employee with none of the pay!");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker");
 			break;

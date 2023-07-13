@@ -548,6 +548,12 @@ class resource_storage {
 		} else if (target == "machinery_1") {
 			let out = num;
 
+			// Depth limit
+			let limit = CalculateMaxDepth() - this.machinery_1;
+			if (out > limit) {
+				out = limit;
+			}
+
 			// Gain machines
 			if (num > 0) {
 				if (chasm_currency[resource_id].resource.current.lt(num)) {
@@ -653,13 +659,17 @@ function elementValue(element_count) { // Returns currency value of all elements
 			case eid.element_earth:
 				let earth_value = 0.01;
 				if (chasm_upgrades[uid.upgrade_earth_value_1].unlocked) earth_value += 0.01;
+				if (chasm_upgrades[uid.upgrade_earth_value_2].unlocked) earth_value += 0.01;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_earth] * earth_value;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value;
 				break;
 			case eid.element_stone:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * 0.08;
-				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * 0.08;
+				let stone_value = 0.08;
+				if (chasm_upgrades[uid.upgrade_earth_value_2].unlocked) stone_value += 0.04;
+
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * stone_value;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * stone_value;
 				break;
 			case eid.element_coal:
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * 0.08;

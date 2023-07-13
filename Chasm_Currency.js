@@ -112,7 +112,7 @@ class currency_value_map {
 		let cost_postwrapper 				= "</p>";
 
 		let cost_unaffordable_prewrapper 	= "<span style = 'color: red;'>";
-		let cost_unaffordable_postwrapper 	= "<span style = 'color: red;'>";
+		let cost_unaffordable_postwrapper 	= "</span>";
 
 		for (let i = 0; i < cid.currency_count; i++) {
 			if (this.map[i] > 0) {
@@ -122,7 +122,7 @@ class currency_value_map {
 
 										out += cost_prewrapper;
 				if (affordable)			out += cost_unaffordable_prewrapper;
-										out += this.map[i];
+										out += DisplayNumberFormatter(this.map[i], true);
 				if (affordable)			out += cost_unaffordable_postwrapper;
 										out += cost_postwrapper + chasm_currency[i].inspector_symbol;
 			}

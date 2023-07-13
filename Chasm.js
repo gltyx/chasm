@@ -343,6 +343,18 @@ function refresh_ui() {
 	if (chasm_upgrades[uid.upgrade_water_storage].unlocked) {
 		$("#water_section").css("display", "block");
 	}
+
+	RefreshMaxDepth();
+}
+
+function RefreshMaxDepth() {
+	$("#max_depth_label").html("Max Depth: " + CalculateMaxDepth());
+}
+
+function CalculateMaxDepth() {
+	let max = 0;
+	if (chasm_upgrades[uid.upgrade_earth_depth_1].unlocked) max++;
+	return max;
 }
 
 function DisplayNumberFormatter(x, fractional) {

@@ -105,13 +105,13 @@ function animation_tick() {
 
 function draw_resources() {
 	// Update currency
-	$("#currency_particles_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_particles].resource.current, true));
-	$("#currency_strands_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_strands].resource.current, true));
-	$("#currency_spirit_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_spirit].resource.current, true));
-	$("#currency_soul_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_soul].resource.current, true));
-	$("#currency_capital_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_capital].resource.current, true));
+	$("#currency_particles_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_particles].resource.current, 2));
+	$("#currency_strands_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_strands].resource.current, 2));
+	$("#currency_spirit_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_spirit].resource.current, 2));
+	$("#currency_soul_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_soul].resource.current, 2));
+	$("#currency_capital_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_capital].resource.current, 2));
 
-	$("#currency_mass_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_mass].resource.current, true));
+	$("#currency_mass_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_mass].resource.current, 2));
 	$("#currency_workers_amount").html(chasm_currency[cid.currency_workers].resource.current.toFixed(0));
 	$("#currency_machinery_amount").html(chasm_currency[cid.currency_machinery].resource.current.toFixed(0));
 
@@ -309,7 +309,7 @@ function refresh_ui() {
 		chasm_storage[i].manage_production_resource(cid.currency_workers, 0, "gather");
 		chasm_storage[i].manage_production_resource(cid.currency_workers, 0, "drop");
 		chasm_storage[i].manage_production_resource(cid.currency_workers, 0, "survey");
-		chasm_storage[i].manage_production_resource(cid.currency_machinery_1, 0, "machinery_1");
+		chasm_storage[i].manage_production_resource(cid.currency_machinery, 0, "depth");
 	}
 	
 	if (chasm_upgrades[uid.upgrade_earth_density_1].unlocked) {
@@ -354,6 +354,12 @@ function RefreshMaxDepth() {
 function CalculateMaxDepth() {
 	let max = 0;
 	if (chasm_upgrades[uid.upgrade_earth_depth_1].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_earth_depth_2].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_earth_depth_3].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_earth_depth_4].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_earth_depth_5].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_earth_depth_6].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_earth_depth_7].unlocked) max++;
 	return max;
 }
 
@@ -362,21 +368,13 @@ function DisplayNumberFormatter(x, fractional) {
 		if (x.gte(10000)) {
 			return x.toExponential(2).replace('e+', ' e');
 		} else {
-			if (fractional) {
-				return x.toFixed(2);
-			} else {
-				return x.toFixed(0);
-			}
+			return x.toFixed(fractional);
 		}
 	} else {
 		if (x >= 10000) {
 			return x.toExponential(2).replace('e+', ' e');
 		} else {
-			if (fractional) {
-				return x.toFixed(2);
-			} else {
-				return x.toFixed(0);
-			}
+			return x.toFixed(fractional);
 		}
 	}
 }

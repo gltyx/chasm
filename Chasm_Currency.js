@@ -117,12 +117,12 @@ class currency_value_map {
 		for (let i = 0; i < cid.currency_count; i++) {
 			if (this.map[i] > 0) {
 				let affordable;
-				if (chasm_currency[i].resource.current.lt(this.map[i])) affordable = true;
+				if (chasm_currency[i].resource.current.lt(this.map[i])) affordable = 2;
 				else affordable = false;
 
 										out += cost_prewrapper;
 				if (affordable)			out += cost_unaffordable_prewrapper;
-										out += DisplayNumberFormatter(this.map[i], true);
+										out += DisplayNumberFormatter(this.map[i], 2);
 				if (affordable)			out += cost_unaffordable_postwrapper;
 										out += cost_postwrapper + chasm_currency[i].inspector_symbol;
 			}

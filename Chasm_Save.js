@@ -131,7 +131,7 @@ function save_pack_storage() {
 		object[chasm_storage[i].name].workers_gather 	= chasm_storage[i].workers_gather;
 		object[chasm_storage[i].name].workers_drop 		= chasm_storage[i].workers_drop;
 		object[chasm_storage[i].name].workers_survey	= chasm_storage[i].workers_survey;
-		object[chasm_storage[i].name].machinery_1		= chasm_storage[i].machinery_1;
+		object[chasm_storage[i].name].machinery_depth	= chasm_storage[i].machinery_depth;
 		object[chasm_storage[i].name].gather_progress	= chasm_storage[i].gather_progress;
 		object[chasm_storage[i].name].drop_progress		= chasm_storage[i].drop_progress;
 	}
@@ -143,7 +143,7 @@ function save_unpack_storage(object) {
 		chasm_storage[sid[storage]].workers_gather 		= object[storage].workers_gather;
 		chasm_storage[sid[storage]].workers_drop 		= object[storage].workers_drop;
 		chasm_storage[sid[storage]].workers_survey 		= object[storage].workers_survey;
-		chasm_storage[sid[storage]].machinery_1			= object[storage].machinery_1;
+		chasm_storage[sid[storage]].machinery_depth		= object[storage].machinery_depth;
 		chasm_storage[sid[storage]].gather_progress 	= object[storage].gather_progress;
 		chasm_storage[sid[storage]].drop_progress 		= object[storage].drop_progress;
 	}

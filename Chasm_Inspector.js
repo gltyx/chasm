@@ -46,6 +46,12 @@ class _INSPECTOR_ID {
 	upgrade_earth_value_2						= uid.upgrade_earth_value_2					+ this.offset_upgrades;
 	upgrade_earth_metals_1						= uid.upgrade_earth_metals_1				+ this.offset_upgrades;
 	upgrade_earth_depth_1						= uid.upgrade_earth_depth_1					+ this.offset_upgrades;
+	upgrade_earth_depth_2						= uid.upgrade_earth_depth_2					+ this.offset_upgrades;
+	upgrade_earth_depth_3						= uid.upgrade_earth_depth_3					+ this.offset_upgrades;
+	upgrade_earth_depth_4						= uid.upgrade_earth_depth_4					+ this.offset_upgrades;
+	upgrade_earth_depth_5						= uid.upgrade_earth_depth_5					+ this.offset_upgrades;
+	upgrade_earth_depth_6						= uid.upgrade_earth_depth_6					+ this.offset_upgrades;
+	upgrade_earth_depth_7						= uid.upgrade_earth_depth_7					+ this.offset_upgrades;
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
 	upgrade_workers_1							= uid.upgrade_workers_1						+ this.offset_upgrades;
 	upgrade_workers_2							= uid.upgrade_workers_2						+ this.offset_upgrades;
@@ -452,6 +458,54 @@ function showInspector(id) {
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
 			$("#inspector_text")	.html("It feels a bit silly to dig next to the yawning mouth of the Chasm, but there's some really good stuff down there.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_earth_depth_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 2");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_2].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_earth_depth_3:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 3");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_3].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_earth_depth_4:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 4");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_earth_depth_5:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 5");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_earth_depth_6:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 6");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_earth_depth_7 :
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 7");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
+			$("#inspector_text")	.html("");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
 			break;

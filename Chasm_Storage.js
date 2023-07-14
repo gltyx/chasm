@@ -90,42 +90,63 @@ class ELEMENT_PROBABILITY {
 		this.zero();
 		var portion = 1000;
 
+		function srvb(target, slope) {
+			// Survey bias
+			return Math.floor(target - (target * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, slope))))
+		}
+
 		if (storage_flags & STORAGE_FLAGS_EARTH) {
-			this.element_magma 		+= 50;
-			portion 				-= 50;
-			
-			this.element_diamond 	+= 50;
-			portion 				-= 50;
-			
-			this.element_ruby 		+= 50;
-			portion 				-= 50;
-			
-			this.element_sapphire	+= 50;
-			portion 				-= 50;
-			
-			this.element_emerald	+= 50;
-			portion 				-= 50;
-			
-			this.element_fossil 	+= 50;
-			portion 				-= 50;
+			let depth = chasm_storage[sid.storage_earth].machinery_depth;
 
-			this.element_gold 		+= 50;
-			portion 				-= 50;
+			//						| Depth 0	| Depth 1				| Depth 2				| Depth 3				| Depth 4				| Depth 5				| Depth 6				| Depth 7
+			const p_magma = [		0,			0,						0,						0,						0,						0,						0,						445 + srvb(300, 0.2)	];
+			const p_diamond = [		0,			0,						0,						1,						4  + srvb(20, 0.1),		20  + srvb(50, 0.15),	30  + srvb(60, 0.15),	50  + srvb(140, 0.15)	];
+			const p_ruby = [		0,			0,						1,						4   + srvb(10, 0.1),	20 + srvb(50, 0.1),		30  + srvb(80, 0.15),	50  + srvb(90, 0.15),	0						];
+			const p_sapphire = [	0,			0,						3,						10  + srvb(20, 0.1),	30 + srvb(80, 0.15),	20  + srvb(50, 0.2),	5   + srvb(35, 0.15),	0						];
+			const p_emerald = [		0,			5,						6   + srvb(20, 0.1),	20  + srvb(30, 0.15),	10 + srvb(30, 0.15),	5   + srvb(40, 0.2),	0,						0						];
+			const p_fossil = [		0,			0,						0,						30  + srvb(140, 0.15),	60 + srvb(100, 0.2),	100 + srvb(300, 0.2),	30  + srvb(140, 0.2),	0						];
+			const p_gold = [		0,			0,						0,						2,						8  + srvb(30, 0.15),	40  + srvb(80, 0.15),	100 + srvb(140, 0.15),	0						];
+			const p_lead = [		0,			0,						0,						10  + srvb(10, 0.1),	40 + srvb(10, 0.1),		80  + srvb(60, 0.1),	30  + srvb(45, 0.1),	0						];
+			const p_iron = [		0,			0,						30  + srvb(70, 0.1),	50  + srvb(120, 0.15),	90 + srvb(200, 0.15),	30  + srvb(70, 0.2),	0,						0						];
+			const p_copper = [		0,			30 + srvb(400, 0.2),	100 + srvb(300, 0.15),	100 + srvb(200, 0.2),	30 + srvb(100, 0.15),	0,						0,						0						];
+			const p_coal = [		0,			0,						4,						20  + srvb(50, 0.15),	50 + srvb(100, 0.15),	55  + srvb(170, 0.15),	60  + srvb(200, 0.2),	0						];
+			const sink_split = [	0,			0.1,					0.25,					0.5,					0.75,					0.85,					0.95,					1						];
 
-			this.element_lead 		+= 50;
-			portion 				-= 50;
-
-			this.element_iron 		+= 50;
-			portion 				-= 50;
+			this.element_magma 		+= p_magma[depth];
+			portion 				-= p_magma[depth];
 			
-			this.element_copper 	+= Math.floor(300 - (300 * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, 0.1))));
-			portion 				-= Math.floor(300 - (300 * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, 0.1))));
+			this.element_diamond 	+= p_diamond[depth];
+			portion 				-= p_diamond[depth];
+			
+			this.element_ruby 		+= p_ruby[depth];
+			portion 				-= p_ruby[depth];
+			
+			this.element_sapphire	+= p_sapphire[depth];
+			portion 				-= p_sapphire[depth];
+			
+			this.element_emerald	+= p_emerald[depth];
+			portion 				-= p_emerald[depth];
+			
+			this.element_fossil 	+= p_fossil[depth];
+			portion 				-= p_fossil[depth];
 
-			this.element_coal 		+= Math.floor(500 - (500 * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, 0.1))));
-			portion 				-= Math.floor(500 - (500 * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, 0.1))));
+			this.element_gold 		+= p_gold[depth];
+			portion 				-= p_gold[depth];
 
-			this.element_stone 		+= 50;
-			portion 				-= 50;
+			this.element_lead 		+= p_lead[depth];
+			portion 				-= p_lead[depth];
+
+			this.element_iron 		+= p_iron[depth];
+			portion 				-= p_iron[depth];
+
+			this.element_copper 	+= p_copper[depth];
+			portion 				-= p_copper[depth];
+
+			this.element_coal 		+= p_coal[depth];
+			portion 				-= p_coal[depth];
+
+			this.element_stone 		+= portion * sink_split[depth];
+			portion 				-= portion * sink_split[depth];
 
 			this.element_earth 		= portion;
 
@@ -153,19 +174,19 @@ class ELEMENT_PROBABILITY {
 			out	+= "</div>";
 
 			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";
-			out	+= "<p class = 'element_earth' 		style = 'font-size: 12px;'>" + (this.element_earth / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_stone' 		style = 'font-size: 12px;'>" + (this.element_stone / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>" + (this.element_coal / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>" + (this.element_copper / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>" + (this.element_iron / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>" + (this.element_lead / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>" + (this.element_gold / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>" + (this.element_fossil / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>" + (this.element_emerald / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>" + (this.element_sapphire / 10) + "%</p>";
-			out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>" + (this.element_ruby / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>" + (this.element_diamond / 10) 	+ "%</p>";
-			out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>" + (this.element_magma / 10) 	+ "%</p>";
+			out	+= "<p class = 'element_earth' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_earth / 10, 1) 		+ "%</p>";
+			out	+= "<p class = 'element_stone' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_stone / 10, 1) 		+ "%</p>";
+			out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_coal / 10, 1) 		+ "%</p>";
+			out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_copper / 10, 1) 		+ "%</p>";
+			out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_iron / 10, 1) 		+ "%</p>";
+			out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_lead / 10, 1) 		+ "%</p>";
+			out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_gold / 10, 1) 		+ "%</p>";
+			out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_fossil / 10, 1) 		+ "%</p>";
+			out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_emerald / 10, 1) 	+ "%</p>";
+			out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_sapphire / 10, 1) 	+ "%</p>";
+			out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_ruby / 10, 1) 		+ "%</p>";
+			out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_diamond / 10, 1) 	+ "%</p>";
+			out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_magma / 10, 1) 		+ "%</p>";
 			out	+= "</div>";
 
 			$("#earth_survey_menu").html(out);
@@ -288,7 +309,7 @@ function initStorage() {
 				chasm_storage[i].gather_dom = "#earth_workers_gather";
 				chasm_storage[i].drop_dom 	= "#earth_workers_drop";
 				chasm_storage[i].survey_dom = "#earth_workers_survey";
-				chasm_storage[i].machinery_1_dom = "#earth_machinery_1";
+				chasm_storage[i].depth_dom = "#earth_machinery_depth";
 				break;
 
 			case sid.storage_water:
@@ -324,7 +345,7 @@ class resource_storage {
 	gather_dom;
 	drop_dom;
 	survey_dom;
-	machinery_1_dom;
+	depth_dom;
 
 	storage_flags = 0;								// Flags for different storage types (STORAGE_FLAGS_*)
 	brick_w = 1;									// Number of x pixels in a brick
@@ -335,7 +356,7 @@ class resource_storage {
 	workers_gather = 0;								// Number of workers currently gathering
 	workers_drop = 0;								// Number of workers currently dropping
 	workers_survey = 0;								// Number of workers currently surveying
-	machinery_1 = 0;
+	machinery_depth = 0;
 	gather_progress = 0;							// Percentage towards next gather action
 	drop_progress = 0;								// Percentage towards next drop action
 
@@ -545,11 +566,11 @@ class resource_storage {
 			}
 
 			chasm_storage[sid.storage_earth].probability.refresh(chasm_storage[sid.storage_earth].storage_flags);
-		} else if (target == "machinery_1") {
+		} else if (target == "depth") {
 			let out = num;
 
 			// Depth limit
-			let limit = CalculateMaxDepth() - this.machinery_1;
+			let limit = CalculateMaxDepth() - this.machinery_depth;
 			if (out > limit) {
 				out = limit;
 			}
@@ -560,31 +581,33 @@ class resource_storage {
 					out = chasm_currency[resource_id].resource.current;
 
 					if (chasm_currency[resource_id].resource.spend(out)) {
-						this.machinery_1 += out.toNumber();
+						this.machinery_depth += out.toNumber();
 					}
 				} else {
 					if (chasm_currency[resource_id].resource.spend(out)) {
-						this.machinery_1 += out;
+						this.machinery_depth += out;
 					}
 				}
 
-				$(this.machinery_1_dom).html(this.machinery_1);
+				$(this.depth_dom).html(this.machinery_depth);
 
 			// Reduce machines
 			} else if (num < 0) {
-				if (num < -this.machinery_1) {
-					out = this.machinery_1;
+				if (num < -this.machinery_depth) {
+					out = this.machinery_depth;
 				} else {
 					out = -out;
 				}
 
 				chasm_currency[resource_id].resource.gainUntracked(out);
-				this.machinery_1 -= out;
+				this.machinery_depth -= out;
 
-				$(this.machinery_1_dom).html(this.machinery_1);
+				$(this.depth_dom).html(this.machinery_depth);
 			} else {
-				$(this.machinery_1_dom).html(this.machinery_1);
+				$(this.depth_dom).html(this.machinery_depth);
 			}
+
+			chasm_storage[sid.storage_earth].probability.refresh(chasm_storage[sid.storage_earth].storage_flags);
 		}
 	}
 }
@@ -844,7 +867,7 @@ function stringifyValue(currency_count) {
 	for (let i = 0; i < cid.currency_count; i++) {
 		if (currency_count[i] > 0) {
 			out 							+= value_prewrapper;
-			out 							+= DisplayNumberFormatter(currency_count[i], true);
+			out 							+= DisplayNumberFormatter(currency_count[i], 2);
 			out 							+= value_postwrapper + chasm_currency[i].inspector_symbol;
 		}
 	}

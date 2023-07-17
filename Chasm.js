@@ -130,9 +130,13 @@ function draw_resources() {
 function game_tick(scalar) {
 	
 	// Earth Gather
+	let gather_amount = 0;
 	if (chasm_storage[sid.storage_earth].workers_gather > 0) {
-		chasm_storage[sid.storage_earth].gather_progress += chasm_storage[sid.storage_earth].workers_gather * 10 * scalar;
+		gather_amount += 20;
+		if (chasm_upgrades[uid.upgrade_earth_gather_speed_1].unlocked) gather_amount *= 1.2;
+		chasm_storage[sid.storage_earth].gather_progress += chasm_storage[sid.storage_earth].workers_gather * gather_amount * scalar;
 	}
+	$("#gather_speed_label").html(DisplayNumberFormatter((gather_amount / 100), 2) + " /s");
 	if (chasm_storage[sid.storage_earth].gather_progress > 100) {
 		if (earth.current == earth.cap) {
 			chasm_storage[sid.storage_earth].gather_progress = 100;
@@ -146,9 +150,12 @@ function game_tick(scalar) {
 	}
 
 	// Earth Drop
+	let drop_amount = 0;
 	if (chasm_storage[sid.storage_earth].workers_drop > 0) {
-		chasm_storage[sid.storage_earth].drop_progress += chasm_storage[sid.storage_earth].workers_drop * 10 * scalar;
+		drop_amount += 10;
+		chasm_storage[sid.storage_earth].drop_progress += chasm_storage[sid.storage_earth].workers_drop * drop_amount * scalar;
 	}
+	$("#drop_speed_label").html(DisplayNumberFormatter((drop_amount / 100), 2) + " /s");
 	if (chasm_storage[sid.storage_earth].drop_progress > 100) {
 		if (earth.current == earth.cap) {
 			chasm_storage[sid.storage_earth].drop_progress = 0;

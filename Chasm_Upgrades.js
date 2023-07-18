@@ -134,7 +134,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_density_3:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_density_3",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_density_3.png",
 					[
 					2,		// Particles
 					0,		// Strands
@@ -212,7 +212,7 @@ function initUpgrades() {
 			case uid.upgrade_water_storage:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_water_storage",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_water_storage.png",
 					[
 					20,		// Particles
 					0,		// Strands
@@ -251,7 +251,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_depth_2:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_depth_2",
-					"images/tile_research_earth_depth_1.png",
+					"images/tile_research_earth_depth_2.png",
 					[
 					0,		// Particles
 					10,		// Strands
@@ -264,7 +264,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_depth_3:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_depth_3",
-					"images/tile_research_earth_depth_1.png",
+					"images/tile_research_earth_depth_3.png",
 					[
 					0,		// Particles
 					15,		// Strands
@@ -277,7 +277,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_depth_4:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_depth_4",
-					"images/tile_research_earth_depth_1.png",
+					"images/tile_research_earth_depth_4.png",
 					[
 					0,		// Particles
 					25,		// Strands
@@ -290,7 +290,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_depth_5:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_depth_5",
-					"images/tile_research_earth_depth_1.png",
+					"images/tile_research_earth_depth_5.png",
 					[
 					0,		// Particles
 					35,		// Strands
@@ -303,7 +303,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_depth_6:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_depth_6",
-					"images/tile_research_earth_depth_1.png",
+					"images/tile_research_earth_depth_6.png",
 					[
 					0,		// Particles
 					45,		// Strands
@@ -316,7 +316,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_depth_7:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_depth_7",
-					"images/tile_research_earth_depth_1.png",
+					"images/tile_research_earth_depth_7.png",
 					[
 					0,		// Particles
 					55,		// Strands

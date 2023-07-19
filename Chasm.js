@@ -134,7 +134,8 @@ function game_tick(scalar) {
 	if (chasm_storage[sid.storage_earth].workers_gather > 0) {
 		gather_amount += 20;
 		if (chasm_upgrades[uid.upgrade_earth_gather_speed_1].unlocked) gather_amount *= 1.2;
-		chasm_storage[sid.storage_earth].gather_progress += chasm_storage[sid.storage_earth].workers_gather * gather_amount * scalar;
+		gather_amount *= chasm_storage[sid.storage_earth].workers_gather;
+		chasm_storage[sid.storage_earth].gather_progress +=  gather_amount * scalar;
 	}
 	$("#gather_speed_label").html(DisplayNumberFormatter((gather_amount / 100), 2) + " /s");
 	if (chasm_storage[sid.storage_earth].gather_progress > 100) {
@@ -151,9 +152,13 @@ function game_tick(scalar) {
 
 	// Earth Drop
 	let drop_amount = 0;
+	let drop_speed = [1, 0.75, 0.50, 0.30, 0.15, 0.10, 0.05, 0.02];
+	let depth = chasm_storage[sid.storage_earth].machinery_depth;
 	if (chasm_storage[sid.storage_earth].workers_drop > 0) {
 		drop_amount += 10;
-		chasm_storage[sid.storage_earth].drop_progress += chasm_storage[sid.storage_earth].workers_drop * drop_amount * scalar;
+		drop_amount *= drop_speed[depth];
+		drop_amount *= chasm_storage[sid.storage_earth].workers_drop;
+		chasm_storage[sid.storage_earth].drop_progress += drop_amount * scalar;
 	}
 	$("#drop_speed_label").html(DisplayNumberFormatter((drop_amount / 100), 2) + " /s");
 	if (chasm_storage[sid.storage_earth].drop_progress > 100) {
@@ -352,10 +357,55 @@ function refresh_ui() {
 	}
 
 	RefreshMaxDepth();
+	RefreshDepthChart();
 }
 
 function RefreshMaxDepth() {
 	$("#max_depth_label").html("Max Depth: " + CalculateMaxDepth());
+}
+
+function RefreshDepthChart() {
+	$("#depth_chart_0").html("");
+	$("#depth_chart_1").html("");
+	$("#depth_chart_2").html("");
+	$("#depth_chart_3").html("");
+	$("#depth_chart_4").html("");
+	$("#depth_chart_5").html("");
+	$("#depth_chart_6").html("");
+	$("#depth_chart_7").html("");
+
+	let depth = chasm_storage[sid.storage_earth].machinery_depth;
+	let out = "< ";
+	switch (depth) {
+		case 0:
+			$("#depth_chart_0").html(out + "Surface");
+			break;
+		case 1:
+			$("#depth_chart_1").html(out + "Shallow");
+			break;
+		case 2:
+			$("#depth_chart_2").html(out + "Deep");
+			break;
+		case 3:
+			$("#depth_chart_3").html(out + "Megadeep");
+			break;
+		case 4:
+			$("#depth_chart_4").html(out + "Hyperdeep");
+			break;
+		case 5:
+			$("#depth_chart_5").html(out + "Abyssal");
+			break;
+		case 6:
+			$("#depth_chart_6").html(out + "Bedrock");
+			break;
+		case 7:
+			$("#depth_chart_7").html(out + "Hell");
+			break;
+		default:
+	}
+
+	let drop_speed = ["100", "75", "50", "30", "15", "10", "5", "2"];
+	$("#drop_penalty_label").html("Drop Speed: " + drop_speed[depth] + "%");
 }
 
 function CalculateMaxDepth() {

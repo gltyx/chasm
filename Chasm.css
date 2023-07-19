@@ -199,6 +199,14 @@ form {
 	font-size: 10px;
 }
 
+.depth_chart_cell {
+	height: 24px;
+	width: 12px;
+
+	margin-left: 5px;
+	margin-right: 2px;
+}
+
 /* Chasm id's */
 #chasm_title {
 	padding-left: 34px;

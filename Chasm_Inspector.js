@@ -471,52 +471,52 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
 			break;
 		case iid.upgrade_earth_depth_2:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 2");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Notarized Mining Rights");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_2].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("Your old mining permit was a bit... forged. This one should stand up to even moderate scrutiny!");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			$("#inspector_subtext")	.html("max depth +1");
 			break;
 		case iid.upgrade_earth_depth_3:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 3");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Bloodpact Mining Rights");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_3].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("The Fringe Researcher insists that a document signed in blood will allow you to dig much deeper. That doesn't sound real, but you've got plenty of blood. Might as well try!");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			$("#inspector_subtext")	.html("max depth +1");
 			break;
 		case iid.upgrade_earth_depth_4:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 4");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Double Notarized Bloodpact");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("This document is now so laden with ink, blood, and wax seals that it is barely legible. Your legal team is thrilled.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			$("#inspector_subtext")	.html("max depth +1");
 			break;
 		case iid.upgrade_earth_depth_5:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 5");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Royal Mining Rights");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("The Fringe Researcher has spent his free time tracing the lineage of the royal family who used to own the land around the Chasm. The heir is willing to sell you ancient land rights, for a price.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			$("#inspector_subtext")	.html("max depth +1");
 			break;
 		case iid.upgrade_earth_depth_6:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 6");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Deep Mining Rights");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("You had your lawyers add in a few clauses protecting you from any liability for \"accidental plate shattering, geo-terrorism, and/or volcanic armageddon\"");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			$("#inspector_subtext")	.html("max depth +1");
 			break;
 		case iid.upgrade_earth_depth_7 :
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Depth 7");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Blessed Mining Rights");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_1].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("Apparently the only way to dig \"all the way to Hell\" is to get your documentation blessed. Luckily, the Intern's uncle is a priest, and he is willing to do it on the cheap.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Unlock deep mining<br>+1 Heavy Machinery");
+			$("#inspector_subtext")	.html("max depth +1");
 			break;
 		case iid.upgrade_water_storage:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water storage");

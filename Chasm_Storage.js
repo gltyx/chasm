@@ -608,6 +608,7 @@ class resource_storage {
 			}
 
 			chasm_storage[sid.storage_earth].probability.refresh(chasm_storage[sid.storage_earth].storage_flags);
+			RefreshDepthChart();
 		}
 	}
 }

@@ -108,7 +108,7 @@ class ELEMENT_PROBABILITY {
 			const p_gold = [		0,			0,						0,						2,						8  + srvb(30, 0.15),	40  + srvb(80, 0.15),	100 + srvb(140, 0.15),	0						];
 			const p_lead = [		0,			0,						0,						10  + srvb(10, 0.1),	40 + srvb(10, 0.1),		80  + srvb(60, 0.1),	30  + srvb(45, 0.1),	0						];
 			const p_iron = [		0,			0,						30  + srvb(70, 0.1),	50  + srvb(120, 0.15),	90 + srvb(200, 0.15),	30  + srvb(70, 0.2),	0,						0						];
-			const p_copper = [		0,			30 + srvb(400, 0.2),	100 + srvb(300, 0.15),	100 + srvb(200, 0.2),	30 + srvb(100, 0.15),	0,						0,						0						];
+			const p_copper = [		0,			30 + srvb(250, 0.2),	100 + srvb(300, 0.15),	100 + srvb(200, 0.2),	30 + srvb(100, 0.15),	0,						0,						0						];
 			const p_coal = [		0,			0,						4,						20  + srvb(50, 0.15),	50 + srvb(100, 0.15),	55  + srvb(170, 0.15),	60  + srvb(200, 0.2),	0						];
 			const sink_split = [	0,			0.1,					0.25,					0.5,					0.75,					0.85,					0.95,					1						];
 

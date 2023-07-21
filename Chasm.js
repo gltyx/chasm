@@ -79,6 +79,8 @@ function animation_tick() {
 	$("#earth_gather_progress").width(chasm_storage[sid.storage_earth].gather_progress + "%");
 	$("#earth_drop_progress").width(chasm_storage[sid.storage_earth].drop_progress + "%");
 
+	$("#incinerator_heat").width(incinerator_heat + "%");
+
 	// Water
 	chasm_storage[sid.storage_water].draw();
 	if (water.current == water.cap) {
@@ -127,6 +129,8 @@ function draw_resources() {
 	$("#value_water_amount").html("Value: " + stringifyValue(water_currency_count));
 }
 
+var incinerator_heat = 0;
+
 function game_tick(scalar) {
 	
 	// Earth Gather
@@ -168,6 +172,14 @@ function game_tick(scalar) {
 		} else {
 			chasm_storage[sid.storage_earth].drop_progress = 100;
 		}
+	}
+
+	// Incinerator
+	if (incinerator_heat > 0) {
+		heat_decay = 3;
+		incinerator_heat -= heat_decay * scalar;
+
+		if (heat_decay < 0) heat_decay = 0;
 	}
 
 	// Water Gather
@@ -237,6 +249,13 @@ function drop(storage) {
 			break;
 			
 		default:
+	}
+}
+
+function incinerator_stoke() {
+	incinerator_heat += 100;
+	if (incinerator_heat > 100) {
+		incinerator_heat = 100;
 	}
 }
 
@@ -375,7 +394,7 @@ function RefreshDepthChart() {
 	$("#depth_chart_7").html("");
 
 	let depth = chasm_storage[sid.storage_earth].machinery_depth;
-	let out = "< ";
+	let out = "<i class = 'material-icons grey-text text-darken-4' style = 'font-size: 14px;'>chevron_left</i>";
 	switch (depth) {
 		case 0:
 			$("#depth_chart_0").html(out + "Surface");

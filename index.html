@@ -232,84 +232,96 @@
 						</div>
 						<div id = "earth_box" class = "card blue-grey lighten-4">
 							<div class = "flex">
-								<!--Gather-->
-								<div class = "gather_button">
-									<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
-										<div id = "earth_gather_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
-									</div>
-									
-									<!--Gather button (deprecated)
-									<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
-									-->
-
-									<p class = "hcenter" style = "font-weight: bold;">Gather</p>
-									
-									<!--Workers Arrows-->
-									<form>
-										<div class = "flex">
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'gather')" value = "<" />
-											<div class = "hcenter" style = "width: 40px;">
-												<p id = "earth_workers_gather">0</p>
+								<div class = "unflex">
+									<div class = "flex">
+										<!--Gather-->
+										<div class = "gather_button">
+											<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+												<div id = "earth_gather_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
 											</div>
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'gather')" value = ">" />
-											<div class = "hcenter" style = "margin: auto;">
-												<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
-											</div>
-										</div>
-									</form>
-									<p id = "gather_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
-
-									<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
-										<form>
-											<!--Auto-gather checkbox (deprecated)-->
-											<!--
-											<p><label style = "zoom: 0.75;">
-											<input type = "checkbox" id = "earth_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
-											<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-											</label></p>
-											-->
 											
-											<!--Workers Slider (deprecated)-->
-											<!--
-											<p class = "range-field">
-											<input type = "range" id = "earth_gather_workers" min = "0" max = "20" />
-											<span class = "thumb" style = "height: 0px; width: 0px; top: 10px; margin-left: 7px; left: 131.878px;">
-											</p>
+											<!--Gather button (deprecated)
+											<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
 											-->
-										</form>
-									</div>
-								</div>
 
-								<!--Drop-->
-								<div class = "drop_button">
-									<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
-										<div id = "earth_drop_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
-									</div>
-									
-									<!--Drop button (deprecated)
-									<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "drop('earth_storage')">Drop</a>
-									-->
+											<p class = "hcenter" style = "font-weight: bold;">Gather</p>
+											
+											<!--Workers Arrows-->
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'gather')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "earth_workers_gather">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'gather')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+													</div>
+												</div>
+											</form>
+											<p id = "gather_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
 
-									<p class = "hcenter" style = "font-weight: bold;">Drop</p>
-									
-									<!--Workers Arrows-->
-									<form>
-										<div class = "flex">
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'drop')" value = "<" />
-											<div class = "hcenter" style = "width: 40px;">
-												<p id = "earth_workers_drop">0</p>
-											</div>
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'drop')" value = ">" />
-											<div class = "hcenter" style = "margin: auto;">
-												<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+											<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
+												<form>
+													<!--Auto-gather checkbox (deprecated)-->
+													<!--
+													<p><label style = "zoom: 0.75;">
+													<input type = "checkbox" id = "earth_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+													<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+													</label></p>
+													-->
+													
+													<!--Workers Slider (deprecated)-->
+													<!--
+													<p class = "range-field">
+													<input type = "range" id = "earth_gather_workers" min = "0" max = "20" />
+													<span class = "thumb" style = "height: 0px; width: 0px; top: 10px; margin-left: 7px; left: 131.878px;">
+													</p>
+													-->
+												</form>
 											</div>
 										</div>
-									</form>
-									<p id = "drop_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
 
-									<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
-										<form>
-										</form>
+										<!--Drop-->
+										<div class = "drop_button">
+											<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+												<div id = "earth_drop_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
+											</div>
+											
+											<!--Drop button (deprecated)
+											<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "drop('earth_storage')">Drop</a>
+											-->
+
+											<p class = "hcenter" style = "font-weight: bold;">Drop</p>
+											
+											<!--Workers Arrows-->
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'drop')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "earth_workers_drop">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'drop')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+													</div>
+												</div>
+											</form>
+											<p id = "drop_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
+
+											<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
+												<form>
+												</form>
+											</div>
+										</div>
+									</div>
+
+									<!--Incinerator-->
+									<div class = "incinerator_box">
+										<div id = "incinerator_heat_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+											<div id = "incinerator_heat" class = "determinate" style = "background-color: #fa3c0c; width: 30%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
+										</div>
+										<input type = "button" style = "font-size: 12px;" onclick = "incinerator_stoke();" value = "Stoke" />
 									</div>
 								</div>
 

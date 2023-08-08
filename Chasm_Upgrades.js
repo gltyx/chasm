@@ -28,13 +28,14 @@ class _UPGRADE_ID {
 	upgrade_earth_depth_5			= 0x000d;	// Max depth +1
 	upgrade_earth_depth_6			= 0x000e;	// Max depth +1
 	upgrade_earth_depth_7			= 0x000f;	// Max depth +1
+	upgrade_mining_rig_1			= 0x0010;	// Unlock mining rig
 
-	upgrade_water_storage			= 0x0010;	// Unlock water storage
+	upgrade_water_storage			= 0x0011;	// Unlock water storage
 
-	upgrade_workers_1				= 0x0011;	// +1 Worker
-	upgrade_workers_2				= 0x0012;	// +1 Worker
+	upgrade_workers_1				= 0x0012;	// +1 Worker
+	upgrade_workers_2				= 0x0013;	// +1 Worker
 
-	upgrade_count					= 0x0013;
+	upgrade_count					= 0x0014;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -326,6 +327,19 @@ function initUpgrades() {
 				]);
 				break;
 			
+			case uid.upgrade_mining_rig_1:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_mining_rig_1",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					3,		// Particles
+					0.80,	// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+				]);
+				break;
+			
 			case uid.upgrade_workers_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_workers_1",
@@ -403,12 +417,14 @@ function buy_upgrade(upgrade_id) {
 				break;
 
 			case uid.upgrade_earth_metals_1:
-				$("#earth_survey").css("display", "block");
-				chasm_storage[sid.storage_earth].probability.refresh(chasm_storage[sid.storage_earth].storage_flags);
+				$("#earth_survey").css("background-color", "#cfd8dc");
+				$("#earth_survey_content").css("visibility", "visible");
+				chasm_storage[sid.storage_earth].refresh_survey();
 				break;
 			
 			case uid.upgrade_earth_depth_1:
-				$("#earth_depth").css("display", "block");
+				$("#earth_depth").css("background-color", "#cfd8dc");
+				$("#earth_depth_content").css("visibility", "visible");
 				chasm_currency[cid.currency_machinery].resource.gain(1);
 				RefreshMaxDepth();
 				break;
@@ -435,6 +451,11 @@ function buy_upgrade(upgrade_id) {
 
 			case uid.upgrade_earth_depth_7:
 				RefreshMaxDepth();
+				break;
+
+			case uid.upgrade_mining_rig_1:
+				$("#incinerator_box").css("background-color", "#cfd8dc");
+				$("#incinerator_box_content").css("visibility", "visible");
 				break;
 
 			case uid.upgrade_workers_1:
@@ -722,7 +743,7 @@ function generateResearchMap() {
 
 	// Testing row
 	var test_row = 14;
-	var test_upgrades = [uid.upgrade_earth_density_2, uid.upgrade_earth_density_3, uid.upgrade_water_storage, uid.upgrade_earth_depth_2, uid.upgrade_earth_depth_3, uid.upgrade_earth_depth_4, uid.upgrade_earth_depth_5, uid.upgrade_earth_depth_6, uid.upgrade_earth_depth_7, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5];
+	var test_upgrades = [uid.upgrade_earth_density_2, uid.upgrade_earth_density_3, uid.upgrade_water_storage, uid.upgrade_earth_depth_2, uid.upgrade_earth_depth_3, uid.upgrade_earth_depth_4, uid.upgrade_earth_depth_5, uid.upgrade_earth_depth_6, uid.upgrade_earth_depth_7, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5, uid.upgrade_mining_rig_1];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;

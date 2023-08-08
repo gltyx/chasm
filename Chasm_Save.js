@@ -41,10 +41,10 @@ function loadSave() {
 		save_unpack_currency(chasm_save.currency);
 		save_unpack_upgrades(chasm_save.upgrades);
 		save_unpack_storage(chasm_save.storage);
-
-		// Update UI elements
-		refresh_ui();
 	}
+
+	// Update UI elements
+	refresh_ui();
 }
 
 function storeSave() {

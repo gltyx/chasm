@@ -80,6 +80,8 @@ function animation_tick() {
 	$("#earth_drop_progress").width(chasm_storage[sid.storage_earth].drop_progress + "%");
 
 	$("#incinerator_heat").width(incinerator_heat + "%");
+	$("#mining_rig_speed_label").html("Gather speed: " + DisplayNumberFormatter(incinerator_multi, 2) + "x");
+	$("#mining_rig_percent_label").html(DisplayNumberFormatter(incinerator_heat, 1) + "%");
 
 	// Water
 	chasm_storage[sid.storage_water].draw();
@@ -130,14 +132,25 @@ function draw_resources() {
 }
 
 var incinerator_heat = 0;
+var incinerator_multi = 1;
 
 function game_tick(scalar) {
+	// Incinerator
+	incinerator_multi = 1;
+	if (incinerator_heat > 0) {
+		heat_decay = 3;
+		incinerator_heat -= heat_decay * scalar;
+
+		if (incinerator_heat < 0) incinerator_heat = 0;
+	}
+	incinerator_multi += 1 * (incinerator_heat / 100)
 	
 	// Earth Gather
 	let gather_amount = 0;
 	if (chasm_storage[sid.storage_earth].workers_gather > 0) {
 		gather_amount += 20;
 		if (chasm_upgrades[uid.upgrade_earth_gather_speed_1].unlocked) gather_amount *= 1.2;
+		gather_amount *= incinerator_multi;
 		gather_amount *= chasm_storage[sid.storage_earth].workers_gather;
 		chasm_storage[sid.storage_earth].gather_progress +=  gather_amount * scalar;
 	}
@@ -172,14 +185,6 @@ function game_tick(scalar) {
 		} else {
 			chasm_storage[sid.storage_earth].drop_progress = 100;
 		}
-	}
-
-	// Incinerator
-	if (incinerator_heat > 0) {
-		heat_decay = 3;
-		incinerator_heat -= heat_decay * scalar;
-
-		if (heat_decay < 0) heat_decay = 0;
 	}
 
 	// Water Gather
@@ -364,17 +369,25 @@ function refresh_ui() {
 	}
 	
 	if (chasm_upgrades[uid.upgrade_earth_metals_1].unlocked) {
-		$("#earth_survey").css("display", "block");
+		$("#earth_depth").css("background-color", "#cfd8dc");
+		$("#earth_survey_content").css("visibility", "visible");
 	}
 	
 	if (chasm_upgrades[uid.upgrade_earth_depth_1].unlocked) {
-		$("#earth_depth").css("display", "block");
+		$("#earth_depth").css("background-color", "#cfd8dc");
+		$("#earth_depth_content").css("visibility", "visible");
+	}
+
+	if (chasm_upgrades[uid.upgrade_mining_rig_1].unlocked) {
+		$("#incinerator_box").css("background-color", "#cfd8dc");
+		$("#incinerator_box_content").css("visibility", "visible");
 	}
 
 	if (chasm_upgrades[uid.upgrade_water_storage].unlocked) {
 		$("#water_section").css("display", "block");
 	}
 
+	chasm_storage[sid.storage_earth].refresh_survey();
 	RefreshMaxDepth();
 	RefreshDepthChart();
 }

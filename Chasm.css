@@ -176,6 +176,8 @@ form {
 
 	border: 1px dashed whitesmoke;
 	border-radius: 4px;
+
+	background-color: #cfd8dc;
 }
 
 .drop_button {
@@ -188,19 +190,8 @@ form {
 
 	border: 1px dashed whitesmoke;
 	border-radius: 4px;
-}
 
-.incinerator_box {
-	width: 200px;
-	height: 192px;
-
-	margin-top: 8px;
-	margin-right: 8px;
-	padding-left: 4px;
-	padding-right: 4px;
-
-	border: 1px dashed whitesmoke;
-	border-radius: 4px;
+	background-color: #cfd8dc;
 }
 
 .upgrade_tile {
@@ -249,6 +240,21 @@ form {
 #earth_box {
 	padding: 5px 5px 5px 5px;
 	margin-bottom: 5px;
+	
+	background-color: #b0bbbf;
+}
+
+#incinerator_box {
+	width: 200px;
+	height: 192px;
+
+	margin-top: 8px;
+	margin-right: 8px;
+	padding-left: 4px;
+	padding-right: 4px;
+
+	border: 1px dashed whitesmoke;
+	border-radius: 4px;
 }
 
 #water_box {

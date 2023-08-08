@@ -230,7 +230,7 @@
 								</div>
 							</div>
 						</div>
-						<div id = "earth_box" class = "card blue-grey lighten-4">
+						<div id = "earth_box" class = "card">
 							<div class = "flex">
 								<div class = "unflex">
 									<div class = "flex">
@@ -316,88 +316,97 @@
 										</div>
 									</div>
 
-									<!--Incinerator-->
-									<div class = "incinerator_box">
-										<div id = "incinerator_heat_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
-											<div id = "incinerator_heat" class = "determinate" style = "background-color: #fa3c0c; width: 30%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
+									<!--Mining Rig-->
+									<div id = "incinerator_box">
+										<div id = "incinerator_box_content" style = "visibility: hidden;">
+											<p class = "hcenter" style = "font-weight: bold;">Mining Rig</p>
+											<p id = "mining_rig_percent_label" class = "hcenter" style = "font-size: 12px;">0.0%</p>
+											<div id = "incinerator_heat_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px; margin-top: 1px;">
+												<div id = "incinerator_heat" class = "determinate" style = "background-color: #fa3c0c; width: 30%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
+											</div>
+											<p id = "mining_rig_speed_label" class = "hcenter" style = "font-size: 12px;">Gather speed: 1.00x</p>
+											<input type = "button" style = "font-size: 12px;" onclick = "incinerator_stoke();" value = "Stoke" />
 										</div>
-										<input type = "button" style = "font-size: 12px;" onclick = "incinerator_stoke();" value = "Stoke" />
 									</div>
 								</div>
 
 								<!--Survey-->
-								<div id = "earth_survey" class = "survey_chart hidden" style = "width: 126px; height: fit-content; border: 1px dashed whitesmoke; border-radius: 4px; margin-right: 8px;">
-									<p class = "hcenter" style = "font-weight: bold;">Survey</p>
-									
-									<!--Workers Arrows-->
-									<div style = "width: 102px; margin: auto;">
-										<form>
-											<div class = "flex">
-												<div style = "width: 8px;"></div>
-												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'survey')" value = "<" />
-												<div class = "hcenter" style = "width: 40px;">
-													<p id = "earth_workers_survey">0</p>
+								<div id = "earth_survey" class = "survey_chart" style = "width: 126px; height: fit-content; border: 1px dashed whitesmoke; border-radius: 4px; margin-right: 8px;">
+									<div id = "earth_survey_content" style = "visibility: hidden;">
+										<p class = "hcenter" style = "font-weight: bold;">Survey</p>
+										
+										<!--Workers Arrows-->
+										<div style = "width: 102px; margin: auto;">
+											<form>
+												<div class = "flex">
+													<div style = "width: 8px;"></div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'survey')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "earth_workers_survey">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'survey')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+													</div>
 												</div>
-												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'survey')" value = ">" />
-												<div class = "hcenter" style = "margin: auto;">
-													<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
-												</div>
-											</div>
-										</form>
-									</div>
+											</form>
+										</div>
 
-									<div id = "earth_survey_menu" style = "padding-left: 6px; padding-right: 6px; display: flex; width: 126px;">
+										<div id = "earth_survey_menu" style = "padding-left: 6px; padding-right: 6px; display: flex; width: 126px;">
+										</div>
 									</div>
 								</div>
 
 								<!--Depth-->
-								<div id = "earth_depth" class = "hidden" style = "width: 106px; height: 307px; border: 1px dashed whitesmoke; border-radius: 4px;">
-									<p class = "hcenter" style = "font-weight: bold;">Depth</p>
-									
-									<!--Machinery Arrows-->
-									<div style = "width: 88px; margin: auto;">
-										<form>
-											<div class = "flex">
-												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_machinery, -1, 'depth')" value = "<" />
-												<div class = "hcenter" style = "width: 40px;">
-													<p id = "earth_machinery_depth">0</p>
+								<div id = "earth_depth" style = "width: 106px; height: 307px; border: 1px dashed whitesmoke; border-radius: 4px;">
+									<div id = "earth_depth_content" style = "visibility: hidden;">
+										<p class = "hcenter" style = "font-weight: bold;">Depth</p>
+										
+										<!--Machinery Arrows-->
+										<div style = "width: 88px; margin: auto;">
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_machinery, -1, 'depth')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "earth_machinery_depth">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_machinery, 1, 'depth')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_machinery" style = "margin-right: 0px;">toys</i>
+													</div>
 												</div>
-												<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_machinery, 1, 'depth')" value = ">" />
-												<div class = "hcenter" style = "margin: auto;">
-													<i class = "material-icons grey-text text-darken-4 currency_icon currency_machinery" style = "margin-right: 0px;">toys</i>
-												</div>
-											</div>
-										</form>
-									</div>
+											</form>
+										</div>
 
-									<p id = "max_depth_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">Max Depth 0</p>
+										<p id = "max_depth_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">Max Depth 0</p>
 
-									<div class = "flex">
-										<div class = "depth_chart_cell" style = "background-color: #259721;"></div><div id = "depth_chart_0" class = "vertcenter" style = "font-size: 14px;"></div>
-									</div>
-									<div class = "flex">
-										<div class = "depth_chart_cell" style = "background-color: #8a4c28;"></div><div id = "depth_chart_1" class = "vertcenter" style = "font-size: 14px;"></div>
-									</div>
-									<div class = "flex">
-										<div class = "depth_chart_cell" style = "background-color: #5c2f15;"></div><div id = "depth_chart_2" class = "vertcenter" style = "font-size: 14px;"></div>
-									</div>
-									<div class = "flex">
-										<div class = "depth_chart_cell" style = "background-color: #45210c;"></div><div id = "depth_chart_3" class = "vertcenter" style = "font-size: 14px;"></div>
-									</div>
-									<div class = "flex">
-										<div class = "depth_chart_cell" style = "background-color: #291204;"></div><div id = "depth_chart_4" class = "vertcenter" style = "font-size: 14px;"></div>
-									</div>
-									<div class = "flex">
-										<div class = "depth_chart_cell" style = "background-color: #1f0d02;"></div><div id = "depth_chart_5" class = "vertcenter" style = "font-size: 14px;"></div>
-									</div>
-									<div class = "flex">
-										<div class = "depth_chart_cell" style = "background-color: #000000;"></div><div id = "depth_chart_6" class = "vertcenter" style = "font-size: 14px;"></div>
-									</div>
-									<div class = "flex">
-										<div class = "depth_chart_cell" style = "background-color: #b00c09;"></div><div id = "depth_chart_7" class = "vertcenter" style = "font-size: 14px;"></div>
-									</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #259721;"></div><div id = "depth_chart_0" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #8a4c28;"></div><div id = "depth_chart_1" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #5c2f15;"></div><div id = "depth_chart_2" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #45210c;"></div><div id = "depth_chart_3" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #291204;"></div><div id = "depth_chart_4" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #1f0d02;"></div><div id = "depth_chart_5" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #000000;"></div><div id = "depth_chart_6" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #b00c09;"></div><div id = "depth_chart_7" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
 
-									<p id = "drop_penalty_label" class = "hcenter" style = "font-size: 12px; margin-top: 4px; margin-bottom: 4px;"></p>
+										<p id = "drop_penalty_label" class = "hcenter" style = "font-size: 12px; margin-top: 4px; margin-bottom: 4px;"></p>
+									</div>
 								</div>
 							</div>
 						</div>

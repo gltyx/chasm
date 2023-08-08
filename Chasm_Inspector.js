@@ -53,6 +53,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_depth_5						= uid.upgrade_earth_depth_5					+ this.offset_upgrades;
 	upgrade_earth_depth_6						= uid.upgrade_earth_depth_6					+ this.offset_upgrades;
 	upgrade_earth_depth_7						= uid.upgrade_earth_depth_7					+ this.offset_upgrades;
+	upgrade_mining_rig_1						= uid.upgrade_mining_rig_1					+ this.offset_upgrades;
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
 	upgrade_workers_1							= uid.upgrade_workers_1						+ this.offset_upgrades;
 	upgrade_workers_2							= uid.upgrade_workers_2						+ this.offset_upgrades;
@@ -517,6 +518,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("Apparently the only way to dig \"all the way to Hell\" is to get your documentation blessed. Luckily, the Intern's uncle is a priest, and he is willing to do it on the cheap.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("max depth +1");
+			break;
+		case iid.upgrade_mining_rig_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>There Will Be Dirt");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_mining_rig_1].cost.stringify());
+			$("#inspector_text")	.html("This giant industrial mining rig will speed up your gathering as long as you keep it fueled. Hopefully unrelenting greed won't result in your ultimate downfall. I drink your milkshake!");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock the Mining Rig");
 			break;
 		case iid.upgrade_water_storage:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water storage");

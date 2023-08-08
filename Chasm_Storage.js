@@ -565,7 +565,7 @@ class resource_storage {
 				$(this.survey_dom).html(this.workers_survey);
 			}
 
-			chasm_storage[sid.storage_earth].probability.refresh(chasm_storage[sid.storage_earth].storage_flags);
+			this.refresh_survey();
 		} else if (target == "depth") {
 			let out = num;
 
@@ -607,9 +607,13 @@ class resource_storage {
 				$(this.depth_dom).html(this.machinery_depth);
 			}
 
-			chasm_storage[sid.storage_earth].probability.refresh(chasm_storage[sid.storage_earth].storage_flags);
+			this.refresh_survey();
 			RefreshDepthChart();
 		}
+	}
+
+	refresh_survey() {
+		this.probability.refresh(this.storage_flags);
 	}
 }
 

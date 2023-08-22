@@ -369,7 +369,7 @@ function refresh_ui() {
 	}
 	
 	if (chasm_upgrades[uid.upgrade_earth_metals_1].unlocked) {
-		$("#earth_depth").css("background-color", "#cfd8dc");
+		$("#earth_survey").css("background-color", "#cfd8dc");
 		$("#earth_survey_content").css("visibility", "visible");
 	}
 	

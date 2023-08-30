@@ -694,7 +694,6 @@ function elementValue(element_count) { // Returns currency value of all elements
 				break;
 			case eid.element_stone:
 				let stone_value = 0.08;
-				if (chasm_upgrades[uid.upgrade_earth_value_2].unlocked) stone_value += 0.04;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * stone_value;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * stone_value;
@@ -705,8 +704,11 @@ function elementValue(element_count) { // Returns currency value of all elements
 				currency_count[cid.currency_soul] 		+= element_count[eid.element_coal] * 0.06;
 				break;
 			case eid.element_copper:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_copper] * 0.01;
-				currency_count[cid.currency_strands] 	+= element_count[eid.element_copper] * 0.01;
+				let copper_value = 0.01;
+				if (chasm_upgrades[uid.upgrade_earth_value_2].unlocked) copper_value += 0.01;
+
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_copper] * copper_value;
+				currency_count[cid.currency_strands] 	+= element_count[eid.element_copper] * copper_value;
 				break;
 			case eid.element_iron:
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_iron] * 0.04;

@@ -173,6 +173,7 @@ function game_tick(scalar) {
 	let depth = chasm_storage[sid.storage_earth].machinery_depth;
 	if (chasm_storage[sid.storage_earth].workers_drop > 0) {
 		drop_amount += 10;
+		if (chasm_upgrades[uid.upgrade_earth_drop_speed_1].unlocked) drop_amount *= 1.2;
 		drop_amount *= drop_speed[depth];
 		drop_amount *= chasm_storage[sid.storage_earth].workers_drop;
 		chasm_storage[sid.storage_earth].drop_progress += drop_amount * scalar;

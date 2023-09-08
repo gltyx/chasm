@@ -138,7 +138,7 @@ function game_tick(scalar) {
 	// Incinerator
 	incinerator_multi = 1;
 	if (incinerator_heat > 0) {
-		heat_decay = 3;
+		heat_decay = 35;
 		incinerator_heat -= heat_decay * scalar;
 
 		if (incinerator_heat < 0) incinerator_heat = 0;

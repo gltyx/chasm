@@ -59,6 +59,8 @@ class _INSPECTOR_ID {
 	upgrade_workers_1							= uid.upgrade_workers_1						+ this.offset_upgrades;
 	upgrade_workers_2							= uid.upgrade_workers_2						+ this.offset_upgrades;
 	upgrade_workers_3							= uid.upgrade_workers_3						+ this.offset_upgrades;
+	upgrade_workers_4							= uid.upgrade_workers_4						+ this.offset_upgrades;
+	upgrade_workers_5							= uid.upgrade_workers_5						+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
@@ -568,6 +570,22 @@ function showInspector(id) {
 			$("#inspector_text")	.html("You found an app where you can hire manual labor for cheap! Hopefully the regulators don't catch on.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker");
+			break;
+		case iid.upgrade_workers_4:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Old Timey Prospector");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_4].cost.stringify());
+			$("#inspector_text")	.html("This old coot is willing to help you fill the Chasm, but first you must prove that there is ore in them there hills.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker");
+			break;
+		case iid.upgrade_workers_5:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Creepy Twins");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_5].cost.stringify());
+			$("#inspector_text")	.html("The Fringe Researcher has reported a pair of creepy children haunting the dark corners of the worksite... Is it even child labor if the children are ghosts?");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+2 Workers");
 			break;
 
 		// Achievements

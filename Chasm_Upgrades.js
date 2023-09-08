@@ -36,8 +36,10 @@ class _UPGRADE_ID {
 	upgrade_workers_1				= 0x0013;	// +1 Worker
 	upgrade_workers_2				= 0x0014;	// +1 Worker
 	upgrade_workers_3				= 0x0015;	// +1 Worker
+	upgrade_workers_4				= 0x0016;	// +1 Worker
+	upgrade_workers_5				= 0x0017;	// +2 Worker
 
-	upgrade_count					= 0x0016;
+	upgrade_count					= 0x0018;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -204,7 +206,7 @@ function initUpgrades() {
 					"upgrade_earth_gather_speed_1",
 					"images/tile_research_earth_gather_speed_1.png",
 					[
-					1,		// Particles
+					0.8,		// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -243,7 +245,7 @@ function initUpgrades() {
 					"upgrade_earth_metals_1",
 					"images/tile_research_earth_metals_1.png",
 					[
-					2.5,	// Particles
+					1.5,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -347,8 +349,8 @@ function initUpgrades() {
 					"upgrade_mining_rig_1",
 					"images/tile_research_upgrade_unknown.png",
 					[
-					3,		// Particles
-					0.80,	// Strands
+					1.5,	// Particles
+					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
@@ -386,7 +388,33 @@ function initUpgrades() {
 					"upgrade_workers_3",
 					"images/tile_research_upgrade_workers_2.png",
 					[
-					5.00,	// Particles
+					1.5,	// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+				]);
+				break;
+			
+			case uid.upgrade_workers_4:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_workers_4",
+					"images/tile_research_upgrade_workers_2.png",
+					[
+					4,		// Particles
+					0.1,	// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+				]);
+				break;
+		
+			case uid.upgrade_workers_5:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_workers_5",
+					"images/tile_research_upgrade_workers_2.png",
+					[
+					8.5,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -496,6 +524,14 @@ function buy_upgrade(upgrade_id) {
 
 			case uid.upgrade_workers_3:
 				chasm_currency[cid.currency_workers].resource.gain(1);
+				break;
+
+			case uid.upgrade_workers_4:
+				chasm_currency[cid.currency_workers].resource.gain(1);
+				break;
+
+			case uid.upgrade_workers_5:
+				chasm_currency[cid.currency_workers].resource.gain(2);
 				break;
 			
 			default:
@@ -765,17 +801,21 @@ function generateResearchMap() {
 	upgrade_map[mapColRow(3, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_1,			[uid.upgrade_earth_metals_1] 														);
 	upgrade_map[mapColRow(5, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_drop_speed_1,		[uid.upgrade_earth_metals_1]														);
 	
-	
-	upgrade_map[mapColRow(3, 9)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_depth_1]															);
-	upgrade_map[mapColRow(3, 10)]	.assign_tile(tid.tile_node, 		uid.upgrade_mining_rig_1,			[uid.upgrade_earth_depth_1]							 								);
+	upgrade_map[mapColRow(5, 2)]	.assign_tile(tid.tile_node, 		uid.upgrade_mining_rig_1,																 								);
 	
 	// Intro Workers Zone
 	upgrade_map[mapColRow(7, 2)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_1,																									);
 	upgrade_map[mapColRow(7, 3)]	.assign_tile(tid.tile_connect_urd, 	uid.upgrade_count,					[uid.upgrade_workers_1]																);
 	upgrade_map[mapColRow(8, 3)]	.assign_tile(tid.tile_connect_lr, 	uid.upgrade_count,					[uid.upgrade_workers_1]																);
-	upgrade_map[mapColRow(9, 3)]	.assign_tile(tid.tile_connect_ld, 	uid.upgrade_count,					[uid.upgrade_workers_1]																);
+	upgrade_map[mapColRow(9, 3)]	.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,					[uid.upgrade_workers_1],			[uid.upgrade_workers_1]							);
+	upgrade_map[mapColRow(10, 3)]	.assign_tile(tid.tile_connect_lr, 	uid.upgrade_count,					[uid.upgrade_workers_1]																);
+	upgrade_map[mapColRow(11, 3)]	.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,					[uid.upgrade_workers_1],			[uid.upgrade_workers_1]							);
+	upgrade_map[mapColRow(12, 3)]	.assign_tile(tid.tile_connect_lr, 	uid.upgrade_count,					[uid.upgrade_workers_1]																);
+	upgrade_map[mapColRow(13, 3)]	.assign_tile(tid.tile_connect_ld, 	uid.upgrade_count,					[uid.upgrade_workers_1]																);
 	upgrade_map[mapColRow(7, 4)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_2,				[uid.upgrade_workers_1]																);
 	upgrade_map[mapColRow(9, 4)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_3,				[uid.upgrade_workers_1]																);
+	upgrade_map[mapColRow(11, 4)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_4,				[uid.upgrade_workers_1]																);
+	upgrade_map[mapColRow(13, 4)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_5,				[uid.upgrade_workers_1]																);
 
 	// Testing row
 	var test_row = 14;

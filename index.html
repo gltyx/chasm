@@ -22,7 +22,7 @@
 		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_timing.js"></script>
 		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_logging.js"></script>
 		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_save.js"></script>
-		<!--<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_math.js"></script>-->
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_math.js"></script>
 
 		<!--Local lib_chasm source (for parallel development)-->
 		<!--
@@ -325,7 +325,9 @@
 												<div id = "incinerator_heat" class = "determinate" style = "background-color: #fa3c0c; width: 30%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
 											</div>
 											<p id = "mining_rig_speed_label" class = "hcenter" style = "font-size: 12px;">Gather speed: 1.00x</p>
-											<input type = "button" style = "font-size: 12px;" onclick = "incinerator_stoke();" value = "Stoke" />
+											<div style = "text-align: center;">
+												<input type = "button" style = "font-size: 12px;" onclick = "incinerator_stoke();" value = "Stoke" />
+											</div>
 										</div>
 									</div>
 								</div>

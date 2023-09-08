@@ -111,7 +111,7 @@ class currency_value_map {
 		let cost_prewrapper 				= "<p style = 'margin-left: 6px; margin-right: 3px;'>";
 		let cost_postwrapper 				= "</p>";
 
-		let cost_unaffordable_prewrapper 	= "<span style = 'color: red;'>";
+		let cost_unaffordable_prewrapper 	= "<span style = 'color: LightPink;'>";
 		let cost_unaffordable_postwrapper 	= "</span>";
 
 		for (let i = 0; i < cid.currency_count; i++) {

@@ -61,6 +61,7 @@ class _INSPECTOR_ID {
 	upgrade_workers_3							= uid.upgrade_workers_3						+ this.offset_upgrades;
 	upgrade_workers_4							= uid.upgrade_workers_4						+ this.offset_upgrades;
 	upgrade_workers_5							= uid.upgrade_workers_5						+ this.offset_upgrades;
+	upgrade_workers_6							= uid.upgrade_workers_6						+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
@@ -586,6 +587,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("The Fringe Researcher has reported a pair of creepy children haunting the dark corners of the worksite... Is it even child labor if the children are ghosts?");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+2 Workers");
+			break;
+		case iid.upgrade_workers_6:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>HR Department");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_6].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker<br>+10% Worker Efficiency");
 			break;
 
 		// Achievements

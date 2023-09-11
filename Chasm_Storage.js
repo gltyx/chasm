@@ -693,7 +693,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value;
 				break;
 			case eid.element_stone:
-				let stone_value = 0.08;
+				let stone_value = 0.30;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * stone_value;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * stone_value;

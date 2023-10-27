@@ -882,6 +882,45 @@ function stringifyValue(currency_count) {
 	return out;
 }
 
+function loadEarthValue(currency_count) {
+	if (currency_count[cid.currency_particles] > 0) {
+		$("#value_earth_particles").show();
+		$("#value_earth_particles_amount").html(DisplayNumberFormatter(currency_count[cid.currency_particles], 2));
+	} else {
+		$("#value_earth_particles").hide();
+	}
+	if (currency_count[cid.currency_strands] > 0) {
+		$("#value_earth_strands").show();
+		$("#value_earth_strands_amount").html(DisplayNumberFormatter(currency_count[cid.currency_strands], 2));
+	} else {
+		$("#value_earth_strands").hide();
+	}
+	if (currency_count[cid.currency_spirit] > 0) {
+		$("#value_earth_spirit").show();
+		$("#value_earth_spirit_amount").html(DisplayNumberFormatter(currency_count[cid.currency_spirit], 2));
+	} else {
+		$("#value_earth_spirit").hide();
+	}
+	if (currency_count[cid.currency_soul] > 0) {
+		$("#value_earth_soul").show();
+		$("#value_earth_soul_amount").html(DisplayNumberFormatter(currency_count[cid.currency_soul], 2));
+	} else {
+		$("#value_earth_soul").hide();
+	}
+	if (currency_count[cid.currency_capital] > 0) {
+		$("#value_earth_capital").show();
+		$("#value_earth_capital_amount").html(DisplayNumberFormatter(currency_count[cid.currency_capital], 2));
+	} else {
+		$("#value_earth_capital").hide();
+	}
+	if (currency_count[cid.currency_mass] > 0) {
+		$("#value_earth_mass").show();
+		$("#value_earth_mass_amount").html(DisplayNumberFormatter(currency_count[cid.currency_mass], 2));
+	} else {
+		$("#value_earth_mass").hide();
+	}
+}
+
 // Bitmap Bit Class - Information saved to an individual bit of the bitmap (keep this as small as possible to conserve resources)
 class bitmap_bit {
 	type;

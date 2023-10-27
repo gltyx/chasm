@@ -123,7 +123,7 @@ function draw_resources() {
 	let earth_element_count = chasm_storage[sid.storage_earth].bitmap.element_count();
 	let earth_currency_count = elementValue(earth_element_count);
 	$("#element_earth_amount").html(stringifyElements(earth_element_count));
-	$("#value_earth_amount").html("Value: " + stringifyValue(earth_currency_count));
+	loadEarthValue(earth_currency_count);
 
 	let water_element_count = chasm_storage[sid.storage_water].bitmap.element_count();
 	let water_currency_count = elementValue(water_element_count);

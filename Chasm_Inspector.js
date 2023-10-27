@@ -83,6 +83,20 @@ function registerInspectorEvents() {
 	$(".currency_workers").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_workers);});});
 	$(".currency_machinery").each(function(){	$(this).mouseenter(function(){showInspector(iid.currency_machinery);});});
 
+	$(".element_earth_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_earth);});});
+	$(".element_stone_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_stone);});});
+	$(".element_coal_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_coal);});});
+	$(".element_copper_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_copper);});});
+	$(".element_iron_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_iron);});});
+	$(".element_lead_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_lead);});});
+	$(".element_gold_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_gold);});});
+	$(".element_fossil_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fossil);});});
+	$(".element_emerald_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_emerald);});});
+	$(".element_sapphire_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_sapphire);});});
+	$(".element_ruby_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_ruby);});});
+	$(".element_diamond_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_diamond);});});
+	$(".element_magma_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_magma);});});
+
 	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
 	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});
 	$("#achievement_nothing_to_worry_about")	.mouseenter(function(){showInspector(iid.achievement_nothing_to_worry_about);});

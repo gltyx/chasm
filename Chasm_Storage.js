@@ -327,6 +327,22 @@ function initStorage() {
 	}
 }
 
+function initStorageDisplay() {
+	$("#element_earth_earth_sample").html(ElementSample(eid.element_earth));
+	$("#element_earth_stone_sample").html(ElementSample(eid.element_stone));
+	$("#element_earth_coal_sample").html(ElementSample(eid.element_coal));
+	$("#element_earth_copper_sample").html(ElementSample(eid.element_copper));
+	$("#element_earth_iron_sample").html(ElementSample(eid.element_iron));
+	$("#element_earth_lead_sample").html(ElementSample(eid.element_lead));
+	$("#element_earth_gold_sample").html(ElementSample(eid.element_gold));
+	$("#element_earth_fossil_sample").html(ElementSample(eid.element_fossil));
+	$("#element_earth_emerald_sample").html(ElementSample(eid.element_emerald));
+	$("#element_earth_sapphire_sample").html(ElementSample(eid.element_sapphire));
+	$("#element_earth_ruby_sample").html(ElementSample(eid.element_ruby));
+	$("#element_earth_diamond_sample").html(ElementSample(eid.element_diamond));
+	$("#element_earth_magma_sample").html(ElementSample(eid.element_magma));
+}
+
 // Resource Storage Class - Represents a resource storage box in the gui
 class resource_storage {
 	name = "";										// Storage name (must match storage ID)
@@ -863,6 +879,87 @@ function stringifyElements(element_count) {
 	}
 
 	return out;
+}
+
+function loadEarthElements(element_count) {
+	if (element_count[eid.element_earth] > 0) {
+		$("#element_earth_earth").show();
+		$("#element_earth_earth_amount").html(DisplayNumberFormatter(element_count[eid.element_earth], 0));
+	} else {
+		$("#element_earth_earth").hide();
+	}
+	if (element_count[eid.element_stone] > 0) {
+		$("#element_earth_stone").show();
+		$("#element_earth_stone_amount").html(DisplayNumberFormatter(element_count[eid.element_stone], 0));
+	} else {
+		$("#element_earth_stone").hide();
+	}
+	if (element_count[eid.element_coal] > 0) {
+		$("#element_earth_coal").show();
+		$("#element_earth_coal_amount").html(DisplayNumberFormatter(element_count[eid.element_coal], 0));
+	} else {
+		$("#element_earth_coal").hide();
+	}
+	if (element_count[eid.element_copper] > 0) {
+		$("#element_earth_copper").show();
+		$("#element_earth_copper_amount").html(DisplayNumberFormatter(element_count[eid.element_copper], 0));
+	} else {
+		$("#element_earth_copper").hide();
+	}
+	if (element_count[eid.element_iron] > 0) {
+		$("#element_earth_iron").show();
+		$("#element_earth_iron_amount").html(DisplayNumberFormatter(element_count[eid.element_iron], 0));
+	} else {
+		$("#element_earth_iron").hide();
+	}
+	if (element_count[eid.element_lead] > 0) {
+		$("#element_earth_lead").show();
+		$("#element_earth_lead_amount").html(DisplayNumberFormatter(element_count[eid.element_lead], 0));
+	} else {
+		$("#element_earth_lead").hide();
+	}
+	if (element_count[eid.element_gold] > 0) {
+		$("#element_earth_gold").show();
+		$("#element_earth_gold_amount").html(DisplayNumberFormatter(element_count[eid.element_gold], 0));
+	} else {
+		$("#element_earth_gold").hide();
+	}
+	if (element_count[eid.element_fossil] > 0) {
+		$("#element_earth_fossil").show();
+		$("#element_earth_fossil_amount").html(DisplayNumberFormatter(element_count[eid.element_fossil], 0));
+	} else {
+		$("#element_earth_fossil").hide();
+	}
+	if (element_count[eid.element_emerald] > 0) {
+		$("#element_earth_emerald").show();
+		$("#element_earth_emerald_amount").html(DisplayNumberFormatter(element_count[eid.element_emerald], 0));
+	} else {
+		$("#element_earth_emerald").hide();
+	}
+	if (element_count[eid.element_sapphire] > 0) {
+		$("#element_earth_sapphire").show();
+		$("#element_earth_sapphire_amount").html(DisplayNumberFormatter(element_count[eid.element_sapphire], 0));
+	} else {
+		$("#element_earth_sapphire").hide();
+	}
+	if (element_count[eid.element_ruby] > 0) {
+		$("#element_earth_ruby").show();
+		$("#element_earth_ruby_amount").html(DisplayNumberFormatter(element_count[eid.element_ruby], 0));
+	} else {
+		$("#element_earth_ruby").hide();
+	}
+	if (element_count[eid.element_diamond] > 0) {
+		$("#element_earth_diamond").show();
+		$("#element_earth_diamond_amount").html(DisplayNumberFormatter(element_count[eid.element_diamond], 0));
+	} else {
+		$("#element_earth_diamond").hide();
+	}
+	if (element_count[eid.element_magma] > 0) {
+		$("#element_earth_magma").show();
+		$("#element_earth_magma_amount").html(DisplayNumberFormatter(element_count[eid.element_magma], 0));
+	} else {
+		$("#element_earth_magma").hide();
+	}
 }
 
 function stringifyValue(currency_count) {

@@ -816,8 +816,13 @@ function generateResearchMap() {
 	upgrade_map[mapColRow(4, 7)]	.assign_tile(tid.tile_connect_lr, 	uid.upgrade_count,					[uid.upgrade_earth_metals_1]																	);
 	upgrade_map[mapColRow(5, 7)]	.assign_tile(tid.tile_connect_ld, 	uid.upgrade_count,					[uid.upgrade_earth_metals_1]																	);
 	upgrade_map[mapColRow(1, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_2, 			[uid.upgrade_earth_metals_1]																	);
+	upgrade_map[mapColRow(1, 9)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_value_2]																);
 	upgrade_map[mapColRow(3, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_1,			[uid.upgrade_earth_metals_1] 																	);
 	upgrade_map[mapColRow(5, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_drop_speed_1,		[uid.upgrade_earth_metals_1]																	);
+	upgrade_map[mapColRow(3, 9)]	.assign_tile(tid.tile_connect_ur, 	uid.upgrade_count,					[uid.upgrade_earth_depth_1]																		);
+	upgrade_map[mapColRow(4, 9)]	.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,					[uid.upgrade_earth_depth_1],		[uid.upgrade_earth_drop_speed_1]							);
+	upgrade_map[mapColRow(5, 9)]	.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,					[uid.upgrade_earth_drop_speed_1]																);
+	upgrade_map[mapColRow(4, 10)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_2,			[uid.upgrade_earth_depth_1, uid.upgrade_earth_drop_speed_1] 									);
 	
 	upgrade_map[mapColRow(7, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_mining_rig_1,																 											);
 	
@@ -850,7 +855,7 @@ function generateResearchMap() {
 
 	// Testing row
 	var test_row = 14;
-	var test_upgrades = [uid.upgrade_earth_density_2, uid.upgrade_earth_density_3, uid.upgrade_water_storage, uid.upgrade_earth_depth_2, uid.upgrade_earth_depth_3, uid.upgrade_earth_depth_4, uid.upgrade_earth_depth_5, uid.upgrade_earth_depth_6, uid.upgrade_earth_depth_7, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5];
+	var test_upgrades = [uid.upgrade_earth_density_2, uid.upgrade_earth_density_3, uid.upgrade_water_storage, uid.upgrade_earth_depth_3, uid.upgrade_earth_depth_4, uid.upgrade_earth_depth_5, uid.upgrade_earth_depth_6, uid.upgrade_earth_depth_7, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;

@@ -153,6 +153,7 @@ function game_tick(scalar) {
 		gather_amount += 20;
 		if (chasm_upgrades[uid.upgrade_earth_gather_speed_1].unlocked) gather_amount *= 1.2;
 		if (chasm_upgrades[uid.upgrade_workers_6].unlocked) gather_amount *= 1.1;
+		if (chasm_upgrades[uid.upgrade_workers_9].unlocked) gather_amount *= 1.1;
 		gather_amount *= incinerator_multi;
 		gather_amount *= chasm_storage[sid.storage_earth].workers_gather;
 		chasm_storage[sid.storage_earth].gather_progress +=  gather_amount * scalar;

@@ -92,7 +92,11 @@ class ELEMENT_PROBABILITY {
 
 		function srvb(target, slope) {
 			// Survey bias
-			return Math.floor(target - (target * (1 / Math.pow(1 + chasm_storage[sid.storage_earth].workers_survey, slope))))
+			let effective_workers = chasm_storage[sid.storage_earth].workers_survey;
+			if (chasm_upgrades[uid.upgrade_workers_7].unlocked) {
+				effective_workers = effective_workers * 1.5;
+			}
+			return Math.floor(target - (target * (1 / Math.pow(1 + effective_workers, slope))));
 		}
 
 		if (storage_flags & STORAGE_FLAGS_EARTH) {
@@ -745,20 +749,28 @@ function elementValue(element_count) { // Returns currency value of all elements
 				currency_count[cid.currency_spirit] 	+= element_count[eid.element_fossil] * 0.12;
 				break;
 			case eid.element_emerald:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_emerald] * 0.04;
-				currency_count[cid.currency_capital] 	+= element_count[eid.element_emerald] * 0.04;
+				let emerald_value = 0.04;
+				if (chasm_upgrades[uid.upgrade_workers_8].unlocked) emerald_value = emerald_value * 1.2;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_emerald] * emerald_value;
+				currency_count[cid.currency_capital] 	+= element_count[eid.element_emerald] * emerald_value;
 				break;
 			case eid.element_sapphire:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_sapphire] * 0.20;
-				currency_count[cid.currency_capital] 	+= element_count[eid.element_sapphire] * 0.20;
+				let sapphire_value = 0.20;
+				if (chasm_upgrades[uid.upgrade_workers_8].unlocked) sapphire_value = sapphire_value * 1.2;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_sapphire] * sapphire_value;
+				currency_count[cid.currency_capital] 	+= element_count[eid.element_sapphire] * sapphire_value;
 				break;
 			case eid.element_ruby:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_ruby] * 1.00;
-				currency_count[cid.currency_capital] 	+= element_count[eid.element_ruby] * 1.00;
+				let ruby_value = 1.00;
+				if (chasm_upgrades[uid.upgrade_workers_8].unlocked) ruby_value = ruby_value * 1.2;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_ruby] * ruby_value;
+				currency_count[cid.currency_capital] 	+= element_count[eid.element_ruby] * ruby_value;
 				break;
 			case eid.element_diamond:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_diamond] * 3.00;
-				currency_count[cid.currency_capital] 	+= element_count[eid.element_diamond] * 3.00;
+				let diamond_value = 3.00;
+				if (chasm_upgrades[uid.upgrade_workers_8].unlocked) diamond_value = diamond_value * 1.2;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_diamond] * diamond_value;
+				currency_count[cid.currency_capital] 	+= element_count[eid.element_diamond] * diamond_value;
 				break;
 			case eid.element_magma:
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_magma] * 2.48;

@@ -212,7 +212,7 @@ function initUpgrades() {
 					"images/tile_research_upgrade_unknown.png",
 					[
 					40,		// Particles
-					3,		// Strands
+					0.5,	// Strands
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital

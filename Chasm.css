@@ -211,6 +211,12 @@ form {
 	margin-right: 2px;
 }
 
+.gradient_singularity {
+	background: -webkit-linear-gradient(red, DarkSlateBlue);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 /* Chasm id's */
 #chasm_title {
 	padding-left: 34px;

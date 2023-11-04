@@ -6,23 +6,24 @@
 	// 2. Add currency to init function						[initCurrency]
 
 class _CURRENCY_ID {
-	currency_first		= 0x0000;
+	currency_first			= 0x0000;
 
 	// Standard Currency
-	currency_particles 	= 0x0000;
-	currency_strands 	= 0x0001;
-	currency_spirit 	= 0x0002;
-	currency_soul	 	= 0x0003;
-	currency_capital	= 0x0004;
+	currency_particles 		= 0x0000;
+	currency_strands 		= 0x0001;
+	currency_spirit 		= 0x0002;
+	currency_soul	 		= 0x0003;
+	currency_capital		= 0x0004;
 
 	// Prestige Currency
+	currency_singularity	= 0x0005;
 
 	// Special Currency
-	currency_mass 		= 0x0005;
-	currency_workers	= 0x0006;
-	currency_machinery	= 0x0007;
+	currency_mass 			= 0x0006;
+	currency_workers		= 0x0007;
+	currency_machinery		= 0x0008;
 
-	currency_count		= 0x0008;
+	currency_count			= 0x0009;
 } var cid = new _CURRENCY_ID();
 
 class _CHASM_CURRENCY {
@@ -83,6 +84,11 @@ function initCurrency() {
 			case cid.currency_machinery:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_machinery",
 														"<i class = 'material-icons grey-text text-darken-4 currency_icon'>toys</i>");
+				break;
+
+			case cid.currency_singularity:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_singularity",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>adjust</i>");
 				break;
 	
 			default:

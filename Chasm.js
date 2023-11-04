@@ -57,6 +57,9 @@ function animation_tick() {
 	showInspector(current_inspector_id);
 	animateResearchMap();
 
+	// Singularity
+	animateSingularity();
+
 	// Earth
 	chasm_storage[sid.storage_earth].draw();
 	if (earth.current == earth.cap) {
@@ -119,6 +122,8 @@ function draw_resources() {
 	$("#currency_mass_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_mass].resource.current, 2));
 	$("#currency_workers_amount").html(chasm_currency[cid.currency_workers].resource.current.toFixed(0));
 	$("#currency_machinery_amount").html(chasm_currency[cid.currency_machinery].resource.current.toFixed(0));
+	
+	$("#currency_singularity_amount").html(chasm_currency[cid.currency_singularity].resource.current.toFixed(0));
 
 	// Update resources
 	let earth_element_count = chasm_storage[sid.storage_earth].bitmap.element_count();
@@ -131,6 +136,12 @@ function draw_resources() {
 	let water_currency_count = elementValue(water_element_count);
 	$("#element_water_amount").html(stringifyElements(water_element_count));
 	$("#value_water_amount").html("Value: " + stringifyValue(water_currency_count));
+}
+
+function animateSingularity() {
+	let progress = singularity_progress(chasm_currency[cid.currency_mass].resource.current)
+	$("#singularity_percent_label").html("Singularity: " + DisplayNumberFormatter(progress, 1) + "%");
+	$("#singularity_progress").width(progress + "%");
 }
 
 var incinerator_heat = 0;
@@ -472,6 +483,13 @@ function DisplayNumberFormatter(x, fractional) {
 			return x.toFixed(fractional);
 		}
 	}
+}
+
+function singularity_progress(current) {
+	let target = 200;
+	let progress = (current / target) * 100;
+	if (progress > 100) progress = 100;
+	return progress;
 }
 
 // Materialize UI

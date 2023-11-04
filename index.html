@@ -108,6 +108,11 @@
 							</div>
 						</div>
 					</div>
+					
+					<p id = "singularity_percent_label" class = "hcenter white-text" style = "font-size: 14px;"></p>
+					<div id = "singularity_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+						<div id = "singularity_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear; background-image: linear-gradient(to bottom right, red, DarkSlateBlue)"></div>
+					</div>
 
 					<hr>
 
@@ -203,6 +208,30 @@
 							<!--Anticapital-->
 							<div id = "currency_capital_value" class = "currency_capital currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_capital_amount"></span></p>
+							</div>
+						</div>
+					</div>
+
+					<hr>
+
+					<!--Ascension Currency-->
+					<div class = "card-content black-text">
+						<p class = "hcenter" style = "font-weight: bold;">Ascension Currency</p>
+					</div>
+					<div class = "card-content white-text" style = "display: flex;">
+						<!--Currency Icons-->
+						<div style = "display: block;">
+							<!--Singularity Marbles-->
+							<div id = "currency_singularity_symbol" class = "currency_singularity currency_line vertcenter">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">adjust</i>
+							</div>
+						</div>
+
+						<!--Currency Values-->
+						<div style = "display: block;">
+							<!--Singularity Marbles-->
+							<div class = "currency_singularity currency_line currency_amount vertcenter">
+								<p><span id = "currency_singularity_amount"></span></p>
 							</div>
 						</div>
 					</div>

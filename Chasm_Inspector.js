@@ -15,6 +15,7 @@ class _INSPECTOR_ID {
 	currency_spirit								= cid.currency_spirit						+ this.offset_currency;
 	currency_soul								= cid.currency_soul							+ this.offset_currency;
 	currency_capital							= cid.currency_capital						+ this.offset_currency;
+	currency_singularity						= cid.currency_singularity					+ this.offset_currency;
 	currency_mass								= cid.currency_mass							+ this.offset_currency;
 	currency_workers							= cid.currency_workers						+ this.offset_currency;
 	currency_machinery							= cid.currency_machinery					+ this.offset_currency;
@@ -83,6 +84,7 @@ function registerInspectorEvents() {
 	$(".currency_spirit").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_spirit);});});
 	$(".currency_soul").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_soul);});});
 	$(".currency_capital").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_capital);});});
+	$(".currency_singularity").each(function(){	$(this).mouseenter(function(){showInspector(iid.currency_singularity);});});
 	$(".currency_mass").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_mass);});});
 	$(".currency_workers").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_workers);});});
 	$(".currency_machinery").each(function(){	$(this).mouseenter(function(){showInspector(iid.currency_machinery);});});
@@ -154,6 +156,14 @@ function showInspector(id) {
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("\"We, who pay dearly for every breath of pure, fresh air, must guard against the tendency to fetter the future. If we succeed in clearing the soil from the rubbish of the past and present, we will leave to posterity the greatest and safest heritages of all ages.\"<br><br>Our researchers seem to be feeling a bit revolutionary. You should probably put this somewhere out of the way before they seize it and establish a democratic mode of production.");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.currency_singularity:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_singularity].inspector_symbol + "Singularity Marbles");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("You found these at the bottom of the Chasm. Each marble contains enough matter to break the fundamental laws of the universe. They will allow you to build permanent structures in the Chasm, in the space between worlds.<br><br>You feel compelled to put the marbles in your mouth.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;

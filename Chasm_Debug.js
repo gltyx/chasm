@@ -64,16 +64,63 @@ function debug_unlock_achievements() {
 	reload_achievements();
 
 	chasm_log.writeSectionDivider();
-	chasm_log.writeColor("A sense of pride and acomplishment washes over you.", log_color_cheat);
+	chasm_log.writeColor("A sense of pride and accomplishment washes over you.", log_color_cheat);
 }
 
-function debug_gain_100_each() {
-	for (let i = 0; i < cid.currency_count; i++) {
-		chasm_currency[i].resource.gain(100);
+function debug_gain() {
+	let amount = parseFloat($("#debug_gain_amount").val());
+
+	if (amount == NaN) {
+		return;
+	}
+
+	switch ($("#debug_gain_type").val()){
+		default:
+		case "All":
+			for (let i = 0; i < cid.currency_count; i++) {
+				chasm_currency[i].resource.gain(amount);
+			}
+			break;
+
+		case "Particles":
+			chasm_currency[cid.currency_particles].resource.gain(amount);
+			break;
+
+		case "Strands":
+			chasm_currency[cid.currency_strands].resource.gain(amount);
+			break;
+
+		case "Spirit":
+			chasm_currency[cid.currency_spirit].resource.gain(amount);
+			break;
+
+		case "Soul":
+			chasm_currency[cid.currency_soul].resource.gain(amount);
+			break;
+
+		case "Capital":
+			chasm_currency[cid.currency_capital].resource.gain(amount);
+			break;
+
+		case "Singularity":
+			chasm_currency[cid.currency_singularity].resource.gain(amount);
+			break;
+
+		case "Mass":
+			chasm_currency[cid.currency_mass].resource.gain(amount);
+			break;
+
+		case "Workers":
+			chasm_currency[cid.currency_workers].resource.gain(amount);
+			break;
+
+		case "Machinery":
+			chasm_currency[cid.currency_machinery].resource.gain(amount);
+			break;
 	}
 
 	chasm_log.writeSectionDivider();
-	chasm_log.writeColor("A sense of pride and acomplishment washes over you.", log_color_cheat);
+	chasm_log.writeColor("A sense of pride and accomplishment washes over you.", log_color_cheat);
 }
 
 function debug_save() {

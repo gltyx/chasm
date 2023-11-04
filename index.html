@@ -609,10 +609,30 @@
 	
 				<!--Debug Box-->
 				<div id = "debug_box" class = "card blue-grey lighten-4">
+					<div class = "flex vertcenter">
+						<a id = "debug_gain" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_gain();">Gain</a>
+						<div class = "input-field" style = "margin-left: 10px;">
+							<input id = "debug_gain_amount" type = "text" class = "validate" style = "width: 90px;">
+							<label for = "debug_gain_amount">Amount</label>
+						</div>
+						<div style = "width: 100px; margin-left: 10px;">
+							<select id = "debug_gain_type">
+								<option value = "All" selected = "selected">All</option>
+								<option value = "Particles">Particles</option>
+								<option value = "Strands">Strands</option>
+								<option value = "Spirit">Spirit</option>
+								<option value = "Soul">Soul</option>
+								<option value = "Capital">Capital</option>
+								<option value = "Singularity">Singularity</option>
+								<option value = "Mass">Mass</option>
+								<option value = "Workers">Workers</option>
+								<option value = "Machinery">Machinery</option>
+							</select>
+						</div>
+					</div>
 					<a id = "debug_free_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_free_upgrades();">Free Upgrades</a>
 					<a id = "debug_reprice_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text disabled" onclick = "debug_reprice_upgrades();">Re-price Upgrades</a>
 					<a id = "debug_unlock_achievements" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_unlock_achievements();">Unlock Achievements</a>
-					<a id = "debug_gain_100_each" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_gain_100_each();">Gain 100 of each resource</a>
 					<a id = "debug_save_game" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_save();">Save</a>
 					<a id = "debug_clear_game" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_clear();">Clear</a>
 				</div>

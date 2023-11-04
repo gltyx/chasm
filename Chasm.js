@@ -486,7 +486,7 @@ function DisplayNumberFormatter(x, fractional) {
 }
 
 function singularity_progress(current) {
-	let target = 200;
+	let target = chasm_math_exponential_cost(chasm_currency[cid.currency_singularity].resource.alltime.toNumber(), 200, 1.4);
 	let progress = (current / target) * 100;
 	if (progress > 100) progress = 100;
 	return progress;

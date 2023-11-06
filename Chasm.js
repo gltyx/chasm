@@ -138,10 +138,20 @@ function draw_resources() {
 	$("#value_water_amount").html("Value: " + stringifyValue(water_currency_count));
 }
 
+var pending_singularity = 0;
+
 function animateSingularity() {
-	let progress = singularity_progress(chasm_currency[cid.currency_mass].resource.current)
-	$("#singularity_percent_label").html("Singularity: " + DisplayNumberFormatter(progress, 1) + "%");
+	let target = chasm_math_exponential_cost(chasm_currency[cid.currency_singularity].resource.alltime.toNumber() + pending_singularity, 200, 1.4);
+	let progress = (chasm_currency[cid.currency_mass].resource.current / target) * 100;
+	if (progress > 100) progress = 100;
+	let remaining = target - chasm_currency[cid.currency_mass].resource.current.toNumber();
+	if (remaining < 0) remaining = 0;
+	$("#singularity_percent_label").html("Singularity in " + DisplayNumberFormatter(remaining, 1));
 	$("#singularity_progress").width(progress + "%");
+
+	if (chasm_currency[cid.currency_mass].resource.spend(target)) {
+		pending_singularity += 1;
+	}
 }
 
 var incinerator_heat = 0;
@@ -278,6 +288,27 @@ function incinerator_stoke() {
 	incinerator_heat += 100;
 	if (incinerator_heat > 100) {
 		incinerator_heat = 100;
+	}
+}
+
+function singularity_reset() {
+	if (pending_singularity > 0) {
+		// Gain singularity
+		chasm_currency[cid.currency_singularity].resource.gain(pending_singularity);
+		pending_singularity = 0;
+
+		// Reset Currency
+		for (let i = cid.currency_first; i < cid.currency_count; i++) {
+			// Ignore prestige currencies
+			if (!(i >= cid.prestige_first && i <= cid.prestige_last)) {
+				chasm_currency[i].resource.set(0);
+			}
+		}
+
+		// Reset Upgrades
+		for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
+			chasm_upgrades[i].lock();
+		}
 	}
 }
 
@@ -483,13 +514,6 @@ function DisplayNumberFormatter(x, fractional) {
 			return x.toFixed(fractional);
 		}
 	}
-}
-
-function singularity_progress(current) {
-	let target = chasm_math_exponential_cost(chasm_currency[cid.currency_singularity].resource.alltime.toNumber(), 200, 1.4);
-	let progress = (current / target) * 100;
-	if (progress > 100) progress = 100;
-	return progress;
 }
 
 // Materialize UI

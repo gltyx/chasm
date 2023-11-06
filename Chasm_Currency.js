@@ -16,7 +16,9 @@ class _CURRENCY_ID {
 	currency_capital		= 0x0004;
 
 	// Prestige Currency
+	prestige_first			= 0x0005; // Prestige bounds
 	currency_singularity	= 0x0005;
+	prestige_last			= 0x0005; // Prestige bounds
 
 	// Special Currency
 	currency_mass 			= 0x0006;

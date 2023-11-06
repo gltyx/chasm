@@ -393,6 +393,16 @@ class resource_storage {
 		this.canvas.fillRect( 0, 0, this.canvas_w + (2 * this.canvas_border), this.canvas_h + (2 * this.canvas_border));
 	}
 
+	storage_reset() {
+		this.workers_gather = 0;
+		this.workers_drop = 0;
+		this.workers_survey = 0;
+		this.machinery_depth = 0;
+		this.gather_progress = 0;
+		this.drop_progress = 0;
+		this.clear();
+	}
+
 	drop() {
 		this.update_bitmap();
 		if (this.resource.spend(this.resource.cap)) {

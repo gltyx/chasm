@@ -152,6 +152,13 @@ function animateSingularity() {
 	if (chasm_currency[cid.currency_mass].resource.spend(target)) {
 		pending_singularity += 1;
 	}
+
+	if (pending_singularity > 0) {
+		$("#singularity_jump_amount").html(pending_singularity);
+		$("#singularity_jump_info").show();
+	} else {
+		$("#singularity_jump_info").hide();
+	}
 }
 
 var incinerator_heat = 0;
@@ -309,6 +316,11 @@ function singularity_reset() {
 		for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
 			chasm_upgrades[i].lock();
 		}
+		
+		// Reset Storage and UI
+		chasm_storage[sid.storage_earth].storage_reset();
+		chasm_storage[sid.storage_water].storage_reset();
+		refresh_ui();
 	}
 }
 

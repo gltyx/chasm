@@ -113,8 +113,19 @@
 					<div id = "singularity_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
 						<div id = "singularity_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear; background-image: linear-gradient(to bottom right, red, DarkSlateBlue)"></div>
 					</div>
-					<div style = "text-align: center;">
-						<input type = "button" style = "font-size: 12px; margin-top: 6px;" onclick = "singularity_reset();" value = "Jump" />
+
+					<div id = "singularity_jump_info">
+						<div class = "flex white-text" style = "margin-top: 6px; justify-content: center;">
+							<div class = "unflex">
+								<p style = "margin-right: 3px;">+<span id = "singularity_jump_amount"></span></p>
+							</div>
+							<div class = "unflex">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">adjust</i>
+							</div>
+						</div>
+						<div style = "text-align: center;">
+							<input type = "button" style = "font-size: 12px; margin-top: 4px;" onclick = "singularity_reset();" value = "Jump" />
+						</div>
 					</div>
 
 					<hr>

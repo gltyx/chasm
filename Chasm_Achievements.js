@@ -33,8 +33,9 @@ class _MILESTONE_ID {
 	milestone_reveal_currency_soul				= 0x0004;		// Show soul after getting some
 	milestone_reveal_currency_capital			= 0x0005;		// Show soul after getting some
 	milestone_reveal_currency_machinery			= 0x0006;		// Show machinery after getting some
+	milestone_reveal_currency_singularity		= 0x0007;		// Show singularity after getting some
 
-	milestone_count								= 0x0007;
+	milestone_count								= 0x0008;
 } var mid = new _MILESTONE_ID();
 
 class _ACHIEVEMENT {
@@ -219,7 +220,15 @@ function init_milestones() {
 														"",
 														"",
 														"");
-				break;	
+				break;
+	
+			case mid.milestone_reveal_currency_singularity:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_singularity",
+														"",
+														"",
+														"",
+														"");
+				break;
 
 			default:
 				chasm_milestones[i] = new _ACHIEVEMENT(i, "", "", "", "", "");
@@ -337,6 +346,18 @@ function achievement_tick() {
 				chasm_currency[cid.currency_machinery].hidden = false;
 				$("#currency_machinery_symbol").fadeIn(800);
 				$("#currency_machinery_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal singularity (> 0 capital)
+	if (!chasm_milestones[mid.milestone_reveal_currency_singularity].unlocked) {
+		if (chasm_currency[cid.currency_singularity].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_singularity].unlock();
+			if (chasm_currency[cid.currency_singularity].hidden) {
+				chasm_currency[cid.currency_singularity].hidden = false;
+				$("#currency_singularity_symbol").fadeIn(800);
+				$("#currency_singularity_value").fadeIn(800);
 			}
 		}
 	}

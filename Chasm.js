@@ -394,12 +394,19 @@ function refresh_ui() {
 		$("#currency_capital_symbol").css("display", "block");
 		$("#currency_capital_value").css("display", "block");
 	}
+	
 	if (chasm_milestones[mid.milestone_reveal_currency_machinery].unlocked) {
 		chasm_currency[cid.currency_machinery].hidden = false;
 		$("#currency_machinery_symbol").css("display", "block");
 		$("#currency_machinery_value").css("display", "block");
 	}
 
+	if (chasm_milestones[mid.milestone_reveal_currency_singularity].unlocked) {
+		chasm_currency[cid.currency_singularity].hidden = false;
+		$("#currency_singularity_symbol").css("display", "block");
+		$("#currency_singularity_value").css("display", "block");
+	}
+	
 	// Storage
 	for (let i = sid.storage_first; i < sid.storage_count; i++) {
 		chasm_storage[i].manage_production_resource(cid.currency_workers, 0, "gather");

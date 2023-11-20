@@ -724,6 +724,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				break;
 			case eid.element_stone:
 				let stone_value = 0.30;
+				if (chasm_upgrades[uid.upgrade_earth_value_4].unlocked) stone_value = stone_value * 1.3;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * stone_value;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * stone_value;

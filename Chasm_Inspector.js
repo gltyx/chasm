@@ -46,6 +46,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_value_1						= uid.upgrade_earth_value_1					+ this.offset_upgrades;
 	upgrade_earth_value_2						= uid.upgrade_earth_value_2					+ this.offset_upgrades;
 	upgrade_earth_value_3						= uid.upgrade_earth_value_3					+ this.offset_upgrades;
+	upgrade_earth_value_4						= uid.upgrade_earth_value_4					+ this.offset_upgrades;
 	upgrade_earth_gather_speed_1				= uid.upgrade_earth_gather_speed_1			+ this.offset_upgrades;
 	upgrade_earth_drop_speed_1					= uid.upgrade_earth_drop_speed_1			+ this.offset_upgrades;
 	upgrade_earth_metals_1						= uid.upgrade_earth_metals_1				+ this.offset_upgrades;
@@ -487,6 +488,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("Bad news, you all have symptoms of heavy metal poisoning. Good news, you can now find even heavier metals!");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+50% metal particle value");
+			break;
+		case iid.upgrade_earth_value_4:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Marble Quarry");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_4].cost.stringify());
+			$("#inspector_text")	.html("This is the perfect spot for finding greek statues, kitchen counters, or food for the unquenchable cosmic maw.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+30% stone particle value");
 			break;
 		case iid.upgrade_earth_gather_speed_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Shovel Lotion");

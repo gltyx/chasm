@@ -752,7 +752,7 @@ function showInspector(id) {
 			}
 			break;
 		case iid.achievement_eye_feel_extremely_unwell:
-			if (chasm_achievements[aid.achievement_minor_case_of_wormhole].unlocked) {
+			if (chasm_achievements[aid.achievement_eye_feel_extremely_unwell].unlocked) {
 				$("#inspector_title")	.html("<img src = 'images/a_eye_feel_extremely_unwell.png' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Eye Feel Extremely Unwell");
 				$("#inspector_cost")	.css("display", "none");
 				$("#inspector_cost")	.html("");

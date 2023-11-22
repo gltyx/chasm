@@ -21,31 +21,32 @@ class _UPGRADE_ID {
 	upgrade_earth_value_2			= 0x0006;	// +50% Earth value / +100% Copper value
 	upgrade_earth_value_3			= 0x0007;	// +50% Metals value
 	upgrade_earth_value_4			= 0x0008;	// +25% Stone value
-	upgrade_earth_gather_speed_1	= 0x0009;	// Gather +25%
-	upgrade_earth_drop_speed_1		= 0x000a;	// Drop +20%
-	upgrade_earth_metals_1			= 0x000b;	// Unlock surveying
-	upgrade_earth_depth_1			= 0x000c;	// Unlock depth
-	upgrade_earth_depth_2			= 0x000d;	// Max depth +1
-	upgrade_earth_depth_3			= 0x000e;	// Max depth +1
-	upgrade_earth_depth_4			= 0x000f;	// Max depth +1
-	upgrade_earth_depth_5			= 0x0010;	// Max depth +1
-	upgrade_earth_depth_6			= 0x0011;	// Max depth +1
-	upgrade_earth_depth_7			= 0x0012;	// Max depth +1
-	upgrade_mining_rig_1			= 0x0013;	// Unlock mining rig
+	upgrade_earth_chance_1			= 0x0009;	// +1% Emerald chance
+	upgrade_earth_gather_speed_1	= 0x000a;	// Gather +25%
+	upgrade_earth_drop_speed_1		= 0x000b;	// Drop +20%
+	upgrade_earth_metals_1			= 0x000c;	// Unlock surveying
+	upgrade_earth_depth_1			= 0x000d;	// Unlock depth
+	upgrade_earth_depth_2			= 0x000e;	// Max depth +1
+	upgrade_earth_depth_3			= 0x000f;	// Max depth +1
+	upgrade_earth_depth_4			= 0x0010;	// Max depth +1
+	upgrade_earth_depth_5			= 0x0011;	// Max depth +1
+	upgrade_earth_depth_6			= 0x0012;	// Max depth +1
+	upgrade_earth_depth_7			= 0x0013;	// Max depth +1
+	upgrade_mining_rig_1			= 0x0014;	// Unlock mining rig
 
-	upgrade_water_storage			= 0x0014;	// Unlock water storage
+	upgrade_water_storage			= 0x0015;	// Unlock water storage
 
-	upgrade_workers_1				= 0x0015;	// +1 Worker
-	upgrade_workers_2				= 0x0016;	// +1 Worker
-	upgrade_workers_3				= 0x0017;	// +1 Worker
-	upgrade_workers_4				= 0x0018;	// +1 Worker
-	upgrade_workers_5				= 0x0019;	// +2 Worker
-	upgrade_workers_6				= 0x001a;	// +1 Worker / +20% efficiency
-	upgrade_workers_7				= 0x001b;	// +2 Worker / +50% survey efficiency
-	upgrade_workers_8				= 0x001c;	// +1 Worker / +20% jewel value
-	upgrade_workers_9				= 0x001d;	// +1 Worker / +20% metal value
+	upgrade_workers_1				= 0x0016;	// +1 Worker
+	upgrade_workers_2				= 0x0017;	// +1 Worker
+	upgrade_workers_3				= 0x0018;	// +1 Worker
+	upgrade_workers_4				= 0x0019;	// +1 Worker
+	upgrade_workers_5				= 0x001a;	// +2 Worker
+	upgrade_workers_6				= 0x001b;	// +1 Worker / +20% efficiency
+	upgrade_workers_7				= 0x001c;	// +2 Worker / +50% survey efficiency
+	upgrade_workers_8				= 0x001d;	// +1 Worker / +20% jewel value
+	upgrade_workers_9				= 0x001e;	// +1 Worker / +20% metal value
 
-	upgrade_count					= 0x001e;
+	upgrade_count					= 0x001f;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -233,6 +234,19 @@ function initUpgrades() {
 				]);
 				break;
 
+			case uid.upgrade_earth_chance_1:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_chance_1",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					22,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0.5,	// Anticapital
+				]);
+				break;
+
 			case uid.upgrade_earth_gather_speed_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_gather_speed_1",
@@ -307,7 +321,7 @@ function initUpgrades() {
 					2.5,	// Strands
 					0,		// Spirit
 					0,		// Soul
-					0,		// Anticapital
+					1.5,	// Anticapital
 				]);
 				break;
 
@@ -550,6 +564,10 @@ function buy_upgrade(upgrade_id) {
 
 			case uid.upgrade_earth_density_5:
 				compress_earth();
+				break;
+
+			case uid.upgrade_earth_chance_1:
+				chasm_storage[sid.storage_earth].refresh_survey();
 				break;
 
 			case uid.upgrade_water_storage:
@@ -904,15 +922,18 @@ function generateResearchMap() {
 	upgrade_map[mapColRow(1, 9)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_value_2]																		);
 	upgrade_map[mapColRow(1, 10)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_3, 			[uid.upgrade_earth_value_2]																		);
 	upgrade_map[mapColRow(3, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_1,			[uid.upgrade_earth_metals_1] 																	);
+	upgrade_map[mapColRow(3, 9)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_depth_1]																		);
+	upgrade_map[mapColRow(3, 10)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_chance_1,			[uid.upgrade_earth_depth_1] 																	);
 	upgrade_map[mapColRow(7, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_drop_speed_1,		[uid.upgrade_earth_metals_1]																	);
 	upgrade_map[mapColRow(7, 9)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_drop_speed_1]																);
 	upgrade_map[mapColRow(7, 10)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_4,			[uid.upgrade_earth_drop_speed_1]																);
-	upgrade_map[mapColRow(3, 9)]	.assign_tile(tid.tile_connect_ur, 	uid.upgrade_count,					[uid.upgrade_earth_depth_1]																		);
-	upgrade_map[mapColRow(4, 9)]	.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,					[uid.upgrade_earth_depth_1],		[uid.upgrade_mining_rig_1]									);
-	upgrade_map[mapColRow(5, 9)]	.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,					[uid.upgrade_mining_rig_1]																		);
-	upgrade_map[mapColRow(4, 10)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_2,			[uid.upgrade_earth_depth_1, uid.upgrade_mining_rig_1] 											);
+	upgrade_map[mapColRow(3, 11)]	.assign_tile(tid.tile_connect_ur, 	uid.upgrade_count,					[uid.upgrade_earth_chance_1]																		);
+	upgrade_map[mapColRow(4, 11)]	.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,					[uid.upgrade_earth_chance_1],		[uid.upgrade_mining_rig_1]									);
+	upgrade_map[mapColRow(5, 11)]	.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,					[uid.upgrade_mining_rig_1]																		);
+	upgrade_map[mapColRow(4, 12)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_2,			[uid.upgrade_earth_chance_1, uid.upgrade_mining_rig_1] 											);
 	
 	upgrade_map[mapColRow(5, 8)]	.assign_tile(tid.tile_node, 		uid.upgrade_mining_rig_1,																 											);
+	upgrade_map[mapColRow(5, 9)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_mining_rig_1]																		);
 	
 	// Intro Workers Zone
 	upgrade_map[mapColRow(10, 2)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_1,																												);

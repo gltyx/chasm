@@ -47,6 +47,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_value_2						= uid.upgrade_earth_value_2					+ this.offset_upgrades;
 	upgrade_earth_value_3						= uid.upgrade_earth_value_3					+ this.offset_upgrades;
 	upgrade_earth_value_4						= uid.upgrade_earth_value_4					+ this.offset_upgrades;
+	upgrade_earth_chance_1						= uid.upgrade_earth_chance_1				+ this.offset_upgrades;
 	upgrade_earth_gather_speed_1				= uid.upgrade_earth_gather_speed_1			+ this.offset_upgrades;
 	upgrade_earth_drop_speed_1					= uid.upgrade_earth_drop_speed_1			+ this.offset_upgrades;
 	upgrade_earth_metals_1						= uid.upgrade_earth_metals_1				+ this.offset_upgrades;
@@ -496,6 +497,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("This is the perfect spot for finding greek statues, kitchen counters, or food for the unquenchable cosmic maw.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+30% stone particle value");
+			break;
+		case iid.upgrade_earth_chance_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fifty Shades of Green");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_chance_1].cost.stringify());
+			$("#inspector_text")	.html("The hot new book about emerald mining. Lots of pictures of glistening, shirtless miners. Also a few tips on where to find more emeralds.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1% base emerald chance");
 			break;
 		case iid.upgrade_earth_gather_speed_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Shovel Lotion");

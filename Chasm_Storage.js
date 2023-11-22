@@ -102,19 +102,23 @@ class ELEMENT_PROBABILITY {
 		if (storage_flags & STORAGE_FLAGS_EARTH) {
 			let depth = chasm_storage[sid.storage_earth].machinery_depth;
 
-			//						| Depth 0				| Depth 1				| Depth 2				| Depth 3				| Depth 4				| Depth 5				| Depth 6				| Depth 7
-			const p_magma = [		0,						0,						0,						0,						0,						0,						0,						445 + srvb(300, 0.2)	];
-			const p_diamond = [		0,						0,						0,						1,						4  + srvb(20, 0.1),		20  + srvb(50, 0.15),	30  + srvb(60, 0.15),	50  + srvb(140, 0.15)	];
-			const p_ruby = [		0,						0,						1,						4   + srvb(10, 0.1),	20 + srvb(50, 0.1),		30  + srvb(80, 0.15),	50  + srvb(90, 0.15),	0						];
-			const p_sapphire = [	0,						0,						3,						10  + srvb(20, 0.1),	30 + srvb(80, 0.15),	20  + srvb(50, 0.2),	5   + srvb(35, 0.15),	0						];
-			const p_emerald = [		0,						5 + srvb(30, 0.2),		6   + srvb(40, 0.15),	20  + srvb(40, 0.15),	10 + srvb(30, 0.15),	5   + srvb(40, 0.2),	0,						0						];
-			const p_fossil = [		0,						0,						0,						30  + srvb(140, 0.15),	60 + srvb(100, 0.2),	100 + srvb(300, 0.2),	30  + srvb(140, 0.2),	0						];
-			const p_gold = [		0,						0,						0,						2,						8  + srvb(30, 0.15),	40  + srvb(80, 0.15),	100 + srvb(140, 0.15),	0						];
-			const p_lead = [		0,						0,						0,						10  + srvb(10, 0.1),	40 + srvb(10, 0.1),		80  + srvb(60, 0.1),	30  + srvb(45, 0.1),	0						];
-			const p_iron = [		0,						0,						30  + srvb(70, 0.1),	50  + srvb(120, 0.15),	90 + srvb(200, 0.15),	30  + srvb(70, 0.2),	0,						0						];
-			const p_copper = [		0 + srvb(250, 0.2),		30 + srvb(250, 0.2),	100 + srvb(300, 0.15),	100 + srvb(200, 0.2),	30 + srvb(100, 0.15),	0,						0,						0						];
-			const p_coal = [		0,						0,						4,						20  + srvb(50, 0.15),	50 + srvb(100, 0.15),	55  + srvb(170, 0.15),	60  + srvb(200, 0.2),	0						];
-			const sink_split = [	0,						0.1,					0.25,					0.5,					0.75,					0.85,					0.95,					1						];
+			// Emerald chance bias
+			let ecb = 0;
+			if (chasm_upgrades[uid.upgrade_earth_chance_1].unlocked) ecb += 10;
+
+			//						| Depth 0				| Depth 1					| Depth 2					| Depth 3					| Depth 4					| Depth 5					| Depth 6				| Depth 7
+			const p_magma = [		0,						0,							0,							0,							0,							0,							0,						445 + srvb(300, 0.2)	];
+			const p_diamond = [		0,						0,							0,							1,							4  + srvb(20, 0.1),			20  + srvb(50, 0.15),		30  + srvb(60, 0.15),	50  + srvb(140, 0.15)	];
+			const p_ruby = [		0,						0,							1,							4   + srvb(10, 0.1),		20 + srvb(50, 0.1),			30  + srvb(80, 0.15),		50  + srvb(90, 0.15),	0						];
+			const p_sapphire = [	0,						0,							3,							10  + srvb(20, 0.1),		30 + srvb(80, 0.15),		20  + srvb(50, 0.2),		5   + srvb(35, 0.15),	0						];
+			const p_emerald = [		0,						5 + srvb(30, 0.2) + ecb,	6 + srvb(40, 0.15) + ecb,	20  + srvb(40, 0.15) + ecb,	10 + srvb(30, 0.15) + ecb,	5   + srvb(40, 0.2) + ecb,	0,						0						];
+			const p_fossil = [		0,						0,							0,							30  + srvb(140, 0.15),		60 + srvb(100, 0.2),		100 + srvb(300, 0.2),		30  + srvb(140, 0.2),	0						];
+			const p_gold = [		0,						0,							0,							2,							8  + srvb(30, 0.15),		40  + srvb(80, 0.15),		100 + srvb(140, 0.15),	0						];
+			const p_lead = [		0,						0,							0,							10  + srvb(10, 0.1),		40 + srvb(10, 0.1),			80  + srvb(60, 0.1),		30  + srvb(45, 0.1),	0						];
+			const p_iron = [		0,						0,							30  + srvb(70, 0.1),		50  + srvb(120, 0.15),		90 + srvb(200, 0.15),		30  + srvb(70, 0.2),		0,						0						];
+			const p_copper = [		0 + srvb(250, 0.2),		30 + srvb(250, 0.2),		100 + srvb(300, 0.15),		100 + srvb(200, 0.2),		30 + srvb(100, 0.15),		0,							0,						0						];
+			const p_coal = [		0,						0,							4,							20  + srvb(50, 0.15),		50 + srvb(100, 0.15),		55  + srvb(170, 0.15),		60  + srvb(200, 0.2),	0						];
+			const sink_split = [	0,						0.1,						0.25,						0.5,						0.75,						0.85,						0.95,					1						];
 
 			this.element_magma 		+= p_magma[depth];
 			portion 				-= p_magma[depth];

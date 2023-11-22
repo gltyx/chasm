@@ -450,6 +450,10 @@ function refresh_ui() {
 		$("#incinerator_box_content").css("visibility", "visible");
 	}
 
+	if (chasm_upgrades[uid.upgrade_mining_rig_2].unlocked) {
+		$("#incinerator_upgrades_content").css("visibility", "visible");
+	}
+
 	if (chasm_upgrades[uid.upgrade_water_storage].unlocked) {
 		$("#water_section").css("display", "block");
 	}

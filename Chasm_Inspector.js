@@ -59,6 +59,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_depth_6						= uid.upgrade_earth_depth_6					+ this.offset_upgrades;
 	upgrade_earth_depth_7						= uid.upgrade_earth_depth_7					+ this.offset_upgrades;
 	upgrade_mining_rig_1						= uid.upgrade_mining_rig_1					+ this.offset_upgrades;
+	upgrade_mining_rig_2						= uid.upgrade_mining_rig_2					+ this.offset_upgrades;
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
 	upgrade_workers_1							= uid.upgrade_workers_1						+ this.offset_upgrades;
 	upgrade_workers_2							= uid.upgrade_workers_2						+ this.offset_upgrades;
@@ -593,6 +594,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("This giant industrial mining rig will speed up your gathering as long as you keep it fueled. Hopefully unrelenting greed won't result in your ultimate downfall. I drink your milkshake!");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Unlock the Mining Rig");
+			break;
+		case iid.upgrade_mining_rig_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Modular Mining Rig");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_mining_rig_2].cost.stringify());
+			$("#inspector_text")	.html("Swapping out parts of the mining rig should let you improve it incrementally. Mine harder, better, faster, stronger.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock Mining Rig upgrades");
 			break;
 		case iid.upgrade_water_storage:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water storage");

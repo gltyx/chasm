@@ -449,18 +449,18 @@
 											<div id = "incinerator_upgrades_content" class = "flex" style = "visibility: hidden;">
 												<div style = "width: 90px;">
 													<div class = "flex" style = "margin-bottom: 8px;">
-														<input type = "button" style = "font-size: 12px; margin-right: 4px;" onclick = "incinerator_stoke();" value = "Buy" />
-														<p style = "font-size: 12px;">2.5</p>
+														<input type = "button" style = "font-size: 12px; margin-right: 4px;" onclick = "rigUpgradeMulti();" value = "Buy" />
+														<p id = "mining_rig_multi_cost" style = "font-size: 12px;"></p>
 														<i class = 'material-icons amber-text text-darken-1 currency_icon'>gesture</i>
 													</div>
 													<div class = "flex" style = "margin-bottom: 8px;">
-														<input type = "button" style = "font-size: 12px; margin-right: 4px;" onclick = "incinerator_stoke();" value = "Buy" />
-														<p style = "font-size: 12px;">2.5</p>
+														<input type = "button" style = "font-size: 12px; margin-right: 4px;" onclick = "rigUpgradeDecay();" value = "Buy" />
+														<p id = "mining_rig_decay_cost" style = "font-size: 12px;"></p>
 														<i class = 'material-icons light-green-text currency_icon'>money_off</i>
 													</div>
 													<div class = "flex">
-														<input type = "button" style = "font-size: 12px; margin-right: 4px;" onclick = "incinerator_stoke();" value = "Buy" />
-														<p style = "font-size: 12px;">2.5</p>
+														<input type = "button" style = "font-size: 12px; margin-right: 4px;" onclick = "rigUpgradeSustain();" value = "Buy" />
+														<p id = "mining_rig_sustain_cost" style = "font-size: 12px;"></p>
 														<i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>
 													</div>
 												</div>
@@ -477,13 +477,13 @@
 												</div>
 												<div style = "width: 50px;">
 													<div class = "flex" style = "margin-bottom: 12px;">
-														<p style = "font-size: 12px;">x2.0</p>
+														<p style = "font-size: 12px;">x<span id = "mining_rig_multi_amount"></span></p>
 													</div>
 													<div class = "flex" style = "margin-bottom: 12px;">
-														<p style = "font-size: 12px;">30.0%</p>
+														<p style = "font-size: 12px;"><span id = "mining_rig_decay_amount"></span>%</p>
 													</div>
 													<div class = "flex">
-														<p style = "font-size: 12px;">10s</p>
+														<p style = "font-size: 12px;"><span id = "mining_rig_sustain_amount"></span>s</p>
 													</div>
 												</div>
 											</div>

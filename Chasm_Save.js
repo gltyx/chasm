@@ -9,6 +9,7 @@ class saveData {
 	currency 		= {};
 	upgrades		= {};
 	storage			= {};
+	etc				= {};
 
 	constructor() {
 		this.version_major 	= 0;
@@ -20,6 +21,7 @@ class saveData {
 		this.currency 		= save_pack_currency();
 		this.upgrades 		= save_pack_upgrades();
 		this.storage		= save_pack_storage();
+		this.etc			= save_pack_etc();
 	}
 }
 
@@ -41,6 +43,7 @@ function loadSave() {
 		save_unpack_currency(chasm_save.currency);
 		save_unpack_upgrades(chasm_save.upgrades);
 		save_unpack_storage(chasm_save.storage);
+		save_unpack_etc(chasm_save.etc);
 	}
 
 	// Update UI elements
@@ -54,6 +57,7 @@ function storeSave() {
 	chasm_save.currency 		= save_pack_currency();
 	chasm_save.upgrades 		= save_pack_upgrades();
 	chasm_save.storage			= save_pack_storage();
+	chasm_save.etc				= save_pack_etc();
 
 	// Save to Local Storage
 	lib_chasm_store_save(save_path, chasm_save);
@@ -147,4 +151,18 @@ function save_unpack_storage(object) {
 		chasm_storage[sid[storage]].gather_progress 	= object[storage].gather_progress;
 		chasm_storage[sid[storage]].drop_progress 		= object[storage].drop_progress;
 	}
+}
+
+function save_pack_etc() {
+	var object = {};
+	object.rig_lvl_multi 	= rig_lvl_multi;
+	object.rig_lvl_decay 	= rig_lvl_decay;
+	object.rig_lvl_sustain 	= rig_lvl_sustain;
+	return object;
+}
+
+function save_unpack_etc(object) {
+	rig_lvl_multi 	= object.rig_lvl_multi;
+	rig_lvl_decay 	= object.rig_lvl_decay;
+	rig_lvl_sustain = object.rig_lvl_sustain;
 }

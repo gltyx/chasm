@@ -163,6 +163,9 @@ function animateSingularity() {
 
 var incinerator_heat = 0;
 var incinerator_multi = 1;
+var rig_lvl_multi = 0;
+var rig_lvl_decay = 0;
+var rig_lvl_sustain = 0;
 
 function game_tick(scalar) {
 	// Incinerator
@@ -298,6 +301,21 @@ function incinerator_stoke() {
 	}
 }
 
+function rigUpgradeMulti() {
+	rig_lvl_multi++;
+	RefreshMiningRig();
+}
+
+function rigUpgradeDecay() {
+	rig_lvl_decay++;
+	RefreshMiningRig();
+}
+
+function rigUpgradeSustain() {
+	rig_lvl_sustain++;
+	RefreshMiningRig();
+}
+
 function singularity_reset() {
 	if (pending_singularity > 0) {
 		// Gain singularity
@@ -324,6 +342,30 @@ function singularity_reset() {
 	}
 }
 
+function RigMultiCost() {
+	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_multi, 1.5, 2), 2);
+}
+
+function RigMultiAmount() {
+	return DisplayNumberFormatter(2 + (rig_lvl_multi * 0.1), 1);
+}
+
+function RigDecayCost() {
+	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_decay, 1.2, 2), 2);
+}
+
+function RigDecayAmount() {
+	return DisplayNumberFormatter(35 - (rig_lvl_decay * 2), 1);
+}
+
+function RigSustainCost() {
+	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_sustain, 0.75, 2), 2);
+}
+
+function RigSustainAmount() {
+	return DisplayNumberFormatter(rig_lvl_sustain * 1.5, 1);
+}
+
 // +---------------+
 // | UI Management |
 // +---------------+
@@ -346,7 +388,7 @@ const color_water 				= "blue lighten-2";
 var achievement_tab_hidden 		= true;
 var research_tab_hidden 		= true;
 
-// This is for instantly updating UI on game load, UI reveal animations handled by milestones
+// This is for updating UI on game load, UI reveal animations handled by milestones
 function refresh_ui() {
 	// Achievements
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {
@@ -461,6 +503,7 @@ function refresh_ui() {
 	chasm_storage[sid.storage_earth].refresh_survey();
 	RefreshMaxDepth();
 	RefreshDepthChart();
+	RefreshMiningRig();
 }
 
 function RefreshMaxDepth() {
@@ -509,6 +552,17 @@ function RefreshDepthChart() {
 
 	let drop_speed = ["100", "75", "50", "30", "15", "10", "5", "2"];
 	$("#drop_penalty_label").html("Drop Speed: " + drop_speed[depth] + "%");
+}
+
+function RefreshMiningRig() {
+	$("#mining_rig_multi_cost").html(RigMultiCost());
+	$("#mining_rig_multi_amount").html(RigMultiAmount());
+
+	$("#mining_rig_decay_cost").html(RigDecayCost());
+	$("#mining_rig_decay_amount").html(RigDecayAmount());
+
+	$("#mining_rig_sustain_cost").html(RigSustainCost());
+	$("#mining_rig_sustain_amount").html(RigSustainAmount());
 }
 
 function CalculateMaxDepth() {

@@ -169,14 +169,12 @@ var rig_lvl_sustain = 0;
 
 function game_tick(scalar) {
 	// Incinerator
-	incinerator_multi = 1;
 	if (incinerator_heat > 0) {
-		heat_decay = 35;
-		incinerator_heat -= heat_decay * scalar;
+		incinerator_heat -= RigDecayAmount() * scalar;
 
 		if (incinerator_heat < 0) incinerator_heat = 0;
 	}
-	incinerator_multi += 1 * (incinerator_heat / 100)
+	incinerator_multi = 1 + (RigMultiAmount() * (incinerator_heat / 100));
 	
 	// Earth Gather
 	let gather_amount = 0;
@@ -347,7 +345,7 @@ function RigMultiCost() {
 }
 
 function RigMultiAmount() {
-	return DisplayNumberFormatter(2 + (rig_lvl_multi * 0.1), 1);
+	return 1 + (rig_lvl_multi * 0.1);
 }
 
 function RigDecayCost() {
@@ -355,7 +353,7 @@ function RigDecayCost() {
 }
 
 function RigDecayAmount() {
-	return DisplayNumberFormatter(35 - (rig_lvl_decay * 2), 1);
+	return chasm_math_exponential_cost(rig_lvl_decay, 35, 0.85);
 }
 
 function RigSustainCost() {
@@ -556,10 +554,10 @@ function RefreshDepthChart() {
 
 function RefreshMiningRig() {
 	$("#mining_rig_multi_cost").html(RigMultiCost());
-	$("#mining_rig_multi_amount").html(RigMultiAmount());
+	$("#mining_rig_multi_amount").html(DisplayNumberFormatter(RigMultiAmount() + 1, 1));
 
 	$("#mining_rig_decay_cost").html(RigDecayCost());
-	$("#mining_rig_decay_amount").html(RigDecayAmount());
+	$("#mining_rig_decay_amount").html(DisplayNumberFormatter(RigDecayAmount(), 1));
 
 	$("#mining_rig_sustain_cost").html(RigSustainCost());
 	$("#mining_rig_sustain_amount").html(RigSustainAmount());

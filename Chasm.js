@@ -322,6 +322,12 @@ function singularity_reset() {
 
 		// Reset Currency
 		for (let i = cid.currency_first; i < cid.currency_count; i++) {
+			// Set workers to 1
+			if (i == cid.currency_workers) {
+				chasm_currency[i].resource.set(1);
+				continue;
+			}
+
 			// Ignore prestige currencies
 			if (!(i >= cid.prestige_first && i <= cid.prestige_last)) {
 				chasm_currency[i].resource.set(0);
@@ -329,9 +335,7 @@ function singularity_reset() {
 		}
 
 		// Reset Upgrades
-		for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
-			chasm_upgrades[i].lock();
-		}
+		reset_upgrades();
 		
 		// Reset Storage and UI
 		chasm_storage[sid.storage_earth].storage_reset();

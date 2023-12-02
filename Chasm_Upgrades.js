@@ -708,6 +708,28 @@ function buy_upgrade(upgrade_id) {
 	}
 }
 
+function reset_upgrades() {
+	lock_all_upgrades();
+	
+	// upgrade_water_storage
+	$("#water_section").css("display", "none");
+
+	// upgrade_earth_metals_1
+	$("#earth_survey").css("background-color", "transparent");
+	$("#earth_survey_content").css("visibility", "hidden");
+
+	// upgrade_earth_depth_1
+	$("#earth_depth").css("background-color", "transparent");
+	$("#earth_depth_content").css("visibility", "hidden");
+
+	// upgrade_mining_rig_1
+	$("#incinerator_box").css("background-color", "transparent");
+	$("#incinerator_box_content").css("visibility", "hidden");
+
+	// upgrade_mining_rig_2
+	$("#incinerator_upgrades_content").css("visibility", "hidden");
+}
+
 class _TILE_ID {
 	tile_first						= 0x0000;
 

@@ -47,7 +47,9 @@ class _INSPECTOR_ID {
 	upgrade_earth_value_2						= uid.upgrade_earth_value_2					+ this.offset_upgrades;
 	upgrade_earth_value_3						= uid.upgrade_earth_value_3					+ this.offset_upgrades;
 	upgrade_earth_value_4						= uid.upgrade_earth_value_4					+ this.offset_upgrades;
+	upgrade_earth_value_5						= uid.upgrade_earth_value_5					+ this.offset_upgrades;
 	upgrade_earth_chance_1						= uid.upgrade_earth_chance_1				+ this.offset_upgrades;
+	upgrade_earth_chance_2						= uid.upgrade_earth_chance_2				+ this.offset_upgrades;
 	upgrade_earth_gather_speed_1				= uid.upgrade_earth_gather_speed_1			+ this.offset_upgrades;
 	upgrade_earth_drop_speed_1					= uid.upgrade_earth_drop_speed_1			+ this.offset_upgrades;
 	upgrade_earth_metals_1						= uid.upgrade_earth_metals_1				+ this.offset_upgrades;
@@ -473,7 +475,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_1].cost.stringify());
 			$("#inspector_text")	.html("By filtering out some of the lighter dust you can make your earth particles more valuable.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+100% earth particle value");
+			$("#inspector_subtext")	.html("+100% dirt particle value");
 			break;
 		case iid.upgrade_earth_value_2:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Industrial Waste Handling");
@@ -481,7 +483,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_2].cost.stringify());
 			$("#inspector_text")	.html("Our operation is starting to produce a good amount of oily waste water... Might as well dump that stuff right into the ground!");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+50% earth particle value<br>+100% copper particle value");
+			$("#inspector_subtext")	.html("+50% dirt particle value<br>+100% copper particle value");
 			break;
 		case iid.upgrade_earth_value_3:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Heavy Metal Poisoning");
@@ -499,6 +501,14 @@ function showInspector(id) {
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+30% stone particle value");
 			break;
+		case iid.upgrade_earth_value_5:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>The Economicon");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_5].cost.stringify());
+			$("#inspector_text")	.html("You have acquired a forbidden tome containing eldritch secrets of accounting and economics. Summoning a few tax demons will allow you to artificially inflate the value of emeralds. Neat!");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+50% emerald particle value");
+			break;
 		case iid.upgrade_earth_chance_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fifty Shades of Green");
 			$("#inspector_cost")	.css("display", "flex");
@@ -506,6 +516,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("The hot new book about emerald mining. Lots of pictures of glistening, shirtless miners. Also a few tips on where to find more emeralds.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1% base emerald chance");
+			break;
+		case iid.upgrade_earth_chance_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Penny Flavored Gum");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_chance_2].cost.stringify());
+			$("#inspector_text")	.html("This stuff is disgusting, but you kind of want another piece. Really gets you in the mood to find more copper.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+2% base copper chance");
 			break;
 		case iid.upgrade_earth_gather_speed_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Shovel Lotion");

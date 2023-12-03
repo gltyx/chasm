@@ -11,7 +11,7 @@
 class _UPGRADE_ID {
 	upgrade_first					= 0x0000;
 
-	// Upgrade list
+	// Earth upgrades
 	upgrade_earth_density_1 		= 0x0000;	// 2x Earth density (4x4)
 	upgrade_earth_density_2			= 0x0001;	// 2x Earth density (8x8)
 	upgrade_earth_density_3			= 0x0002;	// 2x Earth density (16x16)
@@ -49,7 +49,10 @@ class _UPGRADE_ID {
 	upgrade_workers_8				= 0x0020;	// +1 Worker / +20% jewel value
 	upgrade_workers_9				= 0x0021;	// +1 Worker / +20% metal value
 
-	upgrade_count					= 0x0022;
+	// Singularity upgrades
+	upgrade_singularity_workers_1	= 0x0022;	// +1 Worker
+
+	upgrade_count					= 0x0023;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -130,6 +133,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -143,6 +147,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -156,6 +161,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -169,6 +175,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					7000000,// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -182,6 +189,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					8000000,// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -195,6 +203,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -208,6 +217,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -221,6 +231,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -234,6 +245,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -247,6 +259,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -260,6 +273,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0.5,	// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -273,6 +287,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -286,6 +301,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -299,6 +315,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -312,6 +329,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 			
@@ -325,6 +343,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -338,6 +357,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -351,6 +371,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1.5,	// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -364,6 +385,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -377,6 +399,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -390,6 +413,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -403,6 +427,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -416,6 +441,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 			
@@ -429,6 +455,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 			
@@ -442,6 +469,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 			
@@ -455,6 +483,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 			
@@ -468,6 +497,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 			
@@ -481,6 +511,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 			
@@ -494,6 +525,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 		
@@ -507,6 +539,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 				break;
 		
@@ -520,6 +553,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0.20,	// Anticapital
+					0,		// Singularity
 				]);
 				break;
 		
@@ -533,6 +567,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1.5,	// Anticapital
+					0,		// Singularity
 				]);
 				break;
 	
@@ -546,6 +581,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1.5,	// Anticapital
+					0,		// Singularity
 				]);
 				break;
 
@@ -559,6 +595,21 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1.5,	// Anticapital
+					0,		// Singularity
+				]);
+				break;
+			
+			case uid.upgrade_singularity_workers_1:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_workers_1",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					1,		// Singularity
 				]);
 				break;
 
@@ -572,6 +623,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Singularity
 				]);
 		}
 	}
@@ -700,6 +752,10 @@ function buy_upgrade(upgrade_id) {
 				break;
 
 			case uid.upgrade_workers_9:
+				chasm_currency[cid.currency_workers].resource.gain(1);
+				break;
+
+			case uid.upgrade_singularity_workers_1:
 				chasm_currency[cid.currency_workers].resource.gain(1);
 				break;
 			
@@ -1187,7 +1243,7 @@ function generateResearchMapSingularity() {
 
 	// Testing row
 	var test_row = 6;
-	var test_upgrades = [uid.upgrade_water_storage];
+	var test_upgrades = [uid.upgrade_singularity_workers_1];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map_singularity[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;

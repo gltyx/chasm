@@ -325,6 +325,7 @@ function singularity_reset() {
 			// Set workers to 1
 			if (i == cid.currency_workers) {
 				chasm_currency[i].resource.set(1);
+				if (chasm_upgrades[uid.upgrade_singularity_workers_1].unlocked) chasm_currency[i].resource.gain(1);
 				continue;
 			}
 

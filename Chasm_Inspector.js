@@ -72,6 +72,7 @@ class _INSPECTOR_ID {
 	upgrade_workers_7							= uid.upgrade_workers_7						+ this.offset_upgrades;
 	upgrade_workers_8							= uid.upgrade_workers_8						+ this.offset_upgrades;
 	upgrade_workers_9							= uid.upgrade_workers_9						+ this.offset_upgrades;
+	upgrade_singularity_workers_1				= uid.upgrade_singularity_workers_1			+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
@@ -700,6 +701,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker<br>+10% Earth Gather Speed");
+			break;
+		case iid.upgrade_singularity_workers_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Doppelgänger");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_1].cost.stringify());
+			$("#inspector_text")	.html("After jumping into the Chasm you wake up on the surface once again, but this time you are not alone. The Chasm is empty and the work site has disappeared, but there is another version of you just starting to get to work.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker");
 			break;
 
 		// Achievements

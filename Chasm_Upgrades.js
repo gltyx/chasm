@@ -1072,7 +1072,6 @@ function drawResearchMap() {
 	}
 
 	out += research_bkg_footer;
-	console.log(out);
 	$("#research_map_water").html(out);
 
 	// Register mouse events
@@ -1098,7 +1097,6 @@ function drawResearchMap() {
 	}
 
 	out += research_bkg_footer;
-	console.log(out);
 	$("#research_map_singularity").html(out);
 
 	// Register mouse events

@@ -613,7 +613,22 @@
 	
 				<!--Upgrades Box-->
 				<div id = "upgrades_box">
-					<div id = "research_map" class = "flex" style = "font-size: 0px; width: 600px; margin: auto;">
+					<div class = "flex">
+						<div style = "margin-left: 8px;" onclick = "change_research_tab(0);">
+							<p>Earth</p>
+						</div>
+						<div style = "margin-left: 8px;" onclick = "change_research_tab(1);">
+							<p>Water</p>
+						</div>
+						<div style = "margin-left: 8px;" onclick = "change_research_tab(2);">
+							<p>Singularity</p>
+						</div>
+					</div>
+					<div id = "research_map_earth" class = "flex" style = "font-size: 0px; width: 600px; margin: auto;">
+					</div>
+					<div id = "research_map_water" class = "flex" style = "font-size: 0px; width: 600px; margin: auto; display: none;">
+					</div>
+					<div id = "research_map_singularity" class = "flex" style = "font-size: 0px; width: 600px; margin: auto; display: none;">
 					</div>
 				</div>
 	

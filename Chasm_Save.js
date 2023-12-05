@@ -155,14 +155,16 @@ function save_unpack_storage(object) {
 
 function save_pack_etc() {
 	var object = {};
-	object.rig_lvl_multi 	= rig_lvl_multi;
-	object.rig_lvl_decay 	= rig_lvl_decay;
-	object.rig_lvl_sustain 	= rig_lvl_sustain;
+	object.pending_singularity 	= pending_singularity;
+	object.rig_lvl_multi 		= rig_lvl_multi;
+	object.rig_lvl_decay 		= rig_lvl_decay;
+	object.rig_lvl_sustain 		= rig_lvl_sustain;
 	return object;
 }
 
 function save_unpack_etc(object) {
-	rig_lvl_multi 	= object.rig_lvl_multi;
-	rig_lvl_decay 	= object.rig_lvl_decay;
-	rig_lvl_sustain = object.rig_lvl_sustain;
+	pending_singularity = object.pending_singularity;
+	rig_lvl_multi 		= object.rig_lvl_multi;
+	rig_lvl_decay 		= object.rig_lvl_decay;
+	rig_lvl_sustain 	= object.rig_lvl_sustain;
 }

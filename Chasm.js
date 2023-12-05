@@ -299,21 +299,6 @@ function incinerator_stoke() {
 	}
 }
 
-function rigUpgradeMulti() {
-	rig_lvl_multi++;
-	RefreshMiningRig();
-}
-
-function rigUpgradeDecay() {
-	rig_lvl_decay++;
-	RefreshMiningRig();
-}
-
-function rigUpgradeSustain() {
-	rig_lvl_sustain++;
-	RefreshMiningRig();
-}
-
 function singularity_reset() {
 	if (pending_singularity > 0) {
 		// Gain singularity
@@ -343,6 +328,25 @@ function singularity_reset() {
 		chasm_storage[sid.storage_water].storage_reset();
 		refresh_ui();
 	}
+}
+
+function rigUpgradeMulti() {
+	if (chasm_currency[cid.currency_strands].resource.spend(RigMultiCost())) {
+		rig_lvl_multi++;
+		RefreshMiningRig();
+	}
+}
+
+function rigUpgradeDecay() {
+	if (chasm_currency[cid.currency_capital].resource.spend(RigDecayCost())) {
+		rig_lvl_decay++;
+		RefreshMiningRig();
+	}
+}
+
+function rigUpgradeSustain() {
+	rig_lvl_sustain++;
+	RefreshMiningRig();
 }
 
 function RigMultiCost() {

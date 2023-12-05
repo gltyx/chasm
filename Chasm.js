@@ -85,7 +85,13 @@ function animation_tick() {
 
 	$("#incinerator_heat").width(incinerator_heat + "%");
 	$("#mining_rig_speed_label").html("Gather speed: " + DisplayNumberFormatter(incinerator_multi, 2) + "x");
-	$("#mining_rig_percent_label").html(DisplayNumberFormatter(incinerator_heat, 1) + "%");
+	if (overheat_timer > 0) {
+		$("#mining_rig_percent_label").html("Overheat! " + DisplayNumberFormatter(overheat_timer, 1) + "s");
+		$("#incinerator_heat").css("background-color","#f4a316");
+	} else {
+		$("#mining_rig_percent_label").html(DisplayNumberFormatter(incinerator_heat, 1) + "%");
+		$("#incinerator_heat").css("background-color","#fa3c0c");
+	}
 
 	// Water
 	chasm_storage[sid.storage_water].draw();
@@ -163,13 +169,16 @@ function animateSingularity() {
 
 var incinerator_heat = 0;
 var incinerator_multi = 1;
+var overheat_timer = 0;
 var rig_lvl_multi = 0;
 var rig_lvl_decay = 0;
 var rig_lvl_sustain = 0;
 
 function game_tick(scalar) {
 	// Incinerator
-	if (incinerator_heat > 0) {
+	if (overheat_timer > 0) {
+		overheat_timer -= scalar;
+	} else if (incinerator_heat > 0) {
 		incinerator_heat -= RigDecayAmount() * scalar;
 
 		if (incinerator_heat < 0) incinerator_heat = 0;
@@ -297,6 +306,7 @@ function incinerator_stoke() {
 	if (incinerator_heat > 100) {
 		incinerator_heat = 100;
 	}
+	overheat_timer = RigSustainAmount();
 }
 
 function singularity_reset() {
@@ -345,8 +355,10 @@ function rigUpgradeDecay() {
 }
 
 function rigUpgradeSustain() {
-	rig_lvl_sustain++;
-	RefreshMiningRig();
+	if (chasm_currency[cid.currency_soul].resource.spend(RigSustainCost())) {
+		rig_lvl_sustain++;
+		RefreshMiningRig();
+	}
 }
 
 function RigMultiCost() {
@@ -370,7 +382,7 @@ function RigSustainCost() {
 }
 
 function RigSustainAmount() {
-	return DisplayNumberFormatter(rig_lvl_sustain * 1.5, 1);
+	return rig_lvl_sustain * 0.5;
 }
 
 // +---------------+
@@ -569,7 +581,7 @@ function RefreshMiningRig() {
 	$("#mining_rig_decay_amount").html(DisplayNumberFormatter(RigDecayAmount(), 1));
 
 	$("#mining_rig_sustain_cost").html(RigSustainCost());
-	$("#mining_rig_sustain_amount").html(RigSustainAmount());
+	$("#mining_rig_sustain_amount").html(DisplayNumberFormatter(RigSustainAmount(), 1));
 }
 
 function CalculateMaxDepth() {

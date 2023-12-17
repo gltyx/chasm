@@ -437,11 +437,11 @@ function initUpgrades() {
 					"images/tile_research_earth_depth_7.png",
 					[
 					0,		// Particles
-					55,		// Strands
+					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
-					0,		// Singularity
+					30,		// Singularity
 				]);
 				break;
 			
@@ -1201,7 +1201,7 @@ function generateResearchMapEarth() {
 
 	// Testing row
 	var test_row = 19;
-	var test_upgrades = [uid.upgrade_earth_density_3, uid.upgrade_earth_depth_4, uid.upgrade_earth_depth_5, uid.upgrade_earth_depth_6, uid.upgrade_earth_depth_7, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5];
+	var test_upgrades = [uid.upgrade_earth_density_3, uid.upgrade_earth_depth_4, uid.upgrade_earth_depth_5, uid.upgrade_earth_depth_6, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map_earth[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;
@@ -1238,6 +1238,7 @@ function generateResearchMapSingularity() {
 	}
 
 	// Upgrade Tree
+	upgrade_map_singularity[mapColRow(1, 2)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_7,																									);
 
 	// Testing row
 	var test_row = 6;

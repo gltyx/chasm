@@ -309,11 +309,17 @@ function incinerator_stoke() {
 	overheat_timer = RigSustainAmount();
 }
 
+reset_level_singularity = 1;
+reset_level_all = 2;
+
 function singularity_reset() {
 	if (pending_singularity > 0) {
 		// Gain singularity
 		chasm_currency[cid.currency_singularity].resource.gain(pending_singularity);
 		pending_singularity = 0;
+
+		// Reset Upgrades
+		reset_upgrades(reset_level_singularity);
 
 		// Reset Currency
 		for (let i = cid.currency_first; i < cid.currency_count; i++) {
@@ -341,9 +347,6 @@ function singularity_reset() {
 				chasm_currency[i].resource.set(0);
 			}
 		}
-
-		// Reset Upgrades
-		reset_upgrades();
 		
 		// Reset Storage and UI
 		chasm_storage[sid.storage_earth].storage_reset();

@@ -66,13 +66,15 @@ class _CHASM_UPGRADE {
 	unlocked = false;
 	cost = new currency_value_map([]);
 	prerequisites;
+	reset_level = reset_level_singularity;
 
-	constructor(name, upgrade_image, cost) {
+	constructor(name, upgrade_image, cost, reset_level) {
 		this.name = name;
 		if (upgrade_image !== undefined && upgrade_image != "") {
 			this.upgrade_image = upgrade_image;
 		}
 		this.cost = new currency_value_map(cost);
+		this.reset_level = reset_level;
 	}
 
 	buy(free) {
@@ -141,7 +143,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_density_2:
@@ -155,7 +159,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_density_3:
@@ -169,7 +175,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_density_4:
@@ -183,7 +191,9 @@ function initUpgrades() {
 					0,		// Soul
 					7000000,// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_density_5:
@@ -197,7 +207,9 @@ function initUpgrades() {
 					0,		// Soul
 					8000000,// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_value_1:
@@ -211,7 +223,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_value_2:
@@ -225,7 +239,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_value_3:
@@ -239,7 +255,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_value_4:
@@ -253,7 +271,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_value_5:
@@ -267,7 +287,9 @@ function initUpgrades() {
 					0,		// Soul
 					1,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_chance_1:
@@ -281,7 +303,9 @@ function initUpgrades() {
 					0,		// Soul
 					0.5,	// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_chance_2:
@@ -295,7 +319,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_gather_speed_1:
@@ -309,7 +335,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_drop_speed_1:
@@ -323,7 +351,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_water_storage:
@@ -337,7 +367,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 			
 			case uid.upgrade_earth_metals_1:
@@ -351,7 +383,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_depth_1:
@@ -365,7 +399,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_depth_2:
@@ -379,7 +415,9 @@ function initUpgrades() {
 					0,		// Soul
 					1.5,	// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_depth_3:
@@ -393,7 +431,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_depth_4:
@@ -407,7 +447,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_depth_5:
@@ -421,7 +463,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_depth_6:
@@ -435,7 +479,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_earth_depth_7:
@@ -449,7 +495,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					30,		// Singularity
-				]);
+					],
+					reset_level_all
+				);
 				break;
 			
 			case uid.upgrade_mining_rig_1:
@@ -463,7 +511,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 			
 			case uid.upgrade_mining_rig_2:
@@ -477,7 +527,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 			
 			case uid.upgrade_workers_1:
@@ -491,7 +543,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 			
 			case uid.upgrade_workers_2:
@@ -505,7 +559,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 			
 			case uid.upgrade_workers_3:
@@ -519,7 +575,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 			
 			case uid.upgrade_workers_4:
@@ -533,7 +591,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 		
 			case uid.upgrade_workers_5:
@@ -547,7 +607,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 		
 			case uid.upgrade_workers_6:
@@ -561,7 +623,9 @@ function initUpgrades() {
 					0,		// Soul
 					0.20,	// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 		
 			case uid.upgrade_workers_7:
@@ -575,7 +639,9 @@ function initUpgrades() {
 					0,		// Soul
 					1.5,	// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 	
 			case uid.upgrade_workers_8:
@@ -589,7 +655,9 @@ function initUpgrades() {
 					0,		// Soul
 					1.5,	// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 
 			case uid.upgrade_workers_9:
@@ -603,7 +671,9 @@ function initUpgrades() {
 					0,		// Soul
 					1.5,	// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 				break;
 			
 			case uid.upgrade_singularity_workers_1:
@@ -617,7 +687,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					1,		// Singularity
-				]);
+					],
+					reset_level_all
+				);
 				break;
 			
 			case uid.upgrade_singularity_workers_2:
@@ -631,7 +703,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					3,		// Singularity
-				]);
+					],
+					reset_level_all
+				);
 				break;
 			
 			case uid.upgrade_singularity_workers_3:
@@ -645,7 +719,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					5,		// Singularity
-				]);
+					],
+					reset_level_all
+				);
 				break;
 		
 			case uid.upgrade_singularity_workers_4:
@@ -659,7 +735,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					10,		// Singularity
-				]);
+					],
+					reset_level_all
+				);
 				break;
 	
 			case uid.upgrade_singularity_workers_5:
@@ -673,7 +751,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					15,		// Singularity
-				]);
+					],
+					reset_level_all
+				);
 				break;
 
 			case uid.upgrade_singularity_workers_6:
@@ -687,7 +767,9 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					30,		// Singularity
-				]);
+					],
+					reset_level_all
+				);
 				break;
 
 			default:
@@ -701,16 +783,20 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					0,		// Singularity
-				]);
+					],
+					reset_level_singularity
+				);
 		}
 	}
 
 	drawResearchMap();
 }
 
-function lock_all_upgrades() {
+function lock_all_upgrades(reset_level) {
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
-		chasm_upgrades[i].lock();
+		if (reset_level >= chasm_upgrades[i].reset_level) {
+			chasm_upgrades[i].lock();
+		}
 	}
 }
 
@@ -866,26 +952,28 @@ function buy_upgrade(upgrade_id, free) {
 	}
 }
 
-function reset_upgrades() {
-	lock_all_upgrades();
+function reset_upgrades(reset_level) {
+	lock_all_upgrades(reset_level);
 	
-	// upgrade_water_storage
-	$("#water_section").css("display", "none");
-
-	// upgrade_earth_metals_1
-	$("#earth_survey").css("background-color", "transparent");
-	$("#earth_survey_content").css("visibility", "hidden");
-
-	// upgrade_earth_depth_1
-	$("#earth_depth").css("background-color", "transparent");
-	$("#earth_depth_content").css("visibility", "hidden");
-
-	// upgrade_mining_rig_1
-	$("#incinerator_box").css("background-color", "transparent");
-	$("#incinerator_box_content").css("visibility", "hidden");
-
-	// upgrade_mining_rig_2
-	$("#incinerator_upgrades_content").css("visibility", "hidden");
+	if (reset_level >= reset_level_singularity) {
+		// upgrade_water_storage
+		$("#water_section").css("display", "none");
+	
+		// upgrade_earth_metals_1
+		$("#earth_survey").css("background-color", "transparent");
+		$("#earth_survey_content").css("visibility", "hidden");
+	
+		// upgrade_earth_depth_1
+		$("#earth_depth").css("background-color", "transparent");
+		$("#earth_depth_content").css("visibility", "hidden");
+	
+		// upgrade_mining_rig_1
+		$("#incinerator_box").css("background-color", "transparent");
+		$("#incinerator_box_content").css("visibility", "hidden");
+	
+		// upgrade_mining_rig_2
+		$("#incinerator_upgrades_content").css("visibility", "hidden");
+	}
 }
 
 class _TILE_ID {

@@ -28,6 +28,7 @@ class saveData {
 var chasm_save;
 var chasm_incoming_save;
 const save_path = "chasm";
+var last_save_time;
 
 function loadSave() {
 	chasm_save = new saveData();
@@ -61,6 +62,7 @@ function storeSave() {
 
 	// Save to Local Storage
 	lib_chasm_store_save(save_path, chasm_save);
+	last_save_time = Date.now();
 }
 
 function autoSave() {

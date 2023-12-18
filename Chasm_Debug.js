@@ -1,5 +1,15 @@
 // Chasm Debug
 	// Functions for debugging/development of Chasm. Don't use these. Or do; I'm not your dad.
+	// Change to a game settings page with hidden developer/cheat menus
+
+function animateOptions() {
+	if (last_save_time == null) {
+		$("#last_save_time").html("n/a");
+	} else {
+		let time_delta_s = DisplayNumberFormatter((Date.now() - last_save_time) / 1000, 0);
+		$("#last_save_time").html(time_delta_s + "s");
+	}
+}
 
 function debug_free_upgrades() {
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
@@ -128,5 +138,8 @@ function debug_save() {
 }
 
 function debug_clear() {
-	clearSave();
+	if (window.confirm("Are you sure you want to start the game over? You will lose everything.")) {
+		clearSave();
+		window.location.reload();
+	}
 }

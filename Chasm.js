@@ -56,6 +56,7 @@ function animation_tick() {
 	draw_resources();
 	showInspector(current_inspector_id);
 	animateResearchMap();
+	animateOptions();
 
 	// Singularity
 	animateSingularity();

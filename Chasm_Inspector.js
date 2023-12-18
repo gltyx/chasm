@@ -73,6 +73,11 @@ class _INSPECTOR_ID {
 	upgrade_workers_8							= uid.upgrade_workers_8						+ this.offset_upgrades;
 	upgrade_workers_9							= uid.upgrade_workers_9						+ this.offset_upgrades;
 	upgrade_singularity_workers_1				= uid.upgrade_singularity_workers_1			+ this.offset_upgrades;
+	upgrade_singularity_workers_2				= uid.upgrade_singularity_workers_2			+ this.offset_upgrades;
+	upgrade_singularity_workers_3				= uid.upgrade_singularity_workers_3			+ this.offset_upgrades;
+	upgrade_singularity_workers_4				= uid.upgrade_singularity_workers_4			+ this.offset_upgrades;
+	upgrade_singularity_workers_5				= uid.upgrade_singularity_workers_5			+ this.offset_upgrades;
+	upgrade_singularity_workers_6				= uid.upgrade_singularity_workers_6			+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
@@ -709,6 +714,46 @@ function showInspector(id) {
 			$("#inspector_text")	.html("After jumping into the Chasm you wake up on the surface once again, but this time you are not alone. The Chasm is empty and the work site has disappeared, but there is another version of you just starting to get to work.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker");
+			break;
+		case iid.upgrade_singularity_workers_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Bigfoot");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_2].cost.stringify());
+			$("#inspector_text")	.html("This universe is the only one where Bigfoot exists, and he looks almost exactly like the Fringe Researcher. You had better bring him with you.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker");
+			break;
+		case iid.upgrade_singularity_workers_3:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Intern Sarcophagus");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_3].cost.stringify());
+			$("#inspector_text")	.html("You have crafted a grim and terrible artefact which can carry a single Intern through the Chasm, across the threshold between worlds. They still won't be paid.<br>Don't forget to poke a few air holes.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker");
+			break;
+		case iid.upgrade_singularity_workers_4:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Timey Wimey Prospector");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_4].cost.stringify());
+			$("#inspector_text")	.html("The prospector in this universe is young, British, and weirdly hot. He seems to know a lot about temporal paradoxes. It's probably a good idea to hire someone who can tell you if you are about to destroy the universe.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker");
+			break;
+		case iid.upgrade_singularity_workers_5:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Creepier Twins");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_5].cost.stringify());
+			$("#inspector_text")	.html("The twins are way more evil after traveling through the Chasm. Their eyes glow, they crab walk everywhere, and one of them ate your lunch. These guys are the worst.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+2 Workers");
+			break;
+		case iid.upgrade_singularity_workers_6:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Omniversal HR Department");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_6].cost.stringify());
+			$("#inspector_text")	.html("The HR department has figured out how to hire staff across every parallel universe at once. This will save a ton of time on recruiting, but company parties are going to get much harder to plan.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Keep first 6 worker upgrades on reset");
 			break;
 
 		// Achievements

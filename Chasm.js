@@ -321,6 +321,18 @@ function singularity_reset() {
 			if (i == cid.currency_workers) {
 				chasm_currency[i].resource.set(1);
 				if (chasm_upgrades[uid.upgrade_singularity_workers_1].unlocked) chasm_currency[i].resource.gain(1);
+				if (chasm_upgrades[uid.upgrade_singularity_workers_2].unlocked) chasm_currency[i].resource.gain(1);
+				if (chasm_upgrades[uid.upgrade_singularity_workers_3].unlocked) chasm_currency[i].resource.gain(1);
+				if (chasm_upgrades[uid.upgrade_singularity_workers_4].unlocked) chasm_currency[i].resource.gain(1);
+				if (chasm_upgrades[uid.upgrade_singularity_workers_5].unlocked) chasm_currency[i].resource.gain(2);
+				if (chasm_upgrades[uid.upgrade_singularity_workers_6].unlocked) {
+					buy_upgrade(uid.upgrade_workers_1, true);
+					buy_upgrade(uid.upgrade_workers_2, true);
+					buy_upgrade(uid.upgrade_workers_3, true);
+					buy_upgrade(uid.upgrade_workers_4, true);
+					buy_upgrade(uid.upgrade_workers_5, true);
+					buy_upgrade(uid.upgrade_workers_6, true);
+				}
 				continue;
 			}
 

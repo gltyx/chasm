@@ -51,8 +51,13 @@ class _UPGRADE_ID {
 
 	// Singularity upgrades
 	upgrade_singularity_workers_1	= 0x0022;	// +1 Worker
+	upgrade_singularity_workers_2	= 0x0023;	// +1 Worker
+	upgrade_singularity_workers_3	= 0x0024;	// +1 Worker
+	upgrade_singularity_workers_4	= 0x0025;	// +1 Worker
+	upgrade_singularity_workers_5	= 0x0026;	// +2 Worker
+	upgrade_singularity_workers_6	= 0x0027;	// Keep worker upgrades on reset
 
-	upgrade_count					= 0x0023;
+	upgrade_count					= 0x0028;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -70,10 +75,12 @@ class _CHASM_UPGRADE {
 		this.cost = new currency_value_map(cost);
 	}
 
-	buy() {
-		if (this.affordable() && !this.unlocked) {
-			for (let i = 0; i < cid.currency_count; i++) {
-				chasm_currency[i].resource.spend(this.cost.map[i]);
+	buy(free) {
+		if ((this.affordable() || free) && !this.unlocked) {
+			if (!free) {
+				for (let i = 0; i < cid.currency_count; i++) {
+					chasm_currency[i].resource.spend(this.cost.map[i]);
+				}
 			}
 	
 			this.unlock();
@@ -612,6 +619,76 @@ function initUpgrades() {
 					1,		// Singularity
 				]);
 				break;
+			
+			case uid.upgrade_singularity_workers_2:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_workers_2",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					3,		// Singularity
+				]);
+				break;
+			
+			case uid.upgrade_singularity_workers_3:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_workers_3",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					5,		// Singularity
+				]);
+				break;
+		
+			case uid.upgrade_singularity_workers_4:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_workers_4",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					10,		// Singularity
+				]);
+				break;
+	
+			case uid.upgrade_singularity_workers_5:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_workers_5",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					15,		// Singularity
+				]);
+				break;
+
+			case uid.upgrade_singularity_workers_6:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_workers_6",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					30,		// Singularity
+				]);
+				break;
 
 			default:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
@@ -637,8 +714,8 @@ function lock_all_upgrades() {
 	}
 }
 
-function buy_upgrade(upgrade_id) {
-	if (chasm_upgrades[upgrade_id].buy()) {
+function buy_upgrade(upgrade_id, free) {
+	if (chasm_upgrades[upgrade_id].buy(free)) {
 		switch (upgrade_id) {
 			case uid.upgrade_earth_density_1:
 				compress_earth();
@@ -757,6 +834,31 @@ function buy_upgrade(upgrade_id) {
 
 			case uid.upgrade_singularity_workers_1:
 				chasm_currency[cid.currency_workers].resource.gain(1);
+				break;
+
+			case uid.upgrade_singularity_workers_2:
+				chasm_currency[cid.currency_workers].resource.gain(1);
+				break;
+
+			case uid.upgrade_singularity_workers_3:
+				chasm_currency[cid.currency_workers].resource.gain(1);
+				break;
+
+			case uid.upgrade_singularity_workers_4:
+				chasm_currency[cid.currency_workers].resource.gain(1);
+				break;
+
+			case uid.upgrade_singularity_workers_5:
+				chasm_currency[cid.currency_workers].resource.gain(2);
+				break;
+
+			case uid.upgrade_singularity_workers_6:
+				buy_upgrade(uid.upgrade_workers_1, true);
+				buy_upgrade(uid.upgrade_workers_2, true);
+				buy_upgrade(uid.upgrade_workers_3, true);
+				buy_upgrade(uid.upgrade_workers_4, true);
+				buy_upgrade(uid.upgrade_workers_5, true);
+				buy_upgrade(uid.upgrade_workers_6, true);
 				break;
 			
 			default:
@@ -1053,7 +1155,7 @@ function drawResearchMap() {
 	for (let i = 0; i < upgrade_map_earth_size; i++) {
 		if (upgrade_map_earth[i].tile_id == tid.tile_node) {
 			$("#research_tile_earth_" + i).mouseenter(function(){showInspector(upgrade_map_earth[i].upgrade_id + iid.offset_upgrades);});
-			$("#research_tile_earth_" + i).click(function(){buy_upgrade(upgrade_map_earth[i].upgrade_id);});
+			$("#research_tile_earth_" + i).click(function(){buy_upgrade(upgrade_map_earth[i].upgrade_id, false);});
 		}
 	}
 
@@ -1078,7 +1180,7 @@ function drawResearchMap() {
 	for (let i = 0; i < upgrade_map_water_size; i++) {
 		if (upgrade_map_water[i].tile_id == tid.tile_node) {
 			$("#research_tile_water_" + i).mouseenter(function(){showInspector(upgrade_map_water[i].upgrade_id + iid.offset_upgrades);});
-			$("#research_tile_water_" + i).click(function(){buy_upgrade(upgrade_map_water[i].upgrade_id);});
+			$("#research_tile_water_" + i).click(function(){buy_upgrade(upgrade_map_water[i].upgrade_id, false);});
 		}
 	}
 
@@ -1103,7 +1205,7 @@ function drawResearchMap() {
 	for (let i = 0; i < upgrade_map_singularity_size; i++) {
 		if (upgrade_map_singularity[i].tile_id == tid.tile_node) {
 			$("#research_tile_singularity_" + i).mouseenter(function(){showInspector(upgrade_map_singularity[i].upgrade_id + iid.offset_upgrades);});
-			$("#research_tile_singularity_" + i).click(function(){buy_upgrade(upgrade_map_singularity[i].upgrade_id);});
+			$("#research_tile_singularity_" + i).click(function(){buy_upgrade(upgrade_map_singularity[i].upgrade_id, false);});
 		}
 	}
 }
@@ -1242,7 +1344,7 @@ function generateResearchMapSingularity() {
 
 	// Testing row
 	var test_row = 6;
-	var test_upgrades = [uid.upgrade_singularity_workers_1];
+	var test_upgrades = [uid.upgrade_singularity_workers_1, uid.upgrade_singularity_workers_2, uid.upgrade_singularity_workers_3, uid.upgrade_singularity_workers_4, uid.upgrade_singularity_workers_5, uid.upgrade_singularity_workers_6];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map_singularity[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;

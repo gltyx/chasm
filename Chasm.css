@@ -217,6 +217,13 @@ form {
 	-webkit-text-fill-color: transparent;
 }
 
+.smallbutton {
+	height: 28px;
+	line-height: 28px;
+	padding: 0px 12px;
+	font-size: 12px;
+}
+
 /* Chasm id's */
 #chasm_title {
 	padding-left: 34px;

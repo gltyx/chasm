@@ -30,9 +30,14 @@ var chasm_incoming_save;
 const save_path = "chasm";
 var last_save_time;
 
-function loadSave() {
+function loadSave(savedata) {
 	chasm_save = new saveData();
-	chasm_incoming_save = lib_chasm_load_save(save_path);
+
+	if (savedata != null) {
+		chasm_incoming_save = lib_chasm_load_save(save_path);
+	} else {
+		chasm_incoming_save = savedata;
+	}
 
 	if (chasm_incoming_save) {
 		// Merge Save
@@ -169,4 +174,21 @@ function save_unpack_etc(object) {
 	rig_lvl_multi 		= object.rig_lvl_multi;
 	rig_lvl_decay 		= object.rig_lvl_decay;
 	rig_lvl_sustain 	= object.rig_lvl_sustain;
+}
+
+// import/export
+function import_save() {
+	try {
+		loadSave(JSON.parse($("#save_data_textbox").val()))
+	} catch (error) {
+		chasm_log.writeSectionDivider();
+		chasm_log.writeColor("Invalid save data", log_color_cheat);
+	}
+}
+
+function export_save() {
+	storeSave();
+    navigator.clipboard.writeText(JSON.stringify(lib_chasm_load_save(save_path)));
+	chasm_log.writeSectionDivider();
+	chasm_log.writeColor("Save data copied to clipboard", log_color_cheat);
 }

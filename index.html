@@ -639,13 +639,23 @@
 				<!--Options Tab-->
 				<div id = "debug_box" class = "flex">
 					<!--Save Data Box-->
-					<div style = "width: 340px;">
+					<div style = "width: 240px;">
 						<p style = "font-family: Tahoma, sans-serif; font-weight: bold; margin-left: 15px;">Save Data</p>
-
+						
 						<div id = "savedata_box" class = "card" style = "background-color: #b0bbbf; padding: 5px 5px 5px 5px; margin-bottom: 10px;">
 							<p>Last save: <span id = "last_save_time">n/a</span></p>
-							<a id = "debug_save_game" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_save();">Save</a>
-							<a id = "debug_clear_game" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_clear();">Hard Reset</a>
+							<hr>
+							<div class = "hcenter" style = "margin-bottom: 5px; padding-left: 6px;">
+								<a id = "debug_save_game" class = "waves-effect waves-light btn orange lighten-2 black-text smallbutton" onclick = "debug_save();">Save Game</a>
+								<a id = "debug_clear_game" class = "waves-effect waves-light btn orange lighten-2 black-text smallbutton" onclick = "debug_clear();">Hard Reset</a>
+							</div>
+							<div class = "hcenter" style = "margin-bottom: 5px;">
+								<a id = "debug_clear_game" class = "waves-effect waves-light btn orange lighten-2 black-text smallbutton" onclick = "import_save();">Import Save</a>
+								<a id = "debug_clear_game" class = "waves-effect waves-light btn orange lighten-2 black-text smallbutton" onclick = "export_save();">Export Save</a>
+							</div>
+							<div class = "hcenter">
+								<input type = "text" id = "save_data_textbox" class = "browser-default" style = "width: 210px;">
+							</div>
 						</div>
 					</div>
 				

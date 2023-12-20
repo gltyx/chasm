@@ -33,7 +33,7 @@ var last_save_time;
 function loadSave(savedata) {
 	chasm_save = new saveData();
 
-	if (savedata != null) {
+	if (savedata == null) {
 		chasm_incoming_save = lib_chasm_load_save(save_path);
 	} else {
 		chasm_incoming_save = savedata;

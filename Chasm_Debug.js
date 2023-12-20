@@ -9,6 +9,8 @@ function animateOptions() {
 		let time_delta_s = DisplayNumberFormatter((Date.now() - last_save_time) / 1000, 0);
 		$("#last_save_time").html(time_delta_s + "s");
 	}
+
+	$("#achievement_count").html(achievements_earned + "/" + parseInt(aid.achievement_count, 10));
 }
 
 function debug_free_upgrades() {

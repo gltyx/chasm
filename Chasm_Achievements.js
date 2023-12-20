@@ -102,6 +102,8 @@ class _ACHIEVEMENT {
 					$("#tab_achievements").fadeIn(400);
 					chasm_log.writeColor("Unlocked: Achievements tab", log_color_unlock);
 				}
+
+				calculateAchivementCount();
 			}
 	
 			if (this.log_message != "") {
@@ -111,8 +113,17 @@ class _ACHIEVEMENT {
 	}
 }
 
+function calculateAchivementCount() {
+	let earn_count = 0;
+	for (let i = 0; i < aid.achievement_count; i++) {
+		if (chasm_achievements[i].unlocked) earn_count++;
+	}
+	achievements_earned = earn_count;
+}
+
 var chasm_achievements 	= new Array(aid.achievement_count);
 var chasm_milestones 	= new Array(mid.milestone_count);
+var achievements_earned = 0;
 
 function init_achievements() {
 	for (let i = aid.achievement_first; i < aid.achievement_count; i++) {

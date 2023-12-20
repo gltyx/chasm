@@ -42,7 +42,8 @@ function game_init() {
 	registerInspectorEvents();
 
 	// Load Saved Game
-	loadSave();
+	loadSave(null);
+	calculateAchivementCount();
 
 	// Loading finished, reveal the game
 	$("#game_box").css("display", "block")

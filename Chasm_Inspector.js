@@ -174,7 +174,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html(chasm_currency[cid.currency_singularity].inspector_symbol + "Singularity Marbles");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("You found these at the bottom of the Chasm. Each marble contains a small, stabilized black hole. They will allow you to build permanent structures in the Chasm, in the space between worlds.<br><br>You feel compelled to put the marbles in your mouth.");
+			$("#inspector_text")	.html("You found these at the bottom of the Chasm. Each marble contains a small, stabilized black hole. They will allow you to build permanent structures in the Chasm, in the space between worlds.<br><br>You feel compelled to <a href = 'https://youtu.be/RG6EOci0suI?si=K4i4A9m90IPuUOnC'>put the marbles in your mouth</a>.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;

@@ -402,6 +402,7 @@ class resource_storage {
 	}
 
 	storage_reset() {
+
 		this.workers_gather = 0;
 		this.workers_drop = 0;
 		this.workers_survey = 0;
@@ -1079,6 +1080,12 @@ function compress_earth() {
 	chasm_storage[sid.storage_earth].brick_w = chasm_storage[sid.storage_earth].brick_w / 2;
 	earth.setCap((chasm_storage[sid.storage_earth].canvas_w * chasm_storage[sid.storage_earth].canvas_h) / (chasm_storage[sid.storage_earth].brick_w * chasm_storage[sid.storage_earth].brick_h));
 	chasm_storage[sid.storage_earth].clear();
+}
+
+function reset_earth_compression() {
+	chasm_storage[sid.storage_earth].brick_h = 32;
+	chasm_storage[sid.storage_earth].brick_w = 32;
+	earth.setCap((chasm_storage[sid.storage_earth].canvas_w * chasm_storage[sid.storage_earth].canvas_h) / (chasm_storage[sid.storage_earth].brick_w * chasm_storage[sid.storage_earth].brick_h));
 }
 
 function ElementSample(id) {

@@ -149,7 +149,7 @@ function draw_resources() {
 var pending_singularity = 0;
 
 function animateSingularity() {
-	let target = chasm_math_exponential_cost(chasm_currency[cid.currency_singularity].resource.alltime.toNumber() + pending_singularity, 200, 1.4);
+	let target = chasm_math_exponential_cost(pending_singularity, 200, 2);
 	let progress = (chasm_currency[cid.currency_mass].resource.current / target) * 100;
 	if (progress > 100) progress = 100;
 	let remaining = target - chasm_currency[cid.currency_mass].resource.current.toNumber();
@@ -351,6 +351,7 @@ function singularity_reset() {
 		}
 		
 		// Reset Storage and UI
+		reset_earth_compression();
 		chasm_storage[sid.storage_earth].storage_reset();
 		chasm_storage[sid.storage_water].storage_reset();
 		refresh_ui();

@@ -367,21 +367,21 @@ function rigUpgradeMulti() {
 }
 
 function rigUpgradeDecay() {
-	if (chasm_currency[cid.currency_capital].resource.spend(RigDecayCost())) {
+	if (chasm_currency[cid.currency_soul].resource.spend(RigDecayCost())) {
 		rig_lvl_decay++;
 		RefreshMiningRig();
 	}
 }
 
 function rigUpgradeSustain() {
-	if (chasm_currency[cid.currency_soul].resource.spend(RigSustainCost())) {
+	if (chasm_currency[cid.currency_particles].resource.spend(RigSustainCost())) {
 		rig_lvl_sustain++;
 		RefreshMiningRig();
 	}
 }
 
 function RigMultiCost() {
-	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_multi, 1.5, 2), 2);
+	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_multi, 1.5, 3), 1);
 }
 
 function RigMultiAmount() {
@@ -389,7 +389,7 @@ function RigMultiAmount() {
 }
 
 function RigDecayCost() {
-	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_decay, 1.2, 2), 2);
+	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_decay, 1.2, 3), 1);
 }
 
 function RigDecayAmount() {
@@ -397,7 +397,7 @@ function RigDecayAmount() {
 }
 
 function RigSustainCost() {
-	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_sustain, 0.75, 2), 2);
+	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_sustain, 10, 10), 1);
 }
 
 function RigSustainAmount() {

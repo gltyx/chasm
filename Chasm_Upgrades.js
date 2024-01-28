@@ -22,42 +22,43 @@ class _UPGRADE_ID {
 	upgrade_earth_value_3			= 0x0007;	// +50% Metals value
 	upgrade_earth_value_4			= 0x0008;	// +25% Stone value
 	upgrade_earth_value_5			= 0x0009;	// +50% Emerald value
-	upgrade_earth_chance_1			= 0x000a;	// +1% Emerald chance
-	upgrade_earth_chance_2			= 0x000b;	// +2% Copper chance
-	upgrade_earth_gather_speed_1	= 0x000c;	// Gather +25%
-	upgrade_earth_drop_speed_1		= 0x000d;	// Drop +20%
-	upgrade_earth_metals_1			= 0x000e;	// Unlock surveying
-	upgrade_earth_depth_1			= 0x000f;	// Unlock depth
-	upgrade_earth_depth_2			= 0x0010;	// Max depth +1
-	upgrade_earth_depth_3			= 0x0011;	// Max depth +1
-	upgrade_earth_depth_4			= 0x0012;	// Max depth +1
-	upgrade_earth_depth_5			= 0x0013;	// Max depth +1
-	upgrade_earth_depth_6			= 0x0014;	// Max depth +1
-	upgrade_earth_depth_7			= 0x0015;	// Max depth +1
-	upgrade_mining_rig_1			= 0x0016;	// Unlock mining rig
-	upgrade_mining_rig_2			= 0x0017;	// Unlock mining rig upgrades
+	upgrade_earth_value_6			= 0x000a;	// +30% Stone value / + 40% Earth value
+	upgrade_earth_chance_1			= 0x000b;	// +1% Emerald chance
+	upgrade_earth_chance_2			= 0x000c;	// +2% Copper chance
+	upgrade_earth_gather_speed_1	= 0x000d;	// Gather +25%
+	upgrade_earth_drop_speed_1		= 0x000e;	// Drop +20%
+	upgrade_earth_metals_1			= 0x000f;	// Unlock surveying
+	upgrade_earth_depth_1			= 0x0010;	// Unlock depth
+	upgrade_earth_depth_2			= 0x0011;	// Max depth +1
+	upgrade_earth_depth_3			= 0x0012;	// Max depth +1
+	upgrade_earth_depth_4			= 0x0013;	// Max depth +1
+	upgrade_earth_depth_5			= 0x0014;	// Max depth +1
+	upgrade_earth_depth_6			= 0x0015;	// Max depth +1
+	upgrade_earth_depth_7			= 0x0016;	// Max depth +1
+	upgrade_mining_rig_1			= 0x0017;	// Unlock mining rig
+	upgrade_mining_rig_2			= 0x0018;	// Unlock mining rig upgrades
 
-	upgrade_water_storage			= 0x0018;	// Unlock water storage
+	upgrade_water_storage			= 0x0019;	// Unlock water storage
 
-	upgrade_workers_1				= 0x0019;	// +1 Worker
-	upgrade_workers_2				= 0x001a;	// +1 Worker
-	upgrade_workers_3				= 0x001b;	// +1 Worker
-	upgrade_workers_4				= 0x001c;	// +1 Worker
-	upgrade_workers_5				= 0x001d;	// +2 Worker
-	upgrade_workers_6				= 0x001e;	// +1 Worker / +20% efficiency
-	upgrade_workers_7				= 0x001f;	// +2 Worker / +50% survey efficiency
-	upgrade_workers_8				= 0x0020;	// +1 Worker / +20% jewel value
-	upgrade_workers_9				= 0x0021;	// +1 Worker / +20% metal value
+	upgrade_workers_1				= 0x001a;	// +1 Worker
+	upgrade_workers_2				= 0x001b;	// +1 Worker
+	upgrade_workers_3				= 0x001c;	// +1 Worker
+	upgrade_workers_4				= 0x001d;	// +1 Worker
+	upgrade_workers_5				= 0x001e;	// +2 Worker
+	upgrade_workers_6				= 0x001f;	// +1 Worker / +20% efficiency
+	upgrade_workers_7				= 0x0020;	// +2 Worker / +50% survey efficiency
+	upgrade_workers_8				= 0x0021;	// +1 Worker / +20% jewel value
+	upgrade_workers_9				= 0x0022;	// +1 Worker / +20% metal value
 
 	// Singularity upgrades
-	upgrade_singularity_workers_1	= 0x0022;	// +1 Worker
-	upgrade_singularity_workers_2	= 0x0023;	// +1 Worker
-	upgrade_singularity_workers_3	= 0x0024;	// +1 Worker
-	upgrade_singularity_workers_4	= 0x0025;	// +1 Worker
-	upgrade_singularity_workers_5	= 0x0026;	// +2 Worker
-	upgrade_singularity_workers_6	= 0x0027;	// Keep worker upgrades on reset
+	upgrade_singularity_workers_1	= 0x0023;	// +1 Worker
+	upgrade_singularity_workers_2	= 0x0024;	// +1 Worker
+	upgrade_singularity_workers_3	= 0x0025;	// +1 Worker
+	upgrade_singularity_workers_4	= 0x0026;	// +1 Worker
+	upgrade_singularity_workers_5	= 0x0027;	// +2 Worker
+	upgrade_singularity_workers_6	= 0x0028;	// Keep worker upgrades on reset
 
-	upgrade_count					= 0x0028;
+	upgrade_count					= 0x0029;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -286,6 +287,22 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1,		// Anticapital
+					0,		// Singularity
+					],
+					reset_level_singularity
+				);
+				break;
+
+			case uid.upgrade_earth_value_6:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_earth_value_6",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					150,	// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -1350,6 +1367,7 @@ function generateResearchMapEarth() {
 	upgrade_map_earth[mapColRow(7, 12)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_5,			[uid.upgrade_earth_value_4]						 												);
 	upgrade_map_earth[mapColRow(4, 14)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_2,															 											);
 	upgrade_map_earth[mapColRow(7, 14)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_3,															 												);
+	upgrade_map_earth[mapColRow(9, 12)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_6,			[uid.upgrade_earth_value_4]						 												);
 	
 	// Intro Workers Zone
 	upgrade_map_earth[mapColRow(10, 2)]		.assign_tile(tid.tile_node, 		uid.upgrade_workers_1,																												);

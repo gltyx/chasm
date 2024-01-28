@@ -48,6 +48,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_value_3						= uid.upgrade_earth_value_3					+ this.offset_upgrades;
 	upgrade_earth_value_4						= uid.upgrade_earth_value_4					+ this.offset_upgrades;
 	upgrade_earth_value_5						= uid.upgrade_earth_value_5					+ this.offset_upgrades;
+	upgrade_earth_value_6						= uid.upgrade_earth_value_6					+ this.offset_upgrades;
 	upgrade_earth_chance_1						= uid.upgrade_earth_chance_1				+ this.offset_upgrades;
 	upgrade_earth_chance_2						= uid.upgrade_earth_chance_2				+ this.offset_upgrades;
 	upgrade_earth_gather_speed_1				= uid.upgrade_earth_gather_speed_1			+ this.offset_upgrades;
@@ -511,9 +512,17 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>The Economicon");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_5].cost.stringify());
-			$("#inspector_text")	.html("You have acquired a forbidden tome containing eldritch secrets of accounting and economics. Summoning a few tax demons will allow you to artificially inflate the value of emeralds. Neat!");
+			$("#inspector_text")	.html("You have acquired a forbidden tome containing eldritch secrets of accounting and economics. Summoning a few finance demons will allow you to artificially inflate the value of emeralds. Neat!");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+50% emerald particle value");
+			break;
+		case iid.upgrade_earth_value_6:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Cement Plant");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_6].cost.stringify());
+			$("#inspector_text")	.html("A large facility for turning sandy clay and gravel into construction grade cement and concrete. This is a great way to increase the value of your mineshaft byproducts, and will enable even more elaborite construction projects in the future.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+40% dirt particle value<br>+30% stone particle value");
 			break;
 		case iid.upgrade_earth_chance_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fifty Shades of Green");

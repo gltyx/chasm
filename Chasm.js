@@ -147,9 +147,10 @@ function draw_resources() {
 }
 
 var pending_singularity = 0;
+var base_singularity_cost = 2000;
 
 function animateSingularity() {
-	let target = chasm_math_exponential_cost(pending_singularity, 200, 2);
+	let target = chasm_math_exponential_cost(pending_singularity, base_singularity_cost, 2);
 	let progress = (chasm_currency[cid.currency_mass].resource.current / target) * 100;
 	if (progress > 100) progress = 100;
 	let remaining = target - chasm_currency[cid.currency_mass].resource.current.toNumber();

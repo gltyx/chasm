@@ -1059,7 +1059,7 @@ let upgrade_menu_width 				= 600;
 let upgrade_tile_width 				= 40;
 let upgrade_menu_cols 				= upgrade_menu_width / upgrade_tile_width;
 
-let upgrade_menu_earth_rows 		= 30;
+let upgrade_menu_earth_rows 		= 35;
 let upgrade_map_earth_size			= upgrade_menu_cols * upgrade_menu_earth_rows;
 let upgrade_map_earth 				= new Array(upgrade_map_earth_size);
 
@@ -1409,10 +1409,14 @@ function generateResearchMapEarth() {
 	upgrade_map_earth[mapColRow(7, 12)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_5,			[uid.upgrade_earth_value_4]						 												);
 	upgrade_map_earth[mapColRow(4, 13)]		.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_depth_2]																		);
 	upgrade_map_earth[mapColRow(4, 14)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_2,		[uid.upgrade_earth_depth_2]													 					);
+	upgrade_map_earth[mapColRow(4, 15)]		.assign_tile(tid.tile_connect_ur, 	uid.upgrade_count,					[uid.upgrade_earth_density_2]																	);
 	upgrade_map_earth[mapColRow(7, 13)]		.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_value_5]																		);
 	upgrade_map_earth[mapColRow(7, 14)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_7,			[uid.upgrade_earth_value_5]												 						);
+	upgrade_map_earth[mapColRow(7, 15)]		.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,					[uid.upgrade_earth_value_7]																		);
+	upgrade_map_earth[mapColRow(6, 15)]		.assign_tile(tid.tile_connect_lr, 	uid.upgrade_count,					[uid.upgrade_earth_value_7]																		);
+	upgrade_map_earth[mapColRow(5, 15)]		.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,					[uid.upgrade_earth_density_2],		[uid.upgrade_earth_value_7]									);
 	upgrade_map_earth[mapColRow(9, 12)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_6,			[uid.upgrade_earth_value_4]						 												);
-	upgrade_map_earth[mapColRow(7, 16)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_3,															 												);
+	upgrade_map_earth[mapColRow(5, 16)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_3,			[uid.upgrade_earth_density_2, uid.upgrade_earth_value_7]										);
 	
 	// Intro Workers Zone
 	upgrade_map_earth[mapColRow(10, 2)]		.assign_tile(tid.tile_node, 		uid.upgrade_workers_1,																												);
@@ -1453,7 +1457,7 @@ function generateResearchMapEarth() {
 	upgrade_map_earth[mapColRow(13, 12)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_9,				[uid.upgrade_workers_6]																			);
 
 	// Testing row
-	var test_row = 19;
+	var test_row = 25;
 	var test_upgrades = [uid.upgrade_earth_density_3, uid.upgrade_earth_depth_4, uid.upgrade_earth_depth_5, uid.upgrade_earth_depth_6, uid.upgrade_earth_density_4, uid.upgrade_earth_density_5];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map_earth[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);

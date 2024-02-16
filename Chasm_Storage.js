@@ -727,6 +727,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				let earth_value = 0.01;
 				if (chasm_upgrades[uid.upgrade_earth_value_1].unlocked) earth_value = earth_value * 2;
 				if (chasm_upgrades[uid.upgrade_earth_value_2].unlocked) earth_value = earth_value * 1.5;
+				if (chasm_upgrades[uid.upgrade_earth_value_6].unlocked) earth_value = earth_value * 2;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_earth] * earth_value;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value;
@@ -734,14 +735,18 @@ function elementValue(element_count) { // Returns currency value of all elements
 			case eid.element_stone:
 				let stone_value = 0.30;
 				if (chasm_upgrades[uid.upgrade_earth_value_4].unlocked) stone_value = stone_value * 1.3;
+				if (chasm_upgrades[uid.upgrade_earth_value_6].unlocked) stone_value = stone_value * 1.5;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * stone_value;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * stone_value;
 				break;
 			case eid.element_coal:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * 0.08;
-				currency_count[cid.currency_particles] 	+= element_count[eid.element_coal] * 0.02;
-				currency_count[cid.currency_soul] 		+= element_count[eid.element_coal] * 0.06;
+				let coal_value = 1.00
+				if (chasm_upgrades[uid.upgrade_earth_value_8].unlocked) coal_value = coal_value * 3;
+
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * coal_value;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_coal] * coal_value * 0.92;
+				currency_count[cid.currency_soul] 		+= element_count[eid.element_coal] * coal_value * 0.08;
 				break;
 			case eid.element_copper:
 				let copper_value = 0.01;
@@ -754,19 +759,20 @@ function elementValue(element_count) { // Returns currency value of all elements
 			case eid.element_iron:
 				let iron_value = 0.04;
 				if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) iron_value = iron_value * 1.5;
+				if (chasm_upgrades[uid.upgrade_earth_value_7].unlocked) iron_value = iron_value * 4;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_iron] * iron_value;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_iron] * iron_value;
 				break;
 			case eid.element_lead:
-				let lead_value = 0.16;
+				let lead_value = 0.50;
 				if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) lead_value = lead_value * 1.5;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_lead] * lead_value;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_lead] * lead_value;
 				break;
 			case eid.element_gold:
-				let gold_value = 0.42;
+				let gold_value = 0.90;
 				if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) gold_value = gold_value * 1.5;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_gold] * gold_value;

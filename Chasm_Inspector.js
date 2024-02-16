@@ -49,6 +49,8 @@ class _INSPECTOR_ID {
 	upgrade_earth_value_4						= uid.upgrade_earth_value_4					+ this.offset_upgrades;
 	upgrade_earth_value_5						= uid.upgrade_earth_value_5					+ this.offset_upgrades;
 	upgrade_earth_value_6						= uid.upgrade_earth_value_6					+ this.offset_upgrades;
+	upgrade_earth_value_7						= uid.upgrade_earth_value_7					+ this.offset_upgrades;
+	upgrade_earth_value_8						= uid.upgrade_earth_value_8					+ this.offset_upgrades;
 	upgrade_earth_chance_1						= uid.upgrade_earth_chance_1				+ this.offset_upgrades;
 	upgrade_earth_chance_2						= uid.upgrade_earth_chance_2				+ this.offset_upgrades;
 	upgrade_earth_gather_speed_1				= uid.upgrade_earth_gather_speed_1			+ this.offset_upgrades;
@@ -522,7 +524,23 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_6].cost.stringify());
 			$("#inspector_text")	.html("A large facility for turning sandy clay and gravel into construction grade cement and concrete. This is a great way to increase the value of your mineshaft byproducts, and will enable even more elaborite construction projects in the future.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+40% dirt particle value<br>+30% stone particle value");
+			$("#inspector_subtext")	.html("+50% dirt particle value<br>+100% stone particle value");
+			break;
+		case iid.upgrade_earth_value_7:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Crypt Coins");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_7].cost.stringify());
+			$("#inspector_text")	.html("Your dark powers have grown. You are now able to mint completely valueless coins out of iron. But you can probably convince the Chasm that these coins are \"totally real\" and \"going to the moon\" or something stupid like that.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+300% iron particle value");
+			break;
+		case iid.upgrade_earth_value_8:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Catastrophic Converter");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_8].cost.stringify());
+			$("#inspector_text")	.html("Your researchers have created a machine that enriches coal to be much more fuel-dense, at the cost of being slightly more incredibly harmful for the ozone layer.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+300% coal particle value");
 			break;
 		case iid.upgrade_earth_chance_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fifty Shades of Green");

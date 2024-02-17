@@ -27,7 +27,7 @@ class _UPGRADE_ID {
 	upgrade_earth_value_8				= 0x000c;	// +200% Coal value
 	upgrade_earth_value_9				= 0x000d;	// +100% Dirt value / +100% Copper value
 	upgrade_earth_value_10				= 0x000e;	// +50% Metals value
-	upgrade_earth_chance_1				= 0x000f;	// +1% Emerald chance
+	upgrade_earth_chance_1				= 0x000f;	// +2% Emerald chance
 	upgrade_earth_chance_2				= 0x0010;	// +2% Copper chance
 	upgrade_earth_gather_speed_1		= 0x0011;	// Gather +25%
 	upgrade_earth_gather_speed_2		= 0x0012;	// Gather +10%

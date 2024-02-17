@@ -107,11 +107,11 @@ class ELEMENT_PROBABILITY {
 
 			// Emerald chance bias
 			let ecb = 0;
-			if (chasm_upgrades[uid.upgrade_earth_chance_1].unlocked) ecb += 10;
+			if (chasm_upgrades[uid.upgrade_earth_chance_1].unlocked) ecb += 20;
 
 			// Copper chance bias
 			let ccb = 0;
-			if (chasm_upgrades[uid.upgrade_earth_chance_2].unlocked) ecb += 20;
+			if (chasm_upgrades[uid.upgrade_earth_chance_2].unlocked) ccb += 20;
 
 			//						| Depth 0					| Depth 1					| Depth 2						| Depth 3					| Depth 4					| Depth 5					| Depth 6				| Depth 7
 			const p_magma = [		0,							0,							0,								0,							0,							0,							0,						445 + srvb(300, 0.2)	];

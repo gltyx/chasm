@@ -570,7 +570,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_chance_1].cost.stringify());
 			$("#inspector_text")	.html("The hot new book about emerald mining. Lots of pictures of glistening, shirtless miners. Also a few tips on where to find more emeralds.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+1% base emerald chance");
+			$("#inspector_subtext")	.html("+2% base emerald chance");
 			break;
 		case iid.upgrade_earth_chance_2:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Penny Flavored Gum");

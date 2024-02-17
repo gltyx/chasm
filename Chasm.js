@@ -396,7 +396,7 @@ function RigMultiCost() {
 }
 
 function RigMultiAmount() {
-	return 1 + (rig_lvl_multi * 0.1);
+	return 1 + (rig_lvl_multi * 0.2);
 }
 
 function RigDecayCost() {

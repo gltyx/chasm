@@ -757,7 +757,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_copper] * copper_value;
 				break;
 			case eid.element_iron:
-				let iron_value = 0.04;
+				let iron_value = 0.06;
 				if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) iron_value = iron_value * 1.5;
 				if (chasm_upgrades[uid.upgrade_earth_value_7].unlocked) iron_value = iron_value * 4;
 

@@ -706,7 +706,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>HR Department");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_6].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("It seems like you can't grow your team much more without a hearty stockpile of office snacks, a bevy of teambuilding exercises, and 30 hours of incredibly boring training videos.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker<br>+10% Worker Efficiency");
 			break;
@@ -714,7 +714,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Survey Crew");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_7].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("A bunch of guys with hardhats will significantly improve your mining survey capabilities. The hardhats are key.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+2 Workers<br>+50% Survey Efficiency");
 			break;
@@ -722,7 +722,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Monocle Guy");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_8].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("Every company needs a fancy old man with a top hat and monocle to peer intensely at their gems and crystals. Why else would you dig up gems and crystals?");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker<br>+20% Jewel Value");
 			break;
@@ -730,7 +730,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Jackhammer Jockey");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_9].cost.stringify());
-			$("#inspector_text")	.html("");
+			$("#inspector_text")	.html("The cowboys of the modern construction crew. A short ride on the iron stallion will shatter even the most stubborn boulders. They are also really good on a pogo stick.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker<br>+10% Earth Gather Speed");
 			break;

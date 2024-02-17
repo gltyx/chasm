@@ -193,6 +193,7 @@ function game_tick(scalar) {
 	if (chasm_storage[sid.storage_earth].workers_gather > 0) {
 		gather_amount += 20;
 		if (chasm_upgrades[uid.upgrade_earth_gather_speed_1].unlocked) gather_amount *= 1.25;
+		if (chasm_upgrades[uid.upgrade_earth_gather_speed_2].unlocked) gather_amount *= 1.1;
 		if (chasm_upgrades[uid.upgrade_workers_6].unlocked) gather_amount *= 1.1;
 		if (chasm_upgrades[uid.upgrade_workers_9].unlocked) gather_amount *= 1.1;
 		gather_amount *= incinerator_multi;
@@ -219,6 +220,7 @@ function game_tick(scalar) {
 	if (chasm_storage[sid.storage_earth].workers_drop > 0) {
 		drop_amount += 10;
 		if (chasm_upgrades[uid.upgrade_earth_drop_speed_1].unlocked) drop_amount *= 1.2;
+		if (chasm_upgrades[uid.upgrade_earth_drop_speed_2].unlocked) drop_amount *= 1.1;
 		if (chasm_upgrades[uid.upgrade_workers_6].unlocked) drop_amount *= 1.1;
 		drop_amount *= drop_speed[depth];
 		drop_amount *= chasm_storage[sid.storage_earth].workers_drop;
@@ -350,6 +352,9 @@ function singularity_reset() {
 				chasm_currency[i].resource.set(0);
 			}
 		}
+
+		// Reset Mining Rig
+		if (!chasm_upgrades[uid.upgrade_singularity_mining_rig_1].unlocked) rigUpgradeClear();
 		
 		// Reset Storage and UI
 		reset_earth_compression();
@@ -357,6 +362,12 @@ function singularity_reset() {
 		chasm_storage[sid.storage_water].storage_reset();
 		refresh_ui();
 	}
+}
+
+function rigUpgradeClear() {
+	rig_lvl_multi = 0;
+	rig_lvl_decay = 0;
+	rig_lvl_sustain = 0;
 }
 
 function rigUpgradeMulti() {

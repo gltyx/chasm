@@ -51,10 +51,14 @@ class _INSPECTOR_ID {
 	upgrade_earth_value_6						= uid.upgrade_earth_value_6					+ this.offset_upgrades;
 	upgrade_earth_value_7						= uid.upgrade_earth_value_7					+ this.offset_upgrades;
 	upgrade_earth_value_8						= uid.upgrade_earth_value_8					+ this.offset_upgrades;
+	upgrade_earth_value_9						= uid.upgrade_earth_value_9					+ this.offset_upgrades;
+	upgrade_earth_value_10						= uid.upgrade_earth_value_10				+ this.offset_upgrades;
 	upgrade_earth_chance_1						= uid.upgrade_earth_chance_1				+ this.offset_upgrades;
 	upgrade_earth_chance_2						= uid.upgrade_earth_chance_2				+ this.offset_upgrades;
 	upgrade_earth_gather_speed_1				= uid.upgrade_earth_gather_speed_1			+ this.offset_upgrades;
+	upgrade_earth_gather_speed_2				= uid.upgrade_earth_gather_speed_2			+ this.offset_upgrades;
 	upgrade_earth_drop_speed_1					= uid.upgrade_earth_drop_speed_1			+ this.offset_upgrades;
+	upgrade_earth_drop_speed_2					= uid.upgrade_earth_drop_speed_2			+ this.offset_upgrades;
 	upgrade_earth_metals_1						= uid.upgrade_earth_metals_1				+ this.offset_upgrades;
 	upgrade_earth_depth_1						= uid.upgrade_earth_depth_1					+ this.offset_upgrades;
 	upgrade_earth_depth_2						= uid.upgrade_earth_depth_2					+ this.offset_upgrades;
@@ -81,6 +85,8 @@ class _INSPECTOR_ID {
 	upgrade_singularity_workers_4				= uid.upgrade_singularity_workers_4			+ this.offset_upgrades;
 	upgrade_singularity_workers_5				= uid.upgrade_singularity_workers_5			+ this.offset_upgrades;
 	upgrade_singularity_workers_6				= uid.upgrade_singularity_workers_6			+ this.offset_upgrades;
+	upgrade_singularity_survey_1				= uid.upgrade_singularity_survey_1			+ this.offset_upgrades;
+	upgrade_singularity_mining_rig_1			= uid.upgrade_singularity_mining_rig_1		+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
@@ -542,6 +548,22 @@ function showInspector(id) {
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+300% coal particle value");
 			break;
+		case iid.upgrade_earth_value_9:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Poison Swamp");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_9].cost.stringify());
+			$("#inspector_text")	.html("The chemical sludge produced by your mining operation has created a toxic swampland at the edge of the Chasm. Time to buy some wading pants.<br><br>\"But when making the game I rediscovered my love for making poison swamps. I know how people feel about them, but you know, suddenly I realize I'm in the middle of making one and I just can't help myself. It just happens.\"");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+100% dirt particle value<br>+100% copper particle value");
+			break;
+		case iid.upgrade_earth_value_10:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Ingot Casting Line");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_10].cost.stringify());
+			$("#inspector_text")	.html("This is a much cooler way to store all your metal before dumping it into the Chasm. Somehow this increases the mass of the metal. Don't think too hard about how the Chasm is affecting physics.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+300% metal particle mass");
+			break;
 		case iid.upgrade_earth_chance_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fifty Shades of Green");
 			$("#inspector_cost")	.css("display", "flex");
@@ -566,6 +588,14 @@ function showInspector(id) {
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+25% earth gathering speed");
 			break;
+		case iid.upgrade_earth_gather_speed_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Carcinization");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_gather_speed_2].cost.stringify());
+			$("#inspector_text")	.html("Exposure to all this stinky pollution has slightly changed your genetic code. You are now 3% crab: the crustacean so nice, they made it twice.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+10% earth gathering speed");
+			break;
 		case iid.upgrade_earth_drop_speed_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Pulley System");
 			$("#inspector_cost")	.css("display", "flex");
@@ -573,6 +603,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("A pulley system is much better than the pushy system you were using before.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+20% earth dropping speed");
+			break;
+		case iid.upgrade_earth_drop_speed_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Spring-loaded Elevator");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_drop_speed_2].cost.stringify());
+			$("#inspector_text")	.html("The first version of this elevator played jack-in-the-box music, but everyone hated it. Now it plays Weezer.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+10% earth dropping speed");
 			break;
 		case iid.upgrade_earth_metals_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Surveying Tools");
@@ -781,6 +819,22 @@ function showInspector(id) {
 			$("#inspector_text")	.html("The HR department has figured out how to hire staff across every parallel universe at once. This will save a ton of time on recruiting, but company parties are going to get much harder to plan.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Keep first 6 worker upgrades on reset");
+			break;
+		case iid.upgrade_singularity_survey_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Reverse Precognition");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_survey_1].cost.stringify());
+			$("#inspector_text")	.html("Your large, pulsating brain has developed the ability to predict where valuable mining veins are by remembering where they were the last time you dug them up.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Earth Survey level is raised by 1");
+			break;
+		case iid.upgrade_singularity_mining_rig_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Subspace Mining Rig");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_mining_rig_1].cost.stringify());
+			$("#inspector_text")	.html("Driving your Mining Rig into the Chasm is much faster than rebuilding it on the other side.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Keep Mining Rig upgrades on reset");
 			break;
 
 		// Achievements

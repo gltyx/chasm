@@ -93,6 +93,9 @@ class ELEMENT_PROBABILITY {
 		function srvb(target, slope) {
 			// Survey bias
 			let effective_workers = chasm_storage[sid.storage_earth].workers_survey;
+			if (chasm_upgrades[uid.upgrade_singularity_survey_1].unlocked) {
+				effective_workers += 1;
+			}
 			if (chasm_upgrades[uid.upgrade_workers_7].unlocked) {
 				effective_workers = effective_workers * 1.5;
 			}
@@ -116,7 +119,7 @@ class ELEMENT_PROBABILITY {
 			const p_ruby = [		0,							0,							1,								4   + srvb(10, 0.1),		20 + srvb(50, 0.1),			30  + srvb(80, 0.15),		50  + srvb(90, 0.15),	0						];
 			const p_sapphire = [	0,							0,							3,								10  + srvb(20, 0.1),		30 + srvb(80, 0.15),		20  + srvb(50, 0.2),		5   + srvb(35, 0.15),	0						];
 			const p_emerald = [		0,							5 + srvb(30, 0.2) + ecb,	6 + srvb(40, 0.15) + ecb,		20  + srvb(40, 0.15) + ecb,	10 + srvb(30, 0.15) + ecb,	5   + srvb(40, 0.2) + ecb,	0,						0						];
-			const p_fossil = [		0,							0,							0,								30  + srvb(140, 0.15),		60 + srvb(100, 0.2),		100 + srvb(300, 0.2),		30  + srvb(140, 0.2),	0						];
+			const p_fossil = [		0,							0,							0,								0  + srvb(40, 0.25),		0 + srvb(80, 0.25),			100 + srvb(160, 0.25),		30  + srvb(90, 0.25),	0						];
 			const p_gold = [		0,							0,							0,								2,							8  + srvb(30, 0.15),		40  + srvb(80, 0.15),		100 + srvb(140, 0.15),	0						];
 			const p_lead = [		0,							0,							0,								10  + srvb(10, 0.1),		40 + srvb(10, 0.1),			80  + srvb(60, 0.1),		30  + srvb(45, 0.1),	0						];
 			const p_iron = [		0,							0,							30  + srvb(70, 0.1),			50  + srvb(120, 0.15),		90 + srvb(200, 0.15),		30  + srvb(70, 0.2),		0,						0						];
@@ -728,6 +731,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_earth_value_1].unlocked) earth_value = earth_value * 2;
 				if (chasm_upgrades[uid.upgrade_earth_value_2].unlocked) earth_value = earth_value * 1.5;
 				if (chasm_upgrades[uid.upgrade_earth_value_6].unlocked) earth_value = earth_value * 2;
+				if (chasm_upgrades[uid.upgrade_earth_value_9].unlocked) earth_value = earth_value * 2;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_earth] * earth_value;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value;
@@ -752,8 +756,11 @@ function elementValue(element_count) { // Returns currency value of all elements
 				let copper_value = 0.01;
 				if (chasm_upgrades[uid.upgrade_earth_value_2].unlocked) copper_value = copper_value * 2;
 				if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) copper_value = copper_value * 1.5;
+				if (chasm_upgrades[uid.upgrade_earth_value_9].unlocked) copper_value = copper_value * 2;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_copper] * copper_value;
+				let copper_mass_modifier = 1;
+				if (chasm_upgrades[uid.upgrade_earth_value_10].unlocked) copper_mass_modifier = copper_mass_modifier * 2;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_copper] * copper_value * copper_mass_modifier;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_copper] * copper_value;
 				break;
 			case eid.element_iron:
@@ -761,21 +768,27 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) iron_value = iron_value * 1.5;
 				if (chasm_upgrades[uid.upgrade_earth_value_7].unlocked) iron_value = iron_value * 4;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_iron] * iron_value;
+				let iron_mass_modifier = 1;
+				if (chasm_upgrades[uid.upgrade_earth_value_10].unlocked) iron_mass_modifier = iron_mass_modifier * 2;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_iron] * iron_value * iron_mass_modifier;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_iron] * iron_value;
 				break;
 			case eid.element_lead:
 				let lead_value = 0.50;
 				if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) lead_value = lead_value * 1.5;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_lead] * lead_value;
+				let lead_mass_modifier = 1;
+				if (chasm_upgrades[uid.upgrade_earth_value_10].unlocked) lead_mass_modifier = lead_mass_modifier * 2;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_lead] * lead_value * lead_mass_modifier;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_lead] * lead_value;
 				break;
 			case eid.element_gold:
 				let gold_value = 0.90;
 				if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) gold_value = gold_value * 1.5;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_gold] * gold_value;
+				let gold_mass_modifier = 1;
+				if (chasm_upgrades[uid.upgrade_earth_value_10].unlocked) gold_mass_modifier = gold_mass_modifier * 2;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_gold] * gold_value * gold_mass_modifier;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_gold] * gold_value * 0.66;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_gold] * gold_value * 0.33;
 				break;

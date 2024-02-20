@@ -113,19 +113,23 @@ class ELEMENT_PROBABILITY {
 			let ccb = 0;
 			if (chasm_upgrades[uid.upgrade_earth_chance_2].unlocked) ccb += 20;
 
-			//						| Depth 0					| Depth 1					| Depth 2						| Depth 3					| Depth 4					| Depth 5					| Depth 6				| Depth 7
-			const p_magma = [		0,							0,							0,								0,							0,							0,							0,						445 + srvb(300, 0.2)	];
-			const p_diamond = [		0,							0,							0,								1,							4  + srvb(20, 0.1),			20  + srvb(50, 0.15),		30  + srvb(60, 0.15),	50  + srvb(140, 0.15)	];
-			const p_ruby = [		0,							0,							1,								4   + srvb(10, 0.1),		20 + srvb(50, 0.1),			30  + srvb(80, 0.15),		50  + srvb(90, 0.15),	0						];
-			const p_sapphire = [	0,							0,							3,								10  + srvb(20, 0.1),		30 + srvb(80, 0.15),		20  + srvb(50, 0.2),		5   + srvb(35, 0.15),	0						];
-			const p_emerald = [		0,							5 + srvb(30, 0.2) + ecb,	6 + srvb(40, 0.15) + ecb,		20  + srvb(40, 0.15) + ecb,	10 + srvb(30, 0.15) + ecb,	5   + srvb(40, 0.2) + ecb,	0,						0						];
-			const p_fossil = [		0,							0,							0,								0  + srvb(40, 0.25),		0 + srvb(80, 0.25),			100 + srvb(160, 0.25),		30  + srvb(90, 0.25),	0						];
-			const p_gold = [		0,							0,							0,								2,							8  + srvb(30, 0.15),		40  + srvb(80, 0.15),		100 + srvb(140, 0.15),	0						];
-			const p_lead = [		0,							0,							0,								10  + srvb(10, 0.1),		40 + srvb(10, 0.1),			80  + srvb(60, 0.1),		30  + srvb(45, 0.1),	0						];
-			const p_iron = [		0,							0,							30  + srvb(70, 0.1),			50  + srvb(120, 0.15),		90 + srvb(200, 0.15),		30  + srvb(70, 0.2),		0,						0						];
-			const p_copper = [		0 + srvb(250, 0.2) + ccb,	30 + srvb(250, 0.2) + ccb,	80 + srvb(300, 0.15) + ccb,		80 + srvb(200, 0.2) + ccb,	10 + srvb(100, 0.15) + ccb,	0,							0,						0						];
-			const p_coal = [		0,							0,							4,								20  + srvb(50, 0.15),		50 + srvb(100, 0.15),		55  + srvb(170, 0.15),		60  + srvb(200, 0.2),	0						];
-			const sink_split = [	0,							0.1,						0.25,							0.5,						0.75,						0.85,						0.95,					1						];
+			// Coal chance bias
+			let clb = 0;
+			if (chasm_upgrades[uid.upgrade_earth_chance_3].unlocked) clb += 5;
+
+			//						| Depth 0					| Depth 1					| Depth 2						| Depth 3					| Depth 4					| Depth 5						| Depth 6					| Depth 7
+			const p_magma = [		0,							0,							0,								0,							0,							0,								0,							445 + srvb(300, 0.2)	];
+			const p_diamond = [		0,							0,							0,								1,							4  + srvb(20, 0.1),			20  + srvb(50, 0.15),			30  + srvb(60, 0.15),		50  + srvb(140, 0.15)	];
+			const p_ruby = [		0,							0,							1,								4   + srvb(10, 0.1),		20 + srvb(50, 0.1),			30  + srvb(80, 0.15),			50  + srvb(90, 0.15),		0						];
+			const p_sapphire = [	0,							0,							3,								10  + srvb(20, 0.1),		30 + srvb(80, 0.15),		20  + srvb(50, 0.2),			5   + srvb(35, 0.15),		0						];
+			const p_emerald = [		0,							5 + srvb(30, 0.2) + ecb,	6 + srvb(40, 0.15) + ecb,		20  + srvb(40, 0.15) + ecb,	10 + srvb(30, 0.15) + ecb,	5   + srvb(40, 0.2) + ecb,		0,							0						];
+			const p_fossil = [		0,							0,							0,								0  + srvb(40, 0.25),		0 + srvb(80, 0.25),			100 + srvb(160, 0.25),			30  + srvb(90, 0.25),		0						];
+			const p_gold = [		0,							0,							0,								2,							8  + srvb(30, 0.15),		40  + srvb(80, 0.15),			100 + srvb(140, 0.15),		0						];
+			const p_lead = [		0,							0,							0,								10  + srvb(10, 0.1),		40 + srvb(10, 0.1),			80  + srvb(60, 0.1),			30  + srvb(45, 0.1),		0						];
+			const p_iron = [		0,							0,							30  + srvb(70, 0.1),			50  + srvb(120, 0.15),		90 + srvb(200, 0.15),		30  + srvb(70, 0.2),			0,							0						];
+			const p_copper = [		0 + srvb(250, 0.2) + ccb,	30 + srvb(250, 0.2) + ccb,	80 + srvb(300, 0.15) + ccb,		80 + srvb(200, 0.2) + ccb,	10 + srvb(100, 0.15) + ccb,	0,								0,							0						];
+			const p_coal = [		0,							0,							4 + clb,						20  + srvb(50, 0.15) + clb,	50 + srvb(100, 0.15) + clb,	55  + srvb(170, 0.15) + clb,	60  + srvb(200, 0.2) + clb,	0						];
+			const sink_split = [	0,							0.1,						0.25,							0.5,						0.75,						0.85,							0.95,						1						];
 
 			this.element_magma 		+= p_magma[depth];
 			portion 				-= p_magma[depth];
@@ -737,8 +741,8 @@ function elementValue(element_count) { // Returns currency value of all elements
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value;
 				break;
 			case eid.element_stone:
-				let stone_value = 0.30;
-				if (chasm_upgrades[uid.upgrade_earth_value_4].unlocked) stone_value = stone_value * 1.3;
+				let stone_value = 0.26;
+				if (chasm_upgrades[uid.upgrade_earth_value_4].unlocked) stone_value = stone_value * 1.5;
 				if (chasm_upgrades[uid.upgrade_earth_value_6].unlocked) stone_value = stone_value * 1.5;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * stone_value;
@@ -757,6 +761,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_earth_value_2].unlocked) copper_value = copper_value * 2;
 				if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) copper_value = copper_value * 1.5;
 				if (chasm_upgrades[uid.upgrade_earth_value_9].unlocked) copper_value = copper_value * 2;
+				if (chasm_upgrades[uid.upgrade_workers_10].unlocked) copper_value = copper_value * 1.3;
 
 				let copper_mass_modifier = 1;
 				if (chasm_upgrades[uid.upgrade_earth_value_10].unlocked) copper_mass_modifier = copper_mass_modifier * 2;

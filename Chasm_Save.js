@@ -162,6 +162,7 @@ function save_unpack_storage(object) {
 
 function save_pack_etc() {
 	var object = {};
+	object.singularity_count	= singularity_count;
 	object.pending_singularity 	= pending_singularity;
 	object.rig_lvl_multi 		= rig_lvl_multi;
 	object.rig_lvl_decay 		= rig_lvl_decay;
@@ -170,6 +171,7 @@ function save_pack_etc() {
 }
 
 function save_unpack_etc(object) {
+	singularity_count	= object.singularity_count;
 	pending_singularity = object.pending_singularity;
 	rig_lvl_multi 		= object.rig_lvl_multi;
 	rig_lvl_decay 		= object.rig_lvl_decay;

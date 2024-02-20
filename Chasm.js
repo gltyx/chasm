@@ -146,6 +146,7 @@ function draw_resources() {
 	$("#value_water_amount").html("Value: " + stringifyValue(water_currency_count));
 }
 
+var singularity_count = 0;
 var pending_singularity = 0;
 var base_singularity_cost = 2000;
 
@@ -179,12 +180,14 @@ var rig_lvl_sustain = 0;
 
 function game_tick(scalar) {
 	// Incinerator
+	let incinerator_heat_min = 0;
+	if (chasm_upgrades[uid.upgrade_mining_rig_3].unlocked) incinerator_heat_min = 10;
 	if (overheat_timer > 0) {
 		overheat_timer -= scalar;
-	} else if (incinerator_heat > 0) {
+	} else if (incinerator_heat > incinerator_heat_min) {
 		incinerator_heat -= RigDecayAmount() * scalar;
 
-		if (incinerator_heat < 0) incinerator_heat = 0;
+		if (incinerator_heat < incinerator_heat_min) incinerator_heat = incinerator_heat_min;
 	}
 	incinerator_multi = 1 + (RigMultiAmount() * (incinerator_heat / 100));
 	
@@ -320,6 +323,7 @@ reset_level_all = 2;
 function singularity_reset() {
 	if (pending_singularity > 0) {
 		// Gain singularity
+		singularity_count++;
 		chasm_currency[cid.currency_singularity].resource.gain(pending_singularity);
 		pending_singularity = 0;
 
@@ -331,7 +335,9 @@ function singularity_reset() {
 			// Set workers to 1
 			if (i == cid.currency_workers) {
 				chasm_currency[i].resource.set(1);
-				if (chasm_upgrades[uid.upgrade_singularity_workers_1].unlocked) chasm_currency[i].resource.gain(1);
+				let effective_singularity_count = singularity_count;
+				if (effective_singularity_count > 5) effective_singularity_count = 5;
+				if (chasm_upgrades[uid.upgrade_singularity_workers_1].unlocked) chasm_currency[i].resource.gain(effective_singularity_count);
 				if (chasm_upgrades[uid.upgrade_singularity_workers_2].unlocked) chasm_currency[i].resource.gain(1);
 				if (chasm_upgrades[uid.upgrade_singularity_workers_3].unlocked) chasm_currency[i].resource.gain(1);
 				if (chasm_upgrades[uid.upgrade_singularity_workers_4].unlocked) chasm_currency[i].resource.gain(1);
@@ -412,7 +418,9 @@ function RigSustainCost() {
 }
 
 function RigSustainAmount() {
-	return rig_lvl_sustain * 0.5;
+	let sustain = rig_lvl_sustain * 0.5;
+	if (chasm_upgrades[uid.upgrade_workers_11].unlocked) sustain += 1;
+	return sustain;
 }
 
 // +---------------+

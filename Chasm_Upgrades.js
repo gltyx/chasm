@@ -391,7 +391,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_chance_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_chance_1",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_chance_1.png",
 					[
 					20,		// Particles
 					0,		// Strands
@@ -407,7 +407,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_chance_2:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_chance_2",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_chance_2.png",
 					[
 					40,		// Particles
 					3,		// Strands
@@ -423,7 +423,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_chance_3:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_chance_3",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_chance_3.png",
 					[
 					0,		// Particles
 					200,	// Strands
@@ -439,7 +439,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_chance_4:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_chance_4",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_chance_4.png",
 					[
 					55,		// Particles
 					0,		// Strands
@@ -455,7 +455,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_chance_5:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_chance_5",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_chance_5.png",
 					[
 					20,		// Particles
 					0,		// Strands
@@ -487,7 +487,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_gather_speed_2:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_gather_speed_2",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_gather_speed_2.png",
 					[
 					0,		// Particles
 					0,		// Strands

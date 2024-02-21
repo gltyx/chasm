@@ -71,8 +71,9 @@ class _UPGRADE_ID {
 	upgrade_singularity_workers_6		= 0x0034;	// Keep worker upgrades on reset
 	upgrade_singularity_survey_1		= 0x0035;	// +1 Effective Survey
 	upgrade_singularity_mining_rig_1	= 0x0036;	// Keep Mining Rig upgrades on reset
+	upgrade_singularity_mining_rig_2	= 0x0037;	// Mining rig sustain x3
 
-	upgrade_count						= 0x0037;
+	upgrade_count						= 0x0038;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -262,7 +263,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_3:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_3",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_value_3.png",
 					[
 					16,		// Particles
 					0.5,	// Strands
@@ -278,7 +279,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_4:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_4",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_value_4.png",
 					[
 					16,		// Particles
 					0.5,	// Strands
@@ -294,7 +295,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_5:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_5",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_value_5.png",
 					[
 					55,		// Particles
 					0,		// Strands
@@ -310,7 +311,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_6:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_6",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_value_6.png",
 					[
 					150,	// Particles
 					0,		// Strands
@@ -326,7 +327,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_7:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_7",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_value_7.png",
 					[
 					0,		// Particles
 					8,		// Strands
@@ -342,7 +343,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_8:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_8",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_value_8.png",
 					[
 					0,		// Particles
 					0,		// Strands
@@ -358,7 +359,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_9:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_9",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_value_9.png",
 					[
 					0,		// Particles
 					40,		// Strands
@@ -374,7 +375,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_10:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_10",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_value_10.png",
 					[
 					0,		// Particles
 					50,		// Strands
@@ -502,7 +503,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_drop_speed_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_drop_speed_1",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_upgrade_drop_speed_1.png",
 					[
 					1.8,	// Particles
 					0.15,	// Strands
@@ -758,7 +759,7 @@ function initUpgrades() {
 			case uid.upgrade_workers_3:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_workers_3",
-					"images/tile_research_upgrade_workers_2.png",
+					"images/tile_research_upgrade_workers_3.png",
 					[
 					1.5,	// Particles
 					0,		// Strands
@@ -774,7 +775,7 @@ function initUpgrades() {
 			case uid.upgrade_workers_4:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_workers_4",
-					"images/tile_research_upgrade_workers_2.png",
+					"images/tile_research_upgrade_workers_4.png",
 					[
 					4,		// Particles
 					0.1,	// Strands
@@ -790,7 +791,7 @@ function initUpgrades() {
 			case uid.upgrade_workers_5:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_workers_5",
-					"images/tile_research_upgrade_workers_2.png",
+					"images/tile_research_upgrade_workers_5.png",
 					[
 					8.5,	// Particles
 					0,		// Strands
@@ -1014,6 +1015,22 @@ function initUpgrades() {
 			case uid.upgrade_singularity_mining_rig_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_singularity_mining_rig_1",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					2,		// Singularity
+					],
+					reset_level_all
+				);
+				break;
+
+			case uid.upgrade_singularity_mining_rig_2:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_mining_rig_2",
 					"images/tile_research_upgrade_unknown.png",
 					[
 					0,		// Particles
@@ -1782,8 +1799,9 @@ function generateResearchMapSingularity() {
 	upgrade_map_singularity[mapColRow(4, 7)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_6,		[uid.upgrade_singularity_workers_2, uid.upgrade_singularity_workers_3, uid.upgrade_singularity_workers_4, uid.upgrade_singularity_workers_5]	);
 
 	// Qol upgrades
-	upgrade_map_singularity[mapColRow(11, 2)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_mining_rig_1,																					);
-	upgrade_map_singularity[mapColRow(11, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_survey_1,																						);
+	upgrade_map_singularity[mapColRow(11, 2)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_survey_1,																						);
+	upgrade_map_singularity[mapColRow(11, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_mining_rig_1,																					);
+	upgrade_map_singularity[mapColRow(11, 6)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_mining_rig_2,																					);
 
 	// Testing row
 	var test_row = 10;

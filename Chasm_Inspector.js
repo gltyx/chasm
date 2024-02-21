@@ -93,6 +93,7 @@ class _INSPECTOR_ID {
 	upgrade_singularity_workers_6				= uid.upgrade_singularity_workers_6			+ this.offset_upgrades;
 	upgrade_singularity_survey_1				= uid.upgrade_singularity_survey_1			+ this.offset_upgrades;
 	upgrade_singularity_mining_rig_1			= uid.upgrade_singularity_mining_rig_1		+ this.offset_upgrades;
+	upgrade_singularity_mining_rig_2			= uid.upgrade_singularity_mining_rig_2		+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
@@ -566,7 +567,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Ingot Casting Line");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_10].cost.stringify());
-			$("#inspector_text")	.html("This is a much cooler way to store all your metal before dumping it into the Chasm. Somehow this increases the mass of the metal. Don't think too hard about how the Chasm is affecting physics.");
+			$("#inspector_text")	.html("This is a much cooler way to store all your metal before dumping it into the Chasm. Sometimes you like to build little castles out of the metal bricks.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+300% metal particle mass");
 			break;
@@ -889,6 +890,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("Driving your Mining Rig into the Chasm is much faster than rebuilding it on the other side.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Keep Mining Rig upgrades on reset");
+			break;
+		case iid.upgrade_singularity_mining_rig_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Semi-perpetual Motion Machine");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_mining_rig_2].cost.stringify());
+			$("#inspector_text")	.html("This machine will keep your Mining Rig running 60% of the time, all the time.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Mining Rig sustain x3");
 			break;
 
 		// Achievements

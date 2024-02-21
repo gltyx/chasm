@@ -151,7 +151,7 @@ var pending_singularity = 0;
 var base_singularity_cost = 2000;
 
 function animateSingularity() {
-	let target = chasm_math_exponential_cost(pending_singularity, base_singularity_cost, 2);
+	let target = chasm_math_exponential_cost(pending_singularity, base_singularity_cost, 1.5);
 	let progress = (chasm_currency[cid.currency_mass].resource.current / target) * 100;
 	if (progress > 100) progress = 100;
 	let remaining = target - chasm_currency[cid.currency_mass].resource.current.toNumber();
@@ -420,6 +420,7 @@ function RigSustainCost() {
 function RigSustainAmount() {
 	let sustain = rig_lvl_sustain * 0.5;
 	if (chasm_upgrades[uid.upgrade_workers_11].unlocked) sustain += 1;
+	if (chasm_upgrades[uid.upgrade_singularity_mining_rig_2].unlocked) sustain *= 3;
 	return sustain;
 }
 

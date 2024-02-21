@@ -56,6 +56,8 @@ class _INSPECTOR_ID {
 	upgrade_earth_chance_1						= uid.upgrade_earth_chance_1				+ this.offset_upgrades;
 	upgrade_earth_chance_2						= uid.upgrade_earth_chance_2				+ this.offset_upgrades;
 	upgrade_earth_chance_3						= uid.upgrade_earth_chance_3				+ this.offset_upgrades;
+	upgrade_earth_chance_4						= uid.upgrade_earth_chance_4				+ this.offset_upgrades;
+	upgrade_earth_chance_5						= uid.upgrade_earth_chance_5				+ this.offset_upgrades;
 	upgrade_earth_gather_speed_1				= uid.upgrade_earth_gather_speed_1			+ this.offset_upgrades;
 	upgrade_earth_gather_speed_2				= uid.upgrade_earth_gather_speed_2			+ this.offset_upgrades;
 	upgrade_earth_drop_speed_1					= uid.upgrade_earth_drop_speed_1			+ this.offset_upgrades;
@@ -592,6 +594,22 @@ function showInspector(id) {
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+0.5% base coal chance");
 			break;
+		case iid.upgrade_earth_chance_4:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Lucky Skipping Stone");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_chance_4].cost.stringify());
+			$("#inspector_text")	.html("This perfectly flat river rock makes you feel a little bit lucky. You could get eight, maybe nine skips out of this bad boy.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Increased chance to find stone instead of dirt, even at shallow depths");
+			break;
+		case iid.upgrade_earth_chance_5:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Jackpot State of Mind");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_chance_5].cost.stringify());
+			$("#inspector_text")	.html("Gambling is a scam. This upgrade is almost certainly not worth it, but you are going to buy it anyway. All the subliminal advertising in this game is starting to pay off.<br><br><span style = 'font-size: 4px;'>buy Our Queen Crumbles <a href = 'https://blooperly.itch.io/our-queen-crumbles' target = '_blank'>here</a></span>");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+0.1% base diamond chance, even at shallow depths");
+			break;
 		case iid.upgrade_earth_gather_speed_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Shovel Lotion");
 			$("#inspector_cost")	.css("display", "flex");
@@ -646,7 +664,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_2].cost.stringify());
 			$("#inspector_text")	.html("Your old mining permit was a bit... forged. This one should stand up to even moderate scrutiny!");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("max depth +1");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
 			break;
 		case iid.upgrade_earth_depth_3:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Bloodpact Mining Rights");
@@ -654,7 +672,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_3].cost.stringify());
 			$("#inspector_text")	.html("The Fringe Researcher insists that a document signed in blood will allow you to dig much deeper. That doesn't sound real, but you've got plenty of blood. Might as well try!");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("max depth +1");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
 			break;
 		case iid.upgrade_earth_depth_4:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Double Notarized Bloodpact");
@@ -662,7 +680,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_4].cost.stringify());
 			$("#inspector_text")	.html("This document is now so laden with ink, blood, and wax seals that it is barely legible. Your legal team is thrilled.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("max depth +1");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
 			break;
 		case iid.upgrade_earth_depth_5:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Royal Mining Rights");
@@ -670,7 +688,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_5].cost.stringify());
 			$("#inspector_text")	.html("The Fringe Researcher has spent his free time tracing the lineage of the royal family who used to own the land around the Chasm. The heir is willing to sell you ancient land rights, for a price.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("max depth +1");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
 			break;
 		case iid.upgrade_earth_depth_6:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Deep Mining Rights");
@@ -678,7 +696,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_6].cost.stringify());
 			$("#inspector_text")	.html("You had your lawyers add in a few clauses protecting you from any liability for \"accidental plate shattering, geo-terrorism, and/or volcanic armageddon\"");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("max depth +1");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
 			break;
 		case iid.upgrade_earth_depth_7 :
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Blessed Mining Rights");
@@ -686,7 +704,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_7].cost.stringify());
 			$("#inspector_text")	.html("Apparently the only way to dig \"all the way to Hell\" is to get your documentation blessed. You should keep an eye out for God in the Chasm, maybe he will help you out.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("max depth +1");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
 			break;
 		case iid.upgrade_mining_rig_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>There Will Be Dirt");
@@ -710,7 +728,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_mining_rig_3].cost.stringify());
 			$("#inspector_text")	.html("It takes a lot of work to keep the Mining Rig running. A little bit of Pitfire will help to keep the motor from freezing up.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("Mining Rig will not drop below 10% heat");
+			$("#inspector_subtext")	.html("Mining Rig will not drop below 20% heat");
 			break;
 		case iid.upgrade_water_storage:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water storage");

@@ -181,10 +181,10 @@ var rig_lvl_sustain = 0;
 function game_tick(scalar) {
 	// Incinerator
 	let incinerator_heat_min = 0;
-	if (chasm_upgrades[uid.upgrade_mining_rig_3].unlocked) incinerator_heat_min = 10;
+	if (chasm_upgrades[uid.upgrade_mining_rig_3].unlocked) incinerator_heat_min = 20;
 	if (overheat_timer > 0) {
 		overheat_timer -= scalar;
-	} else if (incinerator_heat > incinerator_heat_min) {
+	} else {
 		incinerator_heat -= RigDecayAmount() * scalar;
 
 		if (incinerator_heat < incinerator_heat_min) incinerator_heat = incinerator_heat_min;
@@ -223,7 +223,7 @@ function game_tick(scalar) {
 	if (chasm_storage[sid.storage_earth].workers_drop > 0) {
 		drop_amount += 10;
 		if (chasm_upgrades[uid.upgrade_earth_drop_speed_1].unlocked) drop_amount *= 1.2;
-		if (chasm_upgrades[uid.upgrade_earth_drop_speed_2].unlocked) drop_amount *= 1.1;
+		if (chasm_upgrades[uid.upgrade_earth_drop_speed_2].unlocked) drop_amount *= 1.2;
 		if (chasm_upgrades[uid.upgrade_workers_6].unlocked) drop_amount *= 1.1;
 		drop_amount *= drop_speed[depth];
 		drop_amount *= chasm_storage[sid.storage_earth].workers_drop;
@@ -414,7 +414,7 @@ function RigDecayAmount() {
 }
 
 function RigSustainCost() {
-	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_sustain, 10, 10), 1);
+	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_sustain, 10, 5), 1);
 }
 
 function RigSustainAmount() {

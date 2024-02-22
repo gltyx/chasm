@@ -535,7 +535,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Cement Plant");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_6].cost.stringify());
-			$("#inspector_text")	.html("A large facility for turning sandy clay and gravel into construction grade cement and concrete. This is a great way to increase the value of your mineshaft byproducts, and will enable even more elaborite construction projects in the future.");
+			$("#inspector_text")	.html("A large facility for turning sandy clay and gravel into construction grade cement and concrete. This is a great way to increase the value of your mineshaft byproducts, and will enable even more elaborate construction projects in the future.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+50% dirt particle value<br>+100% stone particle value");
 			break;

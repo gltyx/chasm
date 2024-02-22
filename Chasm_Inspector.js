@@ -190,7 +190,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html(chasm_currency[cid.currency_singularity].inspector_symbol + "Singularity Marbles");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("You found these at the bottom of the Chasm. Each marble contains a small, stabilized black hole. They will allow you to build permanent structures in the Chasm, in the space between worlds.<br><br>You feel compelled to <a href = 'https://youtu.be/RG6EOci0suI?si=K4i4A9m90IPuUOnC'>put the marbles in your mouth</a>.");
+			$("#inspector_text")	.html("You found these at the bottom of the Chasm. Each marble contains a small, stabilized black hole. They will allow you to build permanent structures in the Chasm, in the space between worlds.<br><br>You feel compelled to <a href = 'https://youtu.be/RG6EOci0suI?si=K4i4A9m90IPuUOnC' target = '_blank'>put the marbles in your mouth</a>.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -559,7 +559,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Poison Swamp");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_9].cost.stringify());
-			$("#inspector_text")	.html("The chemical sludge produced by your mining operation has created a toxic swampland at the edge of the Chasm. Time to buy some wading pants.<br><br>\"But when making the game I rediscovered my love for making poison swamps. I know how people feel about them, but you know, suddenly I realize I'm in the middle of making one and I just can't help myself. It just happens.\"");
+			$("#inspector_text")	.html("The chemical sludge produced by your mining operation has created a toxic swampland at the edge of the Chasm. Time to buy some wading pants.<br><br>\"But when making the game I rediscovered my love for making poison swamps. I know how people feel about them, but you know, suddenly I realize I'm in the middle of making one and I just can't help myself. <a href = 'https://x.com/hausofdecline/status/1760748342852673658?s=20' target = '_blank'>It just happens.</a>\"");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+100% dirt particle value<br>+100% copper particle value");
 			break;

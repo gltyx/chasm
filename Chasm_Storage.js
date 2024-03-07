@@ -201,19 +201,71 @@ class ELEMENT_PROBABILITY {
 			out	+= "</div>";
 
 			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";
-			out	+= "<p class = 'element_earth' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_earth / 10, 1) 		+ "%</p>";
-			out	+= "<p class = 'element_stone' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_stone / 10, 1) 		+ "%</p>";
-			out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_coal / 10, 1) 		+ "%</p>";
-			out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_copper / 10, 1) 		+ "%</p>";
-			out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_iron / 10, 1) 		+ "%</p>";
-			out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_lead / 10, 1) 		+ "%</p>";
-			out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_gold / 10, 1) 		+ "%</p>";
-			out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_fossil / 10, 1) 		+ "%</p>";
-			out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_emerald / 10, 1) 	+ "%</p>";
-			out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_sapphire / 10, 1) 	+ "%</p>";
-			out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_ruby / 10, 1) 		+ "%</p>";
-			out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_diamond / 10, 1) 	+ "%</p>";
-			out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_magma / 10, 1) 		+ "%</p>";
+			if (this.element_earth == 0) {
+				out += "<p class = 'element_earth' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out += "<p class = 'element_earth' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_earth / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_stone == 0) {
+				out	+= "<p class = 'element_stone' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out += "<p class = 'element_stone' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_stone / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_coal == 0) {
+				out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_coal / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_copper == 0) {
+				out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_copper / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_iron == 0) {
+				out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_iron / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_lead == 0) {
+				out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_lead / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_gold == 0) {
+				out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_gold / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_fossil == 0) {
+				out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_fossil / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_emerald == 0) {
+				out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_emerald / 10, 1) 	+ "%</p>";
+			}
+			if (this.element_sapphire == 0) {
+				out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_sapphire / 10, 1) 	+ "%</p>";
+			}
+			if (this.element_ruby == 0) {
+				out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_ruby / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_diamond == 0) {
+				out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_diamond / 10, 1) 	+ "%</p>";
+			}
+			if (this.element_magma == 0) {
+				out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_magma / 10, 1) 		+ "%</p>";
+			}
 			out	+= "</div>";
 
 			$("#earth_survey_menu").html(out);

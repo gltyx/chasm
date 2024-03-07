@@ -201,67 +201,67 @@ class ELEMENT_PROBABILITY {
 			out	+= "</div>";
 
 			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";
-			if (this.element_earth == 0) {
+			if (this.element_earth <= 0) {
 				out += "<p class = 'element_earth' 		style = 'font-size: 12px;'>-</p>";
 			} else {
 				out += "<p class = 'element_earth' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_earth / 10, 1) 		+ "%</p>";
 			}
-			if (this.element_stone == 0) {
+			if (this.element_stone <= 0) {
 				out	+= "<p class = 'element_stone' 		style = 'font-size: 12px;'>-</p>";
 			} else {
 				out += "<p class = 'element_stone' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_stone / 10, 1) 		+ "%</p>";
 			}
-			if (this.element_coal == 0) {
+			if (this.element_coal <= 0) {
 				out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_coal' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_coal / 10, 1) 		+ "%</p>";
 			}
-			if (this.element_copper == 0) {
+			if (this.element_copper <= 0) {
 				out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_copper' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_copper / 10, 1) 		+ "%</p>";
 			}
-			if (this.element_iron == 0) {
+			if (this.element_iron <= 0) {
 				out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_iron' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_iron / 10, 1) 		+ "%</p>";
 			}
-			if (this.element_lead == 0) {
+			if (this.element_lead <= 0) {
 				out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_lead' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_lead / 10, 1) 		+ "%</p>";
 			}
-			if (this.element_gold == 0) {
+			if (this.element_gold <= 0) {
 				out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_gold' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_gold / 10, 1) 		+ "%</p>";
 			}
-			if (this.element_fossil == 0) {
+			if (this.element_fossil <= 0) {
 				out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_fossil' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_fossil / 10, 1) 		+ "%</p>";
 			}
-			if (this.element_emerald == 0) {
+			if (this.element_emerald <= 0) {
 				out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_emerald' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_emerald / 10, 1) 	+ "%</p>";
 			}
-			if (this.element_sapphire == 0) {
+			if (this.element_sapphire <= 0) {
 				out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_sapphire' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_sapphire / 10, 1) 	+ "%</p>";
 			}
-			if (this.element_ruby == 0) {
+			if (this.element_ruby <= 0) {
 				out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_ruby' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_ruby / 10, 1) 		+ "%</p>";
 			}
-			if (this.element_diamond == 0) {
+			if (this.element_diamond <= 0) {
 				out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_diamond' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_diamond / 10, 1) 	+ "%</p>";
 			}
-			if (this.element_magma == 0) {
+			if (this.element_magma <= 0) {
 				out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>-</p>";
 			} else {
 				out	+= "<p class = 'element_magma' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_magma / 10, 1) 		+ "%</p>";
@@ -867,25 +867,40 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_earth_value_5].unlocked) emerald_value = emerald_value * 1.5;
 				if (chasm_upgrades[uid.upgrade_workers_8].unlocked) emerald_value = emerald_value * 1.2;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_emerald] * emerald_value;
+				let emerald_mass_modifier = 1;
+				if (chasm_upgrades[uid.upgrade_earth_value_11].unlocked) emerald_mass_modifier = emerald_mass_modifier * 3;
+
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_emerald] * emerald_value * emerald_mass_modifier;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_emerald] * emerald_value;
 				break;
 			case eid.element_sapphire:
 				let sapphire_value = 0.20;
 				if (chasm_upgrades[uid.upgrade_workers_8].unlocked) sapphire_value = sapphire_value * 1.2;
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_sapphire] * sapphire_value;
+
+				let sapphire_mass_modifier = 1;
+				if (chasm_upgrades[uid.upgrade_earth_value_11].unlocked) sapphire_mass_modifier = sapphire_mass_modifier * 3;
+
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_sapphire] * sapphire_value * sapphire_mass_modifier;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_sapphire] * sapphire_value;
 				break;
 			case eid.element_ruby:
 				let ruby_value = 1.00;
 				if (chasm_upgrades[uid.upgrade_workers_8].unlocked) ruby_value = ruby_value * 1.2;
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_ruby] * ruby_value;
+
+				let ruby_mass_modifier = 1;
+				if (chasm_upgrades[uid.upgrade_earth_value_11].unlocked) ruby_mass_modifier = ruby_mass_modifier * 3;
+
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_ruby] * ruby_value * ruby_mass_modifier;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_ruby] * ruby_value;
 				break;
 			case eid.element_diamond:
 				let diamond_value = 3.00;
 				if (chasm_upgrades[uid.upgrade_workers_8].unlocked) diamond_value = diamond_value * 1.2;
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_diamond] * diamond_value;
+
+				let diamond_mass_modifier = 1;
+				if (chasm_upgrades[uid.upgrade_earth_value_11].unlocked) diamond_mass_modifier = diamond_mass_modifier * 3;
+
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_diamond] * diamond_value * diamond_mass_modifier;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_diamond] * diamond_value;
 				break;
 			case eid.element_magma:

@@ -179,6 +179,8 @@ var rig_lvl_decay = 0;
 var rig_lvl_sustain = 0;
 
 function game_tick(scalar) {
+	// Playtime accrual
+
 	// Incinerator
 	let incinerator_heat_min = 0;
 	if (chasm_upgrades[uid.upgrade_mining_rig_3].unlocked) incinerator_heat_min = 20;
@@ -420,6 +422,7 @@ function RigSustainCost() {
 function RigSustainAmount() {
 	let sustain = rig_lvl_sustain * 0.5;
 	if (chasm_upgrades[uid.upgrade_workers_11].unlocked) sustain += 1;
+	if (chasm_upgrades[uid.upgrade_mining_rig_4].unlocked) sustain *= 3;
 	if (chasm_upgrades[uid.upgrade_singularity_mining_rig_2].unlocked) sustain *= 3;
 	return sustain;
 }

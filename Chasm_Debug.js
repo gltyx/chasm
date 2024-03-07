@@ -1,13 +1,44 @@
 // Chasm Debug
 	// Functions for debugging/development of Chasm. Don't use these. Or do; I'm not your dad.
-	// Change to a game settings page with hidden developer/cheat menus
+	// Changed to a game settings page with hidden developer/cheat menus
+
+function secondsToString(seconds) {
+	let remainder = seconds;
+	let d, h, m, s;
+	d = Math.floor(remainder / (60 * 60 * 24));
+	remainder = remainder % (60 * 60 * 24);
+	h = Math.floor(remainder / (60 * 60)); 
+	remainder = remainder % (60 * 60);
+	m = Math.floor(remainder / (60)); 
+	remainder = remainder % (60);
+	s = Math.floor(remainder);
+
+	let out = "";
+	let b = false;
+	if (d > 0) {
+		out += d + "d ";
+		b = true;
+	}
+	if (h > 0 || b) {
+		out += h + "h ";
+		b = true;
+	}
+	if (m > 0 || b) {
+		out += m + "m ";
+		b = true;
+	}
+
+	out += s + "s";
+
+	return  out;
+}
 
 function animateOptions() {
 	if (last_save_time == null) {
 		$("#last_save_time").html("n/a");
 	} else {
 		let time_delta_s = DisplayNumberFormatter((Date.now() - last_save_time) / 1000, 0);
-		$("#last_save_time").html(time_delta_s + "s");
+		$("#last_save_time").html(secondsToString(time_delta_s));
 	}
 
 	$("#achievement_count").html(achievements_earned + "/" + parseInt(aid.achievement_count, 10));

@@ -29,6 +29,8 @@ var chasm_save;
 var chasm_incoming_save;
 const save_path = "chasm";
 var last_save_time;
+var total_playtime = 0;
+var singularity_time = 0;
 
 function loadSave(savedata) {
 	chasm_save = new saveData();

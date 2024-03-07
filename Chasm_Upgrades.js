@@ -1815,10 +1815,10 @@ function generateResearchMapSingularity() {
 	upgrade_map_singularity[mapColRow(6, 3)]		.assign_tile(tid.tile_connect_lr, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_1]												);
 	upgrade_map_singularity[mapColRow(7, 3)]		.assign_tile(tid.tile_connect_ld, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_1]												);
 	// horizontal 4 upgrades
-	upgrade_map_singularity[mapColRow(1, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_2,																						);
-	upgrade_map_singularity[mapColRow(3, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_3,																						);
-	upgrade_map_singularity[mapColRow(5, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_4,																						);
-	upgrade_map_singularity[mapColRow(7, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_5,																						);
+	upgrade_map_singularity[mapColRow(1, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_2,		[uid.upgrade_singularity_workers_1]												);
+	upgrade_map_singularity[mapColRow(3, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_3,		[uid.upgrade_singularity_workers_1]												);
+	upgrade_map_singularity[mapColRow(5, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_4,		[uid.upgrade_singularity_workers_1]												);
+	upgrade_map_singularity[mapColRow(7, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_5,		[uid.upgrade_singularity_workers_1]												);
 	// horizontal connectors
 	upgrade_map_singularity[mapColRow(1, 5)]		.assign_tile(tid.tile_connect_ur, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_2]												);
 	upgrade_map_singularity[mapColRow(2, 5)]		.assign_tile(tid.tile_connect_lrd, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_2],	[uid.upgrade_singularity_workers_3]		);

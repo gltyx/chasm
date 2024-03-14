@@ -643,19 +643,29 @@ function CalculateMaxDepth() {
 }
 
 function DisplayNumberFormatter(x, fractional) {
-	if (BigNumber.isBigNumber(x)) {
-		if (x.gte(10000)) {
-			return x.toExponential(2).replace('e+', ' e');
-		} else {
-			return x.toFixed(fractional);
-		}
-	} else {
-		if (x >= 10000) {
-			return x.toExponential(2).replace('e+', ' e');
-		} else {
-			return x.toFixed(fractional);
-		}
-	}
+    if (BigNumber.isBigNumber(x)) {
+        if (x.gte(10000)) {
+            return x.toExponential(2).replace('e+', ' e');
+        } else if (x.gte(1000)) {
+			return x.toFixed(0);
+        } else if (x.gte(100)) {
+			if (fractional > 1) return x.toFixed(1);
+            return x.toFixed(fractional);
+        } else {
+            return x.toFixed(fractional);
+        }
+    } else {
+        if (x >= 10000) {
+            return x.toExponential(2).replace('e+', ' e');
+        } else if (x >= 1000) {
+			return x.toFixed(0);
+        } else if (x >= 100) {
+			if (fractional > 1) return x.toFixed(1);
+            return x.toFixed(fractional);
+        } else {
+            return x.toFixed(fractional);
+        }
+    }
 }
 
 // Materialize UI

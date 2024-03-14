@@ -50,26 +50,23 @@
 <body onload = "game_init();">
 
 	<!--Navbar-->
-	<nav class = "nav-extended noble">
+	<nav class = "nav-extended noble" style = "min-width: 1280px;">
 		<!--Upper Navbar-->
 		<div class = "nav-wrapper blue-grey darken-2">
 			
 			<!--Title-->
 			<div id = "chasm_title">
-				<p class = "brand-logo">Chasm<i class = "material-icons ">call_to_action</i></p>
+				<p class = "brand-logo" style = "font-size: 32px; left: 34px; transform: none;">Chasm<i class = "material-icons">call_to_action</i></p>
 			</div>
 
-			<!--Sidenav Button-->
-			<a href = "#" data-target = "chasm_sidenav" class = "sidenav-trigger"><i class = "material-icons">menu</i></a>
-
 			<!--lib_chasm link-->
-			<ul class = "right hide-on-med-and-down vertcenter">
+			<ul class = "right vertcenter">
 				<li><a href = "https://github.com/Blooperly/lib_chasm" target = ”_blank” style = "vertical-align: middle;" draggable = "false"><img src = "images/GitHub-Mark-32px.png" class = "noble" style = "vertical-align: middle;"><span style = "margin-left: 8px; margin-top: 8px;">lib_chasm <span id = "lib_chasm_version" style = "color: lightSlateGray">x.x.x</span></span></a></li>
 			</ul>
 		</div>
 
 		<!--Lower Navbar-->
-		<div class = "nav-content blue-grey darken-1 hide-on-med-and-down">
+		<div class = "nav-content blue-grey darken-1">
 		  	<ul class = "tabs tabs-transparent">
 				<li class = "tab"><a id = "tab_chasm" 			class = "active" 			href = "#resource_box" 		draggable = "false">Chasm</a></li>
 				<li class = "tab"><a id = "tab_research" 		style = "display: none;"  	href = "#upgrades_box" 		draggable = "false">Research</a></li>
@@ -78,23 +75,13 @@
 		  	</ul>
 		</div>
 	</nav>
-	
-	<!--Sidenav-->
-	<ul id = "chasm_sidenav" class = "sidenav noble">
-		<ul class = "tabs-vertical">
-			<li class = "tab"><a class = "active" href = "#resource_box" draggable = "false">Chasm</a></li>
-			<li class = "tab"><a href = "#upgrades_box" draggable = "false">Research</a></li>
-			<li class = "tab"><a href = "#achievements_box" draggable = "false">Achievements</a></li>
-			<li class = "tab"><a href = "#debug_box" draggable = "false">Options</a></li>
-		</ul>
-	</ul>
 
 	<!--Game-->
-	<div id = "game_box" class = "container noble" style = "display: none;">
+	<div id = "game_box" class = "container noble" style = "display: none; min-width: 1280px;">
 		<div class = "row">
 
 			<!--Left Column-->
-			<div id = "left_col" class = "col s12 m3">
+			<div id = "left_col" class = "col m3">
 				<!--Currency Box-->
 				<div id = "currency_box" class = "card blue-grey darken-1">
 					<!--Mass-->
@@ -255,7 +242,7 @@
 			</div>
 
 			<!--Middle Column-->
-			<div id = "mid_col" class = "col s12 m6">
+			<div id = "mid_col" class = "col m6">
 				<!--Resource Box-->
 				<div id = "resource_box">
 
@@ -697,7 +684,7 @@
 			</div>
 
 			<!--Right Column-->
-			<div id = "right_col" class = "col s12 m3">
+			<div id = "right_col" class = "col m3">
 				<!--Inspector Box-->
 				<div id = "inspector_box" class = "card blue-grey lighten-4">
 					<div id = "inspector_content" class = "card-content">

@@ -43,11 +43,15 @@ function game_init() {
 
 	// Load Saved Game
 	loadSave(null);
-	calculateAchivementCount();
+	calculateAchievementCount();
 
 	// Loading finished, reveal the game
 	$("#game_box").css("display", "block")
 }
+
+var last_save_time = Date.now();
+var total_playtime = 0;
+var singularity_time = 0;
 
 // +----------------+
 // | Task Callbacks |
@@ -179,8 +183,6 @@ var rig_lvl_decay = 0;
 var rig_lvl_sustain = 0;
 
 function game_tick(scalar) {
-	// Playtime accrual
-
 	// Incinerator
 	let incinerator_heat_min = 0;
 	if (chasm_upgrades[uid.upgrade_mining_rig_3].unlocked) incinerator_heat_min = 20;

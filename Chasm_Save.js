@@ -28,9 +28,6 @@ class saveData {
 var chasm_save;
 var chasm_incoming_save;
 const save_path = "chasm";
-var last_save_time;
-var total_playtime = 0;
-var singularity_time = 0;
 
 function loadSave(savedata) {
 	chasm_save = new saveData();
@@ -55,6 +52,7 @@ function loadSave(savedata) {
 	}
 
 	// Update UI elements
+	last_save_time = Date.now();
 	refresh_ui();
 }
 
@@ -164,6 +162,8 @@ function save_unpack_storage(object) {
 
 function save_pack_etc() {
 	var object = {};
+	total_playtime				+= (Date.now() - last_save_time); // Add accumulated time to total play time
+	object.total_playtime		= total_playtime + 1;
 	object.singularity_count	= singularity_count;
 	object.pending_singularity 	= pending_singularity;
 	object.rig_lvl_multi 		= rig_lvl_multi;
@@ -173,6 +173,7 @@ function save_pack_etc() {
 }
 
 function save_unpack_etc(object) {
+	total_playtime		= object.total_playtime;
 	singularity_count	= object.singularity_count;
 	pending_singularity = object.pending_singularity;
 	rig_lvl_multi 		= object.rig_lvl_multi;

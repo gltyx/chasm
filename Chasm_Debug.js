@@ -37,8 +37,11 @@ function animateOptions() {
 	if (last_save_time == null) {
 		$("#last_save_time").html("n/a");
 	} else {
-		let time_delta_s = DisplayNumberFormatter((Date.now() - last_save_time) / 1000, 0);
+		let delta = (Date.now() - last_save_time);
+		let time_delta_s = DisplayNumberFormatter(delta / 1000, 0);
 		$("#last_save_time").html(secondsToString(time_delta_s));
+		let time_delta_p = DisplayNumberFormatter((delta + total_playtime) / 1000, 0);
+		$("#total_playtime").html(secondsToString(time_delta_p));
 	}
 
 	$("#achievement_count").html(achievements_earned + "/" + parseInt(aid.achievement_count, 10));

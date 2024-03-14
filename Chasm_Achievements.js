@@ -103,7 +103,7 @@ class _ACHIEVEMENT {
 					chasm_log.writeColor("Unlocked: Achievements tab", log_color_unlock);
 				}
 
-				calculateAchivementCount();
+				calculateAchievementCount();
 			}
 	
 			if (this.log_message != "") {
@@ -113,7 +113,7 @@ class _ACHIEVEMENT {
 	}
 }
 
-function calculateAchivementCount() {
+function calculateAchievementCount() {
 	let earn_count = 0;
 	for (let i = 0; i < aid.achievement_count; i++) {
 		if (chasm_achievements[i].unlocked) earn_count++;

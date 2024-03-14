@@ -162,8 +162,17 @@ function save_unpack_storage(object) {
 
 function save_pack_etc() {
 	var object = {};
-	total_playtime				+= (Date.now() - last_save_time); // Add accumulated time to total play time
-	object.total_playtime		= total_playtime + 1;
+	let time_delta 				= (Date.now() - last_save_time);
+	total_playtime				+= time_delta; // Add accumulated time to total play time
+	object.total_playtime		= total_playtime;
+	if (last_singularity_time == null) {
+		// No recent reset, accumulate time
+		total_sing_time 		+= time_delta;
+	} else {
+		total_sing_time 		= (Date.now() - last_singularity_time);
+		last_singularity_time 	= null;
+	}
+	object.total_sing_time		= total_sing_time;
 	object.singularity_count	= singularity_count;
 	object.pending_singularity 	= pending_singularity;
 	object.rig_lvl_multi 		= rig_lvl_multi;
@@ -174,6 +183,7 @@ function save_pack_etc() {
 
 function save_unpack_etc(object) {
 	total_playtime		= object.total_playtime;
+	total_sing_time		= object.total_sing_time;
 	singularity_count	= object.singularity_count;
 	pending_singularity = object.pending_singularity;
 	rig_lvl_multi 		= object.rig_lvl_multi;

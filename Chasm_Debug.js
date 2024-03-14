@@ -42,6 +42,17 @@ function animateOptions() {
 		$("#last_save_time").html(secondsToString(time_delta_s));
 		let time_delta_p = DisplayNumberFormatter((delta + total_playtime) / 1000, 0);
 		$("#total_playtime").html(secondsToString(time_delta_p));
+
+		let time_delta_a;
+		if (last_singularity_time != null) {
+			// Singularity since last save, use raw timestamp
+			time_delta_a = DisplayNumberFormatter((Date.now() - last_singularity_time) / 1000, 0)
+			$("#total_sing_time").html(secondsToString(time_delta_a));
+		} else {
+			// Use saved milliseconds instead
+			time_delta_a = DisplayNumberFormatter((delta + total_sing_time) / 1000, 0);
+			$("#total_sing_time").html(secondsToString(time_delta_a));
+		}
 	}
 
 	$("#achievement_count").html(achievements_earned + "/" + parseInt(aid.achievement_count, 10));

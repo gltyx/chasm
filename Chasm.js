@@ -50,8 +50,9 @@ function game_init() {
 }
 
 var last_save_time = Date.now();
+var last_singularity_time;
 var total_playtime = 0;
-var singularity_time = 0;
+var total_sing_time = 0;
 
 // +----------------+
 // | Task Callbacks |
@@ -370,6 +371,7 @@ function singularity_reset() {
 		reset_earth_compression();
 		chasm_storage[sid.storage_earth].storage_reset();
 		chasm_storage[sid.storage_water].storage_reset();
+		last_singularity_time = Date.now();
 		refresh_ui();
 	}
 }

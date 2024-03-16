@@ -344,6 +344,7 @@ function singularity_reset() {
 				chasm_currency[i].resource.set(1);
 				let effective_singularity_count = singularity_count;
 				if (effective_singularity_count > 5) effective_singularity_count = 5;
+				console.log("1: " + effective_singularity_count.toString());
 				if (chasm_upgrades[uid.upgrade_singularity_workers_1].unlocked) chasm_currency[i].resource.gain(effective_singularity_count);
 				if (chasm_upgrades[uid.upgrade_singularity_workers_2].unlocked) chasm_currency[i].resource.gain(1);
 				if (chasm_upgrades[uid.upgrade_singularity_workers_3].unlocked) chasm_currency[i].resource.gain(1);
@@ -357,6 +358,24 @@ function singularity_reset() {
 					buy_upgrade(uid.upgrade_workers_5, true);
 					buy_upgrade(uid.upgrade_workers_6, true);
 					chasm_currency[i].resource.gain(1);
+				}
+
+				if (chasm_upgrades[uid.upgrade_singularity_workers_7].unlocked) {
+					effective_singularity_count = singularity_count - 5;
+					if (effective_singularity_count < 0) effective_singularity_count = 0;
+					if (effective_singularity_count > 10) effective_singularity_count = 10;
+					effective_singularity_count = Math.floor(effective_singularity_count / 2);
+					chasm_currency[i].resource.gain(effective_singularity_count);
+					console.log("2: " + effective_singularity_count.toString());
+				}
+
+				if (chasm_upgrades[uid.upgrade_singularity_workers_8].unlocked) {
+					effective_singularity_count = singularity_count - 15;
+					if (effective_singularity_count < 0) effective_singularity_count = 0;
+					if (effective_singularity_count > 20) effective_singularity_count = 20;
+					effective_singularity_count = Math.floor(effective_singularity_count / 4);
+					chasm_currency[i].resource.gain(effective_singularity_count);
+					console.log("3: " + effective_singularity_count.toString());
 				}
 				continue;
 			}

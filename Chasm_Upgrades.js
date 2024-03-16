@@ -64,18 +64,20 @@ class _UPGRADE_ID {
 	upgrade_workers_10					= 0x002f;	// +1 Worker / +30% copper value
 	upgrade_workers_11					= 0x0030;	// +1 Worker / +20% metal value
 
-	// Singularity upgrades
-	upgrade_singularity_workers_1		= 0x0031;	// +1 Worker per reset
-	upgrade_singularity_workers_2		= 0x0032;	// +1 Worker
-	upgrade_singularity_workers_3		= 0x0033;	// +1 Worker
-	upgrade_singularity_workers_4		= 0x0034;	// +1 Worker
-	upgrade_singularity_workers_5		= 0x0035;	// +2 Worker
-	upgrade_singularity_workers_6		= 0x0036;	// Keep worker upgrades on reset
-	upgrade_singularity_survey_1		= 0x0037;	// +1 Effective Survey
-	upgrade_singularity_mining_rig_1	= 0x0038;	// Keep Mining Rig upgrades on reset
-	upgrade_singularity_mining_rig_2	= 0x0039;	// Mining rig sustain x3
+    // Singularity upgrades
+    upgrade_singularity_workers_1		= 0x0031;	// +1 Worker per reset
+    upgrade_singularity_workers_2		= 0x0032;	// +1 Worker
+    upgrade_singularity_workers_3		= 0x0033;	// +1 Worker
+    upgrade_singularity_workers_4		= 0x0034;	// +1 Worker
+    upgrade_singularity_workers_5		= 0x0035;	// +2 Worker
+    upgrade_singularity_workers_6		= 0x0036;	// Keep worker upgrades on reset
+    upgrade_singularity_workers_7		= 0x0037;	// +0.5 Worker per reset
+    upgrade_singularity_workers_8		= 0x0038;	// +0.25 Worker per reset
+    upgrade_singularity_survey_1		= 0x0039;	// +1 Effective Survey
+    upgrade_singularity_mining_rig_1	= 0x003a;	// Keep Mining Rig upgrades on reset
+    upgrade_singularity_mining_rig_2	= 0x003b;	// Mining rig sustain x3
 
-	upgrade_count						= 0x003a;
+	upgrade_count						= 0x003c;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -1024,6 +1026,38 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					3,		// Singularity
+					],
+					reset_level_all
+				);
+				break;
+			
+			case uid.upgrade_singularity_workers_7:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_workers_7",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					5,		// Singularity
+					],
+					reset_level_all
+				);
+				break;
+		
+			case uid.upgrade_singularity_workers_8:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_workers_8",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
 					5,		// Singularity
 					],
 					reset_level_all
@@ -1286,6 +1320,22 @@ function buy_upgrade(upgrade_id, free) {
 				buy_upgrade(uid.upgrade_workers_4, true);
 				buy_upgrade(uid.upgrade_workers_5, true);
 				buy_upgrade(uid.upgrade_workers_6, true);
+				break;
+
+			case uid.upgrade_singularity_workers_7:
+				let effective_singularity_count_2 = singularity_count - 5;
+				if (effective_singularity_count_2 < 0) effective_singularity_count_2 = 0;
+				if (effective_singularity_count_2 > 10) effective_singularity_count_2 = 10;
+				effective_singularity_count_2 = Math.floor(effective_singularity_count_2 / 2);
+				chasm_currency[cid.currency_workers].resource.gain(effective_singularity_count_2);
+				break;
+
+			case uid.upgrade_singularity_workers_8:
+				let effective_singularity_count_3 = singularity_count - 15;
+				if (effective_singularity_count_3 < 0) effective_singularity_count_3 = 0;
+				if (effective_singularity_count_3 > 20) effective_singularity_count_3 = 20;
+				effective_singularity_count_3 = Math.floor(effective_singularity_count_3 / 4);
+				chasm_currency[cid.currency_workers].resource.gain(effective_singularity_count_3);
 				break;
 
 			case uid.upgrade_singularity_survey_1:
@@ -1838,8 +1888,18 @@ function generateResearchMapSingularity() {
 	upgrade_map_singularity[mapColRow(4, 6)]		.assign_tile(tid.tile_connect_lrd, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_2, uid.upgrade_singularity_workers_3], [uid.upgrade_singularity_workers_4, uid.upgrade_singularity_workers_5]	);
 	upgrade_map_singularity[mapColRow(5, 6)]		.assign_tile(tid.tile_connect_lr, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_4, uid.upgrade_singularity_workers_5]			);
 	upgrade_map_singularity[mapColRow(6, 6)]		.assign_tile(tid.tile_connect_ul, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_4, uid.upgrade_singularity_workers_5]			);
-	// final upgrade
+	// hr upgrade
 	upgrade_map_singularity[mapColRow(4, 7)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_6,		[uid.upgrade_singularity_workers_2, uid.upgrade_singularity_workers_3, uid.upgrade_singularity_workers_4, uid.upgrade_singularity_workers_5]	);
+	// Next connectors
+	upgrade_map_singularity[mapColRow(3, 8)]		.assign_tile(tid.tile_connect_rd, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_6]												);
+	upgrade_map_singularity[mapColRow(4, 8)]		.assign_tile(tid.tile_connect_ulr, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_6]												);
+	upgrade_map_singularity[mapColRow(5, 8)]		.assign_tile(tid.tile_connect_ld, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_6]												);
+	// Next upgrades
+	upgrade_map_singularity[mapColRow(3, 9)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_7,		[uid.upgrade_singularity_workers_6]												);
+	// Next connectors
+	upgrade_map_singularity[mapColRow(3, 10)]		.assign_tile(tid.tile_connect_ud, 		uid.upgrade_count,						[uid.upgrade_singularity_workers_7]												);
+	// Next upgrades
+	upgrade_map_singularity[mapColRow(3, 11)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_8,		[uid.upgrade_singularity_workers_7]												);
 
 	// Qol upgrades
 	upgrade_map_singularity[mapColRow(11, 2)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_survey_1,																						);
@@ -1847,7 +1907,7 @@ function generateResearchMapSingularity() {
 	upgrade_map_singularity[mapColRow(11, 6)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_mining_rig_2,																					);
 
 	// Testing row
-	var test_row = 10;
+	var test_row = 16;
 	var test_upgrades = [uid.upgrade_earth_depth_7];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map_singularity[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);

@@ -88,7 +88,6 @@ function debug_reprice_upgrades() {
 	initUpgrades();
 	
 	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
-		console.log("resetting to " + upgrades_backup[i]);
 		chasm_upgrades[i].unlocked = upgrades_backup[i];
 	}
 

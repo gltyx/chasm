@@ -93,6 +93,8 @@ class _INSPECTOR_ID {
 	upgrade_singularity_workers_4				= uid.upgrade_singularity_workers_4			+ this.offset_upgrades;
 	upgrade_singularity_workers_5				= uid.upgrade_singularity_workers_5			+ this.offset_upgrades;
 	upgrade_singularity_workers_6				= uid.upgrade_singularity_workers_6			+ this.offset_upgrades;
+	upgrade_singularity_workers_7				= uid.upgrade_singularity_workers_7			+ this.offset_upgrades;
+	upgrade_singularity_workers_8				= uid.upgrade_singularity_workers_8			+ this.offset_upgrades;
 	upgrade_singularity_survey_1				= uid.upgrade_singularity_survey_1			+ this.offset_upgrades;
 	upgrade_singularity_mining_rig_1			= uid.upgrade_singularity_mining_rig_1		+ this.offset_upgrades;
 	upgrade_singularity_mining_rig_2			= uid.upgrade_singularity_mining_rig_2		+ this.offset_upgrades;
@@ -892,6 +894,22 @@ function showInspector(id) {
 			$("#inspector_text")	.html("The HR department has figured out how to hire staff across every parallel universe at once. This will save a ton of time on recruiting, but company parties are going to get much harder to plan.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Keep first 6 worker upgrades on reset<br>+1 Worker<br>+10% Worker Efficiency");
+			break;
+		case iid.upgrade_singularity_workers_7:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Trippelgänger");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_7].cost.stringify());
+			$("#inspector_text")	.html("You have found a way to copy your Doppelgängers using the Chasm. These ones seem a bit... off. But small heads and extra arms are good for mining, right?");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker per 2 Singularity resets<br>(after Doppelgänger)<br>(max 5)");
+			break;
+		case iid.upgrade_singularity_workers_8:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Gängerbanger");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_8].cost.stringify());
+			$("#inspector_text")	.html("You have found a way to copy your Trippelgängers using the Chasm. Don't look too hard at these guys, they are only barely passable as human. It seems that repeated paracausal cloning is not good for the human form.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker per 4 Singularity resets<br>(after Trippelgänger)<br>(max 5)");
 			break;
 		case iid.upgrade_singularity_survey_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Reverse Precognition");

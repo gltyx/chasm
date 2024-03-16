@@ -835,7 +835,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_10].cost.stringify());
 			$("#inspector_text")	.html("Not the one you are thinking of. Or the other one you are thinking of.<br><br>This guy even knows where to dig up some copper pipes.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+1 Worker<br>+30% copper particle value");
+			$("#inspector_subtext")	.html("+1 Worker<br>+50% copper particle value");
 			break;
 		case iid.upgrade_workers_11:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Gas Station Attendant");
@@ -867,7 +867,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_3].cost.stringify());
 			$("#inspector_text")	.html("You have crafted a grim and terrible artefact which can carry a single Intern through the Chasm, across the threshold between worlds. They still won't be paid.<br>Don't forget to poke a few air holes.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+1 Worker");
+			$("#inspector_subtext")	.html("+1 Worker<br>+25% Anticapital gain");
 			break;
 		case iid.upgrade_singularity_workers_4:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Timey Wimey Prospector");
@@ -875,7 +875,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_workers_4].cost.stringify());
 			$("#inspector_text")	.html("The prospector in this universe is young, British, and weirdly hot. He seems to know a lot about temporal paradoxes. It's probably a good idea to hire someone who can tell you if you are about to destroy the universe.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+1 Worker");
+			$("#inspector_subtext")	.html("+1 Worker<br>+50% metal particle value");
 			break;
 		case iid.upgrade_singularity_workers_5:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Creepier Twins");

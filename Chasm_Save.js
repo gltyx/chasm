@@ -71,7 +71,7 @@ function storeSave() {
 }
 
 function autoSave() {
-	//storeSave();
+	storeSave();
 }
 
 function clearSave() {

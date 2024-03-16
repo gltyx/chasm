@@ -65,6 +65,8 @@ function debug_free_upgrades() {
 			0,		// Strands
 			0,		// Spirit
 			0,		// Soul
+			0,		// Anticapital
+			0,		// Singularity
 		]);
 	}
 

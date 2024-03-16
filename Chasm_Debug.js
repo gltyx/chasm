@@ -56,6 +56,7 @@ function animateOptions() {
 	}
 
 	$("#achievement_count").html(achievements_earned + "/" + parseInt(aid.achievement_count, 10));
+	$("#total_sing_count").html(singularity_count);
 }
 
 function debug_free_upgrades() {

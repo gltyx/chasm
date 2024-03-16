@@ -1024,7 +1024,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
-					30,		// Singularity
+					5,		// Singularity
 					],
 					reset_level_all
 				);
@@ -1227,6 +1227,7 @@ function buy_upgrade(upgrade_id, free) {
 
 			case uid.upgrade_workers_6:
 				chasm_currency[cid.currency_workers].resource.gain(1);
+				chasm_storage[sid.storage_earth].refresh_survey();
 				break;
 
 			case uid.upgrade_workers_7:
@@ -1271,6 +1272,11 @@ function buy_upgrade(upgrade_id, free) {
 
 			case uid.upgrade_singularity_workers_5:
 				chasm_currency[cid.currency_workers].resource.gain(2);
+				break;
+
+			case uid.upgrade_singularity_workers_6:
+				chasm_currency[cid.currency_workers].resource.gain(1);
+				chasm_storage[sid.storage_earth].refresh_survey();
 				break;
 
 			case uid.upgrade_singularity_workers_6:

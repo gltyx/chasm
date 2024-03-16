@@ -102,6 +102,9 @@ class ELEMENT_PROBABILITY {
 			if (chasm_upgrades[uid.upgrade_workers_7].unlocked) {
 				effective_workers = effective_workers * 1.5;
 			}
+			if (chasm_upgrades[uid.upgrade_singularity_workers_6].unlocked) {
+				effective_workers = effective_workers * 1.1;
+			}
 			return Math.floor(target - (target * (1 / Math.pow(1 + effective_workers, slope))));
 		}
 
@@ -792,6 +795,9 @@ function elementValue(element_count) { // Returns currency value of all elements
 	}
 
 	// Calculate modifiers
+	let mass_modifier = 1;
+	if (chasm_upgrades[uid.upgrade_singularity_workers_2].unlocked) mass_modifier = mass_modifier * 1.2;
+
 	let metal_modifier = 1;
 	if (chasm_upgrades[uid.upgrade_earth_value_3].unlocked) metal_modifier = metal_modifier * 1.5;
 	if (chasm_upgrades[uid.upgrade_singularity_workers_4].unlocked) metal_modifier = metal_modifier * 1.5;
@@ -817,7 +823,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_earth_value_6].unlocked) earth_value = earth_value * 2;
 				if (chasm_upgrades[uid.upgrade_earth_value_9].unlocked) earth_value = earth_value * 2;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_earth] * earth_value;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_earth] * earth_value * mass_modifier;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value;
 				break;
 			case eid.element_stone:
@@ -825,14 +831,14 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_earth_value_4].unlocked) stone_value = stone_value * 1.5;
 				if (chasm_upgrades[uid.upgrade_earth_value_6].unlocked) stone_value = stone_value * 1.5;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * stone_value;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * stone_value * mass_modifier;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * stone_value;
 				break;
 			case eid.element_coal:
 				let coal_value = 1.00
 				if (chasm_upgrades[uid.upgrade_earth_value_8].unlocked) coal_value = coal_value * 3;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * coal_value;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * coal_value * mass_modifier;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_coal] * coal_value * 0.92;
 				currency_count[cid.currency_soul] 		+= element_count[eid.element_coal] * coal_value * 0.08;
 				break;
@@ -843,7 +849,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_earth_value_9].unlocked) copper_value = copper_value * 2;
 				if (chasm_upgrades[uid.upgrade_workers_10].unlocked) copper_value = copper_value * 1.5;
 				
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_copper] * copper_value * metal_mass_modifier;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_copper] * copper_value * metal_mass_modifier * mass_modifier;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_copper] * copper_value;
 				break;
 			case eid.element_iron:
@@ -851,26 +857,26 @@ function elementValue(element_count) { // Returns currency value of all elements
 				iron_value = iron_value * metal_modifier;
 				if (chasm_upgrades[uid.upgrade_earth_value_7].unlocked) iron_value = iron_value * 4;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_iron] * iron_value * metal_mass_modifier;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_iron] * iron_value * metal_mass_modifier * mass_modifier;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_iron] * iron_value;
 				break;
 			case eid.element_lead:
 				let lead_value = 0.50;
 				lead_value = lead_value * metal_modifier;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_lead] * lead_value * metal_mass_modifier;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_lead] * lead_value * metal_mass_modifier * mass_modifier;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_lead] * lead_value;
 				break;
 			case eid.element_gold:
 				let gold_value = 0.90;
 				gold_value = gold_value * metal_modifier;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_gold] * gold_value * metal_mass_modifier;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_gold] * gold_value * metal_mass_modifier * mass_modifier;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_gold] * gold_value * 0.66;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_gold] * gold_value * 0.33 * anticapital_modifier;
 				break;
 			case eid.element_fossil:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_fossil] * 0.44;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_fossil] * 0.44 * mass_modifier;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_fossil] * 0.32;
 				currency_count[cid.currency_spirit] 	+= element_count[eid.element_fossil] * 0.12;
 				break;
@@ -879,37 +885,37 @@ function elementValue(element_count) { // Returns currency value of all elements
 				emerald_value = emerald_value * jewel_modifier;
 				if (chasm_upgrades[uid.upgrade_earth_value_5].unlocked) emerald_value = emerald_value * 1.5;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_emerald] * emerald_value * jewel_mass_modifier;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_emerald] * emerald_value * jewel_mass_modifier * mass_modifier;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_emerald] * emerald_value * anticapital_modifier;
 				break;
 			case eid.element_sapphire:
 				let sapphire_value = 0.20;
 				sapphire_value = sapphire_value * jewel_modifier;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_sapphire] * sapphire_value * jewel_mass_modifier;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_sapphire] * sapphire_value * jewel_mass_modifier * mass_modifier;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_sapphire] * sapphire_value * anticapital_modifier;
 				break;
 			case eid.element_ruby:
 				let ruby_value = 1.00;
 				ruby_value = ruby_value * jewel_modifier;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_ruby] * ruby_value * jewel_mass_modifier;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_ruby] * ruby_value * jewel_mass_modifier * mass_modifier;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_ruby] * ruby_value * anticapital_modifier;
 				break;
 			case eid.element_diamond:
 				let diamond_value = 3.00;
 				diamond_value = diamond_value * jewel_modifier;
 
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_diamond] * diamond_value * jewel_mass_modifier;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_diamond] * diamond_value * jewel_mass_modifier * mass_modifier;
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_diamond] * diamond_value * anticapital_modifier;
 				break;
 			case eid.element_magma:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_magma] * 2.48;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_magma] * 2.48 * mass_modifier;
 				currency_count[cid.currency_soul] 		+= element_count[eid.element_magma] * 1.20;
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_magma] * 1.28;
 				break;
 			case eid.element_water:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * 0.01;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * 0.01 * mass_modifier;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * 0.01;
 				break;
 			case eid.element_none:

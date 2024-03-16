@@ -204,6 +204,7 @@ function game_tick(scalar) {
 		if (chasm_upgrades[uid.upgrade_earth_gather_speed_2].unlocked) gather_amount *= 1.1;
 		if (chasm_upgrades[uid.upgrade_workers_6].unlocked) gather_amount *= 1.1;
 		if (chasm_upgrades[uid.upgrade_workers_9].unlocked) gather_amount *= 1.1;
+		if (chasm_upgrades[uid.upgrade_singularity_workers_6].unlocked) gather_amount *= 1.1;
 		gather_amount *= incinerator_multi;
 		gather_amount *= chasm_storage[sid.storage_earth].workers_gather;
 		chasm_storage[sid.storage_earth].gather_progress +=  gather_amount * scalar;
@@ -230,6 +231,7 @@ function game_tick(scalar) {
 		if (chasm_upgrades[uid.upgrade_earth_drop_speed_1].unlocked) drop_amount *= 1.2;
 		if (chasm_upgrades[uid.upgrade_earth_drop_speed_2].unlocked) drop_amount *= 1.2;
 		if (chasm_upgrades[uid.upgrade_workers_6].unlocked) drop_amount *= 1.1;
+		if (chasm_upgrades[uid.upgrade_singularity_workers_6].unlocked) drop_amount *= 1.1;
 		drop_amount *= drop_speed[depth];
 		drop_amount *= chasm_storage[sid.storage_earth].workers_drop;
 		chasm_storage[sid.storage_earth].drop_progress += drop_amount * scalar;
@@ -354,6 +356,7 @@ function singularity_reset() {
 					buy_upgrade(uid.upgrade_workers_4, true);
 					buy_upgrade(uid.upgrade_workers_5, true);
 					buy_upgrade(uid.upgrade_workers_6, true);
+					chasm_currency[i].resource.gain(1);
 				}
 				continue;
 			}

@@ -87,6 +87,7 @@ class _INSPECTOR_ID {
 	upgrade_workers_9							= uid.upgrade_workers_9						+ this.offset_upgrades;
 	upgrade_workers_10							= uid.upgrade_workers_10					+ this.offset_upgrades;
 	upgrade_workers_11							= uid.upgrade_workers_11					+ this.offset_upgrades;
+	upgrade_challenge_ecocide					= uid.upgrade_challenge_ecocide				+ this.offset_upgrades;
 	upgrade_singularity_workers_1				= uid.upgrade_singularity_workers_1			+ this.offset_upgrades;
 	upgrade_singularity_workers_2				= uid.upgrade_singularity_workers_2			+ this.offset_upgrades;
 	upgrade_singularity_workers_3				= uid.upgrade_singularity_workers_3			+ this.offset_upgrades;
@@ -846,6 +847,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("Winner of the 1994 Gas Station Olympics in Barcelona. He's no longer in his prime, but he is still pretty good at fueling vehicles.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker<br>+1s Mining Rig sustain");
+			break;
+		case iid.upgrade_challenge_ecocide:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Ecocide Prevention");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_challenge_ecocide].cost.stringify());
+			$("#inspector_text")	.html("You had the chance to destroy the environment for your own personal profit, but you didn't do it! Good job! You are a hero.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Ecocide Token on singularity");
 			break;
 		case iid.upgrade_singularity_workers_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Doppelgänger");

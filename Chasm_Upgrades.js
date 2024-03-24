@@ -64,20 +64,22 @@ class _UPGRADE_ID {
 	upgrade_workers_10					= 0x002f;	// +1 Worker / +30% copper value
 	upgrade_workers_11					= 0x0030;	// +1 Worker / +20% metal value
 
-    // Singularity upgrades
-    upgrade_singularity_workers_1		= 0x0031;	// +1 Worker per reset
-    upgrade_singularity_workers_2		= 0x0032;	// +1 Worker
-    upgrade_singularity_workers_3		= 0x0033;	// +1 Worker
-    upgrade_singularity_workers_4		= 0x0034;	// +1 Worker
-    upgrade_singularity_workers_5		= 0x0035;	// +2 Worker
-    upgrade_singularity_workers_6		= 0x0036;	// Keep worker upgrades on reset
-    upgrade_singularity_workers_7		= 0x0037;	// +0.5 Worker per reset
-    upgrade_singularity_workers_8		= 0x0038;	// +0.25 Worker per reset
-    upgrade_singularity_survey_1		= 0x0039;	// +1 Effective Survey
-    upgrade_singularity_mining_rig_1	= 0x003a;	// Keep Mining Rig upgrades on reset
-    upgrade_singularity_mining_rig_2	= 0x003b;	// Mining rig sustain x3
+	upgrade_challenge_ecocide			= 0x0031;	// Ecocide Challenge
 
-	upgrade_count						= 0x003c;
+    // Singularity upgrades
+    upgrade_singularity_workers_1		= 0x0032;	// +1 Worker per reset
+    upgrade_singularity_workers_2		= 0x0033;	// +1 Worker
+    upgrade_singularity_workers_3		= 0x0034;	// +1 Worker
+    upgrade_singularity_workers_4		= 0x0035;	// +1 Worker
+    upgrade_singularity_workers_5		= 0x0036;	// +2 Worker
+    upgrade_singularity_workers_6		= 0x0037;	// Keep worker upgrades on reset
+    upgrade_singularity_workers_7		= 0x0038;	// +0.5 Worker per reset
+    upgrade_singularity_workers_8		= 0x0039;	// +0.25 Worker per reset
+    upgrade_singularity_survey_1		= 0x003a;	// +1 Effective Survey
+    upgrade_singularity_mining_rig_1	= 0x003b;	// Keep Mining Rig upgrades on reset
+    upgrade_singularity_mining_rig_2	= 0x003c;	// Mining rig sustain x3
+
+    upgrade_count						= 0x003d;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -935,6 +937,22 @@ function initUpgrades() {
 					reset_level_singularity
 				);
 				break;
+
+			case uid.upgrade_challenge_ecocide:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_challenge_ecocide",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					100,	// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					0,		// Singularity
+					],
+					reset_level_singularity
+				);
+				break;
 			
 			case uid.upgrade_singularity_workers_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
@@ -1371,6 +1389,12 @@ function reset_upgrades(reset_level) {
 	}
 }
 
+class _CHALLENGE_STATE {
+	challenge_failed 				= 0x0000;	// Challenge failed for this run
+	challenge_pending 				= 0x0001;	// Challenge pending, not yet completed or failed
+	challenge_completed 			= 0x0002;	// Challenge completed for this run
+} var cs = new _CHALLENGE_STATE();
+
 class _TILE_ID {
 	tile_first						= 0x0000;
 
@@ -1388,8 +1412,9 @@ class _TILE_ID {
 	tile_connect_lrd				= 0x000a;	// left right down
 	tile_connect_ulrd				= 0x000b;	// up left right down
 	tile_node						= 0x000c;
+	tile_challenge					= 0x000d;
 
-	tile_count						= 0x000d;
+	tile_count						= 0x000e;
 } var tid = new _TILE_ID();
 
 // Upgrade menu layout
@@ -1424,6 +1449,7 @@ let image_header = "<img src = '";
 let image_style_core = "' class = 'pixelart' style = 'position: absolute; left: 0px; top: 0px; pointer-events: none;";
 let image_style_purchased = " filter: hue-rotate(90deg) brightness(1.5);";
 let image_style_affordable = " filter: hue-rotate(65deg) brightness(1.9);";
+let image_style_failed = " filter: brightness(0.3);";
 let image_footer = "' width = '" + upgrade_tile_width + "' height = '" + upgrade_tile_width + "' draggable = 'false'></img>";
 
 class Research_Tile {
@@ -1462,6 +1488,23 @@ class Research_Tile {
 		if (this.tile_id == tid.tile_node) {
 			if (chasm_upgrades[this.upgrade_id].unlocked) {
 				return image_style_purchased;
+			}
+		}
+
+		// Challenge handling
+		if (this.tile_id == tid.tile_challenge) {
+			if (chasm_upgrades[this.upgrade_id].unlocked) {
+				return image_style_purchased;
+			}
+			let challenge_state = this.challenge_style();
+			if (challenge_state == cs.challenge_completed) {
+				if (chasm_upgrades[this.upgrade_id].affordable()) {
+					return image_style_affordable;
+				} else {
+					return "";
+				}
+			} else if (challenge_state == cs.challenge_failed) {
+				return image_style_failed;
 			}
 		}
 
@@ -1505,10 +1548,24 @@ class Research_Tile {
 		return "";
 	}
 
+	challenge_style() {
+		if (this.tile_id == tid.tile_challenge) {
+			switch (this.upgrade_id) {
+				case uid.upgrade_challenge_ecocide:
+					if (chasm_upgrades[uid.upgrade_earth_value_2].unlocked) {
+						return cs.challenge_failed;
+					} else {
+						return cs.challenge_completed;
+					}
+					break;
+			}
+		}
+	}
+
 	generate_tile_frame_header() {
 		let out = "";
 		out += tile_div_header + this.header_name + "_" + this.coordinate + tile_div_style_core;
-		if (this.tile_id == tid.tile_node) out += tile_div_style_node;
+		if (this.tile_id == tid.tile_node || this.tile_id == tid.tile_challenge) out += tile_div_style_node;
 		out += tile_div_style_footer;
 		return out;
 	}
@@ -1583,6 +1640,11 @@ class Research_Tile {
 				out += image_header + "images/tile_research_node.png'" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
 				break;
 
+			case tid.tile_challenge:
+				out += image_header + chasm_upgrades[this.upgrade_id].upgrade_image + image_style_core + image_footer;
+				out += image_header + "images/tile_research_challenge.png'" + image_style_core + this.purchase_style(this.upgrade_triggers_1) + image_footer;
+				break;
+
 			case tid.tile_none:
 			default:
 		}
@@ -1636,7 +1698,7 @@ function drawResearchMap() {
 
 	// Register mouse events
 	for (let i = 0; i < upgrade_map_earth_size; i++) {
-		if (upgrade_map_earth[i].tile_id == tid.tile_node) {
+		if (upgrade_map_earth[i].tile_id == tid.tile_node || upgrade_map_earth[i].tile_id == tid.tile_challenge) {
 			$("#research_tile_earth_" + i).mouseenter(function(){showInspector(upgrade_map_earth[i].upgrade_id + iid.offset_upgrades);});
 			$("#research_tile_earth_" + i).click(function(){buy_upgrade(upgrade_map_earth[i].upgrade_id, false);});
 		}
@@ -1661,7 +1723,7 @@ function drawResearchMap() {
 
 	// Register mouse events
 	for (let i = 0; i < upgrade_map_water_size; i++) {
-		if (upgrade_map_water[i].tile_id == tid.tile_node) {
+		if (upgrade_map_water[i].tile_id == tid.tile_node || upgrade_map_water[i].tile_id == tid.tile_challenge) {
 			$("#research_tile_water_" + i).mouseenter(function(){showInspector(upgrade_map_water[i].upgrade_id + iid.offset_upgrades);});
 			$("#research_tile_water_" + i).click(function(){buy_upgrade(upgrade_map_water[i].upgrade_id, false);});
 		}
@@ -1686,7 +1748,7 @@ function drawResearchMap() {
 
 	// Register mouse events
 	for (let i = 0; i < upgrade_map_singularity_size; i++) {
-		if (upgrade_map_singularity[i].tile_id == tid.tile_node) {
+		if (upgrade_map_singularity[i].tile_id == tid.tile_node || upgrade_map_singularity[i].tile_id == tid.tile_challenge) {
 			$("#research_tile_singularity_" + i).mouseenter(function(){showInspector(upgrade_map_singularity[i].upgrade_id + iid.offset_upgrades);});
 			$("#research_tile_singularity_" + i).click(function(){buy_upgrade(upgrade_map_singularity[i].upgrade_id, false);});
 		}
@@ -1771,6 +1833,13 @@ function generateResearchMapEarth() {
 	upgrade_map_earth[mapColRow(7, 19)]		.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,					[uid.upgrade_mining_rig_3]																		);
 	upgrade_map_earth[mapColRow(7, 18)]		.assign_tile(tid.tile_node, 		uid.upgrade_mining_rig_3,			[uid.upgrade_earth_value_7]																		);
 	upgrade_map_earth[mapColRow(6, 20)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_depth_3,			[uid.upgrade_mining_rig_3, uid.upgrade_earth_value_10]											);
+
+	upgrade_map_earth[mapColRow(5, 21)]		.assign_tile(tid.tile_connect_rd, 	uid.upgrade_count,					[uid.upgrade_earth_depth_3]																		);
+	upgrade_map_earth[mapColRow(6, 21)]		.assign_tile(tid.tile_connect_ulr, 	uid.upgrade_count,					[uid.upgrade_earth_depth_3]																		);
+	upgrade_map_earth[mapColRow(7, 21)]		.assign_tile(tid.tile_connect_ld, 	uid.upgrade_count,					[uid.upgrade_earth_depth_3]																		);
+
+	
+	upgrade_map_earth[mapColRow(2, 22)]		.assign_tile(tid.tile_challenge, 	uid.upgrade_challenge_ecocide,																										);
 	
 	upgrade_map_earth[mapColRow(11, 16)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_6,						 																					);
 	upgrade_map_earth[mapColRow(10, 17)]	.assign_tile(tid.tile_connect_rd, 	uid.upgrade_count,					[uid.upgrade_earth_value_6]																		);

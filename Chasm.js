@@ -133,10 +133,10 @@ function draw_resources() {
 	$("#currency_capital_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_capital].resource.current, 2));
 
 	$("#currency_mass_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_mass].resource.current, 2));
-	$("#currency_workers_amount").html(chasm_currency[cid.currency_workers].resource.current.toFixed(0));
-	$("#currency_machinery_amount").html(chasm_currency[cid.currency_machinery].resource.current.toFixed(0));
+	$("#currency_workers_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_workers].resource.current, 0));
+	$("#currency_machinery_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_machinery].resource.current, 0));
 	
-	$("#currency_singularity_amount").html(chasm_currency[cid.currency_singularity].resource.current.toFixed(0));
+	$("#currency_singularity_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_singularity].resource.current, 0));
 
 	// Update resources
 	let earth_element_count = chasm_storage[sid.storage_earth].bitmap.element_count();
@@ -426,7 +426,7 @@ function rigUpgradeSustain() {
 }
 
 function RigMultiCost() {
-	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_multi, 1.5, 3), 1);
+	return chasm_math_exponential_cost(rig_lvl_multi, 1.5, 3);
 }
 
 function RigMultiAmount() {
@@ -434,15 +434,15 @@ function RigMultiAmount() {
 }
 
 function RigDecayCost() {
-	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_decay, 1.2, 3), 1);
+	return chasm_math_exponential_cost(rig_lvl_decay, 1.2, 3);
 }
 
 function RigDecayAmount() {
-	return chasm_math_exponential_cost(rig_lvl_decay, 35, 0.85);
+	return chasm_math_exponential_cost(rig_lvl_decay, 33, 0.70);
 }
 
 function RigSustainCost() {
-	return DisplayNumberFormatter(chasm_math_exponential_cost(rig_lvl_sustain, 10, 5), 1);
+	return chasm_math_exponential_cost(rig_lvl_sustain, 10, 5);
 }
 
 function RigSustainAmount() {
@@ -642,13 +642,13 @@ function RefreshDepthChart() {
 }
 
 function RefreshMiningRig() {
-	$("#mining_rig_multi_cost").html(RigMultiCost());
+	$("#mining_rig_multi_cost").html(DisplayNumberFormatter(RigMultiCost(), 1));
 	$("#mining_rig_multi_amount").html(DisplayNumberFormatter(RigMultiAmount() + 1, 1));
 
-	$("#mining_rig_decay_cost").html(RigDecayCost());
+	$("#mining_rig_decay_cost").html(DisplayNumberFormatter(RigDecayCost(), 1));
 	$("#mining_rig_decay_amount").html(DisplayNumberFormatter(RigDecayAmount(), 1));
 
-	$("#mining_rig_sustain_cost").html(RigSustainCost());
+	$("#mining_rig_sustain_cost").html(DisplayNumberFormatter(RigSustainCost(), 1));
 	$("#mining_rig_sustain_amount").html(DisplayNumberFormatter(RigSustainAmount(), 1));
 }
 

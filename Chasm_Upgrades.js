@@ -1151,7 +1151,14 @@ function initUpgrades() {
 }
 
 function lock_all_upgrades(reset_level) {
-	for (let i = uid.upgrade_first; i < uid.upgrade_count; i++) {
+	// Reverse loop to lock higher tier upgrades before checking special handling for lower tier upgrades
+	for (let i = uid.upgrade_count - 1; i >= uid.upgrade_first; i--) {
+		// Special handling for singularity upgrades
+		if (chasm_upgrades[uid.upgrade_singularity_mining_rig_1].unlocked) {
+			if (i == uid.upgrade_mining_rig_1 || i == uid.upgrade_mining_rig_2) continue;
+		}
+
+		// Default lock handling
 		if (reset_level >= chasm_upgrades[i].reset_level) {
 			chasm_upgrades[i].lock();
 		}
@@ -1380,12 +1387,14 @@ function reset_upgrades(reset_level) {
 		$("#earth_depth").css("background-color", "transparent");
 		$("#earth_depth_content").css("visibility", "hidden");
 	
-		// upgrade_mining_rig_1
-		$("#incinerator_box").css("background-color", "transparent");
-		$("#incinerator_box_content").css("visibility", "hidden");
+		if (!chasm_upgrades[uid.upgrade_singularity_mining_rig_1].unlocked) {
+			// upgrade_mining_rig_1
+			$("#incinerator_box").css("background-color", "transparent");
+			$("#incinerator_box_content").css("visibility", "hidden");
 	
-		// upgrade_mining_rig_2
-		$("#incinerator_upgrades_content").css("visibility", "hidden");
+			// upgrade_mining_rig_2
+			$("#incinerator_upgrades_content").css("visibility", "hidden");
+		}
 	}
 }
 

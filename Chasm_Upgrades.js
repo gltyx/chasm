@@ -941,7 +941,7 @@ function initUpgrades() {
 			case uid.upgrade_challenge_ecocide:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_challenge_ecocide",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_challenge_unknown.png",
 					[
 					0,		// Particles
 					100,	// Strands

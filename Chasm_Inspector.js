@@ -508,7 +508,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Industrial Waste Handling");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_2].cost.stringify());
-			$("#inspector_text")	.html("Our operation is starting to produce a good amount of oily waste water... Might as well dump that stuff right into the ground!");
+			$("#inspector_text")	.html("Our operation is starting to produce a good amount of oily waste... Might as well dump that stuff right into the ground!");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+50% dirt particle value<br>+100% copper particle value");
 			break;

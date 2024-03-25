@@ -25,7 +25,7 @@ class _CURRENCY_ID {
 	currency_workers		= 0x0007;
 	currency_machinery		= 0x0008;
 
-	currency_count			= 0x0009;
+	currency_max			= 0x0009;
 } var cid = new _CURRENCY_ID();
 
 class _CHASM_CURRENCY {
@@ -42,10 +42,10 @@ class _CHASM_CURRENCY {
 	}
 }
 
-var chasm_currency = new Array(cid.currency_count);
+var chasm_currency = new Array(cid.currency_max);
 
 function initCurrency() {
-	for (let i = cid.currency_first; i < cid.currency_count; i++) {
+	for (let i = cid.currency_first; i < cid.currency_max; i++) {
 		switch(i) {
 			case cid.currency_particles:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_particles",
@@ -103,12 +103,12 @@ class currency_value_map {
 	map;
 
 	constructor(map) {
-		this.map = new Array(cid.currency_count);
+		this.map = new Array(cid.currency_max);
 		let i = 0;
 		for (; i < map.length; i++) {
 			this.map[i] = map[i];
 		}
-		for (; i < cid.currency_count; i++) {
+		for (; i < cid.currency_max; i++) {
 			this.map[i] = 0;
 		}
 	}
@@ -122,7 +122,7 @@ class currency_value_map {
 		let cost_unaffordable_prewrapper 	= "<span style = 'color: LightPink;'>";
 		let cost_unaffordable_postwrapper 	= "</span>";
 
-		for (let i = 0; i < cid.currency_count; i++) {
+		for (let i = 0; i < cid.currency_max; i++) {
 			if (this.map[i] > 0) {
 				let affordable;
 				if (chasm_currency[i].resource.current.lt(this.map[i])) affordable = 2;
@@ -141,7 +141,7 @@ class currency_value_map {
 }
 
 function currency_gain(currency_count) {
-	for(let i = 0; i < cid.currency_count; i++) {
+	for(let i = 0; i < cid.currency_max; i++) {
 		chasm_currency[i].resource.gain(currency_count[i]);
 	}
 }

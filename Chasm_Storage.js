@@ -789,8 +789,8 @@ class storage_bitmap {
 }
 
 function elementValue(element_count) { // Returns currency value of all elements in a storage
-	let currency_count = new Array(cid.currency_count);
-	for (let i = 0; i < cid.currency_count; i++) {
+	let currency_count = new Array(cid.currency_max);
+	for (let i = 0; i < cid.currency_max; i++) {
 		currency_count[i] = 0;
 	}
 
@@ -1117,7 +1117,7 @@ function stringifyValue(currency_count) {
 	let value_prewrapper 				= "<p style = 'margin-left: 6px;'>";
 	let value_postwrapper 				= "</p>";
 
-	for (let i = 0; i < cid.currency_count; i++) {
+	for (let i = 0; i < cid.currency_max; i++) {
 		if (currency_count[i] > 0) {
 			out 							+= value_prewrapper;
 			out 							+= DisplayNumberFormatter(currency_count[i], 2);

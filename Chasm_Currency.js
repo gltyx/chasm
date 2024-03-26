@@ -18,14 +18,23 @@ class _CURRENCY_ID {
 	// Prestige Currency
 	prestige_first			= 0x0005; // Prestige bounds
 	currency_singularity	= 0x0005;
-	prestige_last			= 0x0005; // Prestige bounds
+	currency_challenge_1	= 0x0006; // Ecocide Token
+	currency_challenge_2	= 0x0007; // Unimplemented
+	currency_challenge_3	= 0x0008; // Unimplemented
+	currency_challenge_4	= 0x0009; // Unimplemented
+	currency_challenge_5	= 0x000a; // Unimplemented
+	currency_challenge_6	= 0x000b; // Unimplemented
+	currency_challenge_7	= 0x000c; // Unimplemented
+	currency_challenge_8	= 0x000d; // Unimplemented
+	currency_challenge_9	= 0x000e; // Unimplemented
+	prestige_last			= 0x000e; // Prestige bounds
 
 	// Special Currency
-	currency_mass 			= 0x0006;
-	currency_workers		= 0x0007;
-	currency_machinery		= 0x0008;
+	currency_mass 			= 0x000f;
+	currency_workers		= 0x0010;
+	currency_machinery		= 0x0011;
 
-	currency_max			= 0x0009;
+	currency_max			= 0x0012;
 } var cid = new _CURRENCY_ID();
 
 class _CHASM_CURRENCY {
@@ -91,6 +100,51 @@ function initCurrency() {
 			case cid.currency_singularity:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_singularity",
 														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>adjust</i>");
+				break;
+
+			case cid.currency_challenge_1:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_1",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
+				break;
+
+			case cid.currency_challenge_2:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_2",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
+				break;
+
+			case cid.currency_challenge_3:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_3",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
+				break;
+
+			case cid.currency_challenge_4:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_4",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
+				break;
+
+			case cid.currency_challenge_5:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_5",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
+				break;
+
+			case cid.currency_challenge_6:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_6",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
+				break;
+
+			case cid.currency_challenge_7:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_7",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
+				break;
+
+			case cid.currency_challenge_8:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_8",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
+				break;
+
+			case cid.currency_challenge_9:
+				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_9",
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
 				break;
 	
 			default:

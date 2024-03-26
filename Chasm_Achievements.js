@@ -34,8 +34,17 @@ class _MILESTONE_ID {
 	milestone_reveal_currency_capital			= 0x0005;		// Show soul after getting some
 	milestone_reveal_currency_machinery			= 0x0006;		// Show machinery after getting some
 	milestone_reveal_currency_singularity		= 0x0007;		// Show singularity after getting some
+	milestone_reveal_currency_challenge_1		= 0x0008;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_2		= 0x0009;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_3		= 0x000a;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_4		= 0x000b;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_5		= 0x000c;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_6		= 0x000d;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_7		= 0x000e;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_8		= 0x000f;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_9		= 0x0010;		// Show challenge token after getting some
 
-	milestone_count								= 0x0008;
+	milestone_count								= 0x0011;
 } var mid = new _MILESTONE_ID();
 
 class _ACHIEVEMENT {
@@ -240,6 +249,78 @@ function init_milestones() {
 														"",
 														"");
 				break;
+	
+			case mid.milestone_reveal_currency_challenge_1:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_challenge_1",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_challenge_2:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_challenge_2",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_challenge_3:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_challenge_3",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_challenge_4:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_challenge_4",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_challenge_5:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_challenge_5",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_challenge_6:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_challenge_6",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_challenge_7:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_challenge_7",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_challenge_8:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_challenge_8",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_challenge_9:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_challenge_9",
+														"",
+														"",
+														"",
+														"");
+				break;
 
 			default:
 				chasm_milestones[i] = new _ACHIEVEMENT(i, "", "", "", "", "");
@@ -369,6 +450,114 @@ function achievement_tick() {
 				chasm_currency[cid.currency_singularity].hidden = false;
 				$("#currency_singularity_symbol").fadeIn(800);
 				$("#currency_singularity_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal challenge 1 token (> 0 tokens)
+	if (!chasm_milestones[mid.milestone_reveal_currency_challenge_1].unlocked) {
+		if (chasm_currency[cid.currency_challenge_1].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_challenge_1].unlock();
+			if (chasm_currency[cid.currency_challenge_1].hidden) {
+				chasm_currency[cid.currency_challenge_1].hidden = false;
+				$("#currency_challenge_1_symbol").fadeIn(800);
+				$("#currency_challenge_1_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal challenge 2 token (> 0 tokens)
+	if (!chasm_milestones[mid.milestone_reveal_currency_challenge_2].unlocked) {
+		if (chasm_currency[cid.currency_challenge_2].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_challenge_2].unlock();
+			if (chasm_currency[cid.currency_challenge_2].hidden) {
+				chasm_currency[cid.currency_challenge_2].hidden = false;
+				$("#currency_challenge_2_symbol").fadeIn(800);
+				$("#currency_challenge_2_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal challenge 3 token (> 0 tokens)
+	if (!chasm_milestones[mid.milestone_reveal_currency_challenge_3].unlocked) {
+		if (chasm_currency[cid.currency_challenge_3].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_challenge_3].unlock();
+			if (chasm_currency[cid.currency_challenge_3].hidden) {
+				chasm_currency[cid.currency_challenge_3].hidden = false;
+				$("#currency_challenge_3_symbol").fadeIn(800);
+				$("#currency_challenge_3_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal challenge 4 token (> 0 tokens)
+	if (!chasm_milestones[mid.milestone_reveal_currency_challenge_4].unlocked) {
+		if (chasm_currency[cid.currency_challenge_4].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_challenge_4].unlock();
+			if (chasm_currency[cid.currency_challenge_4].hidden) {
+				chasm_currency[cid.currency_challenge_4].hidden = false;
+				$("#currency_challenge_4_symbol").fadeIn(800);
+				$("#currency_challenge_4_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal challenge 5 token (> 0 tokens)
+	if (!chasm_milestones[mid.milestone_reveal_currency_challenge_5].unlocked) {
+		if (chasm_currency[cid.currency_challenge_5].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_challenge_5].unlock();
+			if (chasm_currency[cid.currency_challenge_5].hidden) {
+				chasm_currency[cid.currency_challenge_5].hidden = false;
+				$("#currency_challenge_5_symbol").fadeIn(800);
+				$("#currency_challenge_5_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal challenge 6 token (> 0 tokens)
+	if (!chasm_milestones[mid.milestone_reveal_currency_challenge_6].unlocked) {
+		if (chasm_currency[cid.currency_challenge_6].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_challenge_6].unlock();
+			if (chasm_currency[cid.currency_challenge_6].hidden) {
+				chasm_currency[cid.currency_challenge_6].hidden = false;
+				$("#currency_challenge_6_symbol").fadeIn(800);
+				$("#currency_challenge_6_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal challenge 7 token (> 0 tokens)
+	if (!chasm_milestones[mid.milestone_reveal_currency_challenge_7].unlocked) {
+		if (chasm_currency[cid.currency_challenge_7].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_challenge_7].unlock();
+			if (chasm_currency[cid.currency_challenge_7].hidden) {
+				chasm_currency[cid.currency_challenge_7].hidden = false;
+				$("#currency_challenge_7_symbol").fadeIn(800);
+				$("#currency_challenge_7_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal challenge 8 token (> 0 tokens)
+	if (!chasm_milestones[mid.milestone_reveal_currency_challenge_8].unlocked) {
+		if (chasm_currency[cid.currency_challenge_8].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_challenge_8].unlock();
+			if (chasm_currency[cid.currency_challenge_8].hidden) {
+				chasm_currency[cid.currency_challenge_8].hidden = false;
+				$("#currency_challenge_8_symbol").fadeIn(800);
+				$("#currency_challenge_8_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal challenge 9 token (> 0 tokens)
+	if (!chasm_milestones[mid.milestone_reveal_currency_challenge_9].unlocked) {
+		if (chasm_currency[cid.currency_challenge_9].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_challenge_9].unlock();
+			if (chasm_currency[cid.currency_challenge_9].hidden) {
+				chasm_currency[cid.currency_challenge_9].hidden = false;
+				$("#currency_challenge_9_symbol").fadeIn(800);
+				$("#currency_challenge_9_value").fadeIn(800);
 			}
 		}
 	}

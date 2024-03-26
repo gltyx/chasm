@@ -137,6 +137,15 @@ function draw_resources() {
 	$("#currency_machinery_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_machinery].resource.current, 0));
 	
 	$("#currency_singularity_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_singularity].resource.current, 0));
+	$("#currency_challenge_1_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_challenge_1].resource.current, 0));
+	$("#currency_challenge_2_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_challenge_2].resource.current, 0));
+	$("#currency_challenge_3_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_challenge_3].resource.current, 0));
+	$("#currency_challenge_4_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_challenge_4].resource.current, 0));
+	$("#currency_challenge_5_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_challenge_5].resource.current, 0));
+	$("#currency_challenge_6_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_challenge_6].resource.current, 0));
+	$("#currency_challenge_7_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_challenge_7].resource.current, 0));
+	$("#currency_challenge_8_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_challenge_8].resource.current, 0));
+	$("#currency_challenge_9_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_challenge_9].resource.current, 0));
 
 	// Update resources
 	let earth_element_count = chasm_storage[sid.storage_earth].bitmap.element_count();
@@ -333,6 +342,9 @@ function singularity_reset() {
 		singularity_count++;
 		chasm_currency[cid.currency_singularity].resource.gain(pending_singularity);
 		pending_singularity = 0;
+
+		// Gain challenge tokens
+		if (chasm_upgrades[uid.upgrade_challenge_ecocide].unlocked) chasm_currency[cid.currency_challenge_1].resource.gain(1);
 
 		// Reset Upgrades
 		reset_upgrades(reset_level_singularity);
@@ -534,6 +546,60 @@ function refresh_ui() {
 		chasm_currency[cid.currency_singularity].hidden = false;
 		$("#currency_singularity_symbol").css("display", "block");
 		$("#currency_singularity_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_challenge_1].unlocked) {
+		chasm_currency[cid.currency_challenge_1].hidden = false;
+		$("#currency_challenge_1_symbol").css("display", "block");
+		$("#currency_challenge_1_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_challenge_2].unlocked) {
+		chasm_currency[cid.currency_challenge_2].hidden = false;
+		$("#currency_challenge_2_symbol").css("display", "block");
+		$("#currency_challenge_2_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_challenge_3].unlocked) {
+		chasm_currency[cid.currency_challenge_3].hidden = false;
+		$("#currency_challenge_3_symbol").css("display", "block");
+		$("#currency_challenge_3_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_challenge_4].unlocked) {
+		chasm_currency[cid.currency_challenge_4].hidden = false;
+		$("#currency_challenge_4_symbol").css("display", "block");
+		$("#currency_challenge_4_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_challenge_5].unlocked) {
+		chasm_currency[cid.currency_challenge_5].hidden = false;
+		$("#currency_challenge_5_symbol").css("display", "block");
+		$("#currency_challenge_5_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_challenge_6].unlocked) {
+		chasm_currency[cid.currency_challenge_6].hidden = false;
+		$("#currency_challenge_6_symbol").css("display", "block");
+		$("#currency_challenge_6_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_challenge_7].unlocked) {
+		chasm_currency[cid.currency_challenge_7].hidden = false;
+		$("#currency_challenge_7_symbol").css("display", "block");
+		$("#currency_challenge_7_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_challenge_8].unlocked) {
+		chasm_currency[cid.currency_challenge_8].hidden = false;
+		$("#currency_challenge_8_symbol").css("display", "block");
+		$("#currency_challenge_8_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_challenge_9].unlocked) {
+		chasm_currency[cid.currency_challenge_9].hidden = false;
+		$("#currency_challenge_9_symbol").css("display", "block");
+		$("#currency_challenge_9_value").css("display", "block");
 	}
 	
 	// Storage

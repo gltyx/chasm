@@ -139,7 +139,7 @@ function debug_gain() {
 	switch ($("#debug_gain_type").val()){
 		default:
 		case "All":
-			for (let i = 0; i < cid.currency_count; i++) {
+			for (let i = 0; i < cid.currency_max; i++) {
 				chasm_currency[i].resource.gain(amount);
 			}
 			break;

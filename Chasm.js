@@ -338,7 +338,7 @@ function singularity_reset() {
 		reset_upgrades(reset_level_singularity);
 
 		// Reset Currency
-		for (let i = cid.currency_first; i < cid.currency_count; i++) {
+		for (let i = cid.currency_first; i < cid.currency_max; i++) {
 			// Set workers to 1
 			if (i == cid.currency_workers) {
 				chasm_currency[i].resource.set(1);

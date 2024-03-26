@@ -109,7 +109,7 @@ function save_unpack_milestones(object) {
 
 function save_pack_currency() {
 	var object = {};
-	for (let i = cid.currency_first; i < cid.currency_count; i++) {
+	for (let i = cid.currency_first; i < cid.currency_max; i++) {
 		object[chasm_currency[i].resource.name] = lib_chasm_pack_resource(chasm_currency[i].resource);
 	}
 	return object;

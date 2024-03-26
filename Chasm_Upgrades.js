@@ -102,7 +102,7 @@ class _CHASM_UPGRADE {
 	buy(free) {
 		if ((this.affordable() || free) && !this.unlocked) {
 			if (!free) {
-				for (let i = 0; i < cid.currency_count; i++) {
+				for (let i = 0; i < cid.currency_max; i++) {
 					chasm_currency[i].resource.spend(this.cost.map[i]);
 				}
 			}
@@ -124,7 +124,7 @@ class _CHASM_UPGRADE {
 				}
 			}
 
-			for (let i = 0; i < cid.currency_count; i++) {
+			for (let i = 0; i < cid.currency_max; i++) {
 				if (chasm_currency[i].resource.current.lt(this.cost.map[i])) {
 					return false;
 				}

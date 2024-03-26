@@ -104,7 +104,7 @@ function initCurrency() {
 
 			case cid.currency_challenge_1:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_challenge_1",
-														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_singularity'>stars</i>");
+														"<i class = 'material-icons grey-text text-darken-4 currency_icon gradient_challenge_1'>stars</i>");
 				break;
 
 			case cid.currency_challenge_2:

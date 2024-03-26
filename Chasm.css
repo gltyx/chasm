@@ -217,6 +217,12 @@ form {
 	-webkit-text-fill-color: transparent;
 }
 
+.gradient_challenge_1 {
+	background: -webkit-linear-gradient(#3de809, #37ab8c);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 .smallbutton {
 	height: 28px;
 	line-height: 28px;

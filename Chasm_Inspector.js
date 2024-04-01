@@ -1035,7 +1035,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_survey_2].cost.stringify());
 			$("#inspector_text")	.html("Upgrade your mining lanterns to sweet RGB LEDs instead of lame oil. This will obviously increase the game's FPS.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+1% base emerald chance<br>+0.5% base sapphire chance<br>+0.1% ruby chance");
+			$("#inspector_subtext")	.html("+1% base emerald chance<br>+0.5% base sapphire chance<br>+0.1% base ruby chance");
 			break;
 		case iid.upgrade_singularity_mining_rig_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Subspace Mining Rig");

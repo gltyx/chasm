@@ -38,19 +38,19 @@ function animateOptions() {
 		$("#last_save_time").html("n/a");
 	} else {
 		let delta = (Date.now() - last_save_time);
-		let time_delta_s = DisplayNumberFormatter(delta / 1000, 0);
+		let time_delta_s = delta / 1000;
 		$("#last_save_time").html(secondsToString(time_delta_s));
-		let time_delta_p = DisplayNumberFormatter((delta + total_playtime) / 1000, 0);
+		let time_delta_p = (delta + total_playtime) / 1000;
 		$("#total_playtime").html(secondsToString(time_delta_p));
 
 		let time_delta_a;
 		if (last_singularity_time != null) {
 			// Singularity since last save, use raw timestamp
-			time_delta_a = DisplayNumberFormatter((Date.now() - last_singularity_time) / 1000, 0)
+			time_delta_a = (Date.now() - last_singularity_time) / 1000;
 			$("#total_sing_time").html(secondsToString(time_delta_a));
 		} else {
 			// Use saved milliseconds instead
-			time_delta_a = DisplayNumberFormatter((delta + total_sing_time) / 1000, 0);
+			time_delta_a = (delta + total_sing_time) / 1000;
 			$("#total_sing_time").html(secondsToString(time_delta_a));
 		}
 	}

@@ -450,7 +450,9 @@ function RigDecayCost() {
 }
 
 function RigDecayAmount() {
-	return chasm_math_exponential_cost(rig_lvl_decay, 33, 0.70);
+	let base_decay = 24;
+	if (chasm_upgrades[uid.upgrade_singularity_mining_rig_3].unlocked) base_decay *= 0.5;
+	return chasm_math_exponential_cost(rig_lvl_decay, base_decay, 0.70);
 }
 
 function RigSustainCost() {
@@ -651,6 +653,7 @@ function refresh_ui() {
 
 	if (chasm_upgrades[uid.upgrade_water_storage].unlocked) {
 		$("#water_section").css("display", "block");
+		$("#water_upgrades_tab").css("display", "block");
 	}
 
 	chasm_storage[sid.storage_earth].refresh_survey();

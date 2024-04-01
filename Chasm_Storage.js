@@ -115,9 +115,18 @@ class ELEMENT_PROBABILITY {
 			let dcb = 0;
 			if (chasm_upgrades[uid.upgrade_earth_chance_5].unlocked) dcb += 1;
 
+			// Ruby chance bias
+			let rcb = 0;
+			if (chasm_upgrades[uid.upgrade_singularity_survey_2].unlocked) rcb += 1;
+
+			// Sapphire chance bias
+			let scb = 0;
+			if (chasm_upgrades[uid.upgrade_singularity_survey_2].unlocked) scb += 5;
+
 			// Emerald chance bias
 			let ecb = 0;
 			if (chasm_upgrades[uid.upgrade_earth_chance_1].unlocked) ecb += 20;
+			if (chasm_upgrades[uid.upgrade_singularity_survey_2].unlocked) ecb += 10;
 
 			// Copper chance bias
 			let ccb = 0;
@@ -134,8 +143,8 @@ class ELEMENT_PROBABILITY {
 			//						| Depth 0					| Depth 1					| Depth 2						| Depth 3					| Depth 4					| Depth 5						| Depth 6					| Depth 7
 			const p_magma = [		0,							0,							0,								0,							0,							0,								0,							445 + srvb(300, 0.2)		];
 			const p_diamond = [		0,							0 + dcb,					0 + dcb,						1 + dcb,					4  + srvb(20, 0.1) + dcb,	20  + srvb(50, 0.15) + dcb,		30  + srvb(60, 0.15) + dcb,	50  + srvb(140, 0.15) + dcb	];
-			const p_ruby = [		0,							0,							1,								4   + srvb(10, 0.1),		20 + srvb(50, 0.1),			30  + srvb(80, 0.15),			50  + srvb(90, 0.15),		0							];
-			const p_sapphire = [	0,							0,							3,								10  + srvb(20, 0.1),		30 + srvb(80, 0.15),		20  + srvb(50, 0.2),			5   + srvb(35, 0.15),		0							];
+			const p_ruby = [		0,							0,							1 + rcb,						4   + srvb(10, 0.1) + rcb,	20 + srvb(50, 0.1) + rcb,	30  + srvb(80, 0.15) + rcb,		50  + srvb(90, 0.15) + rcb,	0							];
+			const p_sapphire = [	0,							0,							3 + scb,						10  + srvb(20, 0.1) + scb,	30 + srvb(80, 0.15) + scb,	20  + srvb(50, 0.2) + scb,		5   + srvb(35, 0.15) + scb,	0							];
 			const p_emerald = [		0,							5 + srvb(30, 0.2) + ecb,	6 + srvb(40, 0.15) + ecb,		20  + srvb(40, 0.15) + ecb,	10 + srvb(30, 0.15) + ecb,	5   + srvb(40, 0.2) + ecb,		0,							0							];
 			const p_fossil = [		0,							0,							0,								0  + srvb(20, 0.25),		0 + srvb(40, 0.25),			0 + srvb(80, 0.25),				30  + srvb(90, 0.25),		0							];
 			const p_gold = [		0,							0,							0,								2,							8  + srvb(30, 0.15),		40  + srvb(80, 0.15),			100 + srvb(140, 0.15),		0							];
@@ -297,73 +306,73 @@ class ELEMENT_PROBABILITY {
 			var portion = 1000;
 			var roll = Math.floor(Math.random() * 1000);
 
-			if (roll > portion - this.element_magma) {
+			if (roll >= portion - this.element_magma) {
 				return eid.element_magma;
 			} else {
 				portion -= this.element_magma;
 			}
 
-			if (roll > portion - this.element_diamond) {
+			if (roll >= portion - this.element_diamond) {
 				return eid.element_diamond;
 			} else {
 				portion -= this.element_diamond;
 			}
 
-			if (roll > portion - this.element_ruby) {
+			if (roll >= portion - this.element_ruby) {
 				return eid.element_ruby;
 			} else {
 				portion -= this.element_ruby;
 			}
 
-			if (roll > portion - this.element_sapphire) {
+			if (roll >= portion - this.element_sapphire) {
 				return eid.element_sapphire;
 			} else {
 				portion -= this.element_sapphire;
 			}
 
-			if (roll > portion - this.element_emerald) {
+			if (roll >= portion - this.element_emerald) {
 				return eid.element_emerald;
 			} else {
 				portion -= this.element_emerald;
 			}
 
-			if (roll > portion - this.element_fossil) {
+			if (roll >= portion - this.element_fossil) {
 				return eid.element_fossil;
 			} else {
 				portion -= this.element_fossil;
 			}
 
-			if (roll > portion - this.element_gold) {
+			if (roll >= portion - this.element_gold) {
 				return eid.element_gold;
 			} else {
 				portion -= this.element_gold;
 			}
 
-			if (roll > portion - this.element_lead) {
+			if (roll >= portion - this.element_lead) {
 				return eid.element_lead;
 			} else {
 				portion -= this.element_lead;
 			}
 
-			if (roll > portion - this.element_iron) {
+			if (roll >= portion - this.element_iron) {
 				return eid.element_iron;
 			} else {
 				portion -= this.element_iron;
 			}
 
-			if (roll > portion - this.element_copper) {
+			if (roll >= portion - this.element_copper) {
 				return eid.element_copper;
 			} else {
 				portion -= this.element_copper;
 			}
 
-			if (roll > portion - this.element_coal) {
+			if (roll >= portion - this.element_coal) {
 				return eid.element_coal;
 			} else {
 				portion -= this.element_coal;
 			}
 
-			if (roll > portion - this.element_stone) {
+			if (roll >= portion - this.element_stone) {
 				return eid.element_stone;
 			} else {
 				portion -= this.element_stone;
@@ -837,6 +846,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 			case eid.element_coal:
 				let coal_value = 1.00
 				if (chasm_upgrades[uid.upgrade_earth_value_8].unlocked) coal_value = coal_value * 3;
+				if (chasm_upgrades[uid.upgrade_singularity_earth_value_1].unlocked) coal_value = coal_value * 3;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * coal_value * mass_modifier;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_coal] * coal_value * 0.92;

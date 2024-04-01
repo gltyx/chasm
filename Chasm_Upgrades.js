@@ -75,11 +75,14 @@ class _UPGRADE_ID {
     upgrade_singularity_workers_6		= 0x0037;	// Keep worker upgrades on reset
     upgrade_singularity_workers_7		= 0x0038;	// +0.5 Worker per reset
     upgrade_singularity_workers_8		= 0x0039;	// +0.25 Worker per reset
-    upgrade_singularity_survey_1		= 0x003a;	// +1 Effective Survey
-    upgrade_singularity_mining_rig_1	= 0x003b;	// Keep Mining Rig upgrades on reset
-    upgrade_singularity_mining_rig_2	= 0x003c;	// Mining rig sustain x3
+	upgrade_singularity_earth_value_1	= 0x003a;	// 3x coal particle value
+    upgrade_singularity_survey_1		= 0x003b;	// +1 Effective Survey
+    upgrade_singularity_survey_2		= 0x003c;	// +base jewel particle chance
+    upgrade_singularity_mining_rig_1	= 0x003d;	// Keep Mining Rig upgrades on reset
+    upgrade_singularity_mining_rig_2	= 0x003e;	// Mining rig sustain x3
+    upgrade_singularity_mining_rig_3	= 0x003f;	// Mining rig decay 50% slower
 
-    upgrade_count						= 0x003d;
+    upgrade_count						= 0x0040;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -559,14 +562,14 @@ function initUpgrades() {
 					"upgrade_water_storage",
 					"images/tile_research_water_storage.png",
 					[
-					20,		// Particles
+					0,		// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
-					0,		// Singularity
+					3,		// Singularity
 					],
-					reset_level_singularity
+					reset_level_all
 				);
 				break;
 			
@@ -626,7 +629,7 @@ function initUpgrades() {
 					2000,	// Particles
 					0,		// Strands
 					0,		// Spirit
-					10,		// Soul
+					100,	// Soul
 					0,		// Anticapital
 					0,		// Singularity
 					],
@@ -1081,6 +1084,22 @@ function initUpgrades() {
 					reset_level_all
 				);
 				break;
+			
+			case uid.upgrade_singularity_earth_value_1:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_earth_value_1",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					3,		// Singularity
+					],
+					reset_level_all
+				);
+				break;
 
 			case uid.upgrade_singularity_survey_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
@@ -1092,7 +1111,23 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
-					2,		// Singularity
+					1,		// Singularity
+					],
+					reset_level_all
+				);
+				break;
+
+			case uid.upgrade_singularity_survey_2:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_survey_2",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					3,		// Singularity
 					],
 					reset_level_all
 				);
@@ -1108,7 +1143,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
-					2,		// Singularity
+					3,		// Singularity
 					],
 					reset_level_all
 				);
@@ -1125,6 +1160,22 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					2,		// Singularity
+					],
+					reset_level_all
+				);
+				break;
+
+			case uid.upgrade_singularity_mining_rig_3:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_mining_rig_3",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					1,		// Singularity
 					],
 					reset_level_all
 				);
@@ -1210,6 +1261,7 @@ function buy_upgrade(upgrade_id, free) {
 	
 			case uid.upgrade_water_storage:
 				$("#water_section").css("display", "block");
+				$("#water_upgrades_tab").css("display", "block");
 				break;
 
 			case uid.upgrade_earth_metals_1:
@@ -1262,6 +1314,10 @@ function buy_upgrade(upgrade_id, free) {
 
 			case uid.upgrade_mining_rig_2:
 				$("#incinerator_upgrades_content").css("visibility", "visible");
+				break;
+
+			case uid.upgrade_mining_rig_4:
+				RefreshMiningRig();
 				break;
 
 			case uid.upgrade_workers_1:
@@ -1366,6 +1422,10 @@ function buy_upgrade(upgrade_id, free) {
 			case uid.upgrade_singularity_survey_1:
 				chasm_storage[sid.storage_earth].refresh_survey();
 				break;
+
+			case uid.upgrade_singularity_survey_2:
+				chasm_storage[sid.storage_earth].refresh_survey();
+				break;
 			
 			default:
 		}
@@ -1377,7 +1437,14 @@ function reset_upgrades(reset_level) {
 	
 	if (reset_level >= reset_level_singularity) {
 		// upgrade_water_storage
-		$("#water_section").css("display", "none");
+		if (chasm_upgrades[uid.upgrade_water_storage].unlocked) {
+			$("#water_section").css("display", "block");
+			$("#water_upgrades_tab").css("display", "block");
+		}
+		else {
+			$("#water_section").css("display", "none");
+			$("#water_upgrades_tab").css("display", "none");
+		}
 	
 		// upgrade_earth_metals_1
 		$("#earth_survey").css("background-color", "transparent");
@@ -1920,7 +1987,7 @@ function generateResearchMapWater() {
 
 	// Testing row
 	var test_row = 6;
-	var test_upgrades = [uid.upgrade_water_storage];
+	var test_upgrades = [];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map_water[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;
@@ -1980,9 +2047,19 @@ function generateResearchMapSingularity() {
 	upgrade_map_singularity[mapColRow(3, 11)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_workers_8,		[uid.upgrade_singularity_workers_7]												);
 
 	// Qol upgrades
-	upgrade_map_singularity[mapColRow(11, 2)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_survey_1,																						);
-	upgrade_map_singularity[mapColRow(11, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_mining_rig_1,																					);
-	upgrade_map_singularity[mapColRow(11, 6)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_mining_rig_2,																					);
+	upgrade_map_singularity[mapColRow(9, 2)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_mining_rig_3,																					);
+	upgrade_map_singularity[mapColRow(9, 3)]		.assign_tile(tid.tile_connect_ud, 		uid.upgrade_count,						[uid.upgrade_singularity_mining_rig_3]											);
+	upgrade_map_singularity[mapColRow(9, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_mining_rig_2,	[uid.upgrade_singularity_mining_rig_3]											);
+	upgrade_map_singularity[mapColRow(9, 5)]		.assign_tile(tid.tile_connect_ud, 		uid.upgrade_count,						[uid.upgrade_singularity_mining_rig_2]											);
+	upgrade_map_singularity[mapColRow(9, 6)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_mining_rig_1,	[uid.upgrade_singularity_mining_rig_2]											);
+	upgrade_map_singularity[mapColRow(11, 3)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_survey_1,																						);
+	upgrade_map_singularity[mapColRow(11, 4)]		.assign_tile(tid.tile_connect_ud, 		uid.upgrade_count,						[uid.upgrade_singularity_survey_1]												);
+	upgrade_map_singularity[mapColRow(11, 5)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_survey_2,		[uid.upgrade_singularity_survey_1]												);
+	upgrade_map_singularity[mapColRow(11, 6)]		.assign_tile(tid.tile_connect_ud, 		uid.upgrade_count,						[uid.upgrade_singularity_survey_2]												);
+	upgrade_map_singularity[mapColRow(11, 7)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_earth_value_1,	[uid.upgrade_singularity_survey_2]												);
+
+	// Water Upgrades
+	upgrade_map_singularity[mapColRow(11, 10)]		.assign_tile(tid.tile_node, 			uid.upgrade_water_storage,																								);
 
 	// Testing row
 	var test_row = 16;

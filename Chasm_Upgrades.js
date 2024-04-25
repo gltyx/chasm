@@ -578,7 +578,7 @@ function initUpgrades() {
 					"upgrade_earth_metals_1",
 					"images/tile_research_earth_metals_1.png",
 					[
-					1.5,	// Particles
+					1.2,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -706,7 +706,7 @@ function initUpgrades() {
 					"upgrade_mining_rig_1",
 					"images/tile_research_upgrade_unknown.png",
 					[
-					1.5,	// Particles
+					1.2,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul
@@ -802,7 +802,7 @@ function initUpgrades() {
 					"upgrade_workers_3",
 					"images/tile_research_upgrade_workers_3.png",
 					[
-					1.5,	// Particles
+					1.2,	// Particles
 					0,		// Strands
 					0,		// Spirit
 					0,		// Soul

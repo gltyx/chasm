@@ -82,8 +82,9 @@ class _UPGRADE_ID {
     upgrade_singularity_mining_rig_1	= 0x003e;	// Keep Mining Rig upgrades on reset
     upgrade_singularity_mining_rig_2	= 0x003f;	// Mining rig sustain x3
     upgrade_singularity_mining_rig_3	= 0x0040;	// Mining rig decay 50% slower
+	upgrade_singularity_ascend_1		= 0x0041;	// Singularity base cost -25%
 
-    upgrade_count						= 0x0041;
+    upgrade_count						= 0x0042;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -1112,7 +1113,7 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
-					2,		// Singularity
+					1,		// Singularity
 					],
 					reset_level_all
 				);
@@ -1193,6 +1194,22 @@ function initUpgrades() {
 					0,		// Soul
 					0,		// Anticapital
 					1,		// Singularity
+					],
+					reset_level_all
+				);
+				break;
+
+			case uid.upgrade_singularity_ascend_1:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_singularity_ascend_1",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					0,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					3,		// Singularity
 					],
 					reset_level_all
 				);
@@ -2075,7 +2092,9 @@ function generateResearchMapSingularity() {
 	upgrade_map_singularity[mapColRow(11, 6)]		.assign_tile(tid.tile_connect_ud, 		uid.upgrade_count,						[uid.upgrade_singularity_survey_2]												);
 	upgrade_map_singularity[mapColRow(11, 7)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_earth_value_1,	[uid.upgrade_singularity_survey_2]												);
 	upgrade_map_singularity[mapColRow(13, 4)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_earth_value_2,																					);
-
+	upgrade_map_singularity[mapColRow(13, 5)]		.assign_tile(tid.tile_connect_ud, 		uid.upgrade_count,						[uid.upgrade_singularity_earth_value_2]											);
+	upgrade_map_singularity[mapColRow(13, 6)]		.assign_tile(tid.tile_node, 			uid.upgrade_singularity_ascend_1,		[uid.upgrade_singularity_earth_value_2]											);
+	
 	// Water Upgrades
 	upgrade_map_singularity[mapColRow(11, 10)]		.assign_tile(tid.tile_node, 			uid.upgrade_water_storage,																								);
 

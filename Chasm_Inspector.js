@@ -112,6 +112,7 @@ class _INSPECTOR_ID {
 	upgrade_singularity_mining_rig_1			= uid.upgrade_singularity_mining_rig_1		+ this.offset_upgrades;
 	upgrade_singularity_mining_rig_2			= uid.upgrade_singularity_mining_rig_2		+ this.offset_upgrades;
 	upgrade_singularity_mining_rig_3			= uid.upgrade_singularity_mining_rig_3		+ this.offset_upgrades;
+	upgrade_singularity_ascend_1				= uid.upgrade_singularity_ascend_1			+ this.offset_upgrades;
 
 	offset_achievements							= 0xd100;	// 0xd1xx Start achievement section
 	achievement_babys_first_block 				= aid.achievement_babys_first_block 		+ this.offset_achievements;
@@ -1069,6 +1070,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("A small tube of this silver goo will keep your Mining Rig from leaking so much heat. No matter how little you apply, it is always too much.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("50% slower Mining Rig decay");
+			break;
+		case iid.upgrade_singularity_ascend_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Pit Suspenders");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_ascend_1].cost.stringify());
+			$("#inspector_text")	.html("A pair of dapper suspenders that stretch allllll the way down. Your sensors are reporting that they make the bottomless pit significantly less infinite.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("-25% singularity base cost");
 			break;
 
 		// Achievements

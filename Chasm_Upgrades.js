@@ -402,7 +402,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_value_11:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_value_11",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_earth_value_11.png",
 					[
 					1000,	// Particles
 					0,		// Strands
@@ -546,7 +546,7 @@ function initUpgrades() {
 			case uid.upgrade_earth_drop_speed_2:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_earth_drop_speed_2",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_upgrade_drop_speed_2.png",
 					[
 					750,	// Particles
 					0,		// Strands
@@ -706,7 +706,7 @@ function initUpgrades() {
 			case uid.upgrade_mining_rig_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_mining_rig_1",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_upgrade_mining_rig_1.png",
 					[
 					1.2,	// Particles
 					0,		// Strands

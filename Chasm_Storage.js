@@ -820,6 +820,9 @@ function elementValue(element_count) { // Returns currency value of all elements
 	let jewel_mass_modifier = 1;
 	if (chasm_upgrades[uid.upgrade_earth_value_11].unlocked) jewel_mass_modifier = jewel_mass_modifier * 3;
 
+	let particle_modifier = 1;
+	if (chasm_upgrades[uid.upgrade_singularity_earth_value_2].unlocked) particle_modifier = particle_modifier * 1.5;
+
 	let anticapital_modifier = 1;
 	if (chasm_upgrades[uid.upgrade_singularity_workers_3].unlocked) anticapital_modifier = anticapital_modifier * 1.25;
 
@@ -833,7 +836,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_earth_value_9].unlocked) earth_value = earth_value * 2;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_earth] * earth_value * mass_modifier;
-				currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_earth] * earth_value * particle_modifier;
 				break;
 			case eid.element_stone:
 				let stone_value = 0.26;
@@ -841,7 +844,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_earth_value_6].unlocked) stone_value = stone_value * 1.5;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_stone] * stone_value * mass_modifier;
-				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * stone_value;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_stone] * stone_value * particle_modifier;
 				break;
 			case eid.element_coal:
 				let coal_value = 1.00
@@ -849,7 +852,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				if (chasm_upgrades[uid.upgrade_singularity_earth_value_1].unlocked) coal_value = coal_value * 3;
 
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_coal] * coal_value * mass_modifier;
-				currency_count[cid.currency_particles] 	+= element_count[eid.element_coal] * coal_value * 0.92;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_coal] * coal_value * 0.92 * particle_modifier;
 				currency_count[cid.currency_soul] 		+= element_count[eid.element_coal] * coal_value * 0.08;
 				break;
 			case eid.element_copper:
@@ -926,7 +929,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 				break;
 			case eid.element_water:
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * 0.01 * mass_modifier;
-				currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * 0.01;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * 0.01 * particle_modifier;
 				break;
 			case eid.element_none:
 			default:

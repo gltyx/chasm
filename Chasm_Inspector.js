@@ -106,6 +106,7 @@ class _INSPECTOR_ID {
 	upgrade_singularity_workers_7				= uid.upgrade_singularity_workers_7			+ this.offset_upgrades;
 	upgrade_singularity_workers_8				= uid.upgrade_singularity_workers_8			+ this.offset_upgrades;
 	upgrade_singularity_earth_value_1			= uid.upgrade_singularity_earth_value_1		+ this.offset_upgrades;
+	upgrade_singularity_earth_value_2			= uid.upgrade_singularity_earth_value_2		+ this.offset_upgrades;
 	upgrade_singularity_survey_1				= uid.upgrade_singularity_survey_1			+ this.offset_upgrades;
 	upgrade_singularity_survey_2				= uid.upgrade_singularity_survey_2			+ this.offset_upgrades;
 	upgrade_singularity_mining_rig_1			= uid.upgrade_singularity_mining_rig_1		+ this.offset_upgrades;
@@ -850,7 +851,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_storage].cost.stringify());
 			$("#inspector_text")	.html("Dumping water into the Chasm might speed things up, but you'll have to build some water tanks first");
-			$("#inspector_subtext")	.html("Unlock Water");
+			$("#inspector_subtext")	.html("Unlock Waterworks");
 			$("#inspector_divider")	.css("display", "block");
 			break;
 		case iid.upgrade_workers_1:
@@ -1020,6 +1021,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("You accidentally set the mines on fire, and the vast coal seams contain enough energy to burn for decades. On the plus side, flaming coal is worth more than regular coal.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+200% coal particle value");
+			break;
+		case iid.upgrade_singularity_earth_value_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>The Atoms Family Issue #1");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_earth_value_2].cost.stringify());
+			$("#inspector_text")	.html("Your employees have organized a Void Particle Physics Fan Club. One of them has even written a fan-fic comic where two particles fall in love and start a family. It's a bit weird, but it seems to be working.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+50% Void Particle gain");
 			break;
 		case iid.upgrade_singularity_survey_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Reverse Precognition");

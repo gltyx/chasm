@@ -437,7 +437,7 @@
 													</div>
 												</div>
 											</form>
-											<p id = "gather_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
+											<p id = "earth_gather_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
 
 											<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
 												<form>
@@ -644,7 +644,7 @@
 								</div>
 
 								<div class = "unflex">
-									<p class = "resource_title">Water</p>
+									<p class = "resource_title">Waterworks</p>
 									<div id = "element_water_amount" class = "resource_info vertcenter"></div>
 									<div id = "value_water_amount" class = "resource_info vertcenter"></div>
 								</div>
@@ -653,12 +653,36 @@
 						<div id = "water_box" class = "card blue-grey lighten-4">
 							<div class = "flex">
 								<!--Gather-->
+								<div class = "gather_button">
+									<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+										<div id = "water_gather_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
+									</div>
+
+									<p class = "hcenter" style = "font-weight: bold;">Gather</p>
+									
+									<!--Workers Arrows-->
+									<form>
+										<div class = "flex">
+											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_workers, -1, 'gather')" value = "<" />
+											<div class = "hcenter" style = "width: 40px;">
+												<p id = "water_workers_gather">0</p>
+											</div>
+											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_workers, 1, 'gather')" value = ">" />
+											<div class = "hcenter" style = "margin: auto;">
+												<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+											</div>
+										</div>
+									</form>
+									<p id = "water_gather_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
+								</div>
+
+								<!--Gather Button (deprecated)
 								<div class = "gather_button" style = "width: 88px;">
 									<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
 										<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
 									</div>
 									<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
-								</div>
+								</div>-->
 
 								<!--Drop-->
 								<div style = "width: 71px;">

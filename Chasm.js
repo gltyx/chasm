@@ -222,7 +222,7 @@ function game_tick(scalar) {
 		gather_amount *= chasm_storage[sid.storage_earth].workers_gather;
 		chasm_storage[sid.storage_earth].gather_progress +=  gather_amount * scalar;
 	}
-	$("#gather_speed_label").html(DisplayNumberFormatter((gather_amount / 100), 2) + " /s");
+	$("#earth_gather_speed_label").html(DisplayNumberFormatter((gather_amount / 100), 2) + " /s");
 	if (chasm_storage[sid.storage_earth].gather_progress > 100) {
 		if (earth.current == earth.cap) {
 			chasm_storage[sid.storage_earth].gather_progress = 100;
@@ -260,9 +260,13 @@ function game_tick(scalar) {
 	}
 
 	// Water Gather
+	let water_gather_amount = 0;
 	if (chasm_storage[sid.storage_water].workers_gather > 0) {
-		chasm_storage[sid.storage_water].gather_progress += chasm_storage[sid.storage_water].workers_gather * 10 * scalar;
+		water_gather_amount += 10;
+		water_gather_amount *= chasm_storage[sid.storage_water].workers_gather;
+		chasm_storage[sid.storage_water].gather_progress += water_gather_amount * scalar;
 	}
+	$("#water_gather_speed_label").html(DisplayNumberFormatter((water_gather_amount / 100), 2) + " /s");
 	if (chasm_storage[sid.storage_water].gather_progress > 100) {
 		if (water.current == water.cap) {
 			chasm_storage[sid.storage_water].gather_progress = 100;

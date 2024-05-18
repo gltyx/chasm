@@ -150,15 +150,13 @@ function draw_resources() {
 	// Update resources
 	let earth_element_count = chasm_storage[sid.storage_earth].bitmap.element_count();
 	let earth_currency_count = elementValue(earth_element_count);
-	$("#element_earth_amount").html();
 	loadEarthElements(earth_element_count);
 	loadEarthValue(earth_currency_count);
 
 	let water_element_count = chasm_storage[sid.storage_water].bitmap.element_count();
 	let water_currency_count = elementValue(water_element_count);
-	$("#element_water_amount").html(stringifyElements(water_element_count));
-	$("#value_water_amount").html("Value: " + stringifyValue(water_currency_count));
-}
+	loadWaterElements(water_element_count);
+	loadWaterValue(water_currency_count);
 
 var singularity_count = 0;
 var pending_singularity = 0;

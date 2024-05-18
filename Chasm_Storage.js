@@ -435,6 +435,7 @@ function initStorageDisplay() {
 	$("#element_earth_ruby_sample").html(ElementSample(eid.element_ruby));
 	$("#element_earth_diamond_sample").html(ElementSample(eid.element_diamond));
 	$("#element_earth_magma_sample").html(ElementSample(eid.element_magma));
+	$("#element_water_water_sample").html(ElementSample(eid.element_water));
 }
 
 // Resource Storage Class - Represents a resource storage box in the gui
@@ -484,7 +485,6 @@ class resource_storage {
 	}
 
 	storage_reset() {
-
 		this.workers_gather = 0;
 		this.workers_drop = 0;
 		this.workers_survey = 0;
@@ -569,7 +569,7 @@ class resource_storage {
 			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
 				this.bitmap.fillRectBits(draw_x, draw_y, 1, 1, type);
 			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
-				this.bitmap.fillRectBits(draw_x, draw_y, this.brick_w, this.brick_h, type);
+				this.bitmap.fillRectBits(draw_x, draw_y, 1, this.brick_h, type);
 			}
 		}
 	}
@@ -1124,6 +1124,15 @@ function loadEarthElements(element_count) {
 	}
 }
 
+function loadWaterElements(element_count) {
+	if (element_count[eid.element_water] > 0) {
+		$("#element_water_water").show();
+		$("#element_water_water_amount").html(DisplayNumberFormatter(element_count[eid.element_water], 0));
+	} else {
+		$("#element_water_water").hide();
+	}
+}
+
 function stringifyValue(currency_count) {
 	let out = "";
 
@@ -1177,6 +1186,45 @@ function loadEarthValue(currency_count) {
 		$("#value_earth_mass_amount").html(DisplayNumberFormatter(currency_count[cid.currency_mass], 2));
 	} else {
 		$("#value_earth_mass").hide();
+	}
+}
+
+function loadWaterValue(currency_count) {
+	if (currency_count[cid.currency_particles] > 0) {
+		$("#value_water_particles").show();
+		$("#value_water_particles_amount").html(DisplayNumberFormatter(currency_count[cid.currency_particles], 2));
+	} else {
+		$("#value_water_particles").hide();
+	}
+	if (currency_count[cid.currency_strands] > 0) {
+		$("#value_water_strands").show();
+		$("#value_water_strands_amount").html(DisplayNumberFormatter(currency_count[cid.currency_strands], 2));
+	} else {
+		$("#value_water_strands").hide();
+	}
+	if (currency_count[cid.currency_spirit] > 0) {
+		$("#value_water_spirit").show();
+		$("#value_water_spirit_amount").html(DisplayNumberFormatter(currency_count[cid.currency_spirit], 2));
+	} else {
+		$("#value_water_spirit").hide();
+	}
+	if (currency_count[cid.currency_soul] > 0) {
+		$("#value_water_soul").show();
+		$("#value_water_soul_amount").html(DisplayNumberFormatter(currency_count[cid.currency_soul], 2));
+	} else {
+		$("#value_water_soul").hide();
+	}
+	if (currency_count[cid.currency_capital] > 0) {
+		$("#value_water_capital").show();
+		$("#value_water_capital_amount").html(DisplayNumberFormatter(currency_count[cid.currency_capital], 2));
+	} else {
+		$("#value_water_capital").hide();
+	}
+	if (currency_count[cid.currency_mass] > 0) {
+		$("#value_water_mass").show();
+		$("#value_water_mass_amount").html(DisplayNumberFormatter(currency_count[cid.currency_mass], 2));
+	} else {
+		$("#value_water_mass").hide();
 	}
 }
 

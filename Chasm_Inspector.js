@@ -157,6 +157,7 @@ function registerInspectorEvents() {
 	$(".element_ruby_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_ruby);});});
 	$(".element_diamond_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_diamond);});});
 	$(".element_magma_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_magma);});});
+	$(".element_water_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_water);});});
 
 	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
 	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});

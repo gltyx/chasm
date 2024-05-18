@@ -151,7 +151,7 @@ class ELEMENT_PROBABILITY {
 			const p_lead = [		0,							0,							0,								10  + srvb(10, 0.1),		40 + srvb(10, 0.1),			80  + srvb(60, 0.1),			30  + srvb(45, 0.1),		0							];
 			const p_iron = [		0,							0,							30  + srvb(70, 0.1),			50  + srvb(120, 0.15),		90 + srvb(200, 0.15),		30  + srvb(70, 0.2),			0,							0							];
 			const p_copper = [		0 + srvb(250, 0.2) + ccb,	30 + srvb(250, 0.2) + ccb,	80 + srvb(300, 0.15) + ccb,		80 + srvb(200, 0.2) + ccb,	10 + srvb(100, 0.15) + ccb,	0,								0,							0							];
-			const p_coal = [		0,							0,							4 + clb,						20  + srvb(50, 0.15) + clb,	50 + srvb(100, 0.15) + clb,	55  + srvb(170, 0.15) + clb,	60  + srvb(200, 0.2) + clb,	0							];
+			const p_coal = [		0,							0,							5 + clb,						20  + srvb(50, 0.15) + clb,	50 + srvb(100, 0.15) + clb,	55  + srvb(170, 0.15) + clb,	60  + srvb(200, 0.2) + clb,	0							];
 			const sink_split = [	0 + sib,					0.1 + sib,					0.25 + sib,						0.45 + sib,					0.70 + sib,					0.80 + sib,						0.90 +  + sib,				1							];
 
 			this.element_magma 		+= p_magma[depth];

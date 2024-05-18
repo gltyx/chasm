@@ -949,7 +949,7 @@ function initUpgrades() {
 					"images/tile_research_challenge_unknown.png",
 					[
 					0,		// Particles
-					100,	// Strands
+					400,	// Strands
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital

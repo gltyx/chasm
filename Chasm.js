@@ -157,6 +157,7 @@ function draw_resources() {
 	let water_currency_count = elementValue(water_element_count);
 	loadWaterElements(water_element_count);
 	loadWaterValue(water_currency_count);
+}
 
 var singularity_count = 0;
 var pending_singularity = 0;

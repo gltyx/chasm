@@ -485,7 +485,7 @@
 													</div>
 												</div>
 											</form>
-											<p id = "drop_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
+											<p id = "earth_drop_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
 
 											<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
 												<form>
@@ -711,11 +711,27 @@
 								</div>-->
 
 								<!--Drop-->
-								<div style = "width: 71px;">
-									<div id = "water_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
-										<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
+								<div class = "drop_button">
+									<div id = "water_drop_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+										<div id = "water_drop_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
 									</div>
-									<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
+
+									<p class = "hcenter" style = "font-weight: bold;">Drop</p>
+									
+									<!--Workers Arrows-->
+									<form>
+										<div class = "flex">
+											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_workers, -1, 'drop')" value = "<" />
+											<div class = "hcenter" style = "width: 40px;">
+												<p id = "water_workers_drop">0</p>
+											</div>
+											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_workers, 1, 'drop')" value = ">" />
+											<div class = "hcenter" style = "margin: auto;">
+												<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+											</div>
+										</div>
+									</form>
+									<p id = "water_drop_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
 								</div>
 							</div>
 						</div>
@@ -753,7 +769,7 @@
 					<div style = "width: 240px;">
 						<p style = "font-family: Tahoma, sans-serif; font-weight: bold; margin-left: 15px;">Save Data</p>
 						
-						<div id = "savedata_box" class = "card" style = "background-color: #b0bbbf; padding: 5px 5px 5px 5px; margin-bottom: 10px;">
+						<div id = "savedata_box" class = "card" style = "background-color: #b0bbbf !important; padding: 5px 5px 5px 5px; margin-bottom: 10px;">
 							<div style = "text-align: center;">
 								<p>Achievements: <span id = "achievement_count"></span></p>
 								<p>Playtime: <span id = "total_playtime"></span></p>

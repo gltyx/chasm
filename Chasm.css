@@ -279,6 +279,8 @@ form {
 #water_box {
 	padding: 5px 5px 5px 5px;
 	margin-bottom: 5px;
+	
+	background-color: #b0bbbf !important;
 }
 
 #right_col {

@@ -248,7 +248,7 @@ function game_tick(scalar) {
 		drop_amount *= chasm_storage[sid.storage_earth].workers_drop;
 		chasm_storage[sid.storage_earth].drop_progress += drop_amount * scalar;
 	}
-	$("#drop_speed_label").html(DisplayNumberFormatter((drop_amount / 100), 2) + " /s");
+	$("#earth_drop_speed_label").html(DisplayNumberFormatter((drop_amount / 100), 2) + " /s");
 	if (chasm_storage[sid.storage_earth].drop_progress > 100) {
 		if (earth.current == earth.cap) {
 			chasm_storage[sid.storage_earth].drop_progress = 0;
@@ -279,9 +279,13 @@ function game_tick(scalar) {
 	}
 
 	// Water Drop
+	let water_drop_amount = 0;
 	if (chasm_storage[sid.storage_water].workers_drop > 0) {
-		chasm_storage[sid.storage_water].drop_progress += chasm_storage[sid.storage_water].workers_drop * 10 * scalar;
+		water_drop_amount += 10;
+		water_drop_amount *= chasm_storage[sid.storage_water].workers_drop;
+		chasm_storage[sid.storage_water].drop_progress += water_drop_amount * scalar;
 	}
+	$("#water_drop_speed_label").html(DisplayNumberFormatter((water_drop_amount / 100), 2) + " /s");
 	if (chasm_storage[sid.storage_water].drop_progress > 100) {
 		if (water.current == water.cap) {
 			chasm_storage[sid.storage_water].drop_progress = 0;

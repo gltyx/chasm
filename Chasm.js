@@ -667,6 +667,11 @@ function refresh_ui() {
 		$("#water_upgrades_tab").css("display", "block");
 	}
 
+	if (chasm_upgrades[uid.upgrade_water_bait_1].unlocked) {
+		$("#bait_box").css("background-color", "#cfd8dc");
+		$("#bait_box_content").css("visibility", "visible");
+	}
+
 	chasm_storage[sid.storage_earth].refresh_survey();
 	RefreshMaxDepth();
 	RefreshDepthChart();

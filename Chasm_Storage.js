@@ -928,8 +928,9 @@ function elementValue(element_count) { // Returns currency value of all elements
 				currency_count[cid.currency_strands] 	+= element_count[eid.element_magma] * 1.28;
 				break;
 			case eid.element_water:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * 0.01 * mass_modifier;
-				currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * 0.01 * particle_modifier;
+				let water_value = 0.12;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * water_value * mass_modifier;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * water_value * particle_modifier;
 				break;
 			case eid.element_none:
 			default:

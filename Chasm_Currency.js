@@ -86,17 +86,17 @@ function initCurrency() {
 
 			case cid.currency_goo:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_goo",
-														"<i class = 'material-icons grey-text currency_icon'>bubble_chart</i>");
+														"<i class = 'material-icons orange-text text-lighten-1 currency_icon'>bubble_chart</i>");
 				break;
 
 			case cid.currency_core:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_core",
-														"<i class = 'material-icons grey-text currency_icon'>album</i>");
+														"<i class = 'material-icons pink-text text-lighten-3 currency_icon'>album</i>");
 				break;
 
 			case cid.currency_bugs:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_bugs",
-														"<i class = 'material-icons grey-text currency_icon'>bug_report</i>");
+														"<i class = 'material-icons teal-text text-lighten-3 currency_icon'>bug_report</i>");
 				break;
 
 			case cid.currency_mass:

@@ -283,8 +283,11 @@ function game_tick(scalar) {
 
 	// Water Drop
 	let water_drop_amount = 0;
+	let water_drop_speed = [1, 0.75, 0.50, 0.30, 0.15, 0.10, 0.05, 0.02];
+	let water_depth = chasm_storage[sid.storage_water].machinery_depth;
 	if (chasm_storage[sid.storage_water].workers_drop > 0) {
 		water_drop_amount += 10;
+		water_drop_amount *= water_drop_speed[water_depth];
 		water_drop_amount *= chasm_storage[sid.storage_water].workers_drop;
 		chasm_storage[sid.storage_water].drop_progress += water_drop_amount * scalar;
 	}
@@ -697,15 +700,22 @@ function refresh_ui() {
 		$("#water_survey").css("background-color", "#cfd8dc");
 		$("#water_survey_content").css("visibility", "visible");
 	}
+	
+	if (chasm_upgrades[uid.upgrade_water_depth_1].unlocked) {
+		$("#water_depth").css("background-color", "#cfd8dc");
+		$("#water_depth_content").css("visibility", "visible");
+	}
 
 	chasm_storage[sid.storage_earth].refresh_survey();
 	RefreshMaxDepth();
 	RefreshDepthChart();
+	RefreshWaterDepthChart();
 	RefreshMiningRig();
 }
 
 function RefreshMaxDepth() {
 	$("#max_depth_label").html("Max Depth: " + CalculateMaxDepth());
+	$("#max_water_depth_label").html("Max Depth: " + CalculateWaterMaxDepth());
 }
 
 function RefreshDepthChart() {
@@ -752,6 +762,50 @@ function RefreshDepthChart() {
 	$("#drop_penalty_label").html("Drop Speed: " + drop_speed[depth] + "%");
 }
 
+function RefreshWaterDepthChart() {
+	$("#water_depth_chart_0").html("");
+	$("#water_depth_chart_1").html("");
+	$("#water_depth_chart_2").html("");
+	$("#water_depth_chart_3").html("");
+	$("#water_depth_chart_4").html("");
+	$("#water_depth_chart_5").html("");
+	$("#water_depth_chart_6").html("");
+	$("#water_depth_chart_7").html("");
+
+	let depth = chasm_storage[sid.storage_water].machinery_depth;
+	let out = "<i class = 'material-icons grey-text text-darken-4' style = 'font-size: 14px;'>chevron_left</i>";
+	switch (depth) {
+		case 0:
+			$("#water_depth_chart_0").html(out + "River");
+			break;
+		case 1:
+			$("#water_depth_chart_1").html(out + "Coast");
+			break;
+		case 2:
+			$("#water_depth_chart_2").html(out + "Deep Sea");
+			break;
+		case 3:
+			$("#water_depth_chart_3").html(out + "Arctic");
+			break;
+		case 4:
+			$("#water_depth_chart_4").html(out + "Slime");
+			break;
+		case 5:
+			$("#water_depth_chart_5").html(out + "Oil");
+			break;
+		case 6:
+			$("#water_depth_chart_6").html(out + "Helium");
+			break;
+		case 7:
+			$("#water_depth_chart_7").html(out + "Hell");
+			break;
+		default:
+	}
+
+	let drop_speed = ["100", "75", "50", "30", "15", "10", "5", "2"];
+	$("#water_drop_penalty_label").html("Drop Speed: " + drop_speed[depth] + "%");
+}
+
 function RefreshMiningRig() {
 	$("#mining_rig_multi_cost").html(DisplayNumberFormatter(RigMultiCost(), 1));
 	$("#mining_rig_multi_amount").html(DisplayNumberFormatter(RigMultiAmount() + 1, 1));
@@ -772,6 +826,18 @@ function CalculateMaxDepth() {
 	if (chasm_upgrades[uid.upgrade_earth_depth_5].unlocked) max++;
 	if (chasm_upgrades[uid.upgrade_earth_depth_6].unlocked) max++;
 	if (chasm_upgrades[uid.upgrade_earth_depth_7].unlocked) max++;
+	return max;
+}
+
+function CalculateWaterMaxDepth() {
+	let max = 0;
+	if (chasm_upgrades[uid.upgrade_water_depth_1].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_water_depth_2].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_water_depth_3].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_water_depth_4].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_water_depth_5].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_water_depth_6].unlocked) max++;
+	if (chasm_upgrades[uid.upgrade_water_depth_7].unlocked) max++;
 	return max;
 }
 

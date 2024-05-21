@@ -96,7 +96,7 @@ function initCurrency() {
 
 			case cid.currency_bugs:
 				chasm_currency[i] = new _CHASM_CURRENCY("currency_bugs",
-														"<i class = 'material-icons teal-text text-lighten-3 currency_icon'>bug_report</i>");
+														"<i class = 'material-icons teal-text text-lighten-2 currency_icon'>bug_report</i>");
 				break;
 
 			case cid.currency_mass:

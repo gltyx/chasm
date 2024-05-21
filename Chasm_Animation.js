@@ -29,7 +29,11 @@ var color_MkII_sapphire		= new color_MkII(0.59, 0.64, 0.50, 0.60, 0.70, 0.90);
 var color_MkII_ruby			= new color_MkII(0.00, 0.05, 0.70, 0.80, 0.80, 0.90);
 var color_MkII_diamond		= new color_MkII(0.55, 0.60, 0.93, 0.96, 0.01, 0.04);
 var color_MkII_magma		= new color_MkII(0.02, 0.12, 0.90, 0.95, 0.90, 0.95);
+var color_MkII_magma_2		= new color_MkII(0.08, 0.08, 0.90, 0.90, 0.90, 0.90);
 var color_MkII_water 		= new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
+var color_MkII_slime 		= new color_MkII(0.25, 0.25, 0.10, 0.95, 0.80, 0.80);
+var color_MkII_oil 			= new color_MkII(0.65, 0.65, 0.00, 0.00, 0.80, 0.80);
+var color_MkII_helium 		= new color_MkII(0.87, 0.87, 0.00, 0.00, 0.20, 0.20);
 var color_MkII_water_temp 	= new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
 
 function colorRange(r1, r2, g1, g2, b1, b2) {

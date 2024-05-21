@@ -47,6 +47,9 @@ class _INSPECTOR_ID {
 	element_diamond								= eid.element_diamond						+ this.offset_elements;
 	element_magma								= eid.element_magma							+ this.offset_elements;
 	element_water 								= eid.element_water							+ this.offset_elements;
+	element_slime 								= eid.element_slime							+ this.offset_elements;
+	element_oil 								= eid.element_oil							+ this.offset_elements;
+	element_helium 								= eid.element_helium						+ this.offset_elements;
 	element_fish								= eid.element_fish							+ this.offset_elements;
 
 	offset_upgrades								= 0xa100;	// 0xa1xx Start upgrade section
@@ -90,6 +93,13 @@ class _INSPECTOR_ID {
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
 	upgrade_water_bait_1						= uid.upgrade_water_bait_1					+ this.offset_upgrades;
 	upgrade_water_survey_1						= uid.upgrade_water_survey_1				+ this.offset_upgrades;
+	upgrade_water_depth_1						= uid.upgrade_water_depth_1					+ this.offset_upgrades;
+	upgrade_water_depth_2						= uid.upgrade_water_depth_2					+ this.offset_upgrades;
+	upgrade_water_depth_3						= uid.upgrade_water_depth_3					+ this.offset_upgrades;
+	upgrade_water_depth_4						= uid.upgrade_water_depth_4					+ this.offset_upgrades;
+	upgrade_water_depth_5						= uid.upgrade_water_depth_5					+ this.offset_upgrades;
+	upgrade_water_depth_6						= uid.upgrade_water_depth_6					+ this.offset_upgrades;
+	upgrade_water_depth_7						= uid.upgrade_water_depth_7					+ this.offset_upgrades;
 	upgrade_workers_1							= uid.upgrade_workers_1						+ this.offset_upgrades;
 	upgrade_workers_2							= uid.upgrade_workers_2						+ this.offset_upgrades;
 	upgrade_workers_3							= uid.upgrade_workers_3						+ this.offset_upgrades;
@@ -166,6 +176,9 @@ function registerInspectorEvents() {
 	$(".element_diamond_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_diamond);});});
 	$(".element_magma_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_magma);});});
 	$(".element_water_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_water);});});
+	$(".element_slime_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_slime);});});
+	$(".element_oil_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_oil);});});
+	$(".element_helium_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_helium);});});
 
 	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
 	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});
@@ -232,7 +245,7 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.currency_core:
-			$("#inspector_title")	.html(chasm_currency[cid.currency_core].inspector_symbol + "Mythical Core");
+			$("#inspector_title")	.html(chasm_currency[cid.currency_core].inspector_symbol + "Mythical Cores");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("When rare cryptids are dropped into the Chasm it bellows with a deep, resonant hum. Once the hum fades, you can find large, glassy orbs dotting the rim of the Chasm. According to our researchers, they seem to be made from embodied belief. It may be possible to use them to influence the world in strange ways.");
@@ -567,6 +580,51 @@ function showInspector(id) {
 				$("#inspector_subtext")	.html("Source: Water gathering");
 			}
 			break;
+		case iid.element_slime:
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_slime]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_slime) + "<div style = 'width: 6px;'></div>Slime");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Slime gathering");
+			}
+			break;
+		case iid.element_oil:
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_oil]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_oil) + "<div style = 'width: 6px;'></div>Oil");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Oil gathering");
+			}
+			break;
+		case iid.element_helium:
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_helium]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_helium) + "<div style = 'width: 6px;'></div>Helium");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: Helium gathering");
+			}
+			break;
 		case iid.element_fish:
 			{
 				let element_count = new Array(eid.element_count);
@@ -812,9 +870,9 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Bloodpact Mining Rights");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_depth_3].cost.stringify());
-			$("#inspector_text")	.html("The Fringe Researcher insists that a document signed in blood will allow you to dig much deeper. That doesn't sound real, but you've got plenty of blood. Might as well try!");
+			$("#inspector_text")	.html("The Fringe Researcher insists that a document signed in blood will allow you to dig much deeper. That doesn't sound real, but you've got plenty of blood. Might as well try!<br>Does not come with heavy machinery. You will need to find another source better suited for the high-pressure environment...");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
+			$("#inspector_subtext")	.html("max depth +1");
 			break;
 		case iid.upgrade_earth_depth_4:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Double Notarized Bloodpact");
@@ -903,6 +961,62 @@ function showInspector(id) {
 			$("#inspector_text")	.html("The Angler can use his keen knowledge of the sea, the stars, the color of the sunrise, and a high-tech fish-finding sonar to predict exactly what fish you can find at different depths.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Unlock the Fishing Report");
+			break;
+		case iid.upgrade_water_depth_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Diving Bell");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_depth_1].cost.stringify());
+			$("#inspector_text")	.html("Harvesting fish from deeper in the ocean will require specialized equipment to pump liquid and keep your fishermen alive. An industrial diving bell is a good platform for venturing into the depths.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock deep pumping<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_water_depth_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Depth 2");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_depth_2].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_water_depth_3:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Depth 3");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_depth_3].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_water_depth_4:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Depth 4");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_depth_4].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_water_depth_5:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Depth 5");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_depth_5].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_water_depth_6:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Depth 6");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_depth_6].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
+			break;
+		case iid.upgrade_water_depth_7:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Depth 7");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_depth_7].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("max depth +1<br>+1 Heavy Machinery");
 			break;
 		case iid.upgrade_workers_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fringe Researcher");

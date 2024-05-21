@@ -681,6 +681,22 @@
 											<p id = "element_water_water_amount" style = 'margin-left: 6px;'></p>
 											<span id = "element_water_water_sample"></span>
 										</span>
+										<span id = "element_water_slime" class = "element_slime_inspector flex vertcenter">
+											<p id = "element_water_slime_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_slime_sample"></span>
+										</span>
+										<span id = "element_water_oil" class = "element_oil_inspector flex vertcenter">
+											<p id = "element_water_oil_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_oil_sample"></span>
+										</span>
+										<span id = "element_water_helium" class = "element_helium_inspector flex vertcenter">
+											<p id = "element_water_helium_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_helium_sample"></span>
+										</span>
+										<span id = "element_water_magma" class = "element_magma_inspector flex vertcenter">
+											<p id = "element_water_magma_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_magma_sample"></span>
+										</span>
 									</div>
 									<div id = "value_water_amount" class = "resource_info vertcenter">
 										<p>Value: </p>
@@ -784,13 +800,65 @@
 									</div>
 								</div>
 
-								<!--Survey-->
+								<!--Fishing Report-->
 								<div id = "water_survey" class = "survey_chart" style = "width: 126px; height: fit-content; border: 1px dashed whitesmoke; border-radius: 4px; margin-right: 8px;">
 									<div id = "water_survey_content" style = "visibility: hidden;">
 										<p class = "hcenter" style = "font-weight: bold;">Fishing Report</p>
 
 										<div id = "water_survey_menu" style = "padding-left: 6px; padding-right: 6px; display: flex; width: 126px;">
 										</div>
+									</div>
+								</div>
+								
+								<!--Depth-->
+								<div id = "water_depth" style = "width: 106px; height: 307px; border: 1px dashed whitesmoke; border-radius: 4px;">
+									<div id = "water_depth_content" style = "visibility: hidden;">
+										<p class = "hcenter" style = "font-weight: bold;">Depth</p>
+										
+										<!--Machinery Arrows-->
+										<div style = "width: 88px; margin: auto;">
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_machinery, -1, 'depth')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "water_machinery_depth">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_machinery, 1, 'depth')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_machinery" style = "margin-right: 0px;">toys</i>
+													</div>
+												</div>
+											</form>
+										</div>
+
+										<p id = "max_water_depth_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">Max Depth 0</p>
+
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #259721;"></div><div id = "water_depth_chart_0" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #8a4c28;"></div><div id = "water_depth_chart_1" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #5c2f15;"></div><div id = "water_depth_chart_2" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #45210c;"></div><div id = "water_depth_chart_3" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #291204;"></div><div id = "water_depth_chart_4" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #1f0d02;"></div><div id = "water_depth_chart_5" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #000000;"></div><div id = "water_depth_chart_6" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #b00c09;"></div><div id = "water_depth_chart_7" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+
+										<p id = "water_drop_penalty_label" class = "hcenter" style = "font-size: 12px; margin-top: 4px; margin-bottom: 4px;"></p>
 									</div>
 								</div>
 							</div>

@@ -43,9 +43,12 @@ class _ELEMENT_ID {
 	element_diamond		= 0x000c;
 	element_magma		= 0x000d;
 	element_water 		= 0x000e;
-	element_fish		= 0x000f;
+	element_slime		= 0x000f;
+	element_oil 		= 0x0010;
+	element_helium		= 0x0011;
+	element_fish		= 0x0012;
 
-	element_count		= 0x0010;
+	element_count		= 0x0013;
 } var eid = new _ELEMENT_ID();
 
 class ELEMENT_PROBABILITY {
@@ -65,6 +68,9 @@ class ELEMENT_PROBABILITY {
 	element_diamond		= 0;
 	element_magma		= 0;
 	element_water 		= 0;
+	element_slime 		= 0;
+	element_oil 		= 0;
+	element_helium 		= 0;
 	element_fish		= 0;
 
 	zero() {
@@ -83,6 +89,9 @@ class ELEMENT_PROBABILITY {
 		this.element_diamond 	= 0;
 		this.element_magma 		= 0;
 		this.element_water 		= 0;
+		this.element_slime 		= 0;
+		this.element_oil 		= 0;
+		this.element_helium 	= 0;
 		this.element_fish 		= 0;
 	}
 
@@ -150,9 +159,9 @@ class ELEMENT_PROBABILITY {
 			const p_gold = [		0,							0,							0,								2,							8  + srvb(30, 0.15),		40  + srvb(80, 0.15),			100 + srvb(140, 0.15),		0							];
 			const p_lead = [		0,							0,							0,								10  + srvb(10, 0.1),		40 + srvb(10, 0.1),			80  + srvb(60, 0.1),			30  + srvb(45, 0.1),		0							];
 			const p_iron = [		0,							0,							30  + srvb(70, 0.1),			50  + srvb(120, 0.15),		90 + srvb(200, 0.15),		30  + srvb(70, 0.2),			0,							0							];
-			const p_copper = [		0 + srvb(250, 0.2) + ccb,	30 + srvb(250, 0.2) + ccb,	80 + srvb(300, 0.15) + ccb,		80 + srvb(200, 0.2) + ccb,	10 + srvb(100, 0.15) + ccb,	0,								0,							0							];
+			const p_copper = [		0 + srvb(250, 0.2) + ccb,	30 + srvb(250, 0.2) + ccb,	80 + srvb(300, 0.15) + ccb,		80 + srvb(200, 0.2) + ccb,	0,							0,								0,							0							];
 			const p_coal = [		0,							0,							5 + clb,						20  + srvb(50, 0.15) + clb,	50 + srvb(100, 0.15) + clb,	55  + srvb(170, 0.15) + clb,	60  + srvb(200, 0.2) + clb,	0							];
-			const sink_split = [	0 + sib,					0.1 + sib,					0.25 + sib,						0.45 + sib,					0.70 + sib,					0.80 + sib,						0.90 +  + sib,				1							];
+			const sink_split = [	0 + sib,					0.1 + sib,					0.25 + sib,						0.45 + sib,					0.70 + sib,					0.80 + sib,						1,							1							];
 
 			this.element_magma 		+= p_magma[depth];
 			portion 				-= p_magma[depth];
@@ -198,8 +207,27 @@ class ELEMENT_PROBABILITY {
 		else if (storage_flags & STORAGE_FLAGS_WATER) {
 			let depth = chasm_storage[sid.storage_water].machinery_depth;
 
-			this.element_water 	+= 1000;
-			portion 			-= 1000;
+			//						| Depth 0	| Depth 1	| Depth 2	| Depth 3	| Depth 4	| Depth 5	| Depth 6	| Depth 7
+			const p_water = 	[	1000,		1000,		1000,		1000,		0,			0,			0,			0		];
+			const p_slime = 	[	0,			0,			0,			0,			1000,		0,			0,			0		];
+			const p_oil = 		[	0,			0,			0,			0,			0,			1000,		0,			0		];
+			const p_helium = 	[	0,			0,			0,			0,			0,			0,			1000,		0		];
+			const p_magma_2 =	[	0,			0,			0,			0,			0,			0,			0,			1000	];
+
+			this.element_water 	+= p_water[depth];
+			portion 			-= p_water[depth];
+
+			this.element_slime 	+= p_slime[depth];
+			portion 			-= p_slime[depth];
+
+			this.element_oil 	+= p_oil[depth];
+			portion 			-= p_oil[depth];
+
+			this.element_helium += p_helium[depth];
+			portion 			-= p_helium[depth];
+
+			this.element_magma 	+= p_magma_2[depth];
+			portion 			-= p_magma_2[depth];
 
 			this.display(storage_flags);
 		}
@@ -312,7 +340,11 @@ class ELEMENT_PROBABILITY {
 		else if (storage_flags & STORAGE_FLAGS_WATER) {
 			var out = "";
 			out	= "<div style = 'display: block;'>";
-			out	+= "<div class = 'vertcenter element_water' style = 'display: flex;'>" + ElementSample(eid.element_water) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Water:</p></div>";
+			out	+= "<div class = 'vertcenter element_water' style = 'display: flex;'>" 	+ ElementSample(eid.element_water) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Water:</p></div>";
+			out	+= "<div class = 'vertcenter element_slime' style = 'display: flex;'>" 	+ ElementSample(eid.element_slime) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Slime:</p></div>";
+			out	+= "<div class = 'vertcenter element_oil' style = 'display: flex;'>" 	+ ElementSample(eid.element_oil) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Oil:</p></div>";
+			out	+= "<div class = 'vertcenter element_helium' style = 'display: flex;'>" + ElementSample(eid.element_helium) 	+ "<p style = 'font-size: 12px; padding-left: 4px;'>Helium:</p></div>";
+			out	+= "<div class = 'vertcenter element_magma' style = 'display: flex;'>" 	+ ElementSample(eid.element_magma) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Magma:</p></div>";
 			out	+= "</div>";
 
 			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";
@@ -321,19 +353,43 @@ class ELEMENT_PROBABILITY {
 			} else {
 				out += "<p class = 'element_water' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_water / 10, 1) 		+ "%</p>";
 			}
+			if (this.element_slime <= 0) {
+				out += "<p class = 'element_slime' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out += "<p class = 'element_slime' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_slime / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_oil <= 0) {
+				out += "<p class = 'element_oil' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out += "<p class = 'element_oil' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_oil / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_helium <= 0) {
+				out += "<p class = 'element_helium' 	style = 'font-size: 12px;'>-</p>";
+			} else {
+				out += "<p class = 'element_helium' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_helium / 10, 1) 		+ "%</p>";
+			}
+			if (this.element_magma <= 0) {
+				out += "<p class = 'element_magma_2' 	style = 'font-size: 12px;'>-</p>";
+			} else {
+				out += "<p class = 'element_magma_2' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_magma / 10, 1) 		+ "%</p>";
+			}
 			out	+= "</div>";
 
 			$("#water_survey_menu").html(out);
 
 			$(".element_water").each(function(){$(this).mouseenter(function(){showInspector(iid.element_water);});});
+			$(".element_slime").each(function(){$(this).mouseenter(function(){showInspector(iid.element_slime);});});
+			$(".element_oil").each(function(){$(this).mouseenter(function(){showInspector(iid.element_oil);});});
+			$(".element_helium").each(function(){$(this).mouseenter(function(){showInspector(iid.element_helium);});});
+			$(".element_magma_2").each(function(){$(this).mouseenter(function(){showInspector(iid.element_magma);});});
 		}
 	}
 
 	roll(storage_flags) {
-		if (storage_flags & STORAGE_FLAGS_EARTH) {
-			var portion = 1000;
-			var roll = Math.floor(Math.random() * 1000);
+		var portion = 1000;
+		var roll = Math.floor(Math.random() * 1000);
 
+		if (storage_flags & STORAGE_FLAGS_EARTH) {
 			if (roll >= portion - this.element_magma) {
 				return eid.element_magma;
 			} else {
@@ -408,6 +464,40 @@ class ELEMENT_PROBABILITY {
 
 			return eid.element_earth;
 		}
+
+		else if (storage_flags & STORAGE_FLAGS_WATER) {
+			if (roll >= portion - this.element_water) {
+				return eid.element_water;
+			} else {
+				portion -= this.element_water;
+			}
+
+			if (roll >= portion - this.element_slime) {
+				return eid.element_slime;
+			} else {
+				portion -= this.element_slime;
+			}
+
+			if (roll >= portion - this.element_oil) {
+				return eid.element_oil;
+			} else {
+				portion -= this.element_oil;
+			}
+
+			if (roll >= portion - this.element_helium) {
+				return eid.element_helium;
+			} else {
+				portion -= this.element_helium;
+			}
+
+			if (roll >= portion - this.element_magma) {
+				return eid.element_magma;
+			} else {
+				portion -= this.element_magma;
+			}
+
+			return eid.element_water;
+		}
 	}
 }
 
@@ -464,6 +554,10 @@ function initStorageDisplay() {
 	$("#element_earth_diamond_sample").html(ElementSample(eid.element_diamond));
 	$("#element_earth_magma_sample").html(ElementSample(eid.element_magma));
 	$("#element_water_water_sample").html(ElementSample(eid.element_water));
+	$("#element_water_slime_sample").html(ElementSample(eid.element_slime));
+	$("#element_water_oil_sample").html(ElementSample(eid.element_oil));
+	$("#element_water_helium_sample").html(ElementSample(eid.element_helium));
+	$("#element_water_magma_sample").html(ElementSample(eid.element_magma));
 }
 
 // Resource Storage Class - Represents a resource storage box in the gui
@@ -553,7 +647,7 @@ class resource_storage {
 			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
 				type = this.probability.roll(this.storage_flags);
 			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
-				type = eid.element_water;
+				type = this.probability.roll(this.storage_flags);
 			}
 	
 			// Choose brick color
@@ -582,10 +676,32 @@ class resource_storage {
 			} else if (type == eid.element_diamond) {
 				color = colorRange_MkII(color_MkII_diamond);
 			} else if (type == eid.element_magma) {
-				color = colorRange_MkII(color_MkII_magma);
+				if (this.storage_flags & STORAGE_FLAGS_WATER) {
+					color_MkII_water_temp = color_MkII_magma_2;
+					color_MkII_water_temp.darkness_low = 0.6 * ((this.canvas_h - draw_y) / this.canvas_h) + 0.2;
+					color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
+					color = colorRange_MkII(color_MkII_water_temp);
+				} else {
+					color = colorRange_MkII(color_MkII_magma);
+				}
 			} else if (type == eid.element_water) {
 				color_MkII_water_temp = color_MkII_water;
 				color_MkII_water_temp.darkness_low = 0.6 * ((this.canvas_h - draw_y) / this.canvas_h) + 0.2;
+				color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
+				color = colorRange_MkII(color_MkII_water_temp);
+			} else if (type == eid.element_slime) {
+				color_MkII_water_temp = color_MkII_slime;
+				color_MkII_water_temp.darkness_low = 0.6 * ((this.canvas_h - draw_y) / this.canvas_h) + 0.2;
+				color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
+				color = colorRange_MkII(color_MkII_water_temp);
+			} else if (type == eid.element_oil) {
+				color_MkII_water_temp = color_MkII_oil;
+				color_MkII_water_temp.darkness_low = 0.1 * ((this.canvas_h - draw_y) / this.canvas_h) + 0.0;
+				color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
+				color = colorRange_MkII(color_MkII_water_temp);
+			} else if (type == eid.element_helium) {
+				color_MkII_water_temp = color_MkII_helium;
+				color_MkII_water_temp.darkness_low = 0.2 * ((this.canvas_h - draw_y) / this.canvas_h) + 0.8;
 				color_MkII_water_temp.darkness_high = color_MkII_water_temp.darkness_low;
 				color = colorRange_MkII(color_MkII_water_temp);
 			}
@@ -757,7 +873,8 @@ class resource_storage {
 			}
 
 			this.refresh_survey();
-			RefreshDepthChart();
+			if (this.storage_flags & STORAGE_FLAGS_EARTH) RefreshDepthChart();
+			else if (this.storage_flags & STORAGE_FLAGS_WATER) RefreshWaterDepthChart();
 		}
 	}
 
@@ -958,10 +1075,22 @@ function elementValue(element_count) { // Returns currency value of all elements
 			case eid.element_water:
 				let water_value = 0.12;
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * water_value * mass_modifier;
-				currency_count[cid.currency_goo] 		+= element_count[eid.element_water] * water_value * mass_modifier;
-				currency_count[cid.currency_core] 		+= element_count[eid.element_water] * water_value * mass_modifier;
-				currency_count[cid.currency_bugs] 		+= element_count[eid.element_water] * water_value * mass_modifier;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * water_value * particle_modifier;
+				break;
+			case eid.element_slime:
+				let slime_value = 0.12;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_slime] * slime_value * mass_modifier;
+				currency_count[cid.currency_goo] 		+= element_count[eid.element_slime] * slime_value;
+				break;
+			case eid.element_oil:
+				let oil_value = 0.12;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_oil] * oil_value * mass_modifier;
+				currency_count[cid.currency_soul] 		+= element_count[eid.element_oil] * oil_value;
+				break;
+			case eid.element_helium:
+				let helium_value = 0.01;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_helium] * helium_value * mass_modifier;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_helium] * helium_value;
 				break;
 			case eid.element_none:
 			default:
@@ -1072,6 +1201,27 @@ function stringifyElements(element_count) {
 		out 							+= "</p>";
 	}
 
+	if (element_count[eid.element_slime] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";;
+		out 							+= element_count[eid.element_slime];
+		out 							+= ElementSample(eid.element_slime);
+		out 							+= "</p>";
+	}
+
+	if (element_count[eid.element_oil] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";;
+		out 							+= element_count[eid.element_oil];
+		out 							+= ElementSample(eid.element_oil);
+		out 							+= "</p>";
+	}
+
+	if (element_count[eid.element_helium] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";;
+		out 							+= element_count[eid.element_helium];
+		out 							+= ElementSample(eid.element_helium);
+		out 							+= "</p>";
+	}
+
 	return out;
 }
 
@@ -1162,6 +1312,30 @@ function loadWaterElements(element_count) {
 		$("#element_water_water_amount").html(DisplayNumberFormatter(element_count[eid.element_water], 0));
 	} else {
 		$("#element_water_water").hide();
+	}
+	if (element_count[eid.element_slime] > 0) {
+		$("#element_water_slime").show();
+		$("#element_water_slime_amount").html(DisplayNumberFormatter(element_count[eid.element_slime], 0));
+	} else {
+		$("#element_water_slime").hide();
+	}
+	if (element_count[eid.element_oil] > 0) {
+		$("#element_water_oil").show();
+		$("#element_water_oil_amount").html(DisplayNumberFormatter(element_count[eid.element_oil], 0));
+	} else {
+		$("#element_water_oil").hide();
+	}
+	if (element_count[eid.element_helium] > 0) {
+		$("#element_water_helium").show();
+		$("#element_water_helium_amount").html(DisplayNumberFormatter(element_count[eid.element_helium], 0));
+	} else {
+		$("#element_water_helium").hide();
+	}
+	if (element_count[eid.element_magma] > 0) {
+		$("#element_water_magma").show();
+		$("#element_water_magma_amount").html(DisplayNumberFormatter(element_count[eid.element_magma], 0));
+	} else {
+		$("#element_water_magma").hide();
 	}
 }
 
@@ -1360,6 +1534,18 @@ function ElementSample(id) {
 
 		case eid.element_water:
 			return "<div class = 'element_sample' style = 'background-color: DodgerBlue;'></div>";
+			break;
+
+		case eid.element_slime:
+			return "<div class = 'element_sample' style = 'background-color: LimeGreen;'></div>";
+			break;
+
+		case eid.element_oil:
+			return "<div class = 'element_sample' style = 'background-color: Black;'></div>";
+			break;
+
+		case eid.element_helium:
+			return "<div class = 'element_sample' style = 'background-color: LightPink;'></div>";
 			break;
 
 		case eid.element_fish:

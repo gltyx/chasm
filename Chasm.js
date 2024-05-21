@@ -671,6 +671,11 @@ function refresh_ui() {
 		$("#bait_box").css("background-color", "#cfd8dc");
 		$("#bait_box_content").css("visibility", "visible");
 	}
+	
+	if (chasm_upgrades[uid.upgrade_water_survey_1].unlocked) {
+		$("#water_survey").css("background-color", "#cfd8dc");
+		$("#water_survey_content").css("visibility", "visible");
+	}
 
 	chasm_storage[sid.storage_earth].refresh_survey();
 	RefreshMaxDepth();

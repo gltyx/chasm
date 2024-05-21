@@ -52,40 +52,41 @@ class _UPGRADE_ID {
 
 	upgrade_water_storage				= 0x0025;	// Unlock water storage
 	upgrade_water_bait_1				= 0x0026;	// Unlock bait
+	upgrade_water_survey_1				= 0x0027;	// Unlock fishing report
 
-	upgrade_workers_1					= 0x0027;	// +1 Worker
-	upgrade_workers_2					= 0x0028;	// +1 Worker
-	upgrade_workers_3					= 0x0029;	// +1 Worker
-	upgrade_workers_4					= 0x002a;	// +1 Worker
-	upgrade_workers_5					= 0x002b;	// +2 Worker
-	upgrade_workers_6					= 0x002c;	// +1 Worker / +20% efficiency
-	upgrade_workers_7					= 0x002d;	// +2 Worker / +50% survey efficiency
-	upgrade_workers_8					= 0x002e;	// +1 Worker / +20% jewel value
-	upgrade_workers_9					= 0x002f;	// +1 Worker / +20% metal value
-	upgrade_workers_10					= 0x0030;	// +1 Worker / +30% copper value
-	upgrade_workers_11					= 0x0031;	// +1 Worker / +20% metal value
+	upgrade_workers_1					= 0x0028;	// +1 Worker
+	upgrade_workers_2					= 0x0029;	// +1 Worker
+	upgrade_workers_3					= 0x002a;	// +1 Worker
+	upgrade_workers_4					= 0x002b;	// +1 Worker
+	upgrade_workers_5					= 0x002c;	// +2 Worker
+	upgrade_workers_6					= 0x002d;	// +1 Worker / +20% efficiency
+	upgrade_workers_7					= 0x002e;	// +2 Worker / +50% survey efficiency
+	upgrade_workers_8					= 0x002f;	// +1 Worker / +20% jewel value
+	upgrade_workers_9					= 0x0030;	// +1 Worker / +20% metal value
+	upgrade_workers_10					= 0x0031;	// +1 Worker / +30% copper value
+	upgrade_workers_11					= 0x0032;	// +1 Worker / +20% metal value
+	
+	upgrade_challenge_ecocide			= 0x0033;	// Ecocide Challenge
+	
+	// Singularity upgrades
+	upgrade_singularity_workers_1		= 0x0034;	// +1 Worker per reset
+	upgrade_singularity_workers_2		= 0x0035;	// +1 Worker
+	upgrade_singularity_workers_3		= 0x0036;	// +1 Worker
+	upgrade_singularity_workers_4		= 0x0037;	// +1 Worker
+	upgrade_singularity_workers_5		= 0x0038;	// +2 Worker
+	upgrade_singularity_workers_6		= 0x0039;	// Keep worker upgrades on reset
+	upgrade_singularity_workers_7		= 0x003a;	// +0.5 Worker per reset
+	upgrade_singularity_workers_8		= 0x003b;	// +0.25 Worker per reset
+	upgrade_singularity_earth_value_1	= 0x003c;	// 3x coal particle value
+	upgrade_singularity_earth_value_2	= 0x003d;	// 1.5x singularity particle gain
+	upgrade_singularity_survey_1		= 0x003e;	// +1 Effective Survey
+	upgrade_singularity_survey_2		= 0x003f;	// +base jewel particle chance
+	upgrade_singularity_mining_rig_1	= 0x0040;	// Keep Mining Rig upgrades on reset
+	upgrade_singularity_mining_rig_2	= 0x0041;	// Mining rig sustain x3
+	upgrade_singularity_mining_rig_3	= 0x0042;	// Mining rig decay 50% slower
+	upgrade_singularity_ascend_1		= 0x0043;	// Singularity base cost -25%
 
-	upgrade_challenge_ecocide			= 0x0032;	// Ecocide Challenge
-
-    // Singularity upgrades
-    upgrade_singularity_workers_1		= 0x0033;	// +1 Worker per reset
-    upgrade_singularity_workers_2		= 0x0034;	// +1 Worker
-    upgrade_singularity_workers_3		= 0x0035;	// +1 Worker
-    upgrade_singularity_workers_4		= 0x0036;	// +1 Worker
-    upgrade_singularity_workers_5		= 0x0037;	// +2 Worker
-    upgrade_singularity_workers_6		= 0x0038;	// Keep worker upgrades on reset
-    upgrade_singularity_workers_7		= 0x0039;	// +0.5 Worker per reset
-    upgrade_singularity_workers_8		= 0x003a;	// +0.25 Worker per reset
-	upgrade_singularity_earth_value_1	= 0x003b;	// 3x coal particle value
-	upgrade_singularity_earth_value_2	= 0x003c;	// 1.5x singularity particle gain
-    upgrade_singularity_survey_1		= 0x003d;	// +1 Effective Survey
-    upgrade_singularity_survey_2		= 0x003e;	// +base jewel particle chance
-    upgrade_singularity_mining_rig_1	= 0x003f;	// Keep Mining Rig upgrades on reset
-    upgrade_singularity_mining_rig_2	= 0x0040;	// Mining rig sustain x3
-    upgrade_singularity_mining_rig_3	= 0x0041;	// Mining rig decay 50% slower
-	upgrade_singularity_ascend_1		= 0x0042;	// Singularity base cost -25%
-
-    upgrade_count						= 0x0043;
+    upgrade_count						= 0x0044;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -783,6 +784,22 @@ function initUpgrades() {
 					reset_level_all
 				);
 				break;
+
+			case uid.upgrade_water_survey_1:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_water_survey_1",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					3,		// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					0,		// Anticapital
+					0,		// Singularity
+					],
+					reset_level_all
+				);
+				break;
 			
 			case uid.upgrade_workers_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
@@ -1376,6 +1393,12 @@ function buy_upgrade(upgrade_id, free) {
 				$("#bait_box_content").css("visibility", "visible");
 				break;
 
+			case uid.upgrade_water_survey_1:
+				$("#water_survey").css("background-color", "#cfd8dc");
+				$("#water_survey_content").css("visibility", "visible");
+				chasm_storage[sid.storage_water].refresh_survey();
+				break;
+
 			case uid.upgrade_workers_1:
 				chasm_currency[cid.currency_workers].resource.gain(1);
 				break;
@@ -1518,6 +1541,10 @@ function reset_upgrades(reset_level) {
 			// upgrade_mining_rig_2
 			$("#incinerator_upgrades_content").css("visibility", "hidden");
 		}
+	
+		// upgrade_water_survey_1
+		$("#water_survey").css("background-color", "transparent");
+		$("#water_survey_content").css("visibility", "hidden");
 	}
 }
 
@@ -2043,7 +2070,7 @@ function generateResearchMapWater() {
 
 	// Testing row
 	var test_row = 6;
-	var test_upgrades = [uid.upgrade_water_bait_1];
+	var test_upgrades = [uid.upgrade_water_bait_1, uid.upgrade_water_survey_1];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map_water[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;

@@ -194,6 +194,15 @@ class ELEMENT_PROBABILITY {
 
 			this.display(storage_flags);
 		}
+
+		else if (storage_flags & STORAGE_FLAGS_WATER) {
+			let depth = chasm_storage[sid.storage_water].machinery_depth;
+
+			this.element_water 	+= 1000;
+			portion 			-= 1000;
+
+			this.display(storage_flags);
+		}
 	}
 
 	display(storage_flags) {
@@ -298,6 +307,25 @@ class ELEMENT_PROBABILITY {
 			$(".element_ruby").each(function(){$(this).mouseenter(function(){showInspector(iid.element_ruby);});});
 			$(".element_diamond").each(function(){$(this).mouseenter(function(){showInspector(iid.element_diamond);});});
 			$(".element_magma").each(function(){$(this).mouseenter(function(){showInspector(iid.element_magma);});});
+		}
+
+		else if (storage_flags & STORAGE_FLAGS_WATER) {
+			var out = "";
+			out	= "<div style = 'display: block;'>";
+			out	+= "<div class = 'vertcenter element_water' style = 'display: flex;'>" + ElementSample(eid.element_water) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Water:</p></div>";
+			out	+= "</div>";
+
+			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";
+			if (this.element_water <= 0) {
+				out += "<p class = 'element_water' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out += "<p class = 'element_water' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_water / 10, 1) 		+ "%</p>";
+			}
+			out	+= "</div>";
+
+			$("#water_survey_menu").html(out);
+
+			$(".element_water").each(function(){$(this).mouseenter(function(){showInspector(iid.element_water);});});
 		}
 	}
 

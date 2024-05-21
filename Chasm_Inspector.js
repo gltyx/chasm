@@ -86,6 +86,7 @@ class _INSPECTOR_ID {
 	upgrade_mining_rig_4						= uid.upgrade_mining_rig_4					+ this.offset_upgrades;
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
 	upgrade_water_bait_1						= uid.upgrade_water_bait_1					+ this.offset_upgrades;
+	upgrade_water_survey_1						= uid.upgrade_water_survey_1				+ this.offset_upgrades;
 	upgrade_workers_1							= uid.upgrade_workers_1						+ this.offset_upgrades;
 	upgrade_workers_2							= uid.upgrade_workers_2						+ this.offset_upgrades;
 	upgrade_workers_3							= uid.upgrade_workers_3						+ this.offset_upgrades;
@@ -864,6 +865,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("The Angler has developed special fishing bait made from the Chasm's materials. It works even better than the hotdogs you were using before. This bait will help you satisfy the Chasm's peculiar hunger for more exotic fish.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Unlock the Bait Box");
+			break;
+		case iid.upgrade_water_survey_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fishing Report");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_survey_1].cost.stringify());
+			$("#inspector_text")	.html("The Angler can use his keen knowledge of the sea, the stars, the color of the sunrise, and a high-tech fish-finding sonar to predict exactly what fish you can find at different depths.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("Unlock the Fishing Report");
 			break;
 		case iid.upgrade_workers_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fringe Researcher");

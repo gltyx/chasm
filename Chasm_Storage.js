@@ -958,6 +958,9 @@ function elementValue(element_count) { // Returns currency value of all elements
 			case eid.element_water:
 				let water_value = 0.12;
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * water_value * mass_modifier;
+				currency_count[cid.currency_goo] 		+= element_count[eid.element_water] * water_value * mass_modifier;
+				currency_count[cid.currency_core] 		+= element_count[eid.element_water] * water_value * mass_modifier;
+				currency_count[cid.currency_bugs] 		+= element_count[eid.element_water] * water_value * mass_modifier;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * water_value * particle_modifier;
 				break;
 			case eid.element_none:
@@ -1248,6 +1251,24 @@ function loadWaterValue(currency_count) {
 		$("#value_water_capital_amount").html(DisplayNumberFormatter(currency_count[cid.currency_capital], 2));
 	} else {
 		$("#value_water_capital").hide();
+	}
+	if (currency_count[cid.currency_goo] > 0) {
+		$("#value_water_goo").show();
+		$("#value_water_goo_amount").html(DisplayNumberFormatter(currency_count[cid.currency_goo], 2));
+	} else {
+		$("#value_water_goo").hide();
+	}
+	if (currency_count[cid.currency_core] > 0) {
+		$("#value_water_core").show();
+		$("#value_water_core_amount").html(DisplayNumberFormatter(currency_count[cid.currency_core], 2));
+	} else {
+		$("#value_water_core").hide();
+	}
+	if (currency_count[cid.currency_bugs] > 0) {
+		$("#value_water_bugs").show();
+		$("#value_water_bugs_amount").html(DisplayNumberFormatter(currency_count[cid.currency_bugs], 2));
+	} else {
+		$("#value_water_bugs").hide();
 	}
 	if (currency_count[cid.currency_mass] > 0) {
 		$("#value_water_mass").show();

@@ -31,20 +31,23 @@ class _MILESTONE_ID {
 	milestone_reveal_currency_strands			= 0x0002;		// Show strands after getting some
 	milestone_reveal_currency_spirit			= 0x0003;		// Show spirit after getting some
 	milestone_reveal_currency_soul				= 0x0004;		// Show soul after getting some
-	milestone_reveal_currency_capital			= 0x0005;		// Show soul after getting some
-	milestone_reveal_currency_machinery			= 0x0006;		// Show machinery after getting some
-	milestone_reveal_currency_singularity		= 0x0007;		// Show singularity after getting some
-	milestone_reveal_currency_challenge_1		= 0x0008;		// Show challenge token after getting some
-	milestone_reveal_currency_challenge_2		= 0x0009;		// Show challenge token after getting some
-	milestone_reveal_currency_challenge_3		= 0x000a;		// Show challenge token after getting some
-	milestone_reveal_currency_challenge_4		= 0x000b;		// Show challenge token after getting some
-	milestone_reveal_currency_challenge_5		= 0x000c;		// Show challenge token after getting some
-	milestone_reveal_currency_challenge_6		= 0x000d;		// Show challenge token after getting some
-	milestone_reveal_currency_challenge_7		= 0x000e;		// Show challenge token after getting some
-	milestone_reveal_currency_challenge_8		= 0x000f;		// Show challenge token after getting some
-	milestone_reveal_currency_challenge_9		= 0x0010;		// Show challenge token after getting some
+	milestone_reveal_currency_capital			= 0x0005;		// Show capital after getting some
+	milestone_reveal_currency_goo				= 0x0006;		// Show goo after getting some
+	milestone_reveal_currency_core				= 0x0007;		// Show cores after getting some
+	milestone_reveal_currency_bugs				= 0x0008;		// Show bugs after getting some
+	milestone_reveal_currency_machinery			= 0x0009;		// Show machinery after getting some
+	milestone_reveal_currency_singularity		= 0x000a;		// Show singularity after getting some
+	milestone_reveal_currency_challenge_1		= 0x000b;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_2		= 0x000c;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_3		= 0x000d;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_4		= 0x000e;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_5		= 0x000f;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_6		= 0x0010;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_7		= 0x0011;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_8		= 0x0012;		// Show challenge token after getting some
+	milestone_reveal_currency_challenge_9		= 0x0013;		// Show challenge token after getting some
 
-	milestone_count								= 0x0011;
+	milestone_count								= 0x0014;
 } var mid = new _MILESTONE_ID();
 
 class _ACHIEVEMENT {
@@ -228,6 +231,30 @@ function init_milestones() {
 	
 			case mid.milestone_reveal_currency_capital:
 				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_capital",
+														"",
+														"",
+														"",
+														"");
+				break;
+	
+			case mid.milestone_reveal_currency_goo:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_goo",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_core:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_core",
+														"",
+														"",
+														"",
+														"");
+				break;
+
+			case mid.milestone_reveal_currency_bugs:
+				chasm_milestones[i] = new _ACHIEVEMENT(i, "milestone_reveal_currency_bugs",
 														"",
 														"",
 														"",
@@ -426,6 +453,42 @@ function achievement_tick() {
 				chasm_currency[cid.currency_capital].hidden = false;
 				$("#currency_capital_symbol").fadeIn(800);
 				$("#currency_capital_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal goo (> 0 goo)
+	if (!chasm_milestones[mid.milestone_reveal_currency_goo].unlocked) {
+		if (chasm_currency[cid.currency_goo].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_goo].unlock();
+			if (chasm_currency[cid.currency_goo].hidden) {
+				chasm_currency[cid.currency_goo].hidden = false;
+				$("#currency_goo_symbol").fadeIn(800);
+				$("#currency_goo_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal core (> 0 core)
+	if (!chasm_milestones[mid.milestone_reveal_currency_core].unlocked) {
+		if (chasm_currency[cid.currency_core].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_core].unlock();
+			if (chasm_currency[cid.currency_core].hidden) {
+				chasm_currency[cid.currency_core].hidden = false;
+				$("#currency_core_symbol").fadeIn(800);
+				$("#currency_core_value").fadeIn(800);
+			}
+		}
+	}
+
+	// Reveal bugs (> 0 bugs)
+	if (!chasm_milestones[mid.milestone_reveal_currency_bugs].unlocked) {
+		if (chasm_currency[cid.currency_bugs].resource.alltime.gt(0)) {
+			chasm_milestones[mid.milestone_reveal_currency_bugs].unlock();
+			if (chasm_currency[cid.currency_bugs].hidden) {
+				chasm_currency[cid.currency_bugs].hidden = false;
+				$("#currency_bugs_symbol").fadeIn(800);
+				$("#currency_bugs_value").fadeIn(800);
 			}
 		}
 	}

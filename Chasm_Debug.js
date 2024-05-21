@@ -164,6 +164,18 @@ function debug_gain() {
 			chasm_currency[cid.currency_capital].resource.gain(amount);
 			break;
 
+		case "Goo":
+			chasm_currency[cid.currency_goo].resource.gain(amount);
+			break;
+
+		case "Core":
+			chasm_currency[cid.currency_core].resource.gain(amount);
+			break;
+
+		case "Bugs":
+			chasm_currency[cid.currency_bugs].resource.gain(amount);
+			break;
+
 		case "Singularity":
 			chasm_currency[cid.currency_singularity].resource.gain(amount);
 			break;

@@ -131,6 +131,9 @@ function draw_resources() {
 	$("#currency_spirit_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_spirit].resource.current, 2));
 	$("#currency_soul_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_soul].resource.current, 2));
 	$("#currency_capital_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_capital].resource.current, 2));
+	$("#currency_goo_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_goo].resource.current, 2));
+	$("#currency_core_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_core].resource.current, 2));
+	$("#currency_bugs_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_bugs].resource.current, 2));
 
 	$("#currency_mass_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_mass].resource.current, 2));
 	$("#currency_workers_amount").html(DisplayNumberFormatter(chasm_currency[cid.currency_workers].resource.current, 0));
@@ -547,6 +550,24 @@ function refresh_ui() {
 		chasm_currency[cid.currency_capital].hidden = false;
 		$("#currency_capital_symbol").css("display", "block");
 		$("#currency_capital_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_goo].unlocked) {
+		chasm_currency[cid.currency_goo].hidden = false;
+		$("#currency_goo_symbol").css("display", "block");
+		$("#currency_goo_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_core].unlocked) {
+		chasm_currency[cid.currency_core].hidden = false;
+		$("#currency_core_symbol").css("display", "block");
+		$("#currency_core_value").css("display", "block");
+	}
+
+	if (chasm_milestones[mid.milestone_reveal_currency_bugs].unlocked) {
+		chasm_currency[cid.currency_bugs].hidden = false;
+		$("#currency_bugs_symbol").css("display", "block");
+		$("#currency_bugs_value").css("display", "block");
 	}
 	
 	if (chasm_milestones[mid.milestone_reveal_currency_machinery].unlocked) {

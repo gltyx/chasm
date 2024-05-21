@@ -15,6 +15,9 @@ class _INSPECTOR_ID {
 	currency_spirit								= cid.currency_spirit						+ this.offset_currency;
 	currency_soul								= cid.currency_soul							+ this.offset_currency;
 	currency_capital							= cid.currency_capital						+ this.offset_currency;
+	currency_goo								= cid.currency_goo							+ this.offset_currency;
+	currency_core								= cid.currency_core							+ this.offset_currency;
+	currency_bugs								= cid.currency_bugs							+ this.offset_currency;
 	currency_singularity						= cid.currency_singularity					+ this.offset_currency;
 	currency_challenge_1						= cid.currency_challenge_1					+ this.offset_currency;
 	currency_challenge_2						= cid.currency_challenge_2					+ this.offset_currency;
@@ -132,6 +135,9 @@ function registerInspectorEvents() {
 	$(".currency_spirit").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_spirit);});});
 	$(".currency_soul").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_soul);});});
 	$(".currency_capital").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_capital);});});
+	$(".currency_goo").each(function(){			$(this).mouseenter(function(){showInspector(iid.currency_goo);});});
+	$(".currency_core").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_core);});});
+	$(".currency_bugs").each(function(){		$(this).mouseenter(function(){showInspector(iid.currency_bugs);});});
 	$(".currency_singularity").each(function(){	$(this).mouseenter(function(){showInspector(iid.currency_singularity);});});
 	$(".currency_challenge_1").each(function(){	$(this).mouseenter(function(){showInspector(iid.currency_challenge_1);});});
 	$(".currency_challenge_2").each(function(){	$(this).mouseenter(function(){showInspector(iid.currency_challenge_2);});});
@@ -181,7 +187,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html(chasm_currency[cid.currency_particles].inspector_symbol + "Void Particles");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("When matter is dropped into the Chasm, it releases small clouds of nothing. Not nothing... Something? Something that is nothing.");
+			$("#inspector_text")	.html("When matter is dropped into the Chasm it releases small clouds of nothing. Not nothing... Something? Something that is nothing.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -189,7 +195,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html(chasm_currency[cid.currency_strands].inspector_symbol + "Gravity Strands");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("When dense matter is dropped into the Chasm, it releases gossamer strands of gravity. Our researchers say gravity has no carrying particle, but here it is.");
+			$("#inspector_text")	.html("When dense matter is dropped into the Chasm it releases gossamer strands of gravity. Our researchers say gravity has no carrying particle, but here it is.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -197,7 +203,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html(chasm_currency[cid.currency_spirit].inspector_symbol + "Spirit Sand");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("When living matter is dropped into the Chasm, it sprays grains of silver-green sand. Our researchers are convinced this sand has something to do with a metaphysical 'life-force'.");
+			$("#inspector_text")	.html("When living matter is dropped into the Chasm it sprays grains of silver-green sand. Our researchers are convinced this sand has something to do with a metaphysical 'life-force'.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -205,7 +211,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html(chasm_currency[cid.currency_soul].inspector_symbol + "Pitfire");
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
-			$("#inspector_text")	.html("When energy-rich matter is dropped into the Chasm, it belches sulpherous clouds of pitfire. Our researchers are using this as a super-dense fuel, and our daredevils are jumping over it for sick motorcycle stunts.");
+			$("#inspector_text")	.html("When energy-rich matter is dropped into the Chasm it belches sulpherous clouds of pitfire. Our researchers are using this as a super-dense fuel, and our daredevils are jumping over it for sick motorcycle stunts.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;
@@ -214,6 +220,30 @@ function showInspector(id) {
 			$("#inspector_cost")	.css("display", "none");
 			$("#inspector_cost")	.html("");
 			$("#inspector_text")	.html("\"We, who pay dearly for every breath of pure, fresh air, must guard against the tendency to fetter the future. If we succeed in clearing the soil from the rubbish of the past and present, we will leave to posterity the greatest and safest heritages of all ages.\"<br><br>Our researchers seem to be feeling a bit revolutionary. You should probably put this somewhere out of the way before they seize it and establish a democratic mode of production.");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.currency_goo:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_goo].inspector_symbol + "Nanocellular Goo");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("When mutant biomass is dropped into the Chasm it froths with a strange orange goo. This goo seems to behave like a biological nanomachine, and is capable of amazing feats when properly trained. Our researchers are giving the goo treats and teaching it how to play fetch.");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.currency_core:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_core].inspector_symbol + "Mythical Core");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("When rare cryptids are dropped into the Chasm it bellows with a deep, resonant hum. Once the hum fades, you can find large, glassy orbs dotting the rim of the Chasm. According to our researchers, they seem to be made from embodied belief. It may be possible to use them to influence the world in strange ways.");
+			$("#inspector_divider")	.css("display", "none");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.currency_bugs:
+			$("#inspector_title")	.html(chasm_currency[cid.currency_bugs].inspector_symbol + "Velocity Beetles");
+			$("#inspector_cost")	.css("display", "none");
+			$("#inspector_cost")	.html("");
+			$("#inspector_text")	.html("Okay this one sucks. When you drop agile creatures into the Chasm, tiny silver beetles crawl out at a blinding speed. Your researchers have managed to catch a few, and say they can be ground into a paste and converted directly into physical momentum. They remind you of horrible, multi-legged video game hedgehogs.");
 			$("#inspector_divider")	.css("display", "none");
 			$("#inspector_subtext")	.html("");
 			break;

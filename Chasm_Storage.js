@@ -532,6 +532,7 @@ function initStorage() {
 				water.setCap((chasm_storage[i].canvas_w * chasm_storage[i].canvas_h) / (chasm_storage[i].brick_w * chasm_storage[i].brick_h));
 				chasm_storage[i].gather_dom = "#water_workers_gather";
 				chasm_storage[i].drop_dom = "#water_workers_drop";
+				chasm_storage[i].depth_dom = "#water_machinery_depth";
 				break;
 
 			default:

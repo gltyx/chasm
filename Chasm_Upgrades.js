@@ -178,6 +178,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -194,6 +197,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -210,6 +216,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -226,6 +235,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					7000000,// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -242,6 +254,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					8000000,// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -258,6 +273,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -274,6 +292,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -290,6 +311,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -306,6 +330,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -322,6 +349,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -338,6 +368,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -354,6 +387,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					6,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -370,6 +406,9 @@ function initUpgrades() {
 					0,		// Spirit
 					1,		// Soul
 					4,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -386,6 +425,9 @@ function initUpgrades() {
 					0,		// Spirit
 					1.5,	// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -402,6 +444,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -418,6 +463,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					75,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -434,6 +482,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0.4,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -450,6 +501,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -466,6 +520,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -482,6 +539,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -498,6 +558,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0.4,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -514,6 +577,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -530,6 +596,9 @@ function initUpgrades() {
 					0,		// Spirit
 					3,		// Soul
 					25,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -546,6 +615,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -562,6 +634,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -578,6 +653,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -594,6 +672,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -610,6 +691,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1.5,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -626,6 +710,9 @@ function initUpgrades() {
 					0,		// Spirit
 					100,	// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -642,6 +729,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -658,6 +748,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -674,6 +767,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -690,6 +786,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					30,		// Singularity
 					],
 					reset_level_all
@@ -706,6 +805,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -722,6 +824,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -738,6 +843,9 @@ function initUpgrades() {
 					0,		// Spirit
 					3,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -754,6 +862,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -770,6 +881,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					3,		// Singularity
 					],
 					reset_level_all
@@ -786,6 +900,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_all
@@ -802,6 +919,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_all
@@ -818,6 +938,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -834,6 +957,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -850,6 +976,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -866,6 +995,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -882,6 +1014,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -898,6 +1033,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -914,6 +1052,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -930,6 +1071,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -946,6 +1090,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -962,6 +1109,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -978,6 +1128,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -994,6 +1147,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -1010,6 +1166,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0.20,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -1026,6 +1185,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1.5,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -1042,6 +1204,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					2.5,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -1058,6 +1223,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1.5,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -1074,6 +1242,9 @@ function initUpgrades() {
 					0,		// Spirit
 					1.5,	// Soul
 					1.5,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -1090,6 +1261,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					1.5,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -1106,6 +1280,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity
@@ -1122,6 +1299,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					1,		// Singularity
 					],
 					reset_level_all
@@ -1138,6 +1318,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					1,		// Singularity
 					],
 					reset_level_all
@@ -1154,6 +1337,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					1,		// Singularity
 					],
 					reset_level_all
@@ -1170,6 +1356,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					1,		// Singularity
 					],
 					reset_level_all
@@ -1186,6 +1375,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					1,		// Singularity
 					],
 					reset_level_all
@@ -1202,6 +1394,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					3,		// Singularity
 					],
 					reset_level_all
@@ -1218,6 +1413,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					5,		// Singularity
 					],
 					reset_level_all
@@ -1234,6 +1432,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					5,		// Singularity
 					],
 					reset_level_all
@@ -1250,6 +1451,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					3,		// Singularity
 					],
 					reset_level_all
@@ -1266,6 +1470,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					1,		// Singularity
 					],
 					reset_level_all
@@ -1282,6 +1489,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					1,		// Singularity
 					],
 					reset_level_all
@@ -1298,6 +1508,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					3,		// Singularity
 					],
 					reset_level_all
@@ -1314,6 +1527,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					3,		// Singularity
 					],
 					reset_level_all
@@ -1330,6 +1546,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					2,		// Singularity
 					],
 					reset_level_all
@@ -1346,6 +1565,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					1,		// Singularity
 					],
 					reset_level_all
@@ -1362,6 +1584,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					3,		// Singularity
 					],
 					reset_level_all
@@ -1378,6 +1603,9 @@ function initUpgrades() {
 					0,		// Spirit
 					0,		// Soul
 					0,		// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
 					0,		// Singularity
 					],
 					reset_level_singularity

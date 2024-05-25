@@ -339,12 +339,13 @@ class ELEMENT_PROBABILITY {
 
 		else if (storage_flags & STORAGE_FLAGS_WATER) {
 			var out = "";
-			out	= "<div style = 'display: block;'>";
+			out += "<div style = 'display: flex;'>";
+			out	+= "<div style = 'display: block;'>";
 			out	+= "<div class = 'vertcenter element_water' style = 'display: flex;'>" 	+ ElementSample(eid.element_water) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Water:</p></div>";
 			out	+= "<div class = 'vertcenter element_slime' style = 'display: flex;'>" 	+ ElementSample(eid.element_slime) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Slime:</p></div>";
 			out	+= "<div class = 'vertcenter element_oil' style = 'display: flex;'>" 	+ ElementSample(eid.element_oil) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Oil:</p></div>";
 			out	+= "<div class = 'vertcenter element_helium' style = 'display: flex;'>" + ElementSample(eid.element_helium) 	+ "<p style = 'font-size: 12px; padding-left: 4px;'>Helium:</p></div>";
-			out	+= "<div class = 'vertcenter element_magma' style = 'display: flex;'>" 	+ ElementSample(eid.element_magma) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Magma:</p></div>";
+			out	+= "<div class = 'vertcenter element_magma_2' style = 'display: flex;'>"+ ElementSample(eid.element_magma) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Magma:</p></div>";
 			out	+= "</div>";
 
 			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";
@@ -373,6 +374,25 @@ class ELEMENT_PROBABILITY {
 			} else {
 				out += "<p class = 'element_magma_2' 	style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_magma / 10, 1) 		+ "%</p>";
 			}
+
+			out	+= "</div>";
+			out	+= "</div>";
+
+			out += "<hr>";
+
+			out += "<div style = 'display: flex;'>";
+			out	+= "<div style = 'display: block;'>";
+			out	+= "<div class = 'vertcenter element_fish' style = 'display: flex;'>" 	+ ElementSample(eid.element_fish) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Fish:</p></div>";
+			out	+= "</div>";
+
+			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";
+			if (this.element_fish <= 0) {
+				out += "<p class = 'element_fish' 		style = 'font-size: 12px;'>-</p>";
+			} else {
+				out += "<p class = 'element_fish' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_fish / 10, 1) 		+ "%</p>";
+			}
+
+			out	+= "</div>";
 			out	+= "</div>";
 
 			$("#water_survey_menu").html(out);
@@ -382,6 +402,7 @@ class ELEMENT_PROBABILITY {
 			$(".element_oil").each(function(){$(this).mouseenter(function(){showInspector(iid.element_oil);});});
 			$(".element_helium").each(function(){$(this).mouseenter(function(){showInspector(iid.element_helium);});});
 			$(".element_magma_2").each(function(){$(this).mouseenter(function(){showInspector(iid.element_magma);});});
+			$(".element_fish").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fish);});});
 		}
 	}
 

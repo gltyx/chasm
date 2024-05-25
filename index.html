@@ -18,7 +18,6 @@
     	<script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 		<!--Remote lib_chasm source-->
-		<!--
 		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm.js"></script>
 		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_timing.js"></script>
 		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_logging.js"></script>
@@ -27,6 +26,7 @@
 		<!--Remote lib_chasm source end-->
 
 		<!--Local lib_chasm source (for parallel development)-->
+		<!--
 		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm.js"></script>
 		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_timing.js"></script>
 		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_logging.js"></script>
@@ -170,9 +170,9 @@
 								<i class = "material-icons amber-text text-lighten-1 currency_icon">gesture</i>
 							</div>
 	
-							<!--Spirit Sand-->
-							<div id = "currency_spirit_symbol" class = "currency_spirit currency_line vertcenter" style = "display: none">
-								<i class = "material-icons green-text text-lighten-2 currency_icon">flare</i>
+							<!--Anticapital-->
+							<div id = "currency_capital_symbol" class = "currency_capital currency_line vertcenter" style = "display: none">
+								<i class = "material-icons light-green-text text-lighten-2 currency_icon">money_off</i>
 							</div>
 	
 							<!--Soul Splinters-->
@@ -180,9 +180,9 @@
 								<i class = "material-icons red-text text-lighten-2 currency_icon">whatshot</i>
 							</div>
 	
-							<!--Anticapital-->
-							<div id = "currency_capital_symbol" class = "currency_capital currency_line vertcenter" style = "display: none">
-								<i class = "material-icons light-green-text text-lighten-2 currency_icon">money_off</i>
+							<!--Spirit Sand-->
+							<div id = "currency_spirit_symbol" class = "currency_spirit currency_line vertcenter" style = "display: none">
+								<i class = "material-icons green-text text-lighten-2 currency_icon">flare</i>
 							</div>
 	
 							<!--Goo-->
@@ -213,9 +213,9 @@
 								<p><span id = "currency_strands_amount"></span></p>
 							</div>
 
-							<!--Spirit Sand-->
-							<div id = "currency_spirit_value" class = "currency_spirit currency_line currency_amount vertcenter" style = "display: none">
-								<p><span id = "currency_spirit_amount"></span></p>
+							<!--Anticapital-->
+							<div id = "currency_capital_value" class = "currency_capital currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_capital_amount"></span></p>
 							</div>
 
 							<!--Soul Splinters-->
@@ -223,9 +223,9 @@
 								<p><span id = "currency_soul_amount"></span></p>
 							</div>
 
-							<!--Anticapital-->
-							<div id = "currency_capital_value" class = "currency_capital currency_line currency_amount vertcenter" style = "display: none">
-								<p><span id = "currency_capital_amount"></span></p>
+							<!--Spirit Sand-->
+							<div id = "currency_spirit_value" class = "currency_spirit currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_spirit_amount"></span></p>
 							</div>
 
 							<!--Goo-->
@@ -422,14 +422,14 @@
 										<span id = "value_earth_strands" class = "currency_strands flex">
 											<p id = "value_earth_strands_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons amber-text text-darken-1 currency_icon'>gesture</i>
 										</span>
-										<span id = "value_earth_spirit" class = "currency_spirit flex">
-											<p id = "value_earth_spirit_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons green-text text-lighten-2 currency_icon'>flare</i>
+										<span id = "value_earth_capital" class = "currency_capital flex">
+											<p id = "value_earth_capital_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons light-green-text currency_icon'>money_off</i>
 										</span>
 										<span id = "value_earth_soul" class = "currency_soul flex">
 											<p id = "value_earth_soul_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>
 										</span>
-										<span id = "value_earth_capital" class = "currency_capital flex">
-											<p id = "value_earth_capital_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons light-green-text currency_icon'>money_off</i>
+										<span id = "value_earth_spirit" class = "currency_spirit flex">
+											<p id = "value_earth_spirit_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons green-text text-lighten-2 currency_icon'>flare</i>
 										</span>
 										<span id = "value_earth_mass" class = "currency_mass flex">
 											<p id = "value_earth_mass_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons grey-text text-darken-4 currency_icon'>archive</i>
@@ -706,14 +706,14 @@
 										<span id = "value_water_strands" class = "currency_strands flex">
 											<p id = "value_water_strands_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons amber-text text-darken-1 currency_icon'>gesture</i>
 										</span>
-										<span id = "value_water_spirit" class = "currency_spirit flex">
-											<p id = "value_water_spirit_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons green-text text-lighten-2 currency_icon'>flare</i>
+										<span id = "value_water_capital" class = "currency_capital flex">
+											<p id = "value_water_capital_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons light-green-text currency_icon'>money_off</i>
 										</span>
 										<span id = "value_water_soul" class = "currency_soul flex">
 											<p id = "value_water_soul_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>
 										</span>
-										<span id = "value_water_capital" class = "currency_capital flex">
-											<p id = "value_water_capital_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons light-green-text currency_icon'>money_off</i>
+										<span id = "value_water_spirit" class = "currency_spirit flex">
+											<p id = "value_water_spirit_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons green-text text-lighten-2 currency_icon'>flare</i>
 										</span>
 										<span id = "value_water_goo" class = "currency_goo flex">
 											<p id = "value_water_goo_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons orange-text text-lighten-1 currency_icon'>bubble_chart</i>
@@ -805,7 +805,7 @@
 									<div id = "water_survey_content" style = "visibility: hidden;">
 										<p class = "hcenter" style = "font-weight: bold;">Fishing Report</p>
 
-										<div id = "water_survey_menu" style = "padding-left: 6px; padding-right: 6px; display: flex; width: 126px;">
+										<div id = "water_survey_menu" style = "padding-left: 6px; padding-right: 6px; width: 126px;">
 										</div>
 									</div>
 								</div>
@@ -933,9 +933,9 @@
 									<option value = "All" selected = "selected">All</option>
 									<option value = "Particles">Particles</option>
 									<option value = "Strands">Strands</option>
-									<option value = "Spirit">Spirit</option>
-									<option value = "Soul">Soul</option>
 									<option value = "Capital">Capital</option>
+									<option value = "Soul">Soul</option>
+									<option value = "Spirit">Spirit</option>
 									<option value = "Goo">Goo</option>
 									<option value = "Core">Core</option>
 									<option value = "Bugs">Bugs</option>

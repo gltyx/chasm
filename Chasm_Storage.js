@@ -783,6 +783,8 @@ class resource_storage {
 			} else {
 				$(this.gather_dom).html(this.workers_gather);
 			}
+
+			refreshEarthworksWorkersDisplay();
 		} else if (target == "drop") {
 			let out = num;
 

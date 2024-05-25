@@ -350,14 +350,18 @@
 
 					<!--Earth-->
 					<div id = "earth_section">
-						<div style = "margin-top: 2px; margin-bottom: 8px; padding-left: 12px;">
+						<div style = "height: 200px; position: relative;">
+							<img src = "images/earthworks_scaled_x4.png" class = "noble" style = "position: absolute;">
+							<img id = "earthworks_worker_graphic" src = "images/earthworks_workers_scaled_x4.png" class = "noble" style = "position: absolute;">
+						</div>
+						<div style = "padding-top: 2px; padding-bottom: 8px; padding-left: 12px; background-color: black;">
 							<!--Storage-->
 							<div class = "flex">
 								<div style = "height: 66px; width: 66px;">
 									<canvas id = "earth_storage" width = "66" height = "66"></canvas>
 								</div>
 
-								<div class = "unflex">
+								<div class = "unflex" style = "margin-left: 10px; width: 86%; background-color: white; border-radius: 3px;">
 									<p class = "resource_title">Earthworks</p>
 									<div id = "element_earth_amount" class = "resource_info vertcenter">
 										<p>Stored: </p>

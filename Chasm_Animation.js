@@ -83,3 +83,55 @@ function colorRange_MkII(color) {
 	//console.log("colorRange_MkII() Color Generated: " + r + "r " + g + "g " + b + "b");
 	return {r, g, b};
 }
+
+function refreshEarthworksWorkersDisplay() {
+	switch (chasm_storage[sid.storage_earth].workers_gather) {
+		case 0:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4.png");
+			break;
+
+		case 1:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num1.png");
+			break;
+			
+		case 2:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num2.png");
+			break;
+			
+		case 3:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num3.png");
+			break;
+			
+		case 4:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num4.png");
+			break;
+			
+		case 5:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num5.png");
+			break;
+			
+		case 6:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num6.png");
+			break;
+			
+		case 7:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num7.png");
+			break;
+			
+		case 8:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num8.png");
+			break;
+			
+		case 9:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num9.png");
+			break;
+			
+		case 10:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num10.png");
+			break;
+			
+		default:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num11.png");
+			break;
+	}
+}

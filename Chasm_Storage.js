@@ -1092,9 +1092,8 @@ function elementValue(element_count) { // Returns currency value of all elements
 				currency_count[cid.currency_capital] 	+= element_count[eid.element_diamond] * diamond_value * anticapital_modifier;
 				break;
 			case eid.element_magma:
-				currency_count[cid.currency_mass] 		+= element_count[eid.element_magma] * 2.48 * mass_modifier;
-				currency_count[cid.currency_soul] 		+= element_count[eid.element_magma] * 1.20;
-				currency_count[cid.currency_strands] 	+= element_count[eid.element_magma] * 1.28;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_magma] * 1.60 * mass_modifier;
+				currency_count[cid.currency_soul] 		+= element_count[eid.element_magma] * 1.60;
 				break;
 			case eid.element_water:
 				let water_value = 0.12;

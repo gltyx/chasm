@@ -1330,7 +1330,7 @@ function initUpgrades() {
 			case uid.upgrade_singularity_workers_3:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_singularity_workers_3",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_upgrade_singularity_workers_3.png",
 					[
 					0,		// Particles
 					0,		// Strands

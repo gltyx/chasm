@@ -50,7 +50,9 @@ class _INSPECTOR_ID {
 	element_slime 								= eid.element_slime							+ this.offset_elements;
 	element_oil 								= eid.element_oil							+ this.offset_elements;
 	element_helium 								= eid.element_helium						+ this.offset_elements;
-	element_fish								= eid.element_fish							+ this.offset_elements;
+	element_fish_1								= eid.element_fish_1						+ this.offset_elements;
+	element_fish_2								= eid.element_fish_2						+ this.offset_elements;
+	element_fish_3								= eid.element_fish_3						+ this.offset_elements;
 
 	offset_upgrades								= 0xa100;	// 0xa1xx Start upgrade section
 	upgrade_earth_density_1 					= uid.upgrade_earth_density_1				+ this.offset_upgrades;
@@ -625,19 +627,49 @@ function showInspector(id) {
 				$("#inspector_subtext")	.html("Source: Helium gathering");
 			}
 			break;
-		case iid.element_fish:
+		case iid.element_fish_1:
 			{
 				let element_count = new Array(eid.element_count);
 				for (let i = 0; i < eid.element_count; i++) {
 					element_count[i] = 0;
 				}
-				element_count[eid.element_fish]++;
-				$("#inspector_title")	.html(ElementSample(eid.element_fish) + "<div style = 'width: 6px;'></div>Fish");
+				element_count[eid.element_fish_1]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_fish_1) + "<div style = 'width: 6px;'></div>Frog");
 				$("#inspector_cost")	.css("display", "flex");
 				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
 				$("#inspector_text")	.html("");
 				$("#inspector_divider")	.css("display", "block");
-				$("#inspector_subtext")	.html("Source: Has a chance to spawn when water storage is full");
+				$("#inspector_subtext")	.html("Source: River fishing");
+			}
+			break;
+		case iid.element_fish_2:
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_fish_2]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_fish_2) + "<div style = 'width: 6px;'></div>Trout");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: River fishing");
+			}
+			break;
+		case iid.element_fish_3:
+			{
+				let element_count = new Array(eid.element_count);
+				for (let i = 0; i < eid.element_count; i++) {
+					element_count[i] = 0;
+				}
+				element_count[eid.element_fish_3]++;
+				$("#inspector_title")	.html(ElementSample(eid.element_fish_3) + "<div style = 'width: 6px;'></div>Salmon");
+				$("#inspector_cost")	.css("display", "flex");
+				$("#inspector_cost")	.html(stringifyValue(elementValue(element_count)));
+				$("#inspector_text")	.html("");
+				$("#inspector_divider")	.css("display", "block");
+				$("#inspector_subtext")	.html("Source: River fishing");
 			}
 			break;
 		

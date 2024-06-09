@@ -46,9 +46,11 @@ class _ELEMENT_ID {
 	element_slime		= 0x000f;
 	element_oil 		= 0x0010;
 	element_helium		= 0x0011;
-	element_fish		= 0x0012;
+	element_fish_1		= 0x0012;
+	element_fish_2		= 0x0013;
+	element_fish_3		= 0x0014;
 
-	element_count		= 0x0013;
+	element_count		= 0x0015;
 } var eid = new _ELEMENT_ID();
 
 class ELEMENT_PROBABILITY {
@@ -71,7 +73,9 @@ class ELEMENT_PROBABILITY {
 	element_slime 		= 0;
 	element_oil 		= 0;
 	element_helium 		= 0;
-	element_fish		= 0;
+	element_fish_1		= 0;
+	element_fish_2		= 0;
+	element_fish_3		= 0;
 
 	zero() {
 		this.element_none 		= 0;
@@ -92,7 +96,9 @@ class ELEMENT_PROBABILITY {
 		this.element_slime 		= 0;
 		this.element_oil 		= 0;
 		this.element_helium 	= 0;
-		this.element_fish 		= 0;
+		this.element_fish_1 	= 0;
+		this.element_fish_2 	= 0;
+		this.element_fish_3 	= 0;
 	}
 
 	refresh(storage_flags) {
@@ -379,17 +385,34 @@ class ELEMENT_PROBABILITY {
 			out	+= "</div>";
 
 			out += "<hr>";
+			out += "<p class = 'hcenter' style = 'font-weight: bold;'>Fishing Report</p>";
 
 			out += "<div style = 'display: flex;'>";
 			out	+= "<div style = 'display: block;'>";
-			out	+= "<div class = 'vertcenter element_fish' style = 'display: flex;'>" 	+ ElementSample(eid.element_fish) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Fish:</p></div>";
+			if (chasm_storage[sid.storage_water].machinery_depth == 0) {
+				out	+= "<div class = 'vertcenter element_fish_1' style = 'display: flex;'>" 	+ ElementSample(eid.element_fish_1) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Frog:</p></div>";
+				out	+= "<div class = 'vertcenter element_fish_2' style = 'display: flex;'>" 	+ ElementSample(eid.element_fish_2) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Trout:</p></div>";
+				out	+= "<div class = 'vertcenter element_fish_3' style = 'display: flex;'>" 	+ ElementSample(eid.element_fish_3) 		+ "<p style = 'font-size: 12px; padding-left: 4px;'>Salmon:</p></div>";
+			}
 			out	+= "</div>";
 
 			out	+= "<div style = 'display: block; text-align: right; width: 100%;'>";
-			if (this.element_fish <= 0) {
-				out += "<p class = 'element_fish' 		style = 'font-size: 12px;'>-</p>";
-			} else {
-				out += "<p class = 'element_fish' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_fish / 10, 1) 		+ "%</p>";
+			if (chasm_storage[sid.storage_water].machinery_depth == 0) {
+				if (this.element_fish_1 <= 0) {
+					out += "<p class = 'element_fish_1' 		style = 'font-size: 12px;'>-</p>";
+				} else {
+					out += "<p class = 'element_fish_1' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_fish_1 / 10, 1) 		+ "%</p>";
+				}
+				if (this.element_fish_2 <= 0) {
+					out += "<p class = 'element_fish_2' 		style = 'font-size: 12px;'>-</p>";
+				} else {
+					out += "<p class = 'element_fish_2' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_fish_2 / 10, 1) 		+ "%</p>";
+				}
+				if (this.element_fish_3 <= 0) {
+					out += "<p class = 'element_fish_3' 		style = 'font-size: 12px;'>-</p>";
+				} else {
+					out += "<p class = 'element_fish_3' 		style = 'font-size: 12px;'>" + DisplayNumberFormatter(this.element_fish_3 / 10, 1) 		+ "%</p>";
+				}
 			}
 
 			out	+= "</div>";
@@ -402,7 +425,9 @@ class ELEMENT_PROBABILITY {
 			$(".element_oil").each(function(){$(this).mouseenter(function(){showInspector(iid.element_oil);});});
 			$(".element_helium").each(function(){$(this).mouseenter(function(){showInspector(iid.element_helium);});});
 			$(".element_magma_2").each(function(){$(this).mouseenter(function(){showInspector(iid.element_magma);});});
-			$(".element_fish").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fish);});});
+			$(".element_fish_1").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fish_1);});});
+			$(".element_fish_2").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fish_2);});});
+			$(".element_fish_3").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fish_3);});});
 		}
 	}
 
@@ -1115,6 +1140,21 @@ function elementValue(element_count) { // Returns currency value of all elements
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_helium] * helium_value * mass_modifier;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_helium] * helium_value;
 				break;
+			case eid.element_fish_1:
+				let fish_1_value = 0.6;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_fish_1] * fish_1_value * mass_modifier;
+				currency_count[cid.currency_particles] 	+= element_count[eid.element_fish_1] * fish_1_value;
+				break;
+			case eid.element_fish_2:
+				let fish_2_value = 0.8;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_fish_2] * fish_2_value * mass_modifier;
+				currency_count[cid.currency_spirit] 	+= element_count[eid.element_fish_2] * fish_2_value;
+				break;
+			case eid.element_fish_3:
+				let fish_3_value = 1.4;
+				currency_count[cid.currency_mass] 		+= element_count[eid.element_fish_3] * fish_3_value * mass_modifier;
+				currency_count[cid.currency_spirit] 	+= element_count[eid.element_fish_3] * fish_3_value;
+				break;
 			case eid.element_none:
 			default:
 		}
@@ -1571,8 +1611,16 @@ function ElementSample(id) {
 			return "<div class = 'element_sample' style = 'background-color: LightPink;'></div>";
 			break;
 
-		case eid.element_fish:
-			return "<div class = 'element_sample' style = 'background-color: DodgerBlue;'></div>";
+		case eid.element_fish_1:
+			return "<div class = 'element_sample_fish' style = 'background-color: SeaGreen;'></div>";
+			break;
+
+		case eid.element_fish_2:
+			return "<div class = 'element_sample_fish' style = 'background-color: Sienna;'></div>";
+			break;
+
+		case eid.element_fish_3:
+			return "<div class = 'element_sample_fish' style = 'background-color: Salmon;'></div>";
 			break;
 		
 		default:

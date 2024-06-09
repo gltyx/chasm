@@ -135,3 +135,50 @@ function refreshEarthworksWorkersDisplay() {
 			break;
 	}
 }
+
+let earthworks_conveyor_frame = 0;
+let earthworks_conveyor_frame_last = 0;
+function tickEarthworksConveyorDisplay() {
+	earthworks_conveyor_frame++;
+	if (earthworks_conveyor_frame > 6) {
+		earthworks_conveyor_frame = 0;
+	}
+}
+function refreshEarthworksConveyorDisplay() {
+	if (earthworks_conveyor_frame != earthworks_conveyor_frame_last) {
+		earthworks_conveyor_frame_last = earthworks_conveyor_frame;
+		switch (earthworks_conveyor_frame_last) {
+			case 0:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_1.png");
+				break;
+	
+			case 1:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_2.png");
+				break;
+				
+			case 2:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_3.png");
+				break;
+				
+			case 3:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_4.png");
+				break;
+				
+			case 4:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_5.png");
+				break;
+				
+			case 5:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_6.png");
+				break;
+				
+			case 6:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_7.png");
+				break;
+				
+			default:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_1.png");
+				break;
+		}
+	}
+}

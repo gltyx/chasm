@@ -100,6 +100,8 @@ function animation_tick() {
 		$("#incinerator_heat").css("background-color","#fa3c0c");
 	}
 
+	refreshEarthworksConveyorDisplay();
+
 	// Water
 	chasm_storage[sid.storage_water].draw();
 	if (water.current == water.cap) {
@@ -324,6 +326,7 @@ function drop(storage) {
 			if(chasm_storage[sid.storage_earth].drop()) {
 				currency_gain(elementValue(chasm_storage[sid.storage_earth].bitmap.element_count()));
 				chasm_storage[sid.storage_earth].clear();
+				tickEarthworksConveyorDisplay();
 
 				if (chasm_achievements[aid.achievement_babys_first_block].unlocked == false) {
 					chasm_achievements[aid.achievement_babys_first_block].unlock();

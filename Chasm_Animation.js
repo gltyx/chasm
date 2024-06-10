@@ -35,6 +35,9 @@ var color_MkII_slime 		= new color_MkII(0.25, 0.25, 0.10, 0.95, 0.80, 0.80);
 var color_MkII_oil 			= new color_MkII(0.65, 0.65, 0.00, 0.00, 0.80, 0.80);
 var color_MkII_helium 		= new color_MkII(0.87, 0.87, 0.00, 0.00, 0.20, 0.20);
 var color_MkII_water_temp 	= new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
+var color_MkII_fish_1 		= new color_MkII(0.25, 0.33, 0.27, 0.37, 0.90, 0.95);
+var color_MkII_fish_2 		= new color_MkII(0.10, 0.13, 0.36, 0.46, 0.60, 0.70);
+var color_MkII_fish_3 		= new color_MkII(0.00, 0.05, 0.70, 0.75, 0.30, 0.40);
 
 function colorRange(r1, r2, g1, g2, b1, b2) {
 	let r = Math.floor((Math.random() * (r2 - r1)) + r1);
@@ -188,5 +191,28 @@ function refreshEarthworksConveyorDisplay() {
 				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_1.png");
 				break;
 		}
+	}
+}
+
+function fishSize(eid) {
+	let element_fish_1		= 0x0012;
+	let element_fish_2		= 0x0013;
+	let element_fish_3		= 0x0014;
+
+	switch (eid) {
+		case element_fish_1:
+			return [8, 6];
+			break;
+		
+		case element_fish_2:
+			return [12, 6];
+			break;
+
+		case element_fish_3:
+			return [18, 7];
+			break;
+
+		default:
+			return [1, 1];
 	}
 }

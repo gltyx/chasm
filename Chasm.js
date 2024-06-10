@@ -104,7 +104,7 @@ function animation_tick() {
 
 	// Water
 	chasm_storage[sid.storage_water].draw();
-	if (water.current == water.cap) {
+	if (water.current == water.cap && fish_count >= fish_capacity) {
 		// Disable gather
 		$("#water_gather").addClass("disabled");
 		$("#water_gather_progress").removeClass(color_water).addClass(color_disabled);
@@ -200,6 +200,9 @@ var rig_lvl_multi = 0;
 var rig_lvl_decay = 0;
 var rig_lvl_sustain = 0;
 
+var fish_count = 0;
+var fish_capacity = 5;
+
 function game_tick(scalar) {
 	// Incinerator
 	let incinerator_heat_min = 0;
@@ -268,11 +271,17 @@ function game_tick(scalar) {
 	if (chasm_storage[sid.storage_water].workers_gather > 0) {
 		water_gather_amount += 10;
 		water_gather_amount *= chasm_storage[sid.storage_water].workers_gather;
+
+		// Fishing Modifiers
+		if (water.current == water.cap) {
+			water_gather_amount *= 0.1;
+		}
+
 		chasm_storage[sid.storage_water].gather_progress += water_gather_amount * scalar;
 	}
 	$("#water_gather_speed_label").html(DisplayNumberFormatter((water_gather_amount / 100), 2) + " /s");
 	if (chasm_storage[sid.storage_water].gather_progress > 100) {
-		if (water.current == water.cap) {
+		if (water.current == water.cap && fish_count >= fish_capacity) {
 			chasm_storage[sid.storage_water].gather_progress = 100;
 		} else {
 			let cycles = Math.floor(chasm_storage[sid.storage_water].gather_progress / 100);
@@ -314,7 +323,16 @@ function gather(resource) {
 			resource.gain(1);
 			break;
 		case water:
-			resource.gain(1);
+			if (water.current >= water.cap) {
+				// Gain Fish
+				if (fish_count < fish_capacity) {
+					fish_count++;
+					chasm_storage[sid.storage_water].spawnFish();
+					chasm_storage[sid.storage_water].refresh_survey();
+				}
+			} else {
+				resource.gain(1);
+			}
 			break;
 		default:
 	}
@@ -485,6 +503,11 @@ function RigSustainAmount() {
 	if (chasm_upgrades[uid.upgrade_mining_rig_4].unlocked) sustain *= 3;
 	if (chasm_upgrades[uid.upgrade_singularity_mining_rig_2].unlocked) sustain *= 3;
 	return sustain;
+}
+
+function FishingCapacity() {
+	let out = 20;
+	fish_capacity = out;
 }
 
 // +---------------+
@@ -710,6 +733,7 @@ function refresh_ui() {
 	}
 
 	chasm_storage[sid.storage_earth].refresh_survey();
+	chasm_storage[sid.storage_water].refresh_survey();
 	RefreshMaxDepth();
 	RefreshDepthChart();
 	RefreshWaterDepthChart();

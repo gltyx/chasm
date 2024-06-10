@@ -7,6 +7,7 @@ var STORAGE_CANVAS_H_DEFAULT = 64;
 
 var STORAGE_FLAGS_EARTH = 1 << 0;
 var STORAGE_FLAGS_WATER = 1 << 1;
+var STORAGE_FLAGS_FISHING = 1 << 2;
 
 // Resource Initialization
 var earth;
@@ -46,6 +47,7 @@ class _ELEMENT_ID {
 	element_slime		= 0x000f;
 	element_oil 		= 0x0010;
 	element_helium		= 0x0011;
+
 	element_fish_1		= 0x0012;
 	element_fish_2		= 0x0013;
 	element_fish_3		= 0x0014;
@@ -213,6 +215,7 @@ class ELEMENT_PROBABILITY {
 		else if (storage_flags & STORAGE_FLAGS_WATER) {
 			let depth = chasm_storage[sid.storage_water].machinery_depth;
 
+			// Gathering Probability
 			//						| Depth 0	| Depth 1	| Depth 2	| Depth 3	| Depth 4	| Depth 5	| Depth 6	| Depth 7
 			const p_water = 	[	1000,		1000,		1000,		1000,		0,			0,			0,			0		];
 			const p_slime = 	[	0,			0,			0,			0,			1000,		0,			0,			0		];
@@ -235,6 +238,24 @@ class ELEMENT_PROBABILITY {
 			this.element_magma 	+= p_magma_2[depth];
 			portion 			-= p_magma_2[depth];
 
+			// Fishing Probability
+			//						| Depth 0	| Depth 1	| Depth 2	| Depth 3	| Depth 4	| Depth 5	| Depth 6	| Depth 7
+			const p_fish_1 = 	[	600,		0,			0,			0,			0,			0,			0,			0		];
+			const p_fish_2 = 	[	300,		0,			0,			0,			0,			0,			0,			0		];
+			const p_fish_3 = 	[	100,		0,			0,			0,			0,			0,			0,			0		];
+
+			let fish_portion = 1000;
+
+			this.element_fish_1 	+= p_fish_1[depth];
+			fish_portion 			-= p_fish_1[depth];
+
+			this.element_fish_2 	+= p_fish_2[depth];
+			fish_portion 			-= p_fish_2[depth];
+
+			this.element_fish_3 	+= p_fish_3[depth];
+			fish_portion 			-= p_fish_3[depth];
+
+			FishingCapacity();
 			this.display(storage_flags);
 		}
 	}
@@ -386,6 +407,11 @@ class ELEMENT_PROBABILITY {
 
 			out += "<hr>";
 			out += "<p class = 'hcenter' style = 'font-weight: bold;'>Fishing Report</p>";
+			out += "<p class = 'hcenter' style = 'font-size: 12px;'>Storage: ";
+			out += fish_count;
+			out += "/";
+			out += fish_capacity;
+			out += "</p>";
 
 			out += "<div style = 'display: flex;'>";
 			out	+= "<div style = 'display: block;'>";
@@ -512,37 +538,54 @@ class ELEMENT_PROBABILITY {
 		}
 
 		else if (storage_flags & STORAGE_FLAGS_WATER) {
-			if (roll >= portion - this.element_water) {
+			if (storage_flags & STORAGE_FLAGS_FISHING) {
+				// Fishing roll
+				if (roll >= portion - this.element_fish_2) {
+					return eid.element_fish_2;
+				} else {
+					portion -= this.element_fish_2;
+				}
+
+				if (roll >= portion - this.element_fish_3) {
+					return eid.element_fish_3;
+				} else {
+					portion -= this.element_fish_3;
+				}
+	
+				return eid.element_fish_1;				
+			} else {
+				if (roll >= portion - this.element_water) {
+					return eid.element_water;
+				} else {
+					portion -= this.element_water;
+				}
+	
+				if (roll >= portion - this.element_slime) {
+					return eid.element_slime;
+				} else {
+					portion -= this.element_slime;
+				}
+	
+				if (roll >= portion - this.element_oil) {
+					return eid.element_oil;
+				} else {
+					portion -= this.element_oil;
+				}
+	
+				if (roll >= portion - this.element_helium) {
+					return eid.element_helium;
+				} else {
+					portion -= this.element_helium;
+				}
+	
+				if (roll >= portion - this.element_magma) {
+					return eid.element_magma;
+				} else {
+					portion -= this.element_magma;
+				}
+	
 				return eid.element_water;
-			} else {
-				portion -= this.element_water;
 			}
-
-			if (roll >= portion - this.element_slime) {
-				return eid.element_slime;
-			} else {
-				portion -= this.element_slime;
-			}
-
-			if (roll >= portion - this.element_oil) {
-				return eid.element_oil;
-			} else {
-				portion -= this.element_oil;
-			}
-
-			if (roll >= portion - this.element_helium) {
-				return eid.element_helium;
-			} else {
-				portion -= this.element_helium;
-			}
-
-			if (roll >= portion - this.element_magma) {
-				return eid.element_magma;
-			} else {
-				portion -= this.element_magma;
-			}
-
-			return eid.element_water;
 		}
 	}
 }
@@ -605,6 +648,9 @@ function initStorageDisplay() {
 	$("#element_water_oil_sample").html(ElementSample(eid.element_oil));
 	$("#element_water_helium_sample").html(ElementSample(eid.element_helium));
 	$("#element_water_magma_sample").html(ElementSample(eid.element_magma));
+	$("#element_water_fish_1_sample").html(ElementSample(eid.element_fish_1));
+	$("#element_water_fish_2_sample").html(ElementSample(eid.element_fish_2));
+	$("#element_water_fish_3_sample").html(ElementSample(eid.element_fish_3));
 }
 
 // Resource Storage Class - Represents a resource storage box in the gui
@@ -675,6 +721,9 @@ class resource_storage {
 	clear() {
 		this.resource.set(0);
 		this.bricks_stored = 0;
+		if (this.storage_flags & STORAGE_FLAGS_WATER) {
+			fish_count = 0;
+		}
 		this.bitmap.clear();
 		this.draw();
 	}
@@ -762,6 +811,35 @@ class resource_storage {
 			} else if (this.storage_flags & STORAGE_FLAGS_WATER) {
 				this.bitmap.fillRectBits(draw_x, draw_y, 1, this.brick_h, type);
 			}
+		}
+	}
+
+	spawnFish() {
+		// Custom hack job for spawning fish into a filled water storage
+		if (this.storage_flags & STORAGE_FLAGS_WATER) {
+			// Choose fish type
+			let tempflags = this.storage_flags | STORAGE_FLAGS_FISHING;
+			let type = this.probability.roll(tempflags);
+
+			let fish_size = fishSize(type);
+	
+			// Choose spawn location
+			var spawn_x = Math.floor(Math.random() * (this.canvas_w - fish_size[0] - 1)) + 1;
+			var spawn_y = Math.floor(Math.random() * (this.canvas_h - fish_size[1]));
+
+			// Choose fish color
+			let color;
+			if (type == eid.element_fish_1) {
+				color = colorRange_MkII(color_MkII_fish_1);
+			} else if (type == eid.element_fish_2) {
+				color = colorRange_MkII(color_MkII_fish_2);
+			} else if (type == eid.element_fish_3) {
+				color = colorRange_MkII(color_MkII_fish_3);
+			}
+
+			// Draw fish
+			this.bitmap.fillRect(spawn_x, spawn_y, fish_size[0], fish_size[1], color);
+			this.bitmap.fillRectBits(spawn_x, spawn_y, 1, 1, type);
 		}
 	}
 
@@ -1285,6 +1363,27 @@ function stringifyElements(element_count) {
 		out 							+= "</p>";
 	}
 
+	if (element_count[eid.element_fish_1] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";;
+		out 							+= element_count[eid.element_fish_1];
+		out 							+= ElementSample(eid.element_fish_1);
+		out 							+= "</p>";
+	}
+
+	if (element_count[eid.element_fish_2] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";;
+		out 							+= element_count[eid.element_fish_2];
+		out 							+= ElementSample(eid.element_fish_2);
+		out 							+= "</p>";
+	}
+
+	if (element_count[eid.element_fish_3] > 0) {
+		out 							+= "<p style = 'margin-left: 6px;'>";;
+		out 							+= element_count[eid.element_fish_3];
+		out 							+= ElementSample(eid.element_fish_3);
+		out 							+= "</p>";
+	}
+
 	return out;
 }
 
@@ -1399,6 +1498,24 @@ function loadWaterElements(element_count) {
 		$("#element_water_magma_amount").html(DisplayNumberFormatter(element_count[eid.element_magma], 0));
 	} else {
 		$("#element_water_magma").hide();
+	}
+	if (element_count[eid.element_fish_1] > 0) {
+		$("#element_water_fish_1").show();
+		$("#element_water_fish_1_amount").html(DisplayNumberFormatter(element_count[eid.element_fish_1], 0));
+	} else {
+		$("#element_water_fish_1").hide();
+	}
+	if (element_count[eid.element_fish_2] > 0) {
+		$("#element_water_fish_2").show();
+		$("#element_water_fish_2_amount").html(DisplayNumberFormatter(element_count[eid.element_fish_2], 0));
+	} else {
+		$("#element_water_fish_1").hide();
+	}
+	if (element_count[eid.element_fish_3] > 0) {
+		$("#element_water_fish_3").show();
+		$("#element_water_fish_3_amount").html(DisplayNumberFormatter(element_count[eid.element_fish_3], 0));
+	} else {
+		$("#element_water_fish_3").hide();
 	}
 }
 

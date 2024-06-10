@@ -181,6 +181,9 @@ function registerInspectorEvents() {
 	$(".element_slime_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_slime);});});
 	$(".element_oil_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_oil);});});
 	$(".element_helium_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_helium);});});
+	$(".element_fish_1_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fish_1);});});
+	$(".element_fish_2_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fish_2);});});
+	$(".element_fish_3_inspector").each(function(){$(this).mouseenter(function(){showInspector(iid.element_fish_3);});});
 
 	$("#achievement_babys_first_block")			.mouseenter(function(){showInspector(iid.achievement_babys_first_block);});
 	$("#achievement_reality_sprang_a_leak")		.mouseenter(function(){showInspector(iid.achievement_reality_sprang_a_leak);});

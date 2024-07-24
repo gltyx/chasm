@@ -969,7 +969,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Industrial Chimney Sweeps");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_mining_rig_4].cost.stringify());
-			$("#inspector_text")	.html("These extra-large Victorian orphans will keep your smokestacks sparklingly clean.");
+			$("#inspector_text")	.html("These extra-large Victorian orphans will keep your smokestacks sparkling clean.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("3x Mining Rig sustain time");
 			break;

@@ -1311,7 +1311,7 @@ function initUpgrades() {
 			case uid.upgrade_singularity_workers_2:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_singularity_workers_2",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_upgrade_singularity_workers_2.png",
 					[
 					0,		// Particles
 					0,		// Strands
@@ -1349,7 +1349,7 @@ function initUpgrades() {
 			case uid.upgrade_singularity_workers_4:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_singularity_workers_4",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_upgrade_singularity_workers_4.png",
 					[
 					0,		// Particles
 					0,		// Strands
@@ -1558,7 +1558,7 @@ function initUpgrades() {
 			case uid.upgrade_singularity_mining_rig_3:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_singularity_mining_rig_3",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_upgrade_singularity_mining_rig_3.png",
 					[
 					0,		// Particles
 					0,		// Strands

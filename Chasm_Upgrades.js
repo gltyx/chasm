@@ -939,7 +939,7 @@ function initUpgrades() {
 			case uid.upgrade_water_value_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_water_value_1",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_water_value_1.png",
 					[
 					50,		// Particles
 					0,		// Strands

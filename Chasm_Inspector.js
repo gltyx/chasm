@@ -95,6 +95,14 @@ class _INSPECTOR_ID {
 	upgrade_water_storage						= uid.upgrade_water_storage					+ this.offset_upgrades;
 	upgrade_water_bait_1						= uid.upgrade_water_bait_1					+ this.offset_upgrades;
 	upgrade_water_survey_1						= uid.upgrade_water_survey_1				+ this.offset_upgrades;
+	upgrade_water_value_1						= uid.upgrade_water_value_1					+ this.offset_upgrades;
+	upgrade_water_value_2						= uid.upgrade_water_value_2					+ this.offset_upgrades;
+	upgrade_water_value_3						= uid.upgrade_water_value_3					+ this.offset_upgrades;
+	upgrade_water_value_4						= uid.upgrade_water_value_4					+ this.offset_upgrades;
+	upgrade_water_value_5						= uid.upgrade_water_value_5					+ this.offset_upgrades;
+	upgrade_water_value_6						= uid.upgrade_water_value_6					+ this.offset_upgrades;
+	upgrade_water_value_7						= uid.upgrade_water_value_7					+ this.offset_upgrades;
+	upgrade_water_value_8						= uid.upgrade_water_value_8					+ this.offset_upgrades;
 	upgrade_water_depth_1						= uid.upgrade_water_depth_1					+ this.offset_upgrades;
 	upgrade_water_depth_2						= uid.upgrade_water_depth_2					+ this.offset_upgrades;
 	upgrade_water_depth_3						= uid.upgrade_water_depth_3					+ this.offset_upgrades;
@@ -996,6 +1004,70 @@ function showInspector(id) {
 			$("#inspector_text")	.html("The Angler can use his keen knowledge of the sea, the stars, the color of the sunrise, and a high-tech fish-finding sonar to predict exactly what fish you can find at different depths.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("Unlock the Fishing Report");
+			break;
+		case iid.upgrade_water_value_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Blue Dye Number 3");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_1].cost.stringify());
+			$("#inspector_text")	.html("It turns out natural water is clear, not electric blue like the ocean in a movie. Your researches say that a generous dose of food coloring will improve the hydration.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+100% water particle value");
+			break;
+		case iid.upgrade_water_value_2:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_2].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.upgrade_water_value_3:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_3].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.upgrade_water_value_4:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_4].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.upgrade_water_value_5:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_5].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.upgrade_water_value_6:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_6].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.upgrade_water_value_7:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_7].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("");
+			break;
+		case iid.upgrade_water_value_8:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_8].cost.stringify());
+			$("#inspector_text")	.html("");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("");
 			break;
 		case iid.upgrade_water_depth_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Diving Bell");

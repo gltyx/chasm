@@ -1092,6 +1092,9 @@ function elementValue(element_count) { // Returns currency value of all elements
 	let jewel_mass_modifier = 1;
 	if (chasm_upgrades[uid.upgrade_earth_value_11].unlocked) jewel_mass_modifier = jewel_mass_modifier * 3;
 
+	let water_modifier = 1;
+	if (chasm_upgrades[uid.upgrade_water_value_1].unlocked) water_modifier = water_modifier * 2;
+
 	let particle_modifier = 1;
 	if (chasm_upgrades[uid.upgrade_singularity_earth_value_2].unlocked) particle_modifier = particle_modifier * 1.5;
 
@@ -1199,7 +1202,9 @@ function elementValue(element_count) { // Returns currency value of all elements
 				currency_count[cid.currency_soul] 		+= element_count[eid.element_magma] * 1.60;
 				break;
 			case eid.element_water:
-				let water_value = 0.12;
+				let water_value = 0.08;
+				water_value = water_value * water_modifier;
+
 				currency_count[cid.currency_mass] 		+= element_count[eid.element_water] * water_value * mass_modifier;
 				currency_count[cid.currency_particles] 	+= element_count[eid.element_water] * water_value * particle_modifier;
 				break;

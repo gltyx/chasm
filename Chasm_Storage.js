@@ -960,9 +960,15 @@ class resource_storage {
 			this.refresh_survey();
 		} else if (target == "depth") {
 			let out = num;
-
+			
 			// Depth limit
-			let limit = CalculateMaxDepth() - this.machinery_depth;
+			let limit;
+			if (this.storage_flags & STORAGE_FLAGS_EARTH) {
+				limit = CalculateMaxDepth() - this.machinery_depth;
+			}
+			else if (this.storage_flags & STORAGE_FLAGS_WATER) {
+				limit = CalculateWaterMaxDepth() - this.machinery_depth;
+			}
 			if (out > limit) {
 				out = limit;
 			}

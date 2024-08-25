@@ -901,7 +901,7 @@ function initUpgrades() {
 			case uid.upgrade_water_bait_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_water_bait_1",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_water_bait_1.png",
 					[
 					3,		// Particles
 					0,		// Strands
@@ -920,7 +920,7 @@ function initUpgrades() {
 			case uid.upgrade_water_survey_1:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_water_survey_1",
-					"images/tile_research_upgrade_unknown.png",
+					"images/tile_research_water_survey_1.png",
 					[
 					3,		// Particles
 					0,		// Strands
@@ -1595,7 +1595,7 @@ function initUpgrades() {
 					0,		// Goo
 					0,		// Core
 					0,		// Bugs
-					5,		// Singularity
+					8,		// Singularity
 					],
 					reset_level_all
 				);
@@ -2132,7 +2132,7 @@ let upgrade_menu_earth_rows 		= 45;
 let upgrade_map_earth_size			= upgrade_menu_cols * upgrade_menu_earth_rows;
 let upgrade_map_earth 				= new Array(upgrade_map_earth_size);
 
-let upgrade_menu_water_rows			= 24;
+let upgrade_menu_water_rows			= 32;
 let upgrade_map_water_size			= upgrade_menu_cols * upgrade_menu_water_rows;
 let upgrade_map_water 				= new Array(upgrade_map_water_size);
 
@@ -2614,11 +2614,13 @@ function generateResearchMapWater() {
 	}
 
 	// Upgrade Tree
-	upgrade_map_water[mapColRow(1, 2)]		.assign_tile(tid.tile_node, 		uid.upgrade_water_value_1,																											);
+	upgrade_map_water[mapColRow(6, 2)]		.assign_tile(tid.tile_node, 		uid.upgrade_water_value_1,																											);
+	upgrade_map_water[mapColRow(6, 4)]		.assign_tile(tid.tile_node, 		uid.upgrade_water_bait_1,																											);
+	upgrade_map_water[mapColRow(8, 4)]		.assign_tile(tid.tile_node, 		uid.upgrade_water_survey_1,																											);
 
 	// Testing row
-	var test_row = 6;
-	var test_upgrades = [uid.upgrade_water_bait_1, uid.upgrade_water_survey_1, uid.upgrade_water_value_2, uid.upgrade_water_value_3, uid.upgrade_water_value_4, uid.upgrade_water_value_5, uid.upgrade_water_value_6, uid.upgrade_water_value_7, uid.upgrade_water_value_8, uid.upgrade_water_depth_1, uid.upgrade_water_depth_2, uid.upgrade_water_depth_3, uid.upgrade_water_depth_4, uid.upgrade_water_depth_5, uid.upgrade_water_depth_6, uid.upgrade_water_depth_7];
+	var test_row = 10;
+	var test_upgrades = [uid.upgrade_water_value_2, uid.upgrade_water_value_3, uid.upgrade_water_value_4, uid.upgrade_water_value_5, uid.upgrade_water_value_6, uid.upgrade_water_value_7, uid.upgrade_water_value_8, uid.upgrade_water_depth_1, uid.upgrade_water_depth_2, uid.upgrade_water_depth_3, uid.upgrade_water_depth_4, uid.upgrade_water_depth_5, uid.upgrade_water_depth_6, uid.upgrade_water_depth_7];
 	for (let i = 0, col = 1, row = test_row; i < test_upgrades.length; i++) {
 		upgrade_map_water[mapColRow(col, row)].assign_tile(tid.tile_node, test_upgrades[i]);
 		col += 2;

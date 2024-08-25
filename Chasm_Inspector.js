@@ -1014,7 +1014,7 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("+100% water particle value");
 			break;
 		case iid.upgrade_water_value_2:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Value 2");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_2].cost.stringify());
 			$("#inspector_text")	.html("");
@@ -1022,7 +1022,7 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.upgrade_water_value_3:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Value 3");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_3].cost.stringify());
 			$("#inspector_text")	.html("");
@@ -1030,7 +1030,7 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.upgrade_water_value_4:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Value 4");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_4].cost.stringify());
 			$("#inspector_text")	.html("");
@@ -1038,7 +1038,7 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.upgrade_water_value_5:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Value 5");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_5].cost.stringify());
 			$("#inspector_text")	.html("");
@@ -1046,7 +1046,7 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.upgrade_water_value_6:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Value 6");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_6].cost.stringify());
 			$("#inspector_text")	.html("");
@@ -1054,7 +1054,7 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.upgrade_water_value_7:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Value 7");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_7].cost.stringify());
 			$("#inspector_text")	.html("");
@@ -1062,7 +1062,7 @@ function showInspector(id) {
 			$("#inspector_subtext")	.html("");
 			break;
 		case iid.upgrade_water_value_8:
-			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>");
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water Value 8");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_value_8].cost.stringify());
 			$("#inspector_text")	.html("");

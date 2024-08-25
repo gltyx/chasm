@@ -356,6 +356,7 @@ function drop(storage) {
 			if (chasm_storage[sid.storage_water].drop()) {
 				currency_gain(elementValue(chasm_storage[sid.storage_water].bitmap.element_count()));
 				chasm_storage[sid.storage_water].clear();
+				chasm_storage[sid.storage_water].refresh_survey();
 			}
 			break;
 			

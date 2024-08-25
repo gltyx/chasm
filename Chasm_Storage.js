@@ -1514,7 +1514,7 @@ function loadWaterElements(element_count) {
 		$("#element_water_fish_2").show();
 		$("#element_water_fish_2_amount").html(DisplayNumberFormatter(element_count[eid.element_fish_2], 0));
 	} else {
-		$("#element_water_fish_1").hide();
+		$("#element_water_fish_2").hide();
 	}
 	if (element_count[eid.element_fish_3] > 0) {
 		$("#element_water_fish_3").show();

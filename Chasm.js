@@ -206,7 +206,7 @@ var fish_capacity = 5;
 function game_tick(scalar) {
 	// Incinerator
 	let incinerator_heat_min = 0;
-	if (chasm_upgrades[uid.upgrade_mining_rig_3].unlocked) incinerator_heat_min = 20;
+	if (chasm_upgrades[uid.upgrade_mining_rig_3].unlocked) incinerator_heat_min += 10;
 	if (overheat_timer > 0) {
 		overheat_timer -= scalar;
 	} else {

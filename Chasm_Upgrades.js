@@ -2597,7 +2597,9 @@ function generateResearchMapEarth() {
 	upgrade_map_earth[mapColRow(11, 17)]	.assign_tile(tid.tile_connect_ulr, 	uid.upgrade_count,					[uid.upgrade_earth_value_6]																		);
 	upgrade_map_earth[mapColRow(12, 17)]	.assign_tile(tid.tile_connect_ld, 	uid.upgrade_count,					[uid.upgrade_earth_value_6]																		);
 	upgrade_map_earth[mapColRow(10, 18)]	.assign_tile(tid.tile_node, 		uid.upgrade_mining_rig_4,			[uid.upgrade_earth_value_6]				 														);
+	upgrade_map_earth[mapColRow(10, 19)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_mining_rig_4]																		);
 	upgrade_map_earth[mapColRow(12, 18)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_drop_speed_2,		[uid.upgrade_earth_value_6]				 														);
+	upgrade_map_earth[mapColRow(12, 19)]	.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_drop_speed_2]																);
 	
 	// Intro Workers Zone
 	upgrade_map_earth[mapColRow(10, 2)]		.assign_tile(tid.tile_node, 		uid.upgrade_workers_1,																												);

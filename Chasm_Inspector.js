@@ -71,6 +71,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_value_9						= uid.upgrade_earth_value_9					+ this.offset_upgrades;
 	upgrade_earth_value_10						= uid.upgrade_earth_value_10				+ this.offset_upgrades;
 	upgrade_earth_value_11						= uid.upgrade_earth_value_11				+ this.offset_upgrades;
+	upgrade_earth_value_12						= uid.upgrade_earth_value_12				+ this.offset_upgrades;
 	upgrade_earth_chance_1						= uid.upgrade_earth_chance_1				+ this.offset_upgrades;
 	upgrade_earth_chance_2						= uid.upgrade_earth_chance_2				+ this.offset_upgrades;
 	upgrade_earth_chance_3						= uid.upgrade_earth_chance_3				+ this.offset_upgrades;
@@ -804,7 +805,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_10].cost.stringify());
 			$("#inspector_text")	.html("This is a much cooler way to store all your metal before dumping it into the Chasm. Sometimes you like to build little castles out of the metal bricks.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+300% metal particle mass");
+			$("#inspector_subtext")	.html("+200% metal particle mass");
 			break;
 		case iid.upgrade_earth_value_11:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Jewel Pods");
@@ -812,7 +813,15 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_11].cost.stringify());
 			$("#inspector_text")	.html("Your environmental crimes have forever changed the chemical makeup of the soil beneath your feet. All the jewels in your mine are now mango-bubblegum flavor. Touching them permanently stains your hands though.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+300% jewel particle mass");
+			$("#inspector_subtext")	.html("+200% jewel particle mass");
+			break;
+		case iid.upgrade_earth_value_12:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Coal Doping");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_12].cost.stringify());
+			$("#inspector_text")	.html("Pumping nitrogen into your coal deposits reduces the oxygen content of the porous rock, making the coal burn hotter and longer. Doesn't get the coal high.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+50% coal particle value");
 			break;
 		case iid.upgrade_earth_chance_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fifty Shades of Green");

@@ -789,7 +789,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_8].cost.stringify());
 			$("#inspector_text")	.html("Your researchers have created a machine that enriches coal to be much more fuel-dense, at the cost of being slightly more incredibly harmful for the ozone layer.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+200% coal particle value");
+			$("#inspector_subtext")	.html("+100% coal particle value");
 			break;
 		case iid.upgrade_earth_value_9:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Poison Swamp");
@@ -1309,7 +1309,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_singularity_earth_value_1].cost.stringify());
 			$("#inspector_text")	.html("You accidentally set the mines on fire, and the vast coal seams contain enough energy to burn for decades. On the plus side, flaming coal is worth more than regular coal.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+200% coal particle value");
+			$("#inspector_subtext")	.html("+100% coal particle value");
 			break;
 		case iid.upgrade_singularity_earth_value_2:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>The Atoms Family Issue #1");

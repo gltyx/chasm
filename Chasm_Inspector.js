@@ -121,6 +121,7 @@ class _INSPECTOR_ID {
 	upgrade_workers_9							= uid.upgrade_workers_9						+ this.offset_upgrades;
 	upgrade_workers_10							= uid.upgrade_workers_10					+ this.offset_upgrades;
 	upgrade_workers_11							= uid.upgrade_workers_11					+ this.offset_upgrades;
+	upgrade_workers_12							= uid.upgrade_workers_12					+ this.offset_upgrades;
 	upgrade_challenge_ecocide					= uid.upgrade_challenge_ecocide				+ this.offset_upgrades;
 	upgrade_singularity_workers_1				= uid.upgrade_singularity_workers_1			+ this.offset_upgrades;
 	upgrade_singularity_workers_2				= uid.upgrade_singularity_workers_2			+ this.offset_upgrades;
@@ -985,7 +986,7 @@ function showInspector(id) {
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Water storage");
 			$("#inspector_cost")	.css("display", "flex");
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_storage].cost.stringify());
-			$("#inspector_text")	.html("Dumping water into the Chasm might speed things up, but you'll have to build some water tanks first");
+			$("#inspector_text")	.html("Dumping water into the Chasm might speed things up, but you'll have to build a water pumping station first.");
 			$("#inspector_subtext")	.html("Unlock Waterworks");
 			$("#inspector_divider")	.css("display", "block");
 			break;
@@ -1212,6 +1213,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("Winner of the 1994 Gas Station Olympics in Barcelona. He's no longer in his prime, but he is still pretty good at fueling vehicles.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+1 Worker<br>+1s Mining Rig sustain");
+			break;
+		case iid.upgrade_workers_12:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Dedicated Salaryman");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_12].cost.stringify());
+			$("#inspector_text")	.html("This guy will do anything for a moderate salary and some really bad healthcare. His job is the center of the universe, his reason for being. He is the perfect drone.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+1 Worker");
 			break;
 		case iid.upgrade_challenge_ecocide:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Ecocide Prevention");

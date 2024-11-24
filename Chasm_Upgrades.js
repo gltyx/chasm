@@ -80,28 +80,29 @@ class _UPGRADE_ID {
 	upgrade_workers_9					= 0x003f;	// +1 Worker / +20% metal value
 	upgrade_workers_10					= 0x0040;	// +1 Worker / +30% copper value
 	upgrade_workers_11					= 0x0041;	// +1 Worker / +20% metal value
+	upgrade_workers_12					= 0x0042;	// +1 Worker
 	
-	upgrade_challenge_ecocide			= 0x0042;	// Ecocide Challenge
+	upgrade_challenge_ecocide			= 0x0043;	// Ecocide Challenge
 	
 	// Singularity upgrades
-	upgrade_singularity_workers_1		= 0x0043;	// +1 Worker per reset
-	upgrade_singularity_workers_2		= 0x0044;	// +1 Worker
-	upgrade_singularity_workers_3		= 0x0045;	// +1 Worker
-	upgrade_singularity_workers_4		= 0x0046;	// +1 Worker
-	upgrade_singularity_workers_5		= 0x0047;	// +2 Worker
-	upgrade_singularity_workers_6		= 0x0048;	// Keep worker upgrades on reset
-	upgrade_singularity_workers_7		= 0x0049;	// +0.5 Worker per reset
-	upgrade_singularity_workers_8		= 0x004a;	// +0.25 Worker per reset
-	upgrade_singularity_earth_value_1	= 0x004b;	// 3x coal particle value
-	upgrade_singularity_earth_value_2	= 0x004c;	// 1.5x singularity particle gain
-	upgrade_singularity_survey_1		= 0x004d;	// +1 Effective Survey
-	upgrade_singularity_survey_2		= 0x004e;	// +base jewel particle chance
-	upgrade_singularity_mining_rig_1	= 0x004f;	// Keep Mining Rig upgrades on reset
-	upgrade_singularity_mining_rig_2	= 0x0050;	// Mining rig sustain x3
-	upgrade_singularity_mining_rig_3	= 0x0051;	// Mining rig decay 50% slower
-	upgrade_singularity_ascend_1		= 0x0052;	// Singularity base cost -25%
+	upgrade_singularity_workers_1		= 0x0044;	// +1 Worker per reset
+	upgrade_singularity_workers_2		= 0x0045;	// +1 Worker
+	upgrade_singularity_workers_3		= 0x0046;	// +1 Worker
+	upgrade_singularity_workers_4		= 0x0047;	// +1 Worker
+	upgrade_singularity_workers_5		= 0x0048;	// +2 Worker
+	upgrade_singularity_workers_6		= 0x0049;	// Keep worker upgrades on reset
+	upgrade_singularity_workers_7		= 0x004a;	// +0.5 Worker per reset
+	upgrade_singularity_workers_8		= 0x004b;	// +0.25 Worker per reset
+	upgrade_singularity_earth_value_1	= 0x004c;	// 3x coal particle value
+	upgrade_singularity_earth_value_2	= 0x004d;	// 1.5x singularity particle gain
+	upgrade_singularity_survey_1		= 0x004e;	// +1 Effective Survey
+	upgrade_singularity_survey_2		= 0x004f;	// +base jewel particle chance
+	upgrade_singularity_mining_rig_1	= 0x0050;	// Keep Mining Rig upgrades on reset
+	upgrade_singularity_mining_rig_2	= 0x0051;	// Mining rig sustain x3
+	upgrade_singularity_mining_rig_3	= 0x0052;	// Mining rig decay 50% slower
+	upgrade_singularity_ascend_1		= 0x0053;	// Singularity base cost -25%
 	
-	upgrade_count						= 0x0053;
+	upgrade_count						= 0x0054;
 } var uid = new _UPGRADE_ID();
 
 class _CHASM_UPGRADE {
@@ -1430,6 +1431,25 @@ function initUpgrades() {
 				);
 				break;
 
+			case uid.upgrade_workers_12:
+				chasm_upgrades[i] = new _CHASM_UPGRADE(
+					"upgrade_workers_12",
+					"images/tile_research_upgrade_unknown.png",
+					[
+					500,	// Particles
+					0,		// Strands
+					0,		// Spirit
+					0,		// Soul
+					100,	// Anticapital
+					0,		// Goo
+					0,		// Core
+					0,		// Bugs
+					0,		// Singularity
+					],
+					reset_level_singularity
+				);
+				break;
+
 			case uid.upgrade_challenge_ecocide:
 				chasm_upgrades[i] = new _CHASM_UPGRADE(
 					"upgrade_challenge_ecocide",
@@ -1987,6 +2007,10 @@ function buy_upgrade(upgrade_id, free) {
 			case uid.upgrade_workers_11:
 				chasm_currency[cid.currency_workers].resource.gain(1);
 				RefreshMiningRig();
+				break;
+
+			case uid.upgrade_workers_12:
+				chasm_currency[cid.currency_workers].resource.gain(1);
 				break;
 
 			case uid.upgrade_singularity_workers_1:
@@ -2592,8 +2616,10 @@ function generateResearchMapEarth() {
 	upgrade_map_earth[mapColRow(12, 12)]	.assign_tile(tid.tile_connect_urd, 	uid.upgrade_count,					[uid.upgrade_workers_6]																			);
 	upgrade_map_earth[mapColRow(13, 12)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_9,				[uid.upgrade_workers_6]																			);
 	upgrade_map_earth[mapColRow(11, 11)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_11,				[uid.upgrade_workers_6]																			);
-	upgrade_map_earth[mapColRow(12, 13)]	.assign_tile(tid.tile_connect_ul, 	uid.upgrade_count,					[uid.upgrade_workers_6]																			);
+	upgrade_map_earth[mapColRow(12, 13)]	.assign_tile(tid.tile_connect_uld, 	uid.upgrade_count,					[uid.upgrade_workers_6]																			);
 	upgrade_map_earth[mapColRow(11, 13)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_10,				[uid.upgrade_workers_6]																			);
+	upgrade_map_earth[mapColRow(12, 14)]	.assign_tile(tid.tile_connect_ur, 	uid.upgrade_count,					[uid.upgrade_workers_6]																			);
+	upgrade_map_earth[mapColRow(13, 14)]	.assign_tile(tid.tile_node, 		uid.upgrade_workers_12,				[uid.upgrade_workers_6]																			);
 
 	// Testing row
 	var test_row = 35;

@@ -72,6 +72,7 @@ class _INSPECTOR_ID {
 	upgrade_earth_value_10						= uid.upgrade_earth_value_10				+ this.offset_upgrades;
 	upgrade_earth_value_11						= uid.upgrade_earth_value_11				+ this.offset_upgrades;
 	upgrade_earth_value_12						= uid.upgrade_earth_value_12				+ this.offset_upgrades;
+	upgrade_earth_value_13						= uid.upgrade_earth_value_13				+ this.offset_upgrades;
 	upgrade_earth_chance_1						= uid.upgrade_earth_chance_1				+ this.offset_upgrades;
 	upgrade_earth_chance_2						= uid.upgrade_earth_chance_2				+ this.offset_upgrades;
 	upgrade_earth_chance_3						= uid.upgrade_earth_chance_3				+ this.offset_upgrades;
@@ -822,6 +823,14 @@ function showInspector(id) {
 			$("#inspector_text")	.html("Pumping nitrogen into your coal deposits reduces the oxygen content of the porous rock, making the coal burn hotter and longer. Doesn't get the coal high.");
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("+50% coal particle value");
+			break;
+		case iid.upgrade_earth_value_13:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Warehouse Expansion");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_value_13].cost.stringify());
+			$("#inspector_text")	.html("Your growing industrial facility demands a larger storage space for supplies and intermediary products. This upgrade will especially improve your bulk resource processing.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+25% Void Particle gain");
 			break;
 		case iid.upgrade_earth_chance_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Fifty Shades of Green");

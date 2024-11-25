@@ -1102,6 +1102,7 @@ function elementValue(element_count) { // Returns currency value of all elements
 	if (chasm_upgrades[uid.upgrade_water_value_1].unlocked) water_modifier = water_modifier * 2;
 
 	let particle_modifier = 1;
+	if (chasm_upgrades[uid.upgrade_earth_value_13].unlocked) particle_modifier = particle_modifier * 1.25;
 	if (chasm_upgrades[uid.upgrade_singularity_earth_value_2].unlocked) particle_modifier = particle_modifier * 1.5;
 
 	let anticapital_modifier = 1;

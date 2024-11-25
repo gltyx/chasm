@@ -2595,9 +2595,8 @@ function generateResearchMapEarth() {
 	upgrade_map_earth[mapColRow(7, 16)]		.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_value_7]																		);
 	upgrade_map_earth[mapColRow(7, 17)]		.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_value_7]																		);
 	upgrade_map_earth[mapColRow(5, 15)]		.assign_tile(tid.tile_connect_ld, 	uid.upgrade_count,					[uid.upgrade_earth_depth_2]																		);
-	upgrade_map_earth[mapColRow(5, 16)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_2,		[uid.upgrade_earth_depth_2]													 					);
-	upgrade_map_earth[mapColRow(5, 17)]		.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,					[uid.upgrade_earth_density_2]																	);
-	upgrade_map_earth[mapColRow(5, 18)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_10,			[uid.upgrade_earth_density_2]																	);
+	upgrade_map_earth[mapColRow(5, 17)]		.assign_tile(tid.tile_connect_ud, 	uid.upgrade_count,																													);
+	upgrade_map_earth[mapColRow(5, 18)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_10,																											);
 	upgrade_map_earth[mapColRow(5, 19)]		.assign_tile(tid.tile_connect_ur, 	uid.upgrade_count,					[uid.upgrade_earth_value_10]																	);
 	upgrade_map_earth[mapColRow(6, 19)]		.assign_tile(tid.tile_connect_lrd, 	uid.upgrade_count,					[uid.upgrade_earth_value_10],		[uid.upgrade_earth_value_12]								);
 	upgrade_map_earth[mapColRow(7, 18)]		.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_12,			[uid.upgrade_earth_value_7]																		);
@@ -2611,6 +2610,7 @@ function generateResearchMapEarth() {
 	upgrade_map_earth[mapColRow(2, 22)]		.assign_tile(tid.tile_challenge, 	uid.upgrade_challenge_ecocide,																										);
 
 	upgrade_map_earth[mapColRow(9, 25)]		.assign_tile(tid.tile_node, 		uid.upgrade_mining_rig_3,																											);
+	upgrade_map_earth[mapColRow(11, 25)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_density_2													 														);
 	
 	upgrade_map_earth[mapColRow(11, 16)]	.assign_tile(tid.tile_node, 		uid.upgrade_earth_value_6,						 																					);
 	upgrade_map_earth[mapColRow(10, 17)]	.assign_tile(tid.tile_connect_rd, 	uid.upgrade_count,					[uid.upgrade_earth_value_6]																		);

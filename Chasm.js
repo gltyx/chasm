@@ -270,6 +270,7 @@ function game_tick(scalar) {
 	let water_gather_amount = 0;
 	if (chasm_storage[sid.storage_water].workers_gather > 0) {
 		water_gather_amount += 10;
+		if (chasm_upgrades[uid.upgrade_water_gather_speed_1].unlocked) water_gather_amount *= 1.2;
 		water_gather_amount *= chasm_storage[sid.storage_water].workers_gather;
 
 		// Fishing Modifiers

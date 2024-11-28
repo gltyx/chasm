@@ -105,6 +105,7 @@ class _INSPECTOR_ID {
 	upgrade_water_value_6						= uid.upgrade_water_value_6					+ this.offset_upgrades;
 	upgrade_water_value_7						= uid.upgrade_water_value_7					+ this.offset_upgrades;
 	upgrade_water_value_8						= uid.upgrade_water_value_8					+ this.offset_upgrades;
+	upgrade_water_gather_speed_1				= uid.upgrade_water_gather_speed_1			+ this.offset_upgrades;
 	upgrade_water_depth_1						= uid.upgrade_water_depth_1					+ this.offset_upgrades;
 	upgrade_water_depth_2						= uid.upgrade_water_depth_2					+ this.offset_upgrades;
 	upgrade_water_depth_3						= uid.upgrade_water_depth_3					+ this.offset_upgrades;
@@ -878,7 +879,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_gather_speed_1].cost.stringify());
 			$("#inspector_text")	.html("Keeping your handle slippery helps to prevent blisters. It's shovel scented.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+25% earth gathering speed");
+			$("#inspector_subtext")	.html("+25% earthworks gathering speed");
 			break;
 		case iid.upgrade_earth_gather_speed_2:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Carcinization");
@@ -886,7 +887,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_earth_gather_speed_2].cost.stringify());
 			$("#inspector_text")	.html("Exposure to all this stinky pollution has slightly changed your genetic code. You are now 3% crab: the crustacean so nice, they made it twice. Your claws make digging a little easier, and everything else a lot harder.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+10% earth gathering speed");
+			$("#inspector_subtext")	.html("+10% earthworks gathering speed");
 			break;
 		case iid.upgrade_earth_drop_speed_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Pulley System");
@@ -1088,6 +1089,14 @@ function showInspector(id) {
 			$("#inspector_divider")	.css("display", "block");
 			$("#inspector_subtext")	.html("");
 			break;
+		case iid.upgrade_water_gather_speed_1:
+			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Muscular Pumps");
+			$("#inspector_cost")	.css("display", "flex");
+			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_water_gather_speed_1].cost.stringify());
+			$("#inspector_text")	.html("Hit a new PR by sending your pumps to the gym. Now they look pretty swole.");
+			$("#inspector_divider")	.css("display", "block");
+			$("#inspector_subtext")	.html("+20% waterworks gathering speed");
+			break;
 		case iid.upgrade_water_depth_1:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Diving Bell");
 			$("#inspector_cost")	.css("display", "flex");
@@ -1214,7 +1223,7 @@ function showInspector(id) {
 			$("#inspector_cost")	.html(chasm_upgrades[uid.upgrade_workers_9].cost.stringify());
 			$("#inspector_text")	.html("The cowboys of the modern construction crew. A short ride on the iron stallion will shatter even the most stubborn boulders. They are also really good on a pogo stick.");
 			$("#inspector_divider")	.css("display", "block");
-			$("#inspector_subtext")	.html("+1 Worker<br>+10% Earth Gather Speed");
+			$("#inspector_subtext")	.html("+1 Worker<br>+10% earthworks gathering speed");
 			break;
 		case iid.upgrade_workers_10:
 			$("#inspector_title")	.html("<img src = '" + chasm_upgrades[id - iid.offset_upgrades].upgrade_image + "' class = 'pixelart' width = '25' height = '25' style = 'margin-right: 6px;'>Italian Plumber");

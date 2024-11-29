@@ -17,9 +17,27 @@ class color_MkII {
 }
 
 var color_MkII_earth 		= new color_MkII(0.08, 0.12, 0.11, 0.28, 0.30, 0.47);
+var color_MkII_stone 		= new color_MkII(0.00, 0.00, 0.50, 0.60, 0.00, 0.00);
+var color_MkII_coal			= new color_MkII(0.08, 0.12, 0.01, 0.10, 0.01, 0.05);
 var color_MkII_copper 		= new color_MkII(0.07, 0.11, 0.56, 0.68, 0.50, 0.63);
+var color_MkII_iron 		= new color_MkII(0.55, 0.60, 0.55, 0.60, 0.15, 0.20);
+var color_MkII_lead 		= new color_MkII(0.00, 0.00, 0.20, 0.30, 0.00, 0.00);
+var color_MkII_gold 		= new color_MkII(0.05, 0.10, 0.60, 0.70, 0.70, 0.80);
+var color_MkII_fossil 		= new color_MkII(0.09, 0.12, 0.70, 0.80, 0.10, 0.20);
+var color_MkII_emerald 		= new color_MkII(0.30, 0.35, 0.20, 0.30, 0.85, 0.95);
+var color_MkII_sapphire		= new color_MkII(0.59, 0.64, 0.50, 0.60, 0.70, 0.90);
+var color_MkII_ruby			= new color_MkII(0.00, 0.05, 0.70, 0.80, 0.80, 0.90);
+var color_MkII_diamond		= new color_MkII(0.55, 0.60, 0.93, 0.96, 0.01, 0.04);
+var color_MkII_magma		= new color_MkII(0.02, 0.12, 0.90, 0.95, 0.90, 0.95);
+var color_MkII_magma_2		= new color_MkII(0.08, 0.08, 0.90, 0.90, 0.90, 0.90);
 var color_MkII_water 		= new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
+var color_MkII_slime 		= new color_MkII(0.25, 0.25, 0.10, 0.95, 0.80, 0.80);
+var color_MkII_oil 			= new color_MkII(0.65, 0.65, 0.00, 0.00, 0.80, 0.80);
+var color_MkII_helium 		= new color_MkII(0.87, 0.87, 0.00, 0.00, 0.20, 0.20);
 var color_MkII_water_temp 	= new color_MkII(0.62, 0.62, 0.10, 0.95, 0.80, 0.80);
+var color_MkII_fish_1 		= new color_MkII(0.25, 0.33, 0.27, 0.37, 0.90, 0.95);
+var color_MkII_fish_2 		= new color_MkII(0.10, 0.13, 0.36, 0.46, 0.60, 0.70);
+var color_MkII_fish_3 		= new color_MkII(0.00, 0.05, 0.70, 0.75, 0.30, 0.40);
 
 function colorRange(r1, r2, g1, g2, b1, b2) {
 	let r = Math.floor((Math.random() * (r2 - r1)) + r1);
@@ -67,4 +85,134 @@ function colorRange_MkII(color) {
 	
 	//console.log("colorRange_MkII() Color Generated: " + r + "r " + g + "g " + b + "b");
 	return {r, g, b};
+}
+
+function refreshEarthworksWorkersDisplay() {
+	switch (chasm_storage[sid.storage_earth].workers_gather) {
+		case 0:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4.png");
+			break;
+
+		case 1:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num1.png");
+			break;
+			
+		case 2:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num2.png");
+			break;
+			
+		case 3:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num3.png");
+			break;
+			
+		case 4:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num4.png");
+			break;
+			
+		case 5:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num5.png");
+			break;
+			
+		case 6:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num6.png");
+			break;
+			
+		case 7:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num7.png");
+			break;
+			
+		case 8:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num8.png");
+			break;
+			
+		case 9:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num9.png");
+			break;
+			
+		case 10:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num10.png");
+			break;
+			
+		default:
+			$("#earthworks_worker_graphic").attr("src", "images/earthworks_workers_scaled_x4_num11.png");
+			break;
+	}
+}
+
+let earthworks_conveyor_frame = 0;
+let earthworks_conveyor_frame_last = 0;
+function tickEarthworksConveyorDisplay() {
+	earthworks_conveyor_frame++;
+	if (earthworks_conveyor_frame > 8) {
+		earthworks_conveyor_frame = 0;
+	}
+}
+function refreshEarthworksConveyorDisplay() {
+	if (earthworks_conveyor_frame != earthworks_conveyor_frame_last) {
+		earthworks_conveyor_frame_last = earthworks_conveyor_frame;
+		switch (earthworks_conveyor_frame_last) {
+			case 0:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_1.png");
+				break;
+	
+			case 1:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_2.png");
+				break;
+	
+			case 2:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_2-1.png");
+				break;
+				
+			case 3:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_3.png");
+				break;
+				
+			case 4:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_3-1.png");
+				break;
+				
+			case 5:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_4.png");
+				break;
+				
+			case 6:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_5.png");
+				break;
+				
+			case 7:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_6.png");
+				break;
+				
+			case 8:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_7.png");
+				break;
+				
+			default:
+				$("#earthworks_conveyor_graphic").attr("src", "images/earthworks_conveyor_frame_1.png");
+				break;
+		}
+	}
+}
+
+function fishSize(eid) {
+	let element_fish_1		= 0x0012;
+	let element_fish_2		= 0x0013;
+	let element_fish_3		= 0x0014;
+
+	switch (eid) {
+		case element_fish_1:
+			return [8, 6];
+			break;
+		
+		case element_fish_2:
+			return [12, 6];
+			break;
+
+		case element_fish_3:
+			return [18, 7];
+			break;
+
+		default:
+			return [1, 1];
+	}
 }

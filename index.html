@@ -3,26 +3,27 @@
 <head>
 	<title>Chasm</title>
 	<meta charset = "utf-8">
+	<link rel = "icon" type = "image/x-icon" href = "images/favicon.png">
 
 	<!--Library sources-->
 		<!--jQuery-->
-		<script src="jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script src = "https://code.jquery.com/jquery-3.6.0.min.js" integrity = "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin = "anonymous"></script>
 
 		<!--bignumber.js-->
-		<script src='bignumber.min.js'></script>
+		<script src = "https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js"></script>
 
 		<!--Materialize-->
-    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    	<link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+    	<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    	<script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 		<!--Remote lib_chasm source-->
-		<script type = "text/javascript" src = "lib_chasm.js"></script>
-		<script type = "text/javascript" src = "lib_chasm_timing.js"></script>
-		<script type = "text/javascript" src = "lib_chasm_logging.js"></script>
-		<script type = "text/javascript" src = "lib_chasm_save.js"></script>
-		<!--
-		<!--<script type = "text/javascript" src = "lib_chasm_math.js"></script>-->
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm.js"></script>
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_timing.js"></script>
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_logging.js"></script>
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_save.js"></script>
+		<script type = "text/javascript" src = "https://blooperly.github.io/lib_chasm/source/lib_chasm_math.js"></script>
+		<!--Remote lib_chasm source end-->
 
 		<!--Local lib_chasm source (for parallel development)-->
 		<!--
@@ -30,7 +31,8 @@
 		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_timing.js"></script>
 		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_logging.js"></script>
 		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_save.js"></script>
-		<!--<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_math.js"></script>-->
+		<script type = "text/javascript" src = "../lib_chasm/source/lib_chasm_math.js"></script>
+		<!--Local lib_chasm source end-->
 
 		<!--Game script source-->
 		<script type = "text/javascript" src = "./Chasm_Achievements.js"></script>
@@ -46,65 +48,118 @@
 </head>
 
 <body onload = "game_init();">
-	<script src="chs.js"></script>
-	<script src="core.js"></script>
+
 	<!--Navbar-->
-	<nav class = "nav-extended noble">
+	<nav class = "nav-extended noble" style = "min-width: 1280px;">
 		<!--Upper Navbar-->
 		<div class = "nav-wrapper blue-grey darken-2">
 			
 			<!--Title-->
 			<div id = "chasm_title">
-				<p class = "brand-logo">Chasm<i class = "material-icons ">call_to_action</i></p>
+				<p class = "brand-logo" style = "font-size: 32px; left: 34px; transform: none;">Chasm<i class = "material-icons">call_to_action</i></p>
 			</div>
 
-			<!--Sidenav Button-->
-			<a href = "#" data-target = "chasm_sidenav" class = "sidenav-trigger"><i class = "material-icons">menu</i></a>
-
 			<!--lib_chasm link-->
-			<ul class = "right hide-on-med-and-down vertcenter">
-				<li><a href = "https://github.com/Blooperly/lib_chasm" target = ”_blank” style = "vertical-align: middle;" draggable = "false"><img src = "images/GitHub-Mark-32px.png" style = "vertical-align: middle;"><span style = "margin-left: 8px; margin-top: 8px;">lib_chasm <span id = "lib_chasm_version" style = "color: lightSlateGray">x.x.x</span></span></a></li>
+			<ul class = "right vertcenter">
+				<li><a href = "https://github.com/Blooperly/lib_chasm" target = ”_blank” style = "vertical-align: middle;" draggable = "false"><img src = "images/GitHub-Mark-32px.png" class = "noble" style = "vertical-align: middle;"><span style = "margin-left: 8px; margin-top: 8px;">lib_chasm <span id = "lib_chasm_version" style = "color: lightSlateGray">x.x.x</span></span></a></li>
 			</ul>
 		</div>
 
 		<!--Lower Navbar-->
-		<div class = "nav-content blue-grey darken-1 hide-on-med-and-down">
+		<div class = "nav-content blue-grey darken-1">
 		  	<ul class = "tabs tabs-transparent">
 				<li class = "tab"><a id = "tab_chasm" 			class = "active" 			href = "#resource_box" 		draggable = "false">Chasm</a></li>
 				<li class = "tab"><a id = "tab_research" 		style = "display: none;"  	href = "#upgrades_box" 		draggable = "false">Research</a></li>
 				<li class = "tab"><a id = "tab_achievements" 	style = "display: none;" 	href = "#achievements_box" 	draggable = "false">Achievements</a></li>
-				<li class = "tab"><a id = "tab_debug" 										href = "#debug_box" 		draggable = "false">Debug</a></li>
+				<li class = "tab"><a id = "tab_debug" 										href = "#debug_box" 		draggable = "false">Options</a></li>
 		  	</ul>
 		</div>
 	</nav>
-	
-	<!--Sidenav-->
-	<ul id = "chasm_sidenav" class = "sidenav noble">
-		<ul class = "tabs-vertical">
-			<li class = "tab"><a class = "active" href = "#resource_box" draggable = "false">Chasm</a></li>
-			<li class = "tab"><a href = "#upgrades_box" draggable = "false">Research</a></li>
-			<li class = "tab"><a href = "#achievements_box" draggable = "false">Achievements</a></li>
-			<li class = "tab"><a href = "#debug_box" draggable = "false">Debug</a></li>
-		</ul>
-	</ul>
 
 	<!--Game-->
-	<div id = "game_box" class = "container noble" style = "display: none;">
+	<div id = "game_box" class = "container noble" style = "display: none; min-width: 1280px;">
 		<div class = "row">
 
 			<!--Left Column-->
-			<div id = "left_col" class = "col s12 m3">
+			<div id = "left_col" class = "col m3">
 				<!--Currency Box-->
 				<div id = "currency_box" class = "card blue-grey darken-1">
-					<div class = "card-content white-text" style = "display: flex;">
+					<!--Mass-->
+					<div class = "card-content white-text" style = "display: flex; justify-content: center;">
+						<div style = "display: block;">
+							<div id = "currency_mass_symbol" class = "currency_mass currency_line vertcenter">
+								<i class = "material-icons grey-text text-darken-4 currency_icon_mass">archive</i>
+							</div>
+						</div>
+						<div style = "display: block;">
+							<div id = "currency_mass_value" class = "currency_mass currency_line currency_amount vertcenter">
+								<p><span id = "currency_mass_amount"></span></p>
+							</div>
+						</div>
+					</div>
+					
+					<p id = "singularity_percent_label" class = "hcenter white-text" style = "font-size: 14px;"></p>
+					<div id = "singularity_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+						<div id = "singularity_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear; background-image: linear-gradient(to bottom right, red, DarkSlateBlue)"></div>
+					</div>
 
+					<div id = "singularity_jump_info">
+						<div class = "flex white-text" style = "margin-top: 6px; justify-content: center;">
+							<div class = "unflex">
+								<p style = "margin-right: 3px;">+<span id = "singularity_jump_amount"></span></p>
+							</div>
+							<div class = "unflex">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">adjust</i>
+							</div>
+						</div>
+						<div style = "text-align: center;">
+							<input type = "button" style = "font-size: 12px; margin-top: 4px;" onclick = "singularity_reset();" value = "Jump" />
+						</div>
+					</div>
+
+					<hr>
+
+					<!--Production Resources-->
+					<div class = "card-content black-text">
+						<p class = "hcenter" style = "font-weight: bold;">Production Resources</p>
+					</div>
+					<div class = "card-content white-text" style = "display: flex;">
 						<!--Currency Icons-->
 						<div style = "display: block;">
 							<!--Workers-->
-							<div id = "currency_workers_symbol" class = "currency_workers currency_line vertcenter" style = "display: none">
-								<i class = "material-icons purple-text text-lighten-3 currency_icon">face</i>
+							<div id = "currency_workers_symbol" class = "currency_workers currency_line vertcenter">
+								<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers">face</i>
+							</div>
+							
+							<!--Machinery-->
+							<div id = "currency_machinery_symbol" class = "currency_machinery currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon currency_machinery">toys</i>
+							</div>
+						</div>
+
+						<!--Currency Values-->
+						<div style = "display: block;">
+							<!--Workers-->
+							<div id = "currency_workers_value" class = "currency_workers currency_line currency_amount vertcenter">
+								<p><span id = "currency_workers_amount"></span></p>
 							</div>
 
+							<!--Machinery-->
+							<div id = "currency_machinery_value" class = "currency_machinery currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_machinery_amount"></span></p>
+							</div>
+						</div>
+					</div>
+
+					<hr>
+
+					<!--Standard Currency-->
+					<div class = "card-content black-text">
+						<p class = "hcenter" style = "font-weight: bold;">Currency</p>
+					</div>
+					<div class = "card-content white-text" style = "display: flex;">
+						<!--Currency Icons-->
+						<div style = "display: block;">
 							<!--Void Particles-->
 							<div id = "currency_particles_symbol" class = "currency_particles currency_line vertcenter" style = "display: none">
 								<i class = "material-icons purple-text text-lighten-3 currency_icon">blur_circular</i>
@@ -115,24 +170,39 @@
 								<i class = "material-icons amber-text text-lighten-1 currency_icon">gesture</i>
 							</div>
 	
-							<!--Spirit Sand-->
-							<div id = "currency_spirit_symbol" class = "currency_spirit currency_line vertcenter" style = "display: none">
-								<i class = "material-icons green-text text-lighten-2 currency_icon">flare</i>
+							<!--Anticapital-->
+							<div id = "currency_capital_symbol" class = "currency_capital currency_line vertcenter" style = "display: none">
+								<i class = "material-icons light-green-text text-lighten-2 currency_icon">money_off</i>
 							</div>
 	
 							<!--Soul Splinters-->
 							<div id = "currency_soul_symbol" class = "currency_soul currency_line vertcenter" style = "display: none">
 								<i class = "material-icons red-text text-lighten-2 currency_icon">whatshot</i>
 							</div>
+	
+							<!--Spirit Sand-->
+							<div id = "currency_spirit_symbol" class = "currency_spirit currency_line vertcenter" style = "display: none">
+								<i class = "material-icons green-text text-lighten-2 currency_icon">flare</i>
+							</div>
+	
+							<!--Goo-->
+							<div id = "currency_goo_symbol" class = "currency_goo currency_line vertcenter" style = "display: none">
+								<i class = "material-icons orange-text text-lighten-1 currency_icon">bubble_chart</i>
+							</div>
+	
+							<!--Core-->
+							<div id = "currency_core_symbol" class = "currency_core currency_line vertcenter" style = "display: none">
+								<i class = "material-icons pink-text text-lighten-3 currency_icon">album</i>
+							</div>
+	
+							<!--Bugs-->
+							<div id = "currency_bugs_symbol" class = "currency_bugs currency_line vertcenter" style = "display: none">
+								<i class = "material-icons teal-text text-lighten-3 currency_icon">bug_report</i>
+							</div>
 						</div>
 
 						<!--Currency Values-->
 						<div style = "display: block;">
-							<!--Workers-->
-							<div id = "currency_workers_value" class = "currency_workers currency_line currency_amount vertcenter" style = "display: none">
-								<p><span id = "currency_workers_amount"></span></p>
-							</div>
-
 							<!--Void Particles-->
 							<div id = "currency_particles_value" class = "currency_particles currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_particles_amount"></span></p>
@@ -143,14 +213,130 @@
 								<p><span id = "currency_strands_amount"></span></p>
 							</div>
 
-							<!--Spirit Sand-->
-							<div id = "currency_spirit_value" class = "currency_spirit currency_line currency_amount vertcenter" style = "display: none">
-								<p><span id = "currency_spirit_amount"></span></p>
+							<!--Anticapital-->
+							<div id = "currency_capital_value" class = "currency_capital currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_capital_amount"></span></p>
 							</div>
 
 							<!--Soul Splinters-->
 							<div id = "currency_soul_value" class = "currency_soul currency_line currency_amount vertcenter" style = "display: none">
 								<p><span id = "currency_soul_amount"></span></p>
+							</div>
+
+							<!--Spirit Sand-->
+							<div id = "currency_spirit_value" class = "currency_spirit currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_spirit_amount"></span></p>
+							</div>
+
+							<!--Goo-->
+							<div id = "currency_goo_value" class = "currency_goo currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_goo_amount"></span></p>
+							</div>
+
+							<!--Core-->
+							<div id = "currency_core_value" class = "currency_core currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_core_amount"></span></p>
+							</div>
+
+							<!--Bugs-->
+							<div id = "currency_bugs_value" class = "currency_bugs currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_bugs_amount"></span></p>
+							</div>
+						</div>
+					</div>
+
+					<hr>
+
+					<!--Singularity Currency-->
+					<div class = "card-content black-text">
+						<p class = "hcenter" style = "font-weight: bold;">Singularity Currency</p>
+					</div>
+					<div class = "card-content white-text" style = "display: flex;">
+						<!--Currency Icons-->
+						<div style = "display: block;">
+							<!--Singularity Marbles-->
+							<div id = "currency_singularity_symbol" class = "currency_singularity currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">adjust</i>
+							</div>
+							<!--Challenge 1 Tokens-->
+							<div id = "currency_challenge_1_symbol" class = "currency_challenge_1 currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_challenge_1">stars</i>
+							</div>
+							<!--Challenge 2 Tokens-->
+							<div id = "currency_challenge_2_symbol" class = "currency_challenge_2 currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">stars</i>
+							</div>
+							<!--Challenge 3 Tokens-->
+							<div id = "currency_challenge_3_symbol" class = "currency_challenge_3 currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">stars</i>
+							</div>
+							<!--Challenge 4 Tokens-->
+							<div id = "currency_challenge_4_symbol" class = "currency_challenge_4 currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">stars</i>
+							</div>
+							<!--Challenge 5 Tokens-->
+							<div id = "currency_challenge_5_symbol" class = "currency_challenge_5 currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">stars</i>
+							</div>
+							<!--Challenge 6 Tokens-->
+							<div id = "currency_challenge_6_symbol" class = "currency_challenge_6 currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">stars</i>
+							</div>
+							<!--Challenge 7 Tokens-->
+							<div id = "currency_challenge_7_symbol" class = "currency_challenge_7 currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">stars</i>
+							</div>
+							<!--Challenge 8 Tokens-->
+							<div id = "currency_challenge_8_symbol" class = "currency_challenge_8 currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">stars</i>
+							</div>
+							<!--Challenge 9 Tokens-->
+							<div id = "currency_challenge_9_symbol" class = "currency_challenge_9 currency_line vertcenter" style = "display: none">
+								<i class = "material-icons grey-text text-darken-4 currency_icon gradient_singularity">stars</i>
+							</div>
+						</div>
+
+						<!--Currency Values-->
+						<div style = "display: block;">
+							<!--Singularity Marbles-->
+							<div id = "currency_singularity_value" class = "currency_singularity currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_singularity_amount"></span></p>
+							</div>
+							<!--Challenge 1 Tokens-->
+							<div id = "currency_challenge_1_value" class = "currency_challenge_1 currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_challenge_1_amount"></span></p>
+							</div>
+							<!--Challenge 2 Tokens-->
+							<div id = "currency_challenge_2_value" class = "currency_challenge_2 currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_challenge_2_amount"></span></p>
+							</div>
+							<!--Challenge 3 Tokens-->
+							<div id = "currency_challenge_3_value" class = "currency_challenge_3 currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_challenge_3_amount"></span></p>
+							</div>
+							<!--Challenge 4 Tokens-->
+							<div id = "currency_challenge_4_value" class = "currency_challenge_4 currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_challenge_4_amount"></span></p>
+							</div>
+							<!--Challenge 5 Tokens-->
+							<div id = "currency_challenge_5_value" class = "currency_challenge_5 currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_challenge_5_amount"></span></p>
+							</div>
+							<!--Challenge 6 Tokens-->
+							<div id = "currency_challenge_6_value" class = "currency_challenge_6 currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_challenge_6_amount"></span></p>
+							</div>
+							<!--Challenge 7 Tokens-->
+							<div id = "currency_challenge_7_value" class = "currency_challenge_7 currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_challenge_7_amount"></span></p>
+							</div>
+							<!--Challenge 8 Tokens-->
+							<div id = "currency_challenge_8_value" class = "currency_challenge_8 currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_challenge_8_amount"></span></p>
+							</div>
+							<!--Challenge 9 Tokens-->
+							<div id = "currency_challenge_9_value" class = "currency_challenge_9 currency_line currency_amount vertcenter" style = "display: none">
+								<p><span id = "currency_challenge_9_amount"></span></p>
 							</div>
 						</div>
 					</div>
@@ -158,139 +344,539 @@
 			</div>
 
 			<!--Middle Column-->
-			<div id = "mid_col" class = "col s12 m6">
+			<div id = "mid_col" class = "col m6">
 				<!--Resource Box-->
 				<div id = "resource_box">
 
 					<!--Earth-->
-					<div id = "earth_box" class = "card blue-grey lighten-4">
-						<!--Storage-->
-						<div class = "flex">
-							<div style = "height: 66px; width: 66px;">
-								<canvas id = "earth_storage" width = "66" height = "66"></canvas>
-							</div>
+					<div id = "earth_section">
+						<div style = "height: 200px; position: relative;">
+							<img src = "images/earthworks_scaled_x4.png" class = "noble" style = "position: absolute;">
+							<img id = "earthworks_worker_graphic" src = "images/earthworks_workers_scaled_x4.png" class = "noble" style = "position: absolute;">
+							<img id = "earthworks_conveyor_graphic" src = "images/earthworks_conveyor_frame_1.png" class = "noble" style = "position: absolute;">
+						</div>
+						<div style = "padding-top: 2px; padding-bottom: 8px; padding-left: 12px; background-color: black;">
+							<!--Storage-->
+							<div class = "flex">
+								<div style = "height: 66px; width: 66px;">
+									<canvas id = "earth_storage" width = "66" height = "66"></canvas>
+								</div>
 
-							<div class = "unflex">
-								<p class = "resource_title">Earth</p>
-								<div id = "element_earth_amount" class = "resource_info vertcenter"></div>
-								<div id = "value_earth_amount" class = "resource_info vertcenter"></div>
+								<div class = "unflex" style = "margin-left: 10px; width: 86%; background-color: white; border-radius: 3px;">
+									<p class = "resource_title">Earthworks</p>
+									<div id = "element_earth_amount" class = "resource_info vertcenter">
+										<p>Stored: </p>
+										<span id = "element_earth_earth" class = "element_earth_inspector flex vertcenter">
+											<p id = "element_earth_earth_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_earth_sample"></span>
+										</span>
+										<span id = "element_earth_stone" class = "element_stone_inspector flex vertcenter">
+											<p id = "element_earth_stone_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_stone_sample"></span>
+										</span>
+										<span id = "element_earth_coal" class = "element_coal_inspector flex vertcenter">
+											<p id = "element_earth_coal_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_coal_sample"></span>
+										</span>
+										<span id = "element_earth_copper" class = "element_copper_inspector flex vertcenter">
+											<p id = "element_earth_copper_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_copper_sample"></span>
+										</span>
+										<span id = "element_earth_iron" class = "element_iron_inspector flex vertcenter">
+											<p id = "element_earth_iron_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_iron_sample"></span>
+										</span>
+										<span id = "element_earth_lead" class = "element_lead_inspector flex vertcenter">
+											<p id = "element_earth_lead_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_lead_sample"></span>
+										</span>
+										<span id = "element_earth_gold" class = "element_gold_inspector flex vertcenter">
+											<p id = "element_earth_gold_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_gold_sample"></span>
+										</span>
+										<span id = "element_earth_fossil" class = "element_fossil_inspector flex vertcenter">
+											<p id = "element_earth_fossil_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_fossil_sample"></span>
+										</span>
+										<span id = "element_earth_emerald" class = "element_emerald_inspector flex vertcenter">
+											<p id = "element_earth_emerald_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_emerald_sample"></span>
+										</span>
+										<span id = "element_earth_sapphire" class = "element_sapphire_inspector flex vertcenter">
+											<p id = "element_earth_sapphire_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_sapphire_sample"></span>
+										</span>
+										<span id = "element_earth_ruby" class = "element_ruby_inspector flex vertcenter">
+											<p id = "element_earth_ruby_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_ruby_sample"></span>
+										</span>
+										<span id = "element_earth_diamond" class = "element_diamond_inspector flex vertcenter">
+											<p id = "element_earth_diamond_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_diamond_sample"></span>
+										</span>
+										<span id = "element_earth_magma" class = "element_magma_inspector flex vertcenter">
+											<p id = "element_earth_magma_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_earth_magma_sample"></span>
+										</span>
+									</div>
+									<div id = "value_earth_amount" class = "resource_info vertcenter">
+										<p>Value: </p>
+										<span id = "value_earth_particles" class = "currency_particles flex">
+											<p id = "value_earth_particles_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons purple-text text-lighten-3 currency_icon'>blur_circular</i>
+										</span>
+										<span id = "value_earth_strands" class = "currency_strands flex">
+											<p id = "value_earth_strands_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons amber-text text-darken-1 currency_icon'>gesture</i>
+										</span>
+										<span id = "value_earth_capital" class = "currency_capital flex">
+											<p id = "value_earth_capital_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons light-green-text currency_icon'>money_off</i>
+										</span>
+										<span id = "value_earth_soul" class = "currency_soul flex">
+											<p id = "value_earth_soul_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>
+										</span>
+										<span id = "value_earth_spirit" class = "currency_spirit flex">
+											<p id = "value_earth_spirit_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons green-text text-lighten-2 currency_icon'>flare</i>
+										</span>
+										<span id = "value_earth_mass" class = "currency_mass flex">
+											<p id = "value_earth_mass_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons grey-text text-darken-4 currency_icon'>archive</i>
+										</span>
+									</div>
+								</div>
 							</div>
 						</div>
-
-						<div class = "flex">
-							<!--Gather-->
-							<div class = "gather_button" style = "width: 88px;">
-								<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
-									<div id = "earth_gather_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
-								</div>
-								
-								<!--Gather button (deprecated)
-								<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
-								-->
-
-								<p class = "hcenter" style = "font-weight: bold;">Gather</p>
-								
-								<!--Workers Arrows-->
-								<form>
+						<div id = "earth_box" class = "card">
+							<div class = "flex">
+								<div class = "unflex">
 									<div class = "flex">
-										<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(-1, 'gather')" value = "<" />
-										<div class = "hcenter" style = "width: 40px;">
-											<p id = "earth_workers_gather">0</p>
+										<!--Gather-->
+										<div class = "gather_button">
+											<div id = "earth_gather_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+												<div id = "earth_gather_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
+											</div>
+											
+											<!--Gather button (deprecated)
+											<a id = "earth_gather" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "gather(earth)">Gather</a>
+											-->
+
+											<p class = "hcenter" style = "font-weight: bold;">Gather</p>
+											
+											<!--Workers Arrows-->
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'gather')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "earth_workers_gather">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'gather')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+													</div>
+												</div>
+											</form>
+											<p id = "earth_gather_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
+
+											<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
+												<form>
+													<!--Auto-gather checkbox (deprecated)-->
+													<!--
+													<p><label style = "zoom: 0.75;">
+													<input type = "checkbox" id = "earth_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
+													<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
+													</label></p>
+													-->
+													
+													<!--Workers Slider (deprecated)-->
+													<!--
+													<p class = "range-field">
+													<input type = "range" id = "earth_gather_workers" min = "0" max = "20" />
+													<span class = "thumb" style = "height: 0px; width: 0px; top: 10px; margin-left: 7px; left: 131.878px;">
+													</p>
+													-->
+												</form>
+											</div>
 										</div>
-										<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'gather')" value = ">" />
-										<div class = "hcenter" style = "margin: auto;">
-											<p style = "font-size: 8px;">workers</p>
+
+										<!--Drop-->
+										<div class = "drop_button">
+											<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+												<div id = "earth_drop_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
+											</div>
+											
+											<!--Drop button (deprecated)
+											<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "drop('earth_storage')">Drop</a>
+											-->
+
+											<p class = "hcenter" style = "font-weight: bold;">Drop</p>
+											
+											<!--Workers Arrows-->
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'drop')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "earth_workers_drop">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'drop')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+													</div>
+												</div>
+											</form>
+											<p id = "earth_drop_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
+
+											<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
+												<form>
+												</form>
+											</div>
 										</div>
 									</div>
-								</form>
 
-								<div id = "earth_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; padding-top: 4px;">
-									<form>
-										<!--Auto-gather checkbox (deprecated)-->
-										<!--
-										<p><label style = "zoom: 0.75;">
-										<input type = "checkbox" id = "earth_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
-										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-										</label></p>
-										-->
-										
-										<!--Workers Slider (deprecated)-->
-										<!--
-										<p class = "range-field">
-										<input type = "range" id = "earth_gather_workers" min = "0" max = "20" />
-										<span class = "thumb" style = "height: 0px; width: 0px; top: 10px; margin-left: 7px; left: 131.878px;">
-										</p>
-										-->
-									</form>
-								</div>
-							</div>
-
-							<!--Drop-->
-							<div class = "drop_button" style = "width: 88px;">
-								<div id = "earth_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
-									<div id = "earth_drop_progress" class = "determinate" style = "width: 0%"></div>
-								</div>
-								<a id = "earth_drop" class = "waves-effect waves-light btn disabled brown darken-3" style = "width: 88px;" onclick = "drop('earth_storage')">Drop</a>
-								<div id = "earth_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
-									<form>
-										<!--Workers Arrows-->
-										<div class = "flex">
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(-1, 'drop')" value = "<" />
-											<div class = "hcenter" style = "width: 40px;">
-												<p id = "earth_workers_drop">0</p>
+									<!--Mining Rig-->
+									<div id = "incinerator_box">
+										<div id = "incinerator_box_content" style = "visibility: hidden;">
+											<p class = "hcenter" style = "font-weight: bold;">Mining Rig</p>
+											<p id = "mining_rig_percent_label" class = "hcenter" style = "font-size: 12px;">0.0%</p>
+											<div id = "incinerator_heat_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px; margin-top: 1px;">
+												<div id = "incinerator_heat" class = "determinate" style = "background-color: #fa3c0c; width: 30%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
 											</div>
-											<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_workers(1, 'drop')" value = ">" />
-											<div class = "hcenter" style = "margin: auto;">
-												<p style = "font-size: 8px;">workers</p>
+											<p id = "mining_rig_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 3px;">Gather speed: 1.00x</p>
+											<div style = "text-align: center;">
+												<input type = "button" style = "font-size: 12px;" onclick = "incinerator_stoke();" value = "Stoke" />
+											</div>
+											<hr>
+											<div id = "incinerator_upgrades_content" class = "flex" style = "visibility: hidden;">
+												<div style = "width: 110px;">
+													<div class = "flex" style = "margin-bottom: 8px;">
+														<input type = "button" style = "font-size: 12px; margin-right: 4px;" onclick = "rigUpgradeMulti();" value = "Buy" />
+														<p id = "mining_rig_multi_cost" style = "font-size: 12px;"></p>
+														<i class = 'material-icons amber-text text-darken-1 currency_icon'>gesture</i>
+													</div>
+													<div class = "flex" style = "margin-bottom: 8px;">
+														<input type = "button" style = "font-size: 12px; margin-right: 4px;" onclick = "rigUpgradeDecay();" value = "Buy" />
+														<p id = "mining_rig_decay_cost" style = "font-size: 12px;"></p>
+														<i class = 'material-icons red-text currency_icon'>whatshot</i>
+													</div>
+													<div class = "flex">
+														<input type = "button" style = "font-size: 12px; margin-right: 4px;" onclick = "rigUpgradeSustain();" value = "Buy" />
+														<p id = "mining_rig_sustain_cost" style = "font-size: 12px;"></p>
+														<i class = 'material-icons purple-text text-lighten-2 currency_icon'>blur_circular</i>
+													</div>
+												</div>
+												<div style = "width: 40px;">
+													<div class = "unflex" style = "margin-bottom: 12px;">
+														<p style = "font-size: 12px; text-align: right;">Max:</p>
+													</div>
+													<div class = "unflex" style = "margin-bottom: 12px;">
+														<p style = "font-size: 12px; text-align: right;">Decay:</p>
+													</div>
+													<div class = "unflex">
+														<p style = "font-size: 12px; text-align: right;">Sustain:</p>
+													</div>
+												</div>
+												<div style = "width: 35px; padding-left:4px;">
+													<div class = "flex" style = "margin-bottom: 12px;">
+														<p style = "font-size: 12px;">x<span id = "mining_rig_multi_amount"></span></p>
+													</div>
+													<div class = "flex" style = "margin-bottom: 12px;">
+														<p style = "font-size: 12px;"><span id = "mining_rig_decay_amount"></span>%</p>
+													</div>
+													<div class = "flex">
+														<p style = "font-size: 12px;"><span id = "mining_rig_sustain_amount"></span>s</p>
+													</div>
+												</div>
 											</div>
 										</div>
-									</form>
+									</div>
+								</div>
+
+								<!--Survey-->
+								<div id = "earth_survey" class = "survey_chart" style = "width: 126px; height: fit-content; border: 1px dashed whitesmoke; border-radius: 4px; margin-right: 8px;">
+									<div id = "earth_survey_content" style = "visibility: hidden;">
+										<p class = "hcenter" style = "font-weight: bold;">Survey</p>
+										
+										<!--Workers Arrows-->
+										<div style = "width: 102px; margin: auto;">
+											<form>
+												<div class = "flex">
+													<div style = "width: 8px;"></div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, -1, 'survey')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "earth_workers_survey">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_workers, 1, 'survey')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+													</div>
+												</div>
+											</form>
+										</div>
+
+										<div id = "earth_survey_menu" style = "padding-left: 6px; padding-right: 6px; display: flex; width: 126px;">
+										</div>
+									</div>
+								</div>
+
+								<!--Depth-->
+								<div id = "earth_depth" style = "width: 106px; height: 307px; border: 1px dashed whitesmoke; border-radius: 4px;">
+									<div id = "earth_depth_content" style = "visibility: hidden;">
+										<p class = "hcenter" style = "font-weight: bold;">Depth</p>
+										
+										<!--Machinery Arrows-->
+										<div style = "width: 88px; margin: auto;">
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_machinery, -1, 'depth')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "earth_machinery_depth">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_earth].manage_production_resource(cid.currency_machinery, 1, 'depth')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_machinery" style = "margin-right: 0px;">toys</i>
+													</div>
+												</div>
+											</form>
+										</div>
+
+										<p id = "max_depth_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">Max Depth 0</p>
+
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #259721;"></div><div id = "depth_chart_0" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #8a4c28;"></div><div id = "depth_chart_1" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #5c2f15;"></div><div id = "depth_chart_2" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #45210c;"></div><div id = "depth_chart_3" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #291204;"></div><div id = "depth_chart_4" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #1f0d02;"></div><div id = "depth_chart_5" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #000000;"></div><div id = "depth_chart_6" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #b00c09;"></div><div id = "depth_chart_7" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+
+										<p id = "drop_penalty_label" class = "hcenter" style = "font-size: 12px; margin-top: 4px; margin-bottom: 4px;"></p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					
 					<!--Water-->
-					<div id = "water_box" class = "card blue-grey lighten-4" style = "display: none;">
-						<!--Storage-->
-						<div class = "flex">
-							<div style = "height: 66px; width: 66px;">
-								<canvas id = "water_storage" width = "66" height = "66"></canvas>
-							</div>
+					<div id = "water_section" style = "display: none;">
+						<div style = "margin-top: 18px; margin-bottom: 8px; padding-left: 12px;">
+							<!--Storage-->
+							<div class = "flex">
+								<div style = "height: 66px; width: 66px;">
+									<canvas id = "water_storage" width = "66" height = "66"></canvas>
+								</div>
 
-							<div class = "unflex">
-								<p class = "resource_title">Water</p>
-								<div id = "element_water_amount" class = "resource_info vertcenter"></div>
-								<div id = "value_water_amount" class = "resource_info vertcenter"></div>
+								<div class = "unflex">
+									<p class = "resource_title">Waterworks</p>
+									<div id = "element_water_amount" class = "resource_info vertcenter">
+										<p>Stored: </p>
+										<span id = "element_water_water" class = "element_water_inspector flex vertcenter">
+											<p id = "element_water_water_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_water_sample"></span>
+										</span>
+										<span id = "element_water_slime" class = "element_slime_inspector flex vertcenter">
+											<p id = "element_water_slime_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_slime_sample"></span>
+										</span>
+										<span id = "element_water_oil" class = "element_oil_inspector flex vertcenter">
+											<p id = "element_water_oil_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_oil_sample"></span>
+										</span>
+										<span id = "element_water_helium" class = "element_helium_inspector flex vertcenter">
+											<p id = "element_water_helium_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_helium_sample"></span>
+										</span>
+										<span id = "element_water_magma" class = "element_magma_inspector flex vertcenter">
+											<p id = "element_water_magma_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_magma_sample"></span>
+										</span>
+										<span id = "element_water_fish_1" class = "element_fish_1_inspector flex vertcenter">
+											<p id = "element_water_fish_1_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_fish_1_sample"></span>
+										</span>
+										<span id = "element_water_fish_2" class = "element_fish_2_inspector flex vertcenter">
+											<p id = "element_water_fish_2_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_fish_2_sample"></span>
+										</span>
+										<span id = "element_water_fish_3" class = "element_fish_3_inspector flex vertcenter">
+											<p id = "element_water_fish_3_amount" style = 'margin-left: 6px;'></p>
+											<span id = "element_water_fish_3_sample"></span>
+										</span>
+									</div>
+									<div id = "value_water_amount" class = "resource_info vertcenter">
+										<p>Value: </p>
+										<span id = "value_water_particles" class = "currency_particles flex">
+											<p id = "value_water_particles_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons purple-text text-lighten-3 currency_icon'>blur_circular</i>
+										</span>
+										<span id = "value_water_strands" class = "currency_strands flex">
+											<p id = "value_water_strands_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons amber-text text-darken-1 currency_icon'>gesture</i>
+										</span>
+										<span id = "value_water_capital" class = "currency_capital flex">
+											<p id = "value_water_capital_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons light-green-text currency_icon'>money_off</i>
+										</span>
+										<span id = "value_water_soul" class = "currency_soul flex">
+											<p id = "value_water_soul_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons red-text text-lighten-2 currency_icon'>whatshot</i>
+										</span>
+										<span id = "value_water_spirit" class = "currency_spirit flex">
+											<p id = "value_water_spirit_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons green-text text-lighten-2 currency_icon'>flare</i>
+										</span>
+										<span id = "value_water_goo" class = "currency_goo flex">
+											<p id = "value_water_goo_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons orange-text text-lighten-1 currency_icon'>bubble_chart</i>
+										</span>
+										<span id = "value_water_core" class = "currency_core flex">
+											<p id = "value_water_core_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons pink-text text-lighten-3 currency_icon'>album</i>
+										</span>
+										<span id = "value_water_bugs" class = "currency_bugs flex">
+											<p id = "value_water_bugs_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons teal-text text-lighten-3 currency_icon'>bug_report</i>
+										</span>
+										<span id = "value_water_mass" class = "currency_mass flex">
+											<p id = "value_water_mass_amount" style = 'margin-left: 6px;'></p><i class = 'material-icons grey-text text-darken-4 currency_icon'>archive</i>
+										</span>
+									</div>
+								</div>
 							</div>
 						</div>
+						<div id = "water_box" class = "card blue-grey lighten-4">
+							<div class = "flex">
+								<div class = "unflex">
+									<div class = "flex">
+										<!--Gather-->
+										<div class = "gather_button">
+											<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+												<div id = "water_gather_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
+											</div>
 
-						<div class = "flex">
-							<!--Gather-->
-							<div class = "gather_button" style = "width: 88px;">
-								<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
-									<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
-								</div>
-								<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
-								<div id = "water_gather_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
-									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
-										<input type = "checkbox" id = "water_gather_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
-										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-									</label></p></form></div>
-								</div>
-							</div>
+											<p class = "hcenter" style = "font-weight: bold;">Gather</p>
+											
+											<!--Workers Arrows-->
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_workers, -1, 'gather')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "water_workers_gather">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_workers, 1, 'gather')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+													</div>
+												</div>
+											</form>
+											<p id = "water_gather_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
+										</div>
 
-							<!--Drop-->
-							<div style = "width: 71px;">
-								<div id = "water_drop_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
-									<div id = "water_drop_progress" class = "determinate" style = "width: 0%"></div>
+										<!--Gather Button (deprecated)
+										<div class = "gather_button" style = "width: 88px;">
+											<div id = "water_gather_progress_bkg" class = "progress blue-grey lighten-4" style = "margin-bottom: 1px">
+												<div id = "water_gather_progress" class = "determinate" style = "width: 0%"></div>
+											</div>
+											<a id = "water_gather" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 88px;" onclick = "gather(water)">Gather</a>
+										</div>-->
+
+										<!--Drop-->
+										<div class = "drop_button">
+											<div id = "water_drop_progress_bkg" class = "progress blue-grey lighten-5" style = "margin-bottom: 1px">
+												<div id = "water_drop_progress" class = "determinate" style = "width: 0%; transition: width 0.05s linear; -webkit-transition: width 0.05s linear;"></div>
+											</div>
+
+											<p class = "hcenter" style = "font-weight: bold;">Drop</p>
+											
+											<!--Workers Arrows-->
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_workers, -1, 'drop')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "water_workers_drop">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_workers, 1, 'drop')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_workers" style = "margin-right: 0px; margin-bottom: 4px;">face</i>
+													</div>
+												</div>
+											</form>
+											<p id = "water_drop_speed_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">0 /s</p>
+										</div>
+									</div>
+
+									<!--Bait-->
+									<div id = "bait_box">
+										<div id = "bait_box_content" style = "visibility: hidden;">
+											<p class = "hcenter" style = "font-weight: bold;">Bait Box</p>
+										</div>
+									</div>
 								</div>
-								<a id = "water_drop" class = "waves-effect waves-light btn disabled blue lighten-2" style = "width: 71px;" onclick = "drop('water_storage')">Drop</a>
-								<div id = "water_drop_menu" class = "hidden" style = "border: 1px dashed whitesmoke; border-top: none; padding-top: 4px;">
-									<div style = "padding-top: 4px;"><form><p><label style = "zoom: 0.75;">
-										<input type = "checkbox" id = "water_drop_checkbox" class = "filled-in" checked = "checked" style = "position: relative;" />
-										<span style = "padding-left: 24px; display: inline; color: black;">Auto</span>
-									</label></p></form></div>
+
+								<!--Fishing Report-->
+								<div id = "water_survey" class = "survey_chart" style = "width: 126px; min-height: 307px; border: 1px dashed whitesmoke; border-radius: 4px; margin-right: 8px;">
+									<div id = "water_survey_content" style = "visibility: hidden;">
+										<p class = "hcenter" style = "font-weight: bold;">Fluid Report</p>
+
+										<div id = "water_survey_menu" style = "padding-left: 6px; padding-right: 6px; width: 126px;">
+										</div>
+									</div>
+								</div>
+								
+								<!--Depth-->
+								<div id = "water_depth" style = "width: 106px; height: 307px; border: 1px dashed whitesmoke; border-radius: 4px;">
+									<div id = "water_depth_content" style = "visibility: hidden;">
+										<p class = "hcenter" style = "font-weight: bold;">Depth</p>
+										
+										<!--Machinery Arrows-->
+										<div style = "width: 88px; margin: auto;">
+											<form>
+												<div class = "flex">
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_machinery, -1, 'depth')" value = "<" />
+													<div class = "hcenter" style = "width: 40px;">
+														<p id = "water_machinery_depth">0</p>
+													</div>
+													<input type = "button" class = "worker_button" onclick = "chasm_storage[sid.storage_water].manage_production_resource(cid.currency_machinery, 1, 'depth')" value = ">" />
+													<div class = "hcenter" style = "margin: auto;">
+														<i class = "material-icons grey-text text-darken-4 currency_icon currency_machinery" style = "margin-right: 0px;">toys</i>
+													</div>
+												</div>
+											</form>
+										</div>
+
+										<p id = "max_water_depth_label" class = "hcenter" style = "font-size: 12px; margin-bottom: 4px;">Max Depth 0</p>
+
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #00b9e7;"></div><div id = "water_depth_chart_0" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #127acf;"></div><div id = "water_depth_chart_1" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #072066;"></div><div id = "water_depth_chart_2" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #b5eaff;"></div><div id = "water_depth_chart_3" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #0ebb1d;"></div><div id = "water_depth_chart_4" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #000000;"></div><div id = "water_depth_chart_5" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #ffa4bb;"></div><div id = "water_depth_chart_6" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+										<div class = "flex">
+											<div class = "depth_chart_cell" style = "background-color: #b00c09;"></div><div id = "water_depth_chart_7" class = "vertcenter" style = "font-size: 14px;"></div>
+										</div>
+
+										<p id = "water_drop_penalty_label" class = "hcenter" style = "font-size: 12px; margin-top: 4px; margin-bottom: 4px;"></p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -299,7 +885,22 @@
 	
 				<!--Upgrades Box-->
 				<div id = "upgrades_box">
-					<div id = "research_map" class = "flex" style = "font-size: 0px; width: 600px; margin: auto;">
+					<div class = "flex" style = "width: 600px; margin: auto;">
+						<div style = "height: 24px; padding-top: 1px; padding-left: 8px; padding-right: 8px; background-image: url('images/research_bkg.png');" onclick = "change_research_tab(0);">
+							<p style = "color: whitesmoke;">Earth</p>
+						</div>
+						<div id = "water_upgrades_tab" style = "height: 24px; padding-top: 1px; padding-left: 8px; padding-right: 8px; background-image: url('images/research_bkg_water.png');" class = "hidden" onclick = "change_research_tab(1);">
+							<p style = "color: whitesmoke;">Water</p>
+						</div>
+						<div style = "height: 24px; padding-top: 1px; padding-left: 8px; padding-right: 8px; background-image: url('images/research_bkg_singularity.png');" onclick = "change_research_tab(2);">
+							<p style = "color: whitesmoke;">Singularity</p>
+						</div>
+					</div>
+					<div id = "research_map_earth" class = "flex" style = "font-size: 0px; width: 600px; margin: auto;">
+					</div>
+					<div id = "research_map_water" class = "flex" style = "font-size: 0px; width: 600px; margin: auto; display: none;">
+					</div>
+					<div id = "research_map_singularity" class = "flex" style = "font-size: 0px; width: 600px; margin: auto; display: none;">
 					</div>
 				</div>
 	
@@ -307,23 +908,75 @@
 				<div id = "achievements_box" style = "font-size: 0px; width: 600px; margin: auto;">
 				</div>
 	
-				<!--Debug Box-->
-				<div id = "debug_box" class = "card blue-grey lighten-4">
-					<a id = "debug_free_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_free_upgrades();">Free Upgrades</a>
-					<a id = "debug_reprice_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text disabled" onclick = "debug_reprice_upgrades();">Re-price Upgrades</a>
-					<a id = "debug_unlock_achievements" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_unlock_achievements();">Unlock Achievements</a>
-					<a id = "debug_gain_100_each" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_gain_100_each();">Gain 100 of each resource</a>
-					<a id = "debug_save_game" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_save();">Save</a>
+				<!--Options Tab-->
+				<div id = "debug_box" class = "flex">
+					<!--Save Data Box-->
+					<div style = "width: 240px;">
+						<p style = "font-family: Tahoma, sans-serif; font-weight: bold; margin-left: 15px;">Save Data</p>
+						
+						<div id = "savedata_box" class = "card" style = "background-color: #b0bbbf !important; padding: 5px 5px 5px 5px; margin-bottom: 10px;">
+							<div style = "text-align: center;">
+								<p>Achievements: <span id = "achievement_count"></span></p>
+								<p>Playtime: <span id = "total_playtime"></span></p>
+								<p>Singularity: <span id = "total_sing_time"></span></p>
+								<p>Singularities: <span id = "total_sing_count"></span></p>
+								<p>Last save: <span id = "last_save_time">n/a</span></p>
+							</div>
+							<hr>
+							<div class = "hcenter" style = "margin-bottom: 5px; padding-left: 6px;">
+								<a id = "debug_save_game" class = "waves-effect waves-light btn orange lighten-2 black-text smallbutton" onclick = "debug_save();">Save Game</a>
+								<a id = "debug_clear_game" class = "waves-effect waves-light btn orange lighten-2 black-text smallbutton" onclick = "debug_clear();">Hard Reset</a>
+							</div>
+							<div class = "hcenter" style = "margin-bottom: 5px;">
+								<a id = "debug_clear_game" class = "waves-effect waves-light btn orange lighten-2 black-text smallbutton" onclick = "import_save();">Import Save</a>
+								<a id = "debug_clear_game" class = "waves-effect waves-light btn orange lighten-2 black-text smallbutton" onclick = "export_save();">Export Save</a>
+							</div>
+							<div class = "hcenter">
+								<input type = "text" id = "save_data_textbox" class = "browser-default" style = "width: 210px;">
+							</div>
+						</div>
+					</div>
+				
+					<!--Debug Box-->
+					<div id = "cheat_box" class = "card" style = "background-color: #b0bbbf; padding: 5px 5px 5px 5px; margin-bottom: 10px;">
+						<div class = "flex vertcenter">
+							<a id = "debug_gain" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_gain();">Gain</a>
+							<div class = "input-field" style = "margin-left: 10px;">
+								<input id = "debug_gain_amount" type = "text" class = "validate" style = "width: 90px;">
+								<label for = "debug_gain_amount">Amount</label>
+							</div>
+							<div style = "width: 100px; margin-left: 10px;">
+								<select id = "debug_gain_type">
+									<option value = "All" selected = "selected">All</option>
+									<option value = "Particles">Particles</option>
+									<option value = "Strands">Strands</option>
+									<option value = "Capital">Capital</option>
+									<option value = "Soul">Soul</option>
+									<option value = "Spirit">Spirit</option>
+									<option value = "Goo">Goo</option>
+									<option value = "Core">Core</option>
+									<option value = "Bugs">Bugs</option>
+									<option value = "Singularity">Singularity</option>
+									<option value = "Mass">Mass</option>
+									<option value = "Workers">Workers</option>
+									<option value = "Machinery">Machinery</option>
+								</select>
+							</div>
+						</div>
+						<a id = "debug_free_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_free_upgrades();">Free Upgrades</a>
+						<a id = "debug_reprice_upgrades" class = "waves-effect waves-light btn orange lighten-2 black-text disabled" onclick = "debug_reprice_upgrades();">Re-price Upgrades</a>
+						<a id = "debug_unlock_achievements" class = "waves-effect waves-light btn orange lighten-2 black-text" onclick = "debug_unlock_achievements();">Unlock Achievements</a>
+					</div>
 				</div>
 			</div>
 
 			<!--Right Column-->
-			<div id = "right_col" class = "col s12 m3">
+			<div id = "right_col" class = "col m3">
 				<!--Inspector Box-->
 				<div id = "inspector_box" class = "card blue-grey lighten-4">
 					<div id = "inspector_content" class = "card-content">
 						<div id = "inspector_title" class = "black-text vertcenter"></div>
-						<div id = "inspector_cost" class = "grey-text text-darken-3 vertcenter"></div>
+						<div id = "inspector_cost" class = "hidden white-text vertcenter"></div>
 						<div id = "inspector_text" class = "grey-text text-darken-3"></div>
 						<hr  id = "inspector_divider" class = "hidden">
 						<div id = "inspector_subtext" class = "grey-text text-darken-3"></div>
@@ -336,21 +989,6 @@
 			</div>
 		</div>
 	</div>
-<!--客服 开始-->
-<link rel="stylesheet" href="//g8hh.github.io/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
-<script src="//g8hh.github.io/static/js/kf.js"></script>
-<!-- 客服 结束 -->
-<!--站长统计-->
-    <div style="display: none">
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?6581389daf4dd6fe7dbb4d20fdcb52a6";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-    </div>
+
 </body>
 </html>

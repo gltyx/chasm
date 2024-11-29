@@ -142,6 +142,11 @@ form {
 	margin-right: 3px;
 }
 
+.currency_icon_mass {
+	font-size: 42px;
+	margin-right: 3px;
+}
+
 .currency_amount {
 	padding-left: 3px;
 }
@@ -155,10 +160,48 @@ form {
 	width: 12px;
 	height: 12px;
 	margin-left: 3px;
+
+	border-width: 1px;
+	border-color: #242424;
+	border-style: solid;
+}
+
+.element_sample_fish {
+	width: 16px;
+	height: 8px;
+	margin-left: 3px;
+
+	border-width: 1px;
+	border-color: #242424;
+	border-style: solid;
 }
 
 .gather_button {
+	width: 96px;
+	height: fit-content;
+
 	margin-right: 8px;
+	padding-left: 4px;
+	padding-right: 4px;
+
+	border: 1px dashed whitesmoke;
+	border-radius: 4px;
+
+	background-color: #cfd8dc;
+}
+
+.drop_button {
+	width: 96px;
+	height: fit-content;
+
+	margin-right: 8px;
+	padding-left: 4px;
+	padding-right: 4px;
+
+	border: 1px dashed whitesmoke;
+	border-radius: 4px;
+
+	background-color: #cfd8dc;
 }
 
 .upgrade_tile {
@@ -168,6 +211,33 @@ form {
 
 .worker_button {
 	font-size: 10px;
+}
+
+.depth_chart_cell {
+	height: 24px;
+	width: 12px;
+
+	margin-left: 5px;
+	margin-right: 2px;
+}
+
+.gradient_singularity {
+	background: -webkit-linear-gradient(red, DarkSlateBlue);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.gradient_challenge_1 {
+	background: -webkit-linear-gradient(#3de809, #37ab8c);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.smallbutton {
+	height: 28px;
+	line-height: 28px;
+	padding: 0px 12px;
+	font-size: 12px;
 }
 
 /* Chasm id's */
@@ -199,11 +269,41 @@ form {
 #earth_box {
 	padding: 5px 5px 5px 5px;
 	margin-bottom: 5px;
+	
+	background-color: #b0bbbf;
+}
+
+#incinerator_box {
+	width: 200px;
+	height: 192px;
+
+	margin-top: 8px;
+	margin-right: 8px;
+	padding-left: 4px;
+	padding-right: 4px;
+
+	border: 1px dashed whitesmoke;
+	border-radius: 4px;
+}
+
+#bait_box {
+	width: 200px;
+	height: 192px;
+
+	margin-top: 8px;
+	margin-right: 8px;
+	padding-left: 4px;
+	padding-right: 4px;
+
+	border: 1px dashed whitesmoke;
+	border-radius: 4px;
 }
 
 #water_box {
 	padding: 5px 5px 5px 5px;
 	margin-bottom: 5px;
+	
+	background-color: #b0bbbf !important;
 }
 
 #right_col {
@@ -218,21 +318,34 @@ form {
 	margin: 0px 0px 8px 0px;
 	padding: 10px 10px 10px 12px;
 
-	height: 160px;
 	line-height: 1.3;
 }
 
 #inspector_title {
 	font-weight: bold;
 	font-size: 16px;
+	margin-bottom: 4px;
 }
 
 #inspector_text {
+	margin-top: 4px;
+
 	font-size: 14px;
 }
 
 #inspector_cost {
-	padding-left: 12px;
+	width: fit-content;
+	border-radius: 4px;
+	
+	margin-top: 6px;
+	margin-left: 4px;
+	margin-bottom: 8px;
+	padding-top: 4px;
+	padding-right: 2px;
+	padding-bottom: 4px;
+	padding-left: 3px;
+	
+	background-color: #546e7a;
 	font-size: 14px;
 }
 
@@ -241,7 +354,7 @@ form {
 }
 
 #log_box {
-	height: calc(100% - 190px);
+	height: 100%;
 	padding-top: 12px;
 	padding-left: 12px;
 	padding-right: 12px;
@@ -250,4 +363,8 @@ form {
 
 	color: white;
 	overflow: hidden;
+}
+
+#currency_mass_value {
+	font-size: 28px;
 }
